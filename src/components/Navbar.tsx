@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Live", href: "#services" },
-  { label: "Virtual", href: "#services" },
-  { label: "Hybrid", href: "#services" },
-  { label: "Video Production", href: "#services" },
-  { label: "Meeting Pros", href: "#services" },
+  { label: "Live", href: "/live-events" },
+  { label: "Virtual", href: "/virtual-events" },
+  { label: "Hybrid", href: "/hybrid-events" },
+  { label: "Video Production", href: "/video-production" },
+  { label: "Meeting Pros", href: "/meeting-pros" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const isActive = (href: string) => location.pathname === href;
 
   return (
     <motion.nav
@@ -30,7 +40,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <span
             className={`font-display font-bold text-xl tracking-tight transition-colors duration-500 ${
               scrolled ? "text-foreground" : "text-white"
@@ -38,27 +48,33 @@ const Navbar = () => {
           >
             Virtual Producers
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className={`text-sm font-medium transition-colors duration-500 ${
-                scrolled
-                  ? "text-muted-foreground hover:text-foreground"
-                  : "text-white/70 hover:text-white"
+                isActive(link.href)
+                  ? scrolled
+                    ? "text-primary"
+                    : "text-white"
+                  : scrolled
+                    ? "text-muted-foreground hover:text-foreground"
+                    : "text-white/70 hover:text-white"
               }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <a
-          href="#contact"
+          href="https://www.vmproducers.com/contact"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
         >
           Free Consultation
@@ -79,12 +95,24 @@ const Navbar = () => {
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} onClick={() => setIsOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2 font-medium">
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className={`py-2 font-medium transition-colors ${
+                    isActive(link.href)
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a href="#contact" className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm">
+              <a
+                href="https://www.vmproducers.com/contact"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm"
+              >
                 Free Consultation
               </a>
             </div>
