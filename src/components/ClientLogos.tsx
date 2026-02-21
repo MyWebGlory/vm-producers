@@ -26,8 +26,8 @@ const clients = [
   { name: "Atlanta United", logo: atlantaUnitedLogo },
 ];
 
-// Duplicate for seamless infinite scroll
-const duplicatedClients = [...clients, ...clients];
+// Triple for truly seamless infinite scroll
+const scrollClients = [...clients, ...clients, ...clients];
 
 const ClientLogos = () => {
   const sectionRef = useRef(null);
@@ -70,8 +70,8 @@ const ClientLogos = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        <div className="flex items-center animate-marquee-left">
-          {duplicatedClients.map((client, i) => (
+        <div className="flex items-center w-max animate-marquee-left">
+          {scrollClients.map((client, i) => (
             <div
               key={`row1-${i}`}
               className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center group"
@@ -96,8 +96,8 @@ const ClientLogos = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        <div className="flex items-center animate-marquee-right">
-          {[...duplicatedClients].reverse().map((client, i) => (
+        <div className="flex items-center w-max animate-marquee-right">
+          {[...scrollClients].reverse().map((client, i) => (
             <div
               key={`row2-${i}`}
               className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center group"
