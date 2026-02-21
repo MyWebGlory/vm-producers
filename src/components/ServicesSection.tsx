@@ -7,6 +7,7 @@ import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-events.webp";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import liveEventsImg from "@/assets/live-events.webp";
+import liveEventsVideo from "@/assets/live-events-video.mp4";
 
 const services = [
   {
@@ -14,6 +15,7 @@ const services = [
     icon: Mic,
     description: "Seamless and unforgettable in-person experiences — from intimate gatherings to large-scale productions.",
     image: liveEventsImg,
+    video: liveEventsVideo,
     stat: { value: 500, suffix: "+", label: "Events delivered" },
   },
   {
@@ -46,7 +48,7 @@ const services = [
   },
 ];
 
-const ServiceRow = ({ service, index }: { service: typeof services[0]; index: number }) => {
+const ServiceRow = ({ service, index }: { service: (typeof services)[number]; index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const Icon = service.icon;
@@ -117,11 +119,22 @@ const ServiceRow = ({ service, index }: { service: typeof services[0]; index: nu
         className="w-full max-w-[340px] md:max-w-[380px] flex-shrink-0"
       >
         <div className="rounded-3xl overflow-hidden">
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-auto object-contain"
-          />
+          {service.video ? (
+            <video
+              src={service.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto object-contain"
+            />
+          ) : (
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-auto object-contain"
+            />
+          )}
         </div>
       </motion.div>
     </motion.div>
