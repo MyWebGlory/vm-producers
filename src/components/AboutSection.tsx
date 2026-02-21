@@ -17,11 +17,10 @@ const AboutSection = () => {
           {/* Image with parallax */}
           <motion.div className="w-full lg:w-1/2 relative">
             <div className="rounded-2xl overflow-hidden elevated h-[450px] lg:h-[550px]">
-              <motion.img
+              <img
                 src={aboutImg}
                 alt="Virtual event production"
-                className="w-full h-[120%] object-cover"
-                style={{ y: imgY }}
+                className="w-full h-full object-cover"
               />
             </div>
             {/* Floating accent card */}
