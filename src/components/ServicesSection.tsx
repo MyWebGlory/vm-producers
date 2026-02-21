@@ -36,7 +36,7 @@ const services = [
     features: ["Multi-camera Livestream", "Branded Interfaces", "Shared Mobile App", "Live Q&A", "Engagement Tracking"],
     image: hybridEventsImg,
     stat: { value: 95, suffix: "%", label: "Client retention rate" },
-    layout: "center" as LayoutType,
+    layout: "left" as LayoutType,
   },
   {
     title: "Video Production",
