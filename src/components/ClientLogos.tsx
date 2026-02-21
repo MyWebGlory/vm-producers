@@ -79,7 +79,7 @@ const ClientLogos = () => {
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                className="h-14 md:h-20 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
+                className="h-8 md:h-12 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
               />
             </div>
           ))}
@@ -105,7 +105,7 @@ const ClientLogos = () => {
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                className="h-14 md:h-20 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
+                className="h-8 md:h-12 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
               />
             </div>
           ))}
