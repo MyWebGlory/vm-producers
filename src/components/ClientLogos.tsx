@@ -2,15 +2,15 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ScrollReveal } from "@/components/ScrollAnimations";
 
-import nikeLogo from "@/assets/logos/nike.webp";
-import samsungLogo from "@/assets/logos/samsung.png";
-import hpLogo from "@/assets/logos/hp.webp";
-import chevroletLogo from "@/assets/logos/chevrolet.png";
-import angryOrchardLogo from "@/assets/logos/angry-orchard.png";
-import nokiaLogo from "@/assets/logos/nokia.png";
-import oracleLogo from "@/assets/logos/oracle.png";
+import nikeLogo from "@/assets/logos/nike.png";
+import samsungLogo from "@/assets/logos/samsung-hd.png";
+import hpLogo from "@/assets/logos/hp.png";
+import chevroletLogo from "@/assets/logos/chevrolet-hd.png";
+import angryOrchardLogo from "@/assets/logos/angry-orchard-hd.svg";
+import nokiaLogo from "@/assets/logos/nokia-hd.png";
+import oracleLogo from "@/assets/logos/oracle-hd.png";
 import secureworksLogo from "@/assets/logos/secureworks.png";
-import adidasLogo from "@/assets/logos/adidas.webp";
+import adidasLogo from "@/assets/logos/adidas.png";
 import atlantaUnitedLogo from "@/assets/logos/atlanta-united.png";
 
 const clients = [
