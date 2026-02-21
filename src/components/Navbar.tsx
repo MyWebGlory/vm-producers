@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import vmLogo from "@/assets/vm-logo-white.png";
+import VMLogoMark from "@/components/VMLogoMark";
 
 const navLinks = [
   { label: "Live", href: "#services" },
@@ -32,12 +32,9 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
-          <img
-            src={vmLogo}
-            alt="Virtual Producers"
-            className={`h-10 w-auto object-contain transition-all duration-500 ${
-              scrolled ? "brightness-0" : "brightness-100"
-            }`}
+          <VMLogoMark
+            className="h-8 w-auto"
+            textColor={scrolled ? "#044D80" : "#ffffff"}
           />
         </a>
 

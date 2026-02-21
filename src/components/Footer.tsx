@@ -1,4 +1,4 @@
-import vmLogo from "@/assets/vm-logo-white.png";
+import VMLogoMark from "@/components/VMLogoMark";
 
 const Footer = () => {
   return (
@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <a href="#" className="flex items-center gap-3">
-            <img src={vmLogo} alt="Virtual Producers" className="h-8 w-auto object-contain brightness-0" />
+            <VMLogoMark className="h-8 w-auto" textColor="#044D80" />
           </a>
           <div className="flex flex-wrap gap-8 text-sm text-muted-foreground">
             <a href="#services" className="hover:text-foreground transition-colors">Services</a>
