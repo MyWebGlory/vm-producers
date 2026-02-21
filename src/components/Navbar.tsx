@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import VMLogoMark from "./VMLogoMark";
 
 const navLinks = [
   { label: "Live", href: "#services" },
@@ -26,27 +27,23 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "glass-strong shadow-sm"
-          : "bg-transparent"
+        scrolled ? "glass-strong shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-lg flex items-center justify-center border transition-colors duration-500 ${
-            scrolled ? "bg-primary/10 border-primary/20" : "bg-white/10 border-white/20"
-          }`}>
-            <span className={`font-display font-bold text-lg transition-colors duration-500 ${
-              scrolled ? "text-primary" : "text-white"
-            }`}>V</span>
-          </div>
+          <VMLogoMark
+            size={36}
+            color={scrolled ? "hsl(215, 60%, 35%)" : "white"}
+          />
           <div className="font-display font-semibold text-sm uppercase tracking-wider leading-tight">
             <span className={`block transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>Virtual</span>
             <span className={`block transition-colors duration-500 ${scrolled ? "text-primary" : "text-white/70"}`}>Producers</span>
           </div>
         </a>
 
-        <div className="hidden lg:flex items-center gap-8">
+        {/* Desktop nav — visible from md */}
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -64,12 +61,13 @@ const Navbar = () => {
 
         <a
           href="#contact"
-          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
+          className="hidden md:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
         >
           Free Consultation
         </a>
 
-        <button onClick={() => setIsOpen(!isOpen)} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
+        {/* Mobile hamburger — only on small screens */}
+        <button onClick={() => setIsOpen(!isOpen)} className={`md:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -80,7 +78,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass-strong border-t border-border/50"
+            className="md:hidden glass-strong border-t border-border/50"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
