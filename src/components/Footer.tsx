@@ -1,12 +1,12 @@
+import VMLogoMark from "./VMLogoMark";
+
 const Footer = () => {
   return (
     <footer className="border-t border-border py-12 bg-card">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center border border-primary/15">
-              <span className="font-display font-bold text-primary text-sm">V</span>
-            </div>
+            <VMLogoMark size={28} color="hsl(215, 60%, 35%)" />
             <span className="font-display font-semibold text-sm text-foreground">Virtual Producers</span>
           </div>
           <div className="flex flex-wrap gap-8 text-sm text-muted-foreground">
