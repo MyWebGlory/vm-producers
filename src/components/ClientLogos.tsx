@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ScrollReveal } from "@/components/ScrollAnimations";
 
 import nikeLogo from "@/assets/logos/nike.webp";
 import samsungLogo from "@/assets/logos/samsung.png";
@@ -25,17 +27,13 @@ const clients = [
 ];
 
 const ClientLogos = () => {
+  const gridRef = useRef(null);
+  const isInView = useInView(gridRef, { once: true, margin: "-60px" });
+
   return (
     <section className="relative py-20 lg:py-28 bg-background overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
+        <ScrollReveal className="text-center mb-14">
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
             Trusted Partners
           </p>
@@ -43,25 +41,31 @@ const ClientLogos = () => {
             They Trusted Us With Their{" "}
             <span className="glow-text">Biggest Events</span>
           </h2>
-        </motion.div>
+        </ScrollReveal>
 
-        {/* Logo grid — large, clear, prominent */}
         <motion.div
+          ref={gridRef}
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="elevated rounded-3xl border border-border/50 p-8 md:p-12"
         >
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center">
             {clients.map((client, i) => (
               <motion.div
                 key={client.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.05 * i, duration: 0.4 }}
-                className="flex items-center justify-center w-full py-4 px-2 group"
+                initial={{ opacity: 0, scale: 0.7, y: 20 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                transition={{
+                  delay: i * 0.07,
+                  duration: 0.5,
+                  ease: "backOut",
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  transition: { duration: 0.2 },
+                }}
+                className="flex items-center justify-center w-full py-4 px-2 group cursor-pointer"
               >
                 <img
                   src={client.logo}
