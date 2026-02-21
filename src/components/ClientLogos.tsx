@@ -64,25 +64,23 @@ const ClientLogos = () => {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="relative mb-6"
+        className="relative mb-10"
       >
         {/* Edge fade masks */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee-left">
+        <div className="flex items-center animate-marquee-left">
           {duplicatedClients.map((client, i) => (
             <div
               key={`row1-${i}`}
-              className="flex-shrink-0 mx-6 md:mx-10 group"
+              className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center group"
             >
-              <div className="flex items-center justify-center h-24 md:h-28 w-44 md:w-52 rounded-2xl elevated border border-border/40 px-6 py-4 transition-all duration-500 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="max-h-14 md:max-h-16 max-w-[160px] object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110"
-                />
-              </div>
+              <img
+                src={client.logo}
+                alt={`${client.name} logo`}
+                className="h-14 md:h-20 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
+              />
             </div>
           ))}
         </div>
@@ -98,19 +96,17 @@ const ClientLogos = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee-right">
+        <div className="flex items-center animate-marquee-right">
           {[...duplicatedClients].reverse().map((client, i) => (
             <div
               key={`row2-${i}`}
-              className="flex-shrink-0 mx-6 md:mx-10 group"
+              className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center group"
             >
-              <div className="flex items-center justify-center h-24 md:h-28 w-44 md:w-52 rounded-2xl elevated border border-border/40 px-6 py-4 transition-all duration-500 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="max-h-14 md:max-h-16 max-w-[160px] object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110"
-                />
-              </div>
+              <img
+                src={client.logo}
+                alt={`${client.name} logo`}
+                className="h-14 md:h-20 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
+              />
             </div>
           ))}
         </div>
