@@ -54,12 +54,12 @@ const ClientLogos = () => {
             <span className="glow-text">World's Best</span>
           </h2>
           <p className="text-muted-foreground text-lg mt-4 max-w-xl mx-auto">
-            From Fortune 500 giants to iconic brands — they chose us for their biggest moments.
+            From Fortune 500 giants to iconic brands, they chose us for their biggest moments.
           </p>
         </ScrollReveal>
       </div>
 
-      {/* Infinite scrolling logos — row 1 (left to right) */}
+      {/* Infinite scrolling logos - row 1 (left to right) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
@@ -86,7 +86,7 @@ const ClientLogos = () => {
         </div>
       </motion.div>
 
-      {/* Infinite scrolling logos — row 2 (right to left, offset) */}
+      {/* Infinite scrolling logos - row 2 (right to left, offset) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}

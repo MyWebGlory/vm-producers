@@ -15,7 +15,7 @@ const VirtualEvents = () => (
     features={[
       {
         title: "Custom Virtual Platforms",
-        description: "Branded virtual environments tailored to your event — from lobbies to breakout rooms, fully interactive and engagement-driven.",
+        description: "Branded virtual environments tailored to your event, from lobbies to breakout rooms, fully interactive and engagement-driven.",
       },
       {
         title: "Real-Time Engagement",

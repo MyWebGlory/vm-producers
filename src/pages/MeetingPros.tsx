@@ -15,7 +15,7 @@ const MeetingPros = () => (
     features={[
       {
         title: "Vetted Professionals",
-        description: "Every professional in our network is thoroughly vetted — background checks, portfolio reviews, and client references verified.",
+        description: "Every professional in our network is thoroughly vetted: background checks, portfolio reviews, and client references verified.",
       },
       {
         title: "48-Hour Matching",
@@ -27,7 +27,7 @@ const MeetingPros = () => (
       },
       {
         title: "Global Coverage",
-        description: "Whether it's Tokyo, New York, or Lagos — our network spans 70+ countries so you always have local expertise on the ground.",
+        description: "Whether it's Tokyo, New York, or Lagos, our network spans 70+ countries so you always have local expertise on the ground.",
       },
     ]}
   />

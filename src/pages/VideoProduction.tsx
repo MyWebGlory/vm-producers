@@ -15,7 +15,7 @@ const VideoProduction = () => (
     features={[
       {
         title: "Corporate Films & Brand Stories",
-        description: "Cinematic storytelling that captures your brand's essence — from company culture pieces to product launches and brand anthems.",
+        description: "Cinematic storytelling that captures your brand's essence, from company culture pieces to product launches and brand anthems.",
       },
       {
         title: "Event Highlight Reels",
