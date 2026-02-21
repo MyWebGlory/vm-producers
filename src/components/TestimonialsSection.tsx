@@ -93,7 +93,7 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative"
         >
-          {/* Arrows — desktop only */}
+          {/* Arrows - desktop only */}
           <button
             onClick={() => paginate(-1)}
             className="hidden md:flex absolute -left-4 lg:-left-10 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"

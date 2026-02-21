@@ -52,7 +52,7 @@ const AboutSection = () => {
             >
               From global conferences to intimate webinars,
               we blend technical excellence with a personal touch.
-              Whether for 10 or 10,000 attendees — we handle the complexity.
+              Whether for 10 or 10,000 attendees, we handle the complexity.
             </motion.p>
 
             {/* Minimal stat */}

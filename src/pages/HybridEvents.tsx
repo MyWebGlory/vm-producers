@@ -19,7 +19,7 @@ const HybridEvents = () => (
       },
       {
         title: "Synchronized Content Delivery",
-        description: "Real-time content syncing between venues and screens — presentations, polls, and interactions work in perfect harmony.",
+        description: "Real-time content syncing between venues and screens: presentations, polls, and interactions work in perfect harmony.",
       },
       {
         title: "Flexible Scaling",
@@ -27,7 +27,7 @@ const HybridEvents = () => (
       },
       {
         title: "Post-Event Content Hub",
-        description: "All sessions recorded, edited, and delivered as on-demand content — extending the life of your event long after the curtain falls.",
+        description: "All sessions recorded, edited, and delivered as on-demand content, extending the life of your event long after the curtain falls.",
       },
     ]}
   />

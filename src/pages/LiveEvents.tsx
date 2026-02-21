@@ -6,7 +6,7 @@ const LiveEvents = () => (
   <ServicePageLayout
     title="Live Events"
     subtitle="In-Person Excellence"
-    description="Seamless and unforgettable in-person experiences — from intimate gatherings to large-scale productions that leave lasting impressions."
+    description="Seamless and unforgettable in-person experiences, from intimate gatherings to large-scale productions that leave lasting impressions."
     heroImage={liveEventsImg}
     heroVideo={liveEventsVideo}
     stats={[
@@ -17,7 +17,7 @@ const LiveEvents = () => (
     features={[
       {
         title: "End-to-End Production",
-        description: "From concept to execution, we manage every detail — staging, lighting, sound, and logistics — so you can focus on your message.",
+        description: "From concept to execution, we manage every detail: staging, lighting, sound, and logistics, so you can focus on your message.",
       },
       {
         title: "Venue Sourcing & Management",
@@ -29,7 +29,7 @@ const LiveEvents = () => (
       },
       {
         title: "On-Site Technical Support",
-        description: "Our experienced technical crew ensures everything runs smoothly — AV, networking, power, and contingency plans for any scenario.",
+        description: "Our experienced technical crew ensures everything runs smoothly: AV, networking, power, and contingency plans for any scenario.",
       },
     ]}
   />

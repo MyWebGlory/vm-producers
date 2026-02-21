@@ -14,7 +14,7 @@ const services = [
   {
     title: "Live Events",
     icon: Mic,
-    description: "Seamless and unforgettable in-person experiences — from intimate gatherings to large-scale productions.",
+    description: "Seamless and unforgettable in-person experiences, from intimate gatherings to large-scale productions.",
     image: liveEventsImg,
     video: liveEventsVideo,
     href: "/live-events",
