@@ -31,6 +31,7 @@ const services = [
     description: "Bridging in-person and virtual audiences into one cohesive, engaging experience.",
     image: hybridEventsImg,
     stat: { value: 95, suffix: "%", label: "Retention rate" },
+    imageSize: "max-w-[480px] md:max-w-[560px]",
   },
   {
     title: "Video Production",
@@ -116,7 +117,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
         initial={{ opacity: 0, scale: 0.95 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="w-full max-w-[420px] md:max-w-[480px] flex-shrink-0"
+        className={`w-full ${service.imageSize || 'max-w-[420px] md:max-w-[480px]'} flex-shrink-0`}
       >
         <div className="rounded-3xl overflow-hidden">
           {service.video ? (
