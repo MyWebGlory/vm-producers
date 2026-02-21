@@ -102,11 +102,11 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "logo-scroll": {
+        "marquee-left": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
-        "logo-scroll-reverse": {
+        "marquee-right": {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
         },
@@ -120,8 +120,8 @@ export default {
         "slide-in-right": "slide-in-right 0.8s ease-out forwards",
         "count-up": "count-up 0.6s ease-out forwards",
         float: "float 6s ease-in-out infinite",
-        "logo-scroll": "logo-scroll 25s linear infinite",
-        "logo-scroll-reverse": "logo-scroll-reverse 30s linear infinite",
+        "marquee-left": "marquee-left 30s linear infinite",
+        "marquee-right": "marquee-right 35s linear infinite",
       },
     },
   },
