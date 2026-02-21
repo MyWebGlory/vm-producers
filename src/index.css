@@ -112,7 +112,7 @@
   }
 
   .hero-gradient {
-    background: linear-gradient(180deg, hsl(var(--hero-overlay) / 0.15) 0%, hsl(var(--hero-overlay) / 0.35) 50%, hsl(var(--hero-overlay) / 0.7) 100%);
+    background: linear-gradient(180deg, hsl(var(--hero-overlay) / 0.1) 0%, hsl(var(--hero-overlay) / 0.25) 40%, hsl(var(--hero-overlay) / 0.6) 100%);
   }
 
   .section-gradient {
