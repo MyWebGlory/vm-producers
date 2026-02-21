@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Sparkles, Globe, Monitor, Video, Users, Mic } from "lucide-react";
 import virtualEventsImg from "@/assets/virtual-events.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-events.webp";
@@ -8,63 +9,73 @@ import liveEventsImg from "@/assets/live-events.webp";
 const services = [
   {
     title: "Live Events",
-    description: "In person events are the bread and butter of building community. We ensure seamless and unforgettable in-person event experiences with expert planning and execution.",
+    icon: Mic,
+    description: "In-person events are the bread and butter of building community. We ensure seamless and unforgettable experiences with expert planning and execution.",
     features: [
-      "Full Service Event Management from A to Z",
-      "Venue and hotel sourcing",
-      "Streamlined registration and check-in solutions",
-      "High-quality staging, lighting, and AV production",
-      "Curated catering and hospitality services",
+      "Full Service Management",
+      "Venue Sourcing",
+      "Registration & Check-in",
+      "Staging & AV",
+      "Catering & Hospitality",
     ],
     image: liveEventsImg,
+    stat: { value: "500+", label: "Live events delivered" },
   },
   {
     title: "Virtual Events",
-    description: "Our all-inclusive virtual event production service manages everything from small webinars to expansive online conferences.",
+    icon: Monitor,
+    description: "Our all-inclusive virtual event production manages everything from intimate webinars to expansive online conferences with up to 100,000 attendees.",
     features: [
-      "Large-scale conferences with concurrent sessions",
-      "Premium livestreams with professional graphics",
-      "Online summits and trade shows with tailored expo booths",
-      "Audience engagement through polls and networking",
-      "Up to 100,000 attendees supported",
+      "Multi-session Conferences",
+      "Premium Livestreams",
+      "Expo Booths",
+      "Polls & Networking",
+      "Multi-language Support",
     ],
     image: virtualEventsImg,
+    stat: { value: "100K", label: "Max attendees per event" },
   },
   {
     title: "Hybrid Events",
-    description: "We connect in-person and virtual attendees, ensuring both groups feel equally involved through smooth online integration.",
+    icon: Globe,
+    description: "We connect in-person and virtual attendees, ensuring both groups feel equally involved through smooth online integration and shared experiences.",
     features: [
-      "Professional livestream with multi-cameras",
-      "Customized branded web interfaces",
-      "Shared mobile app for all attendees",
-      "Polling and Q&A integration",
-      "Real-time engagement tracking",
+      "Multi-camera Livestream",
+      "Branded Interfaces",
+      "Shared Mobile App",
+      "Live Q&A",
+      "Engagement Tracking",
     ],
     image: hybridEventsImg,
+    stat: { value: "95%", label: "Client retention rate" },
   },
   {
     title: "Video Production",
-    description: "We produce captivating video content that boosts your event marketing and enriches the overall experience.",
+    icon: Video,
+    description: "We produce captivating video content that boosts your event marketing and enriches the overall experience, from teasers to highlight reels.",
     features: [
-      "Promotional event videos and teasers",
-      "Whiteboard explainer animations",
-      "Event highlight reels",
-      "Testimonial videos",
-      "Social media optimized content",
+      "Promo Videos",
+      "Explainer Animations",
+      "Highlight Reels",
+      "Testimonials",
+      "Social Content",
     ],
     image: videoProductionImg,
+    stat: { value: "2000+", label: "Videos produced" },
   },
   {
     title: "Meeting Pros",
-    description: "We connect you with a worldwide network of skilled event professionals, providing adaptable staffing solutions for all your event requirements.",
+    icon: Users,
+    description: "A worldwide network of skilled event professionals with adaptable staffing solutions across 50 states and 70 countries, matched within 48 hours.",
     features: [
-      "Quick talent matching within 48 hours",
-      "Verified professionals with proven success",
-      "99.9% freelancer success rate",
-      "Scalable workforce solutions across 70 countries",
-      "Complete compliance and security measures",
+      "48h Talent Matching",
+      "Verified Professionals",
+      "99.9% Success Rate",
+      "Global Coverage",
+      "Scalable Teams",
     ],
     image: meetingProsImg,
+    stat: { value: "70+", label: "Countries covered" },
   },
 ];
 
@@ -79,7 +90,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
+          <p className="text-accent font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
             Our Services
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold">
@@ -89,9 +100,10 @@ const ServicesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-32">
+        <div className="space-y-40">
           {services.map((service, i) => {
             const isEven = i % 2 === 0;
+            const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
@@ -104,39 +116,70 @@ const ServicesSection = () => {
                 {/* Image */}
                 <div className="w-full lg:w-1/2">
                   <div className="relative group">
-                    <div className="absolute -inset-4 rounded-2xl bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all duration-700" />
-                    <div className="relative overflow-hidden rounded-2xl glow-border">
+                    <div className="absolute -inset-4 rounded-2xl bg-accent/5 blur-2xl group-hover:bg-accent/10 transition-all duration-700" />
+                    <div className="relative overflow-hidden rounded-2xl border border-border/50">
                       <img
                         src={service.image}
                         alt={service.title}
                         className="w-full h-[400px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                      
+                      {/* Floating stat badge */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                        className="absolute bottom-6 left-6 glass-strong rounded-xl px-5 py-3"
+                      >
+                        <p className="text-2xl font-display font-bold text-foreground">{service.stat.value}</p>
+                        <p className="text-xs text-muted-foreground">{service.stat.label}</p>
+                      </motion.div>
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="w-full lg:w-1/2 space-y-6">
-                  <h3 className="text-3xl md:text-4xl font-display font-bold glow-text">
-                    {service.title}
-                  </h3>
+                  {/* Icon + Title */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl glass flex items-center justify-center border border-accent/20">
+                      <Icon size={22} className="text-accent" />
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                      {service.title}
+                    </h3>
+                  </div>
+                  
                   <p className="text-muted-foreground text-lg leading-relaxed">
                     {service.description}
                   </p>
-                  <ul className="space-y-3">
-                    {service.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                        <span className="text-secondary-foreground">{f}</span>
-                      </li>
+                  
+                  {/* Feature pills */}
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    {service.features.map((f, j) => (
+                      <motion.div
+                        key={f}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 * j, duration: 0.4 }}
+                        className="glass rounded-full px-5 py-2.5 border border-border/60 hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 group/pill cursor-default"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Sparkles size={12} className="text-accent/60 group-hover/pill:text-accent transition-colors" />
+                          <span className="text-sm text-secondary-foreground font-medium">{f}</span>
+                        </div>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
+
                   <a
                     href="#contact"
-                    className="inline-flex mt-4 px-6 py-3 rounded-lg border border-primary/30 text-primary font-display font-semibold text-sm hover:bg-primary/10 transition-all duration-300"
+                    className="inline-flex mt-6 px-7 py-3 rounded-xl glass border border-accent/20 text-accent font-display font-semibold text-sm hover:bg-accent/10 hover:border-accent/40 transition-all duration-300"
                   >
-                    Learn More
+                    Learn More →
                   </a>
                 </div>
               </motion.div>
