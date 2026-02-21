@@ -1,5 +1,6 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, useState, useCallback } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -22,182 +23,161 @@ const testimonials = [
   },
 ];
 
-const TestimonialSlide = ({
-  testimonial,
-  index,
-  total,
-  scrollYProgress,
-}: {
-  testimonial: (typeof testimonials)[number];
-  index: number;
-  total: number;
-  scrollYProgress: any;
-}) => {
-  const segmentSize = 1 / total;
-  const start = index * segmentSize;
-  const fadeIn = start + segmentSize * 0.15;
-  const peak = start + segmentSize * 0.5;
-  const fadeOut = start + segmentSize * 0.85;
-  const end = start + segmentSize;
-
-  const isLast = index === total - 1;
-
-  const opacity = useTransform(
-    scrollYProgress,
-    isLast ? [start, fadeIn, peak] : [start, fadeIn, peak, fadeOut, end],
-    isLast ? [0, 1, 1] : [0, 1, 1, 1, 0]
-  );
-
-  const y = useTransform(
-    scrollYProgress,
-    isLast ? [start, fadeIn] : [start, fadeIn, fadeOut, end],
-    isLast ? [50, 0] : [50, 0, 0, -30]
-  );
-
-  // Author card slides in slightly delayed
-  const authorOpacity = useTransform(
-    scrollYProgress,
-    isLast ? [start + segmentSize * 0.2, start + segmentSize * 0.35] : [start + segmentSize * 0.2, start + segmentSize * 0.35, fadeOut, end],
-    isLast ? [0, 1] : [0, 1, 1, 0]
-  );
-
-  const authorY = useTransform(
-    scrollYProgress,
-    isLast ? [start + segmentSize * 0.2, start + segmentSize * 0.35] : [start + segmentSize * 0.2, start + segmentSize * 0.35, fadeOut, end],
-    isLast ? [25, 0] : [25, 0, 0, -15]
-  );
-
-  return (
-    <motion.div
-      style={{ opacity, y }}
-      className="absolute inset-0 flex items-center justify-center px-6 pt-28 md:pt-32"
-    >
-      <div className="text-center max-w-3xl mx-auto">
-        <p className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-medium text-foreground leading-relaxed tracking-tight">
-          "{testimonial.text}"
-        </p>
-
-        <motion.div
-          style={{ opacity: authorOpacity, y: authorY }}
-          className="mt-10 md:mt-14 flex items-center justify-center gap-4"
-        >
-          {/* Avatar with initials */}
-          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <span className="text-primary font-display font-semibold text-sm">
-              {testimonial.initials}
-            </span>
-          </div>
-          <div className="text-left">
-            <p className="font-display font-semibold text-foreground text-base">
-              {testimonial.author}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              {testimonial.company}
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 400 : -400,
+    opacity: 0,
+    scale: 0.95,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -400 : 400,
+    opacity: 0,
+    scale: 0.95,
+  }),
 };
 
 const TestimonialsSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const [[current, direction], setCurrent] = useState([0, 0]);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const paginate = useCallback((newDirection: number) => {
+    setCurrent(([prev]) => {
+      let next = prev + newDirection;
+      if (next < 0) next = testimonials.length - 1;
+      if (next >= testimonials.length) next = 0;
+      return [next, newDirection];
+    });
+  }, []);
 
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const handleDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+    const swipe = Math.abs(info.velocity.x) * info.offset.x;
+    if (swipe < -5000 || info.offset.x < -80) {
+      paginate(1);
+    } else if (swipe > 5000 || info.offset.x > 80) {
+      paginate(-1);
+    }
+    setIsDragging(false);
+  };
 
-  // Title stays visible, just moves up slightly
-  const titleY = useTransform(scrollYProgress, [0, 0.15], [0, -10]);
+  const t = testimonials[current];
 
   return (
-    <section
-      ref={containerRef}
-      className="relative"
-      style={{ height: `${(testimonials.length + 1) * 100}vh` }}
-    >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Header — stays visible the whole time */}
+    <section ref={sectionRef} className="py-32 lg:py-44 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <motion.div
-          ref={headerRef}
-          style={{ y: titleY }}
-          className="absolute top-[12vh] md:top-[14vh] left-0 right-0 z-20 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20 lg:mb-28"
         >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium"
-          >
+          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
             Testimonials
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
-          >
+          </p>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
             What they say.
-          </motion.h2>
+          </h2>
         </motion.div>
 
-        {/* Testimonials */}
-        <div className="absolute inset-0">
-          {testimonials.map((t, i) => (
-            <TestimonialSlide
-              key={i}
-              testimonial={t}
-              index={i}
-              total={testimonials.length}
-              scrollYProgress={scrollYProgress}
-            />
-          ))}
-        </div>
+        {/* Carousel area */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="relative"
+        >
+          {/* Arrows — desktop only */}
+          <button
+            onClick={() => paginate(-1)}
+            className="hidden md:flex absolute -left-4 lg:-left-10 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={() => paginate(1)}
+            className="hidden md:flex absolute -right-4 lg:-right-10 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight size={24} />
+          </button>
 
-        {/* Bottom indicators */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5">
-          {/* Dots */}
-          <div className="flex gap-3">
-            {testimonials.map((_, i) => {
-              const segmentSize = 1 / testimonials.length;
-              const start = i * segmentSize;
-              const mid = start + segmentSize * 0.5;
-              const dotOpacity = useTransform(
-                scrollYProgress,
-                [start, mid, start + segmentSize],
-                [0.2, 1, 0.2]
-              );
-              const dotScale = useTransform(
-                scrollYProgress,
-                [start, mid, start + segmentSize],
-                [1, 1.5, 1]
-              );
-              return (
-                <motion.div
-                  key={i}
-                  style={{ opacity: dotOpacity, scale: dotScale }}
-                  className="w-1.5 h-1.5 rounded-full bg-primary"
-                />
-              );
-            })}
-          </div>
-
-          {/* Progress */}
-          <div className="w-24 md:w-32">
-            <div className="h-[1.5px] bg-border rounded-full overflow-hidden">
+          {/* Slide container */}
+          <div className="relative min-h-[320px] md:min-h-[280px] flex items-center justify-center">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
-                style={{ width: progressWidth }}
-                className="h-full bg-primary/40 rounded-full"
-              />
-            </div>
+                key={current}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 250, damping: 30 },
+                  opacity: { duration: 0.3 },
+                  scale: { duration: 0.3 },
+                }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.12}
+                onDragStart={() => setIsDragging(true)}
+                onDragEnd={handleDragEnd}
+                className="w-full cursor-grab active:cursor-grabbing select-none"
+              >
+                <div className="text-center max-w-3xl mx-auto px-4">
+                  {/* Quote */}
+                  <p className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-foreground leading-relaxed tracking-tight">
+                    "{t.text}"
+                  </p>
+
+                  {/* Author */}
+                  <div className="mt-10 flex items-center justify-center gap-4">
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-display font-semibold text-sm">
+                        {t.initials}
+                      </span>
+                    </div>
+                    <div className="text-left">
+                      <p className="font-display font-semibold text-foreground text-sm">
+                        {t.author}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t.company}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2.5 mt-12">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent([i, i > current ? 1 : -1])}
+                className="relative p-1"
+                aria-label={`Go to testimonial ${i + 1}`}
+              >
+                <div
+                  className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                    i === current
+                      ? "bg-primary scale-125"
+                      : "bg-border hover:bg-muted-foreground/30"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
