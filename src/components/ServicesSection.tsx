@@ -124,7 +124,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-foreground leading-tight"
         >
           {service.title}
         </motion.h3>
