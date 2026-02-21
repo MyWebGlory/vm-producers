@@ -1,4 +1,4 @@
-import vmLogo from "@/assets/vm-logo.png";
+import vmLogo from "@/assets/vm-logo-white.png";
 
 const Footer = () => {
   return (

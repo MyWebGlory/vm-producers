@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import vmLogo from "@/assets/vm-logo.png";
+import vmLogo from "@/assets/vm-logo-white.png";
 
 const navLinks = [
   { label: "Live", href: "#services" },
