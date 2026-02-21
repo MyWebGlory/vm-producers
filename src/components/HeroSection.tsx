@@ -21,15 +21,14 @@ const HeroSection = () => {
   return (
     <section ref={ref} className="relative h-[110vh] overflow-hidden">
       {/* Parallax background */}
-      <div className="absolute inset-0">
+      <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img src={heroBg} alt="Fireworks event with crowd" className="w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
-      </div>
+      </motion.div>
 
       {/* Content with parallax */}
-      <motion.div
+      <div
         className="relative z-10 h-full flex flex-col items-center justify-center px-6"
-        style={{ y: textY, opacity }}
       >
         <div className="max-w-5xl mx-auto text-center">
           <motion.p
@@ -81,7 +80,7 @@ const HeroSection = () => {
             </a>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Stats bar — pinned at bottom */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
