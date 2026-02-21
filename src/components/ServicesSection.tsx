@@ -79,7 +79,7 @@ const ImmersiveBlock = ({ service, index }: { service: (typeof services)[number]
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={containerRef} className="relative h-[85vh] min-h-[550px] overflow-hidden">
+    <div ref={containerRef} className="relative h-[85vh] min-h-[550px] overflow-hidden mt-20 lg:mt-32">
       <motion.div
         className="absolute inset-0 will-change-transform"
         style={{ y: bgY, scale: bgScale }}
@@ -158,7 +158,7 @@ const CardBlock = ({ service, index }: { service: (typeof services)[number]; ind
   const imageOnRight = index % 2 === 0;
 
   return (
-    <div className="py-28 lg:py-40 bg-background">
+    <div className="py-32 lg:py-48 bg-background">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
