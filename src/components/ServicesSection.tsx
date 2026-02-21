@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic } from "lucide-react";
-import { ScrollReveal, AnimatedCounter } from "@/components/ScrollAnimations";
+import { ScrollReveal } from "@/components/ScrollAnimations";
+import { Link } from "react-router-dom";
 import virtualEventsImg from "@/assets/virtual-events-conference.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
@@ -16,21 +17,24 @@ const services = [
     description: "Seamless and unforgettable in-person experiences — from intimate gatherings to large-scale productions.",
     image: liveEventsImg,
     video: liveEventsVideo,
-    stat: { value: 500, suffix: "+", label: "Events delivered" },
+    href: "/live-events",
+    stat: { value: "500+", label: "Events delivered" },
   },
   {
     title: "Virtual Events",
     icon: Monitor,
     description: "All-inclusive virtual production for webinars to conferences with up to 100,000 attendees.",
     image: virtualEventsImg,
-    stat: { value: 100, suffix: "K", label: "Max attendees" },
+    href: "/virtual-events",
+    stat: { value: "100K", label: "Max attendees" },
   },
   {
     title: "Hybrid Events",
     icon: Globe,
     description: "Bridging in-person and virtual audiences into one cohesive, engaging experience.",
     image: hybridEventsImg,
-    stat: { value: 95, suffix: "%", label: "Retention rate" },
+    href: "/hybrid-events",
+    stat: { value: "95%", label: "Retention rate" },
     layout: "stacked" as const,
   },
   {
@@ -38,14 +42,16 @@ const services = [
     icon: Video,
     description: "Captivating video content from teasers to highlight reels that elevate your brand.",
     image: videoProductionImg,
-    stat: { value: 2000, suffix: "+", label: "Videos produced" },
+    href: "/video-production",
+    stat: { value: "2000+", label: "Videos produced" },
   },
   {
     title: "Meeting Pros",
     icon: Users,
     description: "A worldwide network of verified event professionals, matched within 48 hours across 70+ countries.",
     image: meetingProsImg,
-    stat: { value: 70, suffix: "+", label: "Countries" },
+    href: "/meeting-pros",
+    stat: { value: "70+", label: "Countries" },
   },
 ];
 
@@ -116,7 +122,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
             <Icon size={18} className="text-primary" />
           </div>
           <p className="text-primary font-display text-xs uppercase tracking-[0.2em] font-medium">
-            {service.stat.value}{service.stat.suffix} {service.stat.label}
+            {service.stat.value} {service.stat.label}
           </p>
         </motion.div>
 
@@ -143,13 +149,13 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.45, duration: 0.5 }}
         >
-          <a
-            href="#contact"
+          <Link
+            to={service.href}
             className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300"
           >
             Learn more
             <span className="text-lg">→</span>
-          </a>
+          </Link>
         </motion.div>
       </div>
 
@@ -160,7 +166,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
         transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`w-full ${isStacked ? 'max-w-4xl' : 'max-w-[420px] md:max-w-[480px]'} flex-shrink-0`}
       >
-        <div className="rounded-3xl overflow-hidden">
+        <Link to={service.href} className="block rounded-3xl overflow-hidden group">
           {service.video ? (
             <video
               src={service.video}
@@ -168,16 +174,16 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
               loop
               muted
               playsInline
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
             />
           ) : (
             <img
               src={service.image}
               alt={service.title}
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
             />
           )}
-        </div>
+        </Link>
       </motion.div>
     </motion.div>
   );
