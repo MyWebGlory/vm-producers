@@ -49,6 +49,46 @@ const services = [
   },
 ];
 
+const AnimatedDivider = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  return (
+    <div ref={ref} className="flex items-center justify-center gap-4 my-32 lg:my-44">
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-border origin-left"
+      />
+      <motion.div
+        initial={{ scale: 0, rotate: -180 }}
+        animate={isInView ? { scale: 1, rotate: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="w-2 h-2 rounded-full bg-primary/30"
+      />
+      <motion.div
+        initial={{ scale: 0, rotate: -180 }}
+        animate={isInView ? { scale: 1, rotate: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="w-1.5 h-1.5 rounded-full bg-primary/20"
+      />
+      <motion.div
+        initial={{ scale: 0, rotate: -180 }}
+        animate={isInView ? { scale: 1, rotate: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="w-2 h-2 rounded-full bg-primary/30"
+      />
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-border origin-right"
+      />
+    </div>
+  );
+};
+
 const ServiceRow = ({ service, index }: { service: (typeof services)[number]; index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -158,14 +198,10 @@ const ServicesSection = () => {
           </h2>
         </ScrollReveal>
 
-        <div className="space-y-32 lg:space-y-44">
+        <div className="space-y-0">
           {services.map((service, i) => (
             <div key={service.title}>
-              {i > 0 && (
-                <div className="flex justify-center mb-32 lg:mb-44">
-                  <div className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-                </div>
-              )}
+              {i > 0 && <AnimatedDivider />}
               <ServiceRow service={service} index={i} />
             </div>
           ))}
