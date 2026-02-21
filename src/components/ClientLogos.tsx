@@ -26,57 +26,95 @@ const clients = [
   { name: "Atlanta United", logo: atlantaUnitedLogo },
 ];
 
+// Duplicate for seamless infinite scroll
+const duplicatedClients = [...clients, ...clients];
+
 const ClientLogos = () => {
-  const gridRef = useRef(null);
-  const isInView = useInView(gridRef, { once: true, margin: "-60px" });
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative py-20 lg:py-28 bg-background overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
-        <ScrollReveal className="text-center mb-14">
-          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
-            Trusted Partners
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
-            They Trusted Us With Their{" "}
-            <span className="glow-text">Biggest Events</span>
-          </h2>
-        </ScrollReveal>
+    <section ref={sectionRef} className="relative py-24 lg:py-32 bg-background overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 bg-accent/3 rounded-full blur-3xl" />
+      </div>
 
-        <motion.div
-          ref={gridRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="elevated rounded-3xl border border-border/50 p-8 md:p-12"
-        >
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center">
-            {clients.map((client, i) => (
-              <motion.div
-                key={client.name}
-                initial={{ opacity: 0, scale: 0.7, y: 20 }}
-                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-                transition={{
-                  delay: i * 0.07,
-                  duration: 0.5,
-                  ease: "backOut",
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  transition: { duration: 0.2 },
-                }}
-                className="flex items-center justify-center w-full py-4 px-2 group cursor-pointer"
-              >
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Bold header */}
+        <ScrollReveal className="text-center mb-16">
+          <motion.p
+            className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+          >
+            They Trust Us
+          </motion.p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
+            Backed by the{" "}
+            <span className="glow-text">World's Best</span>
+          </h2>
+          <p className="text-muted-foreground text-lg mt-4 max-w-xl mx-auto">
+            From Fortune 500 giants to iconic brands — they chose us for their biggest moments.
+          </p>
+        </ScrollReveal>
+      </div>
+
+      {/* Infinite scrolling logos — row 1 (left to right) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="relative mb-6"
+      >
+        {/* Edge fade masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="flex animate-marquee-left">
+          {duplicatedClients.map((client, i) => (
+            <div
+              key={`row1-${i}`}
+              className="flex-shrink-0 mx-6 md:mx-10 group"
+            >
+              <div className="flex items-center justify-center h-24 md:h-28 w-44 md:w-52 rounded-2xl elevated border border-border/40 px-6 py-4 transition-all duration-500 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
                 <img
                   src={client.logo}
                   alt={`${client.name} logo`}
-                  className="max-h-10 md:max-h-12 max-w-[140px] object-contain opacity-60 group-hover:opacity-100 transition-all duration-400 grayscale group-hover:grayscale-0"
+                  className="max-h-14 md:max-h-16 max-w-[160px] object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110"
                 />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Infinite scrolling logos — row 2 (right to left, offset) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="relative"
+      >
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="flex animate-marquee-right">
+          {[...duplicatedClients].reverse().map((client, i) => (
+            <div
+              key={`row2-${i}`}
+              className="flex-shrink-0 mx-6 md:mx-10 group"
+            >
+              <div className="flex items-center justify-center h-24 md:h-28 w-44 md:w-52 rounded-2xl elevated border border-border/40 px-6 py-4 transition-all duration-500 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-h-14 md:max-h-16 max-w-[160px] object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };
