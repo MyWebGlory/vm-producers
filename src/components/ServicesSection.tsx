@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic } from "lucide-react";
 import { ScrollReveal, AnimatedCounter } from "@/components/ScrollAnimations";
-import virtualEventsImg from "@/assets/virtual-events.webp";
+import virtualEventsImg from "@/assets/virtual-events-conference.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-events.webp";
 import meetingProsImg from "@/assets/meeting-pros.webp";
