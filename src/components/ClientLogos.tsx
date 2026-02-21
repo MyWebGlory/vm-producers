@@ -26,10 +26,8 @@ const clients = [
 
 const ClientLogos = () => {
   return (
-    <section className="py-20 overflow-hidden relative">
-      {/* Subtle top/bottom glow lines */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+    <section className="py-20 overflow-hidden relative bg-card">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -45,21 +43,18 @@ const ClientLogos = () => {
         </p>
       </motion.div>
 
-      {/* Row 1 — scrolling left */}
+      {/* Row 1 */}
       <div className="relative mb-6">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         <div className="flex animate-logo-scroll">
           {[...clients, ...clients].map((client, i) => (
-            <div
-              key={`r1-${i}`}
-              className="flex-shrink-0 mx-4 group"
-            >
-              <div className="glass rounded-xl px-10 py-6 flex items-center justify-center min-w-[180px] h-[80px] border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 hover:glow-border">
+            <div key={`r1-${i}`} className="flex-shrink-0 mx-4 group">
+              <div className="elevated rounded-xl px-10 py-6 flex items-center justify-center min-w-[180px] h-[80px] border border-border/40 hover:border-primary/30 hover:shadow-lg transition-all duration-500">
                 <img
                   src={client.logo}
                   alt={client.name}
-                  className="max-h-10 max-w-[140px] object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                  className="max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-90 transition-all duration-500 group-hover:scale-110"
                 />
               </div>
             </div>
@@ -67,21 +62,18 @@ const ClientLogos = () => {
         </div>
       </div>
 
-      {/* Row 2 — scrolling right (reversed) */}
+      {/* Row 2 */}
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         <div className="flex animate-logo-scroll-reverse">
           {[...clients.slice(5), ...clients.slice(0, 5), ...clients.slice(5), ...clients.slice(0, 5)].map((client, i) => (
-            <div
-              key={`r2-${i}`}
-              className="flex-shrink-0 mx-4 group"
-            >
-              <div className="glass rounded-xl px-10 py-6 flex items-center justify-center min-w-[180px] h-[80px] border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 hover:glow-border">
+            <div key={`r2-${i}`} className="flex-shrink-0 mx-4 group">
+              <div className="elevated rounded-xl px-10 py-6 flex items-center justify-center min-w-[180px] h-[80px] border border-border/40 hover:border-primary/30 hover:shadow-lg transition-all duration-500">
                 <img
                   src={client.logo}
                   alt={client.name}
-                  className="max-h-10 max-w-[140px] object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                  className="max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-90 transition-all duration-500 group-hover:scale-110"
                 />
               </div>
             </div>
