@@ -6,16 +6,19 @@ const testimonials = [
     text: "Virtual Producers was amazing. We needed last-minute support for a large webinar including more than 10 high level speakers, translation into 5 languages, and thousands of participants.",
     author: "Jeanette McCullough",
     company: "BirthSwell",
+    initials: "JM",
   },
   {
     text: "Their team was incredibly professional and made our hybrid conference seamless. The production quality was outstanding and our attendees loved every moment.",
-    author: "Event Director",
+    author: "Sarah Chen",
     company: "Fortune 500 Client",
+    initials: "SC",
   },
   {
     text: "From concept to execution, VM Producers delivered an exceptional virtual summit with thousands of attendees. Their attention to detail is unmatched.",
-    author: "Program Manager",
+    author: "Marcus Williams",
     company: "Tech Industry Leader",
+    initials: "MW",
   },
 ];
 
@@ -30,70 +33,69 @@ const TestimonialSlide = ({
   total: number;
   scrollYProgress: any;
 }) => {
-  // Each testimonial occupies an equal portion of the scroll
   const segmentSize = 1 / total;
   const start = index * segmentSize;
+  const fadeIn = start + segmentSize * 0.15;
   const peak = start + segmentSize * 0.5;
+  const fadeOut = start + segmentSize * 0.85;
   const end = start + segmentSize;
 
-  // Fade in then fade out (last one stays)
+  const isLast = index === total - 1;
+
   const opacity = useTransform(
     scrollYProgress,
-    index === total - 1
-      ? [start, peak]
-      : [start, peak, end],
-    index === total - 1
-      ? [0, 1]
-      : [0, 1, 0]
+    isLast ? [start, fadeIn, peak] : [start, fadeIn, peak, fadeOut, end],
+    isLast ? [0, 1, 1] : [0, 1, 1, 1, 0]
   );
 
-  // Scale: subtle zoom in then slight zoom out
-  const scale = useTransform(
-    scrollYProgress,
-    index === total - 1
-      ? [start, peak]
-      : [start, peak, end],
-    index === total - 1
-      ? [0.92, 1]
-      : [0.92, 1, 1.05]
-  );
-
-  // Slide up gently
   const y = useTransform(
     scrollYProgress,
-    index === total - 1
-      ? [start, peak]
-      : [start, peak, end],
-    index === total - 1
-      ? [60, 0]
-      : [60, 0, -40]
+    isLast ? [start, fadeIn] : [start, fadeIn, fadeOut, end],
+    isLast ? [50, 0] : [50, 0, 0, -30]
+  );
+
+  // Author card slides in slightly delayed
+  const authorOpacity = useTransform(
+    scrollYProgress,
+    isLast ? [start + segmentSize * 0.2, start + segmentSize * 0.35] : [start + segmentSize * 0.2, start + segmentSize * 0.35, fadeOut, end],
+    isLast ? [0, 1] : [0, 1, 1, 0]
+  );
+
+  const authorY = useTransform(
+    scrollYProgress,
+    isLast ? [start + segmentSize * 0.2, start + segmentSize * 0.35] : [start + segmentSize * 0.2, start + segmentSize * 0.35, fadeOut, end],
+    isLast ? [25, 0] : [25, 0, 0, -15]
   );
 
   return (
     <motion.div
-      style={{ opacity, scale, y }}
-      className="absolute inset-0 flex items-center justify-center px-6"
+      style={{ opacity, y }}
+      className="absolute inset-0 flex items-center justify-center px-6 pt-28 md:pt-32"
     >
-      <div className="text-center max-w-4xl mx-auto">
-        {/* Quote mark */}
-        <motion.span
-          className="block text-primary/15 font-display text-[120px] md:text-[180px] leading-none select-none mb-[-60px] md:mb-[-90px]"
-        >
-          "
-        </motion.span>
-
-        <p className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-medium text-foreground leading-snug tracking-tight">
-          {testimonial.text}
+      <div className="text-center max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-medium text-foreground leading-relaxed tracking-tight">
+          "{testimonial.text}"
         </p>
 
-        <div className="mt-10 md:mt-14">
-          <p className="font-display font-semibold text-foreground text-base md:text-lg">
-            {testimonial.author}
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            {testimonial.company}
-          </p>
-        </div>
+        <motion.div
+          style={{ opacity: authorOpacity, y: authorY }}
+          className="mt-10 md:mt-14 flex items-center justify-center gap-4"
+        >
+          {/* Avatar with initials */}
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <span className="text-primary font-display font-semibold text-sm">
+              {testimonial.initials}
+            </span>
+          </div>
+          <div className="text-left">
+            <p className="font-display font-semibold text-foreground text-base">
+              {testimonial.author}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              {testimonial.company}
+            </p>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -109,8 +111,10 @@ const TestimonialsSection = () => {
     offset: ["start start", "end end"],
   });
 
-  // Progress indicator
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  // Title stays visible, just moves up slightly
+  const titleY = useTransform(scrollYProgress, [0, 0.15], [0, -10]);
 
   return (
     <section
@@ -119,21 +123,17 @@ const TestimonialsSection = () => {
       style={{ height: `${(testimonials.length + 1) * 100}vh` }}
     >
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Header — fades out as you scroll into testimonials */}
+        {/* Header — stays visible the whole time */}
         <motion.div
           ref={headerRef}
-          style={{
-            opacity: useTransform(scrollYProgress, [0, 0.12], [1, 0]),
-            scale: useTransform(scrollYProgress, [0, 0.12], [1, 0.95]),
-            y: useTransform(scrollYProgress, [0, 0.12], [0, -30]),
-          }}
-          className="absolute inset-0 flex flex-col items-center justify-center z-10"
+          style={{ y: titleY }}
+          className="absolute top-[12vh] md:top-[14vh] left-0 right-0 z-20 text-center"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium"
+            className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium"
           >
             Testimonials
           </motion.p>
@@ -141,13 +141,13 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
           >
             What they say.
           </motion.h2>
         </motion.div>
 
-        {/* Testimonials stack */}
+        {/* Testimonials */}
         <div className="absolute inset-0">
           {testimonials.map((t, i) => (
             <TestimonialSlide
@@ -160,40 +160,43 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Progress bar */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-32 md:w-48">
-          <div className="h-[2px] bg-border rounded-full overflow-hidden">
-            <motion.div
-              style={{ width: progressWidth }}
-              className="h-full bg-primary/50 rounded-full"
-            />
+        {/* Bottom indicators */}
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5">
+          {/* Dots */}
+          <div className="flex gap-3">
+            {testimonials.map((_, i) => {
+              const segmentSize = 1 / testimonials.length;
+              const start = i * segmentSize;
+              const mid = start + segmentSize * 0.5;
+              const dotOpacity = useTransform(
+                scrollYProgress,
+                [start, mid, start + segmentSize],
+                [0.2, 1, 0.2]
+              );
+              const dotScale = useTransform(
+                scrollYProgress,
+                [start, mid, start + segmentSize],
+                [1, 1.5, 1]
+              );
+              return (
+                <motion.div
+                  key={i}
+                  style={{ opacity: dotOpacity, scale: dotScale }}
+                  className="w-1.5 h-1.5 rounded-full bg-primary"
+                />
+              );
+            })}
           </div>
-        </div>
 
-        {/* Dot indicators */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3">
-          {testimonials.map((_, i) => {
-            const segmentSize = 1 / testimonials.length;
-            const start = i * segmentSize;
-            const mid = start + segmentSize * 0.5;
-            const dotOpacity = useTransform(
-              scrollYProgress,
-              [start, mid, start + segmentSize],
-              [0.25, 1, 0.25]
-            );
-            const dotScale = useTransform(
-              scrollYProgress,
-              [start, mid, start + segmentSize],
-              [1, 1.4, 1]
-            );
-            return (
+          {/* Progress */}
+          <div className="w-24 md:w-32">
+            <div className="h-[1.5px] bg-border rounded-full overflow-hidden">
               <motion.div
-                key={i}
-                style={{ opacity: dotOpacity, scale: dotScale }}
-                className="w-1.5 h-1.5 rounded-full bg-primary"
+                style={{ width: progressWidth }}
+                className="h-full bg-primary/40 rounded-full"
               />
-            );
-          })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
