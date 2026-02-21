@@ -26,36 +26,16 @@ const clients = [
 
 const ClientLogos = () => {
   return (
-    <section className="py-20 overflow-hidden relative bg-card">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-14"
-      >
-        <p className="text-primary font-display text-sm uppercase tracking-[0.3em] font-medium mb-2">
-          Trusted By Industry Leaders
-        </p>
-        <p className="text-muted-foreground text-base">
-          Powering events for the world's most recognized brands
-        </p>
-      </motion.div>
-
+    <section className="relative py-16 bg-card overflow-hidden">
       {/* Row 1 */}
-      <div className="relative mb-6">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+      <div className="relative mb-5">
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         <div className="flex animate-logo-scroll">
           {[...clients, ...clients].map((client, i) => (
-            <div key={`r1-${i}`} className="flex-shrink-0 mx-4 group">
-              <div className="elevated rounded-xl px-10 py-6 flex items-center justify-center min-w-[180px] h-[80px] border border-border/40 hover:border-primary/30 hover:shadow-lg transition-all duration-500">
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-90 transition-all duration-500 group-hover:scale-110"
-                />
+            <div key={`r1-${i}`} className="flex-shrink-0 mx-3">
+              <div className="elevated rounded-xl px-8 py-5 flex items-center justify-center min-w-[160px] h-[70px] border border-border/30">
+                <img src={client.logo} alt={client.name} className="max-h-8 max-w-[120px] object-contain opacity-50 hover:opacity-90 transition-opacity duration-300" />
               </div>
             </div>
           ))}
@@ -64,17 +44,13 @@ const ClientLogos = () => {
 
       {/* Row 2 */}
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         <div className="flex animate-logo-scroll-reverse">
           {[...clients.slice(5), ...clients.slice(0, 5), ...clients.slice(5), ...clients.slice(0, 5)].map((client, i) => (
-            <div key={`r2-${i}`} className="flex-shrink-0 mx-4 group">
-              <div className="elevated rounded-xl px-10 py-6 flex items-center justify-center min-w-[180px] h-[80px] border border-border/40 hover:border-primary/30 hover:shadow-lg transition-all duration-500">
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-90 transition-all duration-500 group-hover:scale-110"
-                />
+            <div key={`r2-${i}`} className="flex-shrink-0 mx-3">
+              <div className="elevated rounded-xl px-8 py-5 flex items-center justify-center min-w-[160px] h-[70px] border border-border/30">
+                <img src={client.logo} alt={client.name} className="max-h-8 max-w-[120px] object-contain opacity-50 hover:opacity-90 transition-opacity duration-300" />
               </div>
             </div>
           ))}
