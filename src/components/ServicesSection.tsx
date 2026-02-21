@@ -160,7 +160,14 @@ const ServicesSection = () => {
 
         <div className="space-y-32 lg:space-y-44">
           {services.map((service, i) => (
-            <ServiceRow key={service.title} service={service} index={i} />
+            <div key={service.title}>
+              {i > 0 && (
+                <div className="flex justify-center mb-32 lg:mb-44">
+                  <div className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                </div>
+              )}
+              <ServiceRow service={service} index={i} />
+            </div>
           ))}
         </div>
       </div>
