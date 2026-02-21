@@ -248,9 +248,9 @@ const ServicesSection = () => {
               Our Services
             </p>
             <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-foreground leading-[1.05]">
-              Everything you need.
+              Crafted to impress.
               <br />
-              <span className="text-muted-foreground">Nothing you don't.</span>
+              <span className="text-muted-foreground">Built to perform.</span>
             </h2>
           </ScrollReveal>
         </div>
