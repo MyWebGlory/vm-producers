@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Sparkles, Globe, Monitor, Video, Users, Mic } from "lucide-react";
 import virtualEventsImg from "@/assets/virtual-events.webp";
 import videoProductionImg from "@/assets/video-production.webp";
@@ -49,10 +50,86 @@ const services = [
   },
 ];
 
+const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center center"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [80, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const isEven = index % 2 === 0;
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ y, opacity }}
+      className="relative"
+    >
+      {/* Full-width card with image background on one side */}
+      <div className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} rounded-3xl overflow-hidden elevated border border-border/40`}>
+        {/* Image side — fixed aspect, no zoom */}
+        <div className="relative w-full lg:w-[45%] h-[300px] lg:h-auto lg:min-h-[480px] overflow-hidden">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent lg:bg-none" />
+          <div className={`absolute inset-0 hidden lg:block ${isEven ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-transparent via-transparent to-card/30`} />
+
+          {/* Floating stat */}
+          <div className="absolute bottom-5 left-5 glass-dark rounded-xl px-5 py-3">
+            <p className="text-2xl md:text-3xl font-display font-bold" style={{ color: "white" }}>{service.stat.value}</p>
+            <p className="text-xs" style={{ color: "hsl(220,15%,70%)" }}>{service.stat.label}</p>
+          </div>
+        </div>
+
+        {/* Content side */}
+        <div className="w-full lg:w-[55%] p-8 lg:p-12 flex flex-col justify-center bg-card">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/15">
+              <Icon size={20} className="text-primary" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+              {service.title}
+            </h3>
+          </div>
+
+          <p className="text-muted-foreground text-base leading-relaxed mb-6">
+            {service.description}
+          </p>
+
+          {/* Feature pills in a grid-like layout */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {service.features.map((f) => (
+              <span
+                key={f}
+                className="rounded-full px-4 py-2 bg-secondary border border-border/60 text-sm text-secondary-foreground font-medium flex items-center gap-1.5"
+              >
+                <Sparkles size={10} className="text-primary/50" />
+                {f}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href="#contact"
+            className="self-start px-7 py-3 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
+          >
+            Learn More →
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const ServicesSection = () => {
   return (
     <section id="services" className="py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,91 +147,10 @@ const ServicesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-32">
-          {services.map((service, i) => {
-            const isEven = i % 2 === 0;
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 lg:gap-16 items-center`}
-              >
-                {/* Image */}
-                <div className="w-full lg:w-1/2">
-                  <div className="relative group">
-                    <div className="relative overflow-hidden rounded-2xl elevated">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-[400px] lg:h-[480px] object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
-                      
-                      {/* Floating stat badge */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4, duration: 0.5 }}
-                        className="absolute bottom-6 left-6 glass-strong rounded-xl px-5 py-3"
-                      >
-                        <p className="text-2xl font-display font-bold text-foreground">{service.stat.value}</p>
-                        <p className="text-xs text-muted-foreground">{service.stat.label}</p>
-                      </motion.div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="w-full lg:w-1/2">
-                  <div className="elevated rounded-2xl p-8 lg:p-10 space-y-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/15">
-                        <Icon size={22} className="text-primary" />
-                      </div>
-                      <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground">
-                        {service.title}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                      {service.description}
-                    </p>
-                    
-                    {/* Feature pills */}
-                    <div className="flex flex-wrap gap-2.5 pt-2">
-                      {service.features.map((f, j) => (
-                        <motion.div
-                          key={f}
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.08 * j, duration: 0.4 }}
-                          className="rounded-full px-4 py-2 bg-secondary border border-border/80 hover:border-primary/25 hover:bg-primary/5 transition-all duration-300 group/pill cursor-default"
-                        >
-                          <div className="flex items-center gap-2">
-                            <Sparkles size={11} className="text-primary/50 group-hover/pill:text-primary transition-colors" />
-                            <span className="text-sm text-secondary-foreground font-medium">{f}</span>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    <a
-                      href="#contact"
-                      className="inline-flex mt-4 px-7 py-3 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
-                    >
-                      Learn More →
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="space-y-12">
+          {services.map((service, i) => (
+            <ServiceCard key={service.title} service={service} index={i} />
+          ))}
         </div>
       </div>
     </section>
