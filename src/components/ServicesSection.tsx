@@ -31,7 +31,7 @@ const services = [
     description: "Bridging in-person and virtual audiences into one cohesive, engaging experience.",
     image: hybridEventsImg,
     stat: { value: 95, suffix: "%", label: "Retention rate" },
-    imageSize: "max-w-[480px] md:max-w-[560px]",
+    layout: "stacked" as const,
   },
   {
     title: "Video Production",
@@ -54,6 +54,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const Icon = service.icon;
   const imageOnRight = index % 2 === 0;
+  const isStacked = 'layout' in service && service.layout === 'stacked';
 
   return (
     <motion.div
@@ -61,15 +62,15 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`flex flex-col ${imageOnRight ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-20 items-center`}
+      className={`flex flex-col ${!isStacked ? (imageOnRight ? 'md:flex-row' : 'md:flex-row-reverse') : ''} gap-12 ${!isStacked ? 'md:gap-20' : 'md:gap-10'} items-center`}
     >
       {/* Content */}
-      <div className="flex-1 space-y-6">
+      <div className={`${isStacked ? 'text-center max-w-2xl mx-auto' : 'flex-1'} space-y-6`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.15, duration: 0.7 }}
-          className="flex items-center gap-3"
+          className={`flex items-center gap-3 ${isStacked ? 'justify-center' : ''}`}
         >
           <div className="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
             <Icon size={18} className="text-primary" />
@@ -92,7 +93,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-muted-foreground text-lg leading-relaxed max-w-md"
+          className="text-muted-foreground text-lg leading-relaxed max-w-md mx-auto"
         >
           {service.description}
         </motion.p>
@@ -117,7 +118,7 @@ const ServiceRow = ({ service, index }: { service: (typeof services)[number]; in
         initial={{ opacity: 0, scale: 0.95 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`w-full ${service.imageSize || 'max-w-[420px] md:max-w-[480px]'} flex-shrink-0`}
+        className={`w-full ${isStacked ? 'max-w-4xl' : 'max-w-[420px] md:max-w-[480px]'} flex-shrink-0`}
       >
         <div className="rounded-3xl overflow-hidden">
           {service.video ? (
