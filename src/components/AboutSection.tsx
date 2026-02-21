@@ -1,21 +1,19 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import aboutImg from "@/assets/about-event.webp";
 
 const AboutSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-card relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-          {/* Image with parallax */}
-          <motion.div className="w-full lg:w-1/2 relative">
+          {/* Image — no zoom, no parallax, crisp */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-1/2 relative"
+          >
             <div className="rounded-2xl overflow-hidden elevated h-[450px] lg:h-[550px]">
               <img
                 src={aboutImg}
@@ -24,10 +22,16 @@ const AboutSection = () => {
               />
             </div>
             {/* Floating accent card */}
-            <div className="absolute -bottom-6 -right-4 lg:-right-8 elevated rounded-2xl p-6 border border-border/40 max-w-[220px]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="absolute -bottom-6 -right-4 lg:-right-8 elevated rounded-2xl p-6 border border-border/40 max-w-[220px] bg-card"
+            >
               <p className="text-4xl font-display font-bold text-primary">95%</p>
               <p className="text-sm text-muted-foreground mt-1">Client retention rate</p>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Content */}

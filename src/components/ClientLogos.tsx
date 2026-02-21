@@ -26,35 +26,52 @@ const clients = [
 
 const ClientLogos = () => {
   return (
-    <section className="relative py-16 bg-card overflow-hidden">
-      {/* Row 1 */}
-      <div className="relative mb-5">
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
-        <div className="flex animate-logo-scroll">
-          {[...clients, ...clients].map((client, i) => (
-            <div key={`r1-${i}`} className="flex-shrink-0 mx-3">
-              <div className="elevated rounded-xl px-8 py-5 flex items-center justify-center min-w-[160px] h-[70px] border border-border/30">
-                <img src={client.logo} alt={client.name} className="max-h-8 max-w-[120px] object-contain opacity-50 hover:opacity-90 transition-opacity duration-300" />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <section className="relative py-20 lg:py-28 bg-background overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
+            Trusted Partners
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
+            They Trusted Us With Their{" "}
+            <span className="glow-text">Biggest Events</span>
+          </h2>
+        </motion.div>
 
-      {/* Row 2 */}
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
-        <div className="flex animate-logo-scroll-reverse">
-          {[...clients.slice(5), ...clients.slice(0, 5), ...clients.slice(5), ...clients.slice(0, 5)].map((client, i) => (
-            <div key={`r2-${i}`} className="flex-shrink-0 mx-3">
-              <div className="elevated rounded-xl px-8 py-5 flex items-center justify-center min-w-[160px] h-[70px] border border-border/30">
-                <img src={client.logo} alt={client.name} className="max-h-8 max-w-[120px] object-contain opacity-50 hover:opacity-90 transition-opacity duration-300" />
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Logo grid — large, clear, prominent */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="elevated rounded-3xl border border-border/50 p-8 md:p-12"
+        >
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center">
+            {clients.map((client, i) => (
+              <motion.div
+                key={client.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.05 * i, duration: 0.4 }}
+                className="flex items-center justify-center w-full py-4 px-2 group"
+              >
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-h-10 md:max-h-12 max-w-[140px] object-contain opacity-60 group-hover:opacity-100 transition-all duration-400 grayscale group-hover:grayscale-0"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
