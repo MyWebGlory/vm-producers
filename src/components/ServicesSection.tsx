@@ -187,11 +187,11 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-32 lg:py-44">
       <div className="max-w-6xl mx-auto px-6">
-        <ScrollReveal className="text-center mb-24 lg:mb-32">
-          <p className="text-primary font-display text-xs uppercase tracking-[0.3em] mb-5 font-medium">
+        <ScrollReveal className="text-center mb-28 lg:mb-40">
+          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium">
             Our Services
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-foreground leading-[1.05]">
             Everything you need.
             <br />
             <span className="text-muted-foreground">Nothing you don't.</span>
