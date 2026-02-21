@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 
 const CTASection = () => {
   return (
-    <section id="contact" className="py-24 lg:py-32">
+    <section id="contact" className="py-24 lg:py-32 bg-card">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass rounded-3xl p-12 md:p-20 glow-border relative overflow-hidden"
+          className="elevated rounded-3xl p-12 md:p-20 border border-border/50 relative overflow-hidden"
         >
-          <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-foreground">
               Feeling overwhelmed?{" "}
               <span className="glow-text">We got you.</span>
             </h2>

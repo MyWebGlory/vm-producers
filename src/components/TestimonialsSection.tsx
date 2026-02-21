@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    text: "Virtual Producers was amazing. We needed last-minute support for a large webinar including more than 10 high level speakers, translation into 5 languages, and thousands of participants. He was knowledgeable, supportive, and went above and beyond to ensure the project ran smoothly despite lots of variables. He saved the day multiple times. Highly recommend.",
+    text: "Virtual Producers was amazing. We needed last-minute support for a large webinar including more than 10 high level speakers, translation into 5 languages, and thousands of participants. He was knowledgeable, supportive, and went above and beyond to ensure the project ran smoothly despite lots of variables. Highly recommend.",
     author: "Jeanette McCullough",
     company: "BirthSwell",
   },
@@ -21,7 +21,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-24 lg:py-32 section-gradient">
+    <section className="py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -32,7 +32,7 @@ const TestimonialsSection = () => {
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
             Testimonials
           </p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
             Some of Our <span className="glow-text">Shout-Outs</span>
           </h2>
         </motion.div>
@@ -45,11 +45,11 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="glass rounded-2xl p-8 glow-border hover:bg-secondary/30 transition-all duration-500 group"
+              className="elevated rounded-2xl p-8 hover:shadow-xl transition-all duration-500 group border border-border/50"
             >
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, j) => (
-                  <Star key={j} size={16} className="fill-primary text-primary" />
+                  <Star key={j} size={16} className="fill-primary/80 text-primary/80" />
                 ))}
               </div>
               <p className="text-muted-foreground leading-relaxed mb-8 text-sm">

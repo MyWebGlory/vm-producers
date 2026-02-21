@@ -22,16 +22,15 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
             <span className="font-display font-bold text-primary text-lg">V</span>
           </div>
           <div className="font-display font-semibold text-sm uppercase tracking-wider leading-tight">
-            <span className="block">Virtual</span>
+            <span className="block text-foreground">Virtual</span>
             <span className="block text-primary">Producers</span>
           </div>
         </a>
 
-        {/* Desktop */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -46,21 +45,16 @@ const Navbar = () => {
 
         <a
           href="#contact"
-          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
         >
           Free Consultation
         </a>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-foreground p-2"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-foreground p-2">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -71,19 +65,12 @@ const Navbar = () => {
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2 font-medium"
-                >
+                <a key={link.label} href={link.href} onClick={() => setIsOpen(false)}
+                  className="text-muted-foreground hover:text-foreground transition-colors py-2 font-medium">
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#contact"
-                className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm"
-              >
+              <a href="#contact" className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm">
                 Free Consultation
               </a>
             </div>

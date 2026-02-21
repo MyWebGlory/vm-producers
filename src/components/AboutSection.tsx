@@ -3,7 +3,7 @@ import aboutImg from "@/assets/about-event.webp";
 
 const AboutSection = () => {
   return (
-    <section className="py-24 lg:py-32 section-gradient">
+    <section className="py-24 lg:py-32 bg-card">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Image */}
@@ -15,11 +15,10 @@ const AboutSection = () => {
             className="w-full lg:w-1/2"
           >
             <div className="relative">
-              <div className="absolute -inset-6 rounded-3xl bg-primary/5 blur-3xl" />
               <img
                 src={aboutImg}
                 alt="Virtual event production"
-                className="relative rounded-2xl w-full h-[500px] lg:h-[600px] object-cover glow-border"
+                className="relative rounded-2xl w-full h-[500px] lg:h-[600px] object-cover elevated"
               />
             </div>
           </motion.div>
@@ -35,7 +34,7 @@ const AboutSection = () => {
             <p className="text-primary font-display text-sm uppercase tracking-[0.3em] font-medium">
               Why Us
             </p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight text-foreground">
               Experience the Best in{" "}
               <span className="glow-text">Event Production</span>
             </h2>
@@ -43,15 +42,17 @@ const AboutSection = () => {
               We make events effortless. From global conferences to intimate webinars,
               we blend technical excellence with a personal touch.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              With startup agility and enterprise expertise, we specialize in complex
-              productions, and seamless hybrid experiences — earning a{" "}
-              <span className="text-primary font-semibold">95% client retention rate</span>.
-            </p>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Whether for 10 attendees or 10,000, we handle the complexity so you can
-              focus on what you do best.
-            </p>
+            <div className="elevated rounded-2xl p-6 space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                With startup agility and enterprise expertise, we specialize in complex
+                productions, and seamless hybrid experiences — earning a{" "}
+                <span className="text-primary font-semibold">95% client retention rate</span>.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Whether for 10 attendees or 10,000, we handle the complexity so you can
+                focus on what you do best.
+              </p>
+            </div>
             <a
               href="#contact"
               className="inline-flex px-8 py-4 rounded-lg bg-primary text-primary-foreground font-display font-semibold hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105"

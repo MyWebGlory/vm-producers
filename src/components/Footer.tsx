@@ -1,13 +1,13 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-border/30 py-12">
+    <footer className="border-t border-border py-12 bg-card">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md bg-primary/20 flex items-center justify-center border border-primary/30">
+            <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center border border-primary/15">
               <span className="font-display font-bold text-primary text-sm">V</span>
             </div>
-            <span className="font-display font-semibold text-sm">Virtual Producers</span>
+            <span className="font-display font-semibold text-sm text-foreground">Virtual Producers</span>
           </div>
           <div className="flex flex-wrap gap-8 text-sm text-muted-foreground">
             <a href="#services" className="hover:text-foreground transition-colors">Services</a>
