@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section ref={ref} className="relative overflow-hidden">
       {/* Hero image area */}
-      <div className="relative h-[85vh] min-h-[600px]">
+      <div className="relative h-screen min-h-[700px]">
         {/* Parallax background — no zoom */}
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <img
