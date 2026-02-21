@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -12,22 +12,37 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass-strong"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "glass-strong shadow-sm"
+          : "bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
-            <span className="font-display font-bold text-primary text-lg">V</span>
+          <div className={`w-10 h-10 rounded-lg flex items-center justify-center border transition-colors duration-500 ${
+            scrolled ? "bg-primary/10 border-primary/20" : "bg-white/10 border-white/20"
+          }`}>
+            <span className={`font-display font-bold text-lg transition-colors duration-500 ${
+              scrolled ? "text-primary" : "text-white"
+            }`}>V</span>
           </div>
           <div className="font-display font-semibold text-sm uppercase tracking-wider leading-tight">
-            <span className="block text-foreground">Virtual</span>
-            <span className="block text-primary">Producers</span>
+            <span className={`block transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>Virtual</span>
+            <span className={`block transition-colors duration-500 ${scrolled ? "text-primary" : "text-white/70"}`}>Producers</span>
           </div>
         </a>
 
@@ -36,7 +51,11 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium"
+              className={`text-sm font-medium transition-colors duration-500 ${
+                scrolled
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-white/70 hover:text-white"
+              }`}
             >
               {link.label}
             </a>
@@ -50,7 +69,7 @@ const Navbar = () => {
           Free Consultation
         </a>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-foreground p-2">
+        <button onClick={() => setIsOpen(!isOpen)} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
