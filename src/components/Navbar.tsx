@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import VMLogoMark from "@/components/VMLogoMark";
 
 const navLinks = [
   { label: "Live", href: "#services" },
@@ -31,14 +30,17 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
-          <VMLogoMark
-            className="h-8 w-auto"
-            textColor={scrolled ? "#044D80" : "#ffffff"}
-          />
+        <a href="#" className="flex items-center gap-2">
+          <span
+            className={`font-display font-bold text-xl tracking-tight transition-colors duration-500 ${
+              scrolled ? "text-foreground" : "text-white"
+            }`}
+          >
+            Virtual Producers
+          </span>
         </a>
 
-        {/* Desktop nav — visible from md */}
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <a
