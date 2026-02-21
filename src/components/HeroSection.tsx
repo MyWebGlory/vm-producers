@@ -21,10 +21,10 @@ const HeroSection = () => {
   return (
     <section ref={ref} className="relative h-[110vh] overflow-hidden">
       {/* Parallax background */}
-      <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <img src={heroBg} alt="Fireworks event with crowd" className="w-full h-[130%] object-cover" />
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="Fireworks event with crowd" className="w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
-      </motion.div>
+      </div>
 
       {/* Content with parallax */}
       <motion.div
