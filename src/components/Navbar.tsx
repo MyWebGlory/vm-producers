@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import VMLogoMark from "./VMLogoMark";
+import vmLogo from "@/assets/vm-logo.png";
 
 const navLinks = [
   { label: "Live", href: "#services" },
@@ -30,16 +30,15 @@ const Navbar = () => {
         scrolled ? "glass-strong shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
-          <VMLogoMark
-            size={36}
-            color={scrolled ? "hsl(215, 60%, 35%)" : "white"}
+          <img
+            src={vmLogo}
+            alt="Virtual Producers"
+            className={`h-10 w-auto object-contain transition-all duration-500 ${
+              scrolled ? "brightness-0" : "brightness-100"
+            }`}
           />
-          <div className="font-display font-semibold text-sm uppercase tracking-wider leading-tight">
-            <span className={`block transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>Virtual</span>
-            <span className={`block transition-colors duration-500 ${scrolled ? "text-primary" : "text-white/70"}`}>Producers</span>
-          </div>
         </a>
 
         {/* Desktop nav — visible from md */}
@@ -66,7 +65,6 @@ const Navbar = () => {
           Free Consultation
         </a>
 
-        {/* Mobile hamburger — only on small screens */}
         <button onClick={() => setIsOpen(!isOpen)} className={`md:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
