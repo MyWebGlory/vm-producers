@@ -1,7 +1,6 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic } from "lucide-react";
-import { ScrollReveal } from "@/components/ScrollAnimations";
 import { Link } from "react-router-dom";
 import virtualEventsImg from "@/assets/virtual-events-conference.webp";
 import videoProductionImg from "@/assets/video-production.webp";
@@ -19,7 +18,7 @@ const services = [
     video: liveEventsVideo,
     href: "/live-events",
     stat: "500+ Events",
-    layout: "immersive" as const,
+    accent: "215 60% 35%",
   },
   {
     title: "Virtual Events",
@@ -28,7 +27,7 @@ const services = [
     image: virtualEventsImg,
     href: "/virtual-events",
     stat: "100K Attendees",
-    layout: "card" as const,
+    accent: "190 70% 35%",
   },
   {
     title: "Hybrid Events",
@@ -37,7 +36,7 @@ const services = [
     image: hybridEventsImg,
     href: "/hybrid-events",
     stat: "95% Retention",
-    layout: "immersive" as const,
+    accent: "250 50% 40%",
   },
   {
     title: "Video Production",
@@ -46,7 +45,7 @@ const services = [
     image: videoProductionImg,
     href: "/video-production",
     stat: "2000+ Videos",
-    layout: "card" as const,
+    accent: "340 60% 45%",
   },
   {
     title: "Meeting Pros",
@@ -55,215 +54,255 @@ const services = [
     image: meetingProsImg,
     href: "/meeting-pros",
     stat: "70+ Countries",
-    layout: "immersive" as const,
+    accent: "160 50% 35%",
   },
 ];
 
-/* ─── Immersive: full-bleed parallax background + glass card ─── */
-const ImmersiveBlock = ({ service, index }: { service: (typeof services)[number]; index: number }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+const SLIDE_COUNT = services.length;
+
+/* ── Single full-screen slide ── */
+const ServiceSlide = ({
+  service,
+  index,
+  scrollYProgress,
+}: {
+  service: (typeof services)[number];
+  index: number;
+  scrollYProgress: MotionValue<number>;
+}) => {
   const Icon = service.icon;
+  const slideStart = index / SLIDE_COUNT;
+  const slideEnd = (index + 1) / SLIDE_COUNT;
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  // Each slide occupies 1/SLIDE_COUNT of the scroll range
+  const scale = useTransform(scrollYProgress, [slideStart, slideStart + 0.5 / SLIDE_COUNT, slideEnd - 0.5 / SLIDE_COUNT, slideEnd], [0.6, 1, 1, 0.6]);
+  const rotateY = useTransform(scrollYProgress, [slideStart, slideStart + 0.5 / SLIDE_COUNT, slideEnd - 0.5 / SLIDE_COUNT, slideEnd], [45, 0, 0, -45]);
+  const opacity = useTransform(scrollYProgress, [slideStart, slideStart + 0.15 / SLIDE_COUNT, slideStart + 0.5 / SLIDE_COUNT, slideEnd - 0.15 / SLIDE_COUNT, slideEnd], [0, 1, 1, 1, 0]);
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1.05, 1.15]);
-  const cardY = useTransform(scrollYProgress, [0.15, 0.45], [60, 0]);
-  const cardOpacity = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
-
-  const isEven = index % 2 === 0;
+  const contentY = useTransform(scrollYProgress, [slideStart, slideStart + 0.4 / SLIDE_COUNT, slideEnd - 0.4 / SLIDE_COUNT, slideEnd], [80, 0, 0, -80]);
+  const titleX = useTransform(scrollYProgress, [slideStart, slideStart + 0.45 / SLIDE_COUNT, slideEnd - 0.45 / SLIDE_COUNT, slideEnd], [120, 0, 0, -120]);
+  const descX = useTransform(scrollYProgress, [slideStart + 0.05 / SLIDE_COUNT, slideStart + 0.5 / SLIDE_COUNT, slideEnd - 0.5 / SLIDE_COUNT, slideEnd - 0.05 / SLIDE_COUNT], [80, 0, 0, -80]);
 
   return (
-    <div ref={containerRef} className="relative h-[85vh] min-h-[550px] overflow-hidden mt-20 lg:mt-32">
-      <motion.div
-        className="absolute inset-0 will-change-transform"
-        style={{ y: bgY, scale: bgScale }}
-      >
+    <motion.div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{
+        scale,
+        rotateY,
+        opacity,
+      }}
+    >
+      {/* Background image/video */}
+      <div className="absolute inset-0 overflow-hidden rounded-3xl mx-6 my-6 md:mx-12 md:my-10">
         {service.video ? (
-          <video src={service.video} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+          <video
+            src={service.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
         ) : (
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover"
+          />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
-      </motion.div>
-
-      <div className="relative z-10 h-full flex items-end pb-14 md:pb-20">
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <motion.div
-            ref={contentRef}
-            style={{ y: cardY, opacity: cardOpacity }}
-            className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'}`}
-          >
-            <Link to={service.href} className="group block max-w-lg w-full">
-              <div className="backdrop-blur-xl bg-white/10 border border-white/15 rounded-2xl p-8 md:p-10 hover:bg-white/15 hover:border-white/25 transition-all duration-500">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 mb-6"
-                >
-                  <Icon size={14} className="text-white/80" />
-                  <span className="text-white/80 font-display text-xs uppercase tracking-[0.15em] font-medium">
-                    {service.stat}
-                  </span>
-                </motion.div>
-
-                <motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.3, duration: 0.7 }}
-                  className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight mb-4"
-                  style={{ color: "white" }}
-                >
-                  {service.title}
-                </motion.h3>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-white/70 text-base leading-relaxed mb-6"
-                >
-                  {service.description}
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="inline-flex items-center gap-2 text-white font-display font-semibold text-sm group-hover:gap-3 transition-all duration-300"
-                >
-                  Explore
-                  <span className="text-lg group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </motion.div>
-              </div>
-            </Link>
-          </motion.div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            background: `radial-gradient(ellipse at 30% 80%, hsl(${service.accent} / 0.4), transparent 60%)`,
+          }}
+        />
       </div>
-    </div>
-  );
-};
 
-/* ─── Card: clean white background with side-by-side layout ─── */
-const CardBlock = ({ service, index }: { service: (typeof services)[number]; index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const Icon = service.icon;
-  const imageOnRight = index % 2 === 0;
-
-  return (
-    <div className="py-32 lg:py-48 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className={`flex flex-col ${imageOnRight ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-20 items-center`}
-        >
-          {/* Text */}
-          <div className="flex-1 space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15, duration: 0.7 }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center">
-                <Icon size={18} className="text-primary" />
-              </div>
-              <p className="text-primary font-display text-xs uppercase tracking-[0.2em] font-medium">
-                {service.stat}
-              </p>
-            </motion.div>
-
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-foreground leading-tight"
-            >
-              {service.title}
-            </motion.h3>
-
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-muted-foreground text-lg leading-relaxed max-w-md"
-            >
-              {service.description}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.45, duration: 0.5 }}
-            >
-              <Link
-                to={service.href}
-                className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300"
-              >
-                Learn more
-                <span className="text-lg">→</span>
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Image */}
+      {/* Content overlay */}
+      <div className="relative z-10 max-w-5xl mx-auto px-10 md:px-20 w-full">
+        <motion.div style={{ y: contentY }}>
+          {/* Stat badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="w-full max-w-[420px] md:max-w-[480px] flex-shrink-0"
+            style={{ x: titleX }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 mb-8 backdrop-blur-sm bg-white/5"
           >
-            <Link to={service.href} className="block rounded-3xl overflow-hidden group">
-              <img
-                src={service.image}
-                alt={service.title}
-                className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
-              />
+            <Icon size={14} style={{ color: "hsl(0 0% 100% / 0.8)" }} />
+            <span
+              className="font-display text-xs uppercase tracking-[0.2em] font-medium"
+              style={{ color: "hsl(0 0% 100% / 0.8)" }}
+            >
+              {service.stat}
+            </span>
+          </motion.div>
+
+          {/* Title */}
+          <motion.h3
+            style={{ x: titleX }}
+            className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold leading-[0.9] mb-6"
+          >
+            <span style={{ color: "white" }}>{service.title}</span>
+          </motion.h3>
+
+          {/* Description */}
+          <motion.p
+            style={{ x: descX }}
+            className="text-lg md:text-xl max-w-lg leading-relaxed mb-10"
+          >
+            <span style={{ color: "hsl(0 0% 100% / 0.7)" }}>{service.description}</span>
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div style={{ x: descX }}>
+            <Link
+              to={service.href}
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl font-display font-semibold text-base transition-all duration-500 hover:scale-105"
+              style={{
+                background: `hsl(${service.accent})`,
+                color: "white",
+                boxShadow: `0 8px 30px hsl(${service.accent} / 0.4)`,
+              }}
+            >
+              Explore
+              <span className="text-lg group-hover:translate-x-2 transition-transform duration-300">
+                →
+              </span>
             </Link>
           </motion.div>
         </motion.div>
       </div>
-    </div>
+
+      {/* Slide counter */}
+      <div className="absolute bottom-10 right-10 md:bottom-14 md:right-16 z-10">
+        <span
+          className="font-display text-7xl md:text-8xl font-bold"
+          style={{ color: "hsl(0 0% 100% / 0.08)" }}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+    </motion.div>
   );
 };
 
+/* ── Progress dot ── */
+const ProgressDot = ({
+  index,
+  scrollYProgress,
+}: {
+  index: number;
+  scrollYProgress: MotionValue<number>;
+}) => {
+  const start = index / SLIDE_COUNT;
+  const end = (index + 1) / SLIDE_COUNT;
+  const mid = (start + end) / 2;
+  const dotScale = useTransform(scrollYProgress, [start, mid, end], [1, 1.8, 1]);
+  const dotOpacity = useTransform(scrollYProgress, [start, start + 0.02, end - 0.02, end], [0.3, 1, 1, 0.3]);
+
+  return (
+    <motion.div
+      style={{ scale: dotScale, opacity: dotOpacity }}
+      className="w-2.5 h-2.5 rounded-full bg-white"
+    />
+  );
+};
+
+/* ── Main section ── */
 const ServicesSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
+
   return (
     <section id="services">
-      {/* Header */}
+      {/* Section header */}
       <div className="py-28 lg:py-40">
-        <div className="max-w-6xl mx-auto px-6">
-          <ScrollReveal className="text-center">
-            <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium">
-              Our Services
-            </p>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-foreground leading-[1.05]">
-              Crafted to impress.
-              <br />
-              <span className="text-muted-foreground">Built to perform.</span>
-            </h2>
-          </ScrollReveal>
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium"
+          >
+            Our Services
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-foreground leading-[1.05]"
+          >
+            Crafted to impress.
+            <br />
+            <span className="text-muted-foreground">Built to perform.</span>
+          </motion.h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="h-px bg-border mt-16 max-w-md mx-auto origin-center"
+          />
         </div>
       </div>
 
-      {/* Alternating blocks */}
-      {services.map((service, i) =>
-        service.layout === "immersive" ? (
-          <ImmersiveBlock key={service.title} service={service} index={i} />
-        ) : (
-          <CardBlock key={service.title} service={service} index={i} />
-        )
-      )}
+      {/* Scroll-driven slides */}
+      <div
+        ref={containerRef}
+        style={{ height: `${SLIDE_COUNT * 100}vh` }}
+        className="relative"
+      >
+        <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ perspective: "1200px" }}>
+          <div className="absolute inset-0 bg-foreground" />
+
+          {services.map((service, i) => (
+            <ServiceSlide
+              key={service.title}
+              service={service}
+              index={i}
+              scrollYProgress={scrollYProgress}
+            />
+          ))}
+
+          {/* Progress dots */}
+          <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3">
+            {services.map((service, i) => (
+              <ProgressDot key={service.title} index={i} scrollYProgress={scrollYProgress} />
+            ))}
+          </div>
+
+          {/* Scroll hint */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+            style={{ opacity: scrollHintOpacity }}
+          >
+            <span
+              className="font-display text-xs uppercase tracking-[0.2em]"
+              style={{ color: "hsl(0 0% 100% / 0.5)" }}
+            >
+              Scroll to explore
+            </span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              className="w-5 h-8 rounded-full border-2 flex items-start justify-center p-1"
+              style={{ borderColor: "hsl(0 0% 100% / 0.3)" }}
+            >
+              <motion.div
+                className="w-1 h-1 rounded-full"
+                style={{ background: "hsl(0 0% 100% / 0.6)" }}
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
