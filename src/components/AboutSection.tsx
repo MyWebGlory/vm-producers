@@ -1,27 +1,62 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import aboutImg from "@/assets/about-event.webp";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ScrollReveal, AnimatedCounter } from "@/components/ScrollAnimations";
+
+import liveEventsVideo from "@/assets/live-events-video.mp4";
+import videoProductionVideo from "@/assets/video-production-video.mp4";
+import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
+import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
+
+const videos = [
+  liveEventsVideo,
+  videoProductionVideo,
+  hybridEventsVideo,
+  meetingProsVideo,
+];
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const playNext = useCallback(() => {
+    setCurrentVideo((prev) => (prev + 1) % videos.length);
+  }, []);
+
+  // Start playing when a new video mounts
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch(() => {});
+      }
+    }, 100);
+    return () => clearTimeout(t);
+  }, [currentVideo]);
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-44 bg-card">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-16 md:gap-20 items-center">
-          {/* Image */}
+          {/* Video carousel */}
           <ScrollReveal direction="left" className="w-full md:w-1/2">
-            <div className="rounded-3xl overflow-hidden">
-              <motion.img
-                src={aboutImg}
-                alt="Virtual event production"
-                className="w-full h-auto object-contain"
-                initial={{ scale: 1.05 }}
-                animate={isInView ? { scale: 1 } : {}}
-                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              />
+            <div className="rounded-3xl overflow-hidden relative aspect-[4/3]">
+              <AnimatePresence mode="wait">
+                <motion.video
+                  key={currentVideo}
+                  ref={videoRef}
+                  src={videos[currentVideo]}
+                  muted
+                  playsInline
+                  onEnded={playNext}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.2 }}
+                />
+              </AnimatePresence>
             </div>
           </ScrollReveal>
 
@@ -74,7 +109,9 @@ const AboutSection = () => {
               transition={{ delay: 0.6, duration: 0.5 }}
             >
               <a
-                href="#contact"
+                href="https://www.vmproducers.com/contact"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300"
               >
                 Get in touch
