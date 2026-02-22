@@ -138,7 +138,7 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.9 }}
           className="text-center mb-20 lg:mb-28"
         >
-          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
+          <p className="font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium" style={{ color: "white", textShadow: "0 0 8px hsl(var(--primary)), 0 0 2px hsl(var(--primary))" }}>
             Testimonials
           </p>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold" style={{ color: "white" }}>
