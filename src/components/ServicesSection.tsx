@@ -351,8 +351,8 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[380px] md:auto-rows-[420px] lg:auto-rows-[440px]">
           <BentoCard service={services[0]} index={0} className="md:col-span-2 lg:col-span-3" isVideoActive={activeVideos.has(0)} onVideoEnded={() => handleVideoEnded(0)} />
-          <BentoCard service={services[1]} index={1} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(1)} onVideoEnded={() => handleVideoEnded(1)} />
-          <BentoCard service={services[2]} index={2} className="md:col-span-1 lg:col-span-1" isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />
+          <BentoCard service={services[2]} index={2} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />
+          <BentoCard service={services[1]} index={1} className="md:col-span-1 lg:col-span-1" isVideoActive={activeVideos.has(1)} onVideoEnded={() => handleVideoEnded(1)} />
           <BentoCard service={services[3]} index={3} className="md:col-span-1 lg:col-span-1" isVideoActive={activeVideos.has(3)} onVideoEnded={() => handleVideoEnded(3)} />
           <BentoCard service={services[4]} index={4} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(4)} onVideoEnded={() => handleVideoEnded(4)} />
         </div>
