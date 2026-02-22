@@ -67,6 +67,15 @@ const services = [
   },
 ];
 
+/* ── Volatile entry presets per card ── */
+const volatilePresets = [
+  { y: 120, x: -40, rotate: -2.5, scale: 0.88 },
+  { y: 160, x: 50, rotate: 3, scale: 0.85 },
+  { y: 140, x: -30, rotate: 1.5, scale: 0.9 },
+  { y: 180, x: 40, rotate: -2, scale: 0.86 },
+  { y: 100, x: 0, rotate: 1, scale: 0.92 },
+];
+
 /* ── Single Bento Card ── */
 const BentoCard = ({
   service,
@@ -78,17 +87,33 @@ const BentoCard = ({
   className?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-100px" });
   const [hovered, setHovered] = useState(false);
   const Icon = service.icon;
+  const preset = volatilePresets[index % volatilePresets.length];
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 60, scale: 0.92 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      initial={{
+        opacity: 0,
+        y: preset.y,
+        x: preset.x,
+        rotate: preset.rotate,
+        scale: preset.scale,
+      }}
+      animate={
+        inView
+          ? { opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 }
+          : {}
+      }
+      transition={{
+        duration: 1,
+        delay: index * 0.12,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       className={`relative group rounded-2xl overflow-hidden cursor-pointer ${className}`}
+      style={{ willChange: "transform, opacity" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -173,7 +198,7 @@ const BentoCard = ({
           {service.title}
         </motion.h3>
 
-        {/* Description - always visible */}
+        {/* Description */}
         <p
           className="text-sm md:text-base leading-relaxed mb-4 max-w-md"
           style={{ color: "hsl(0 0% 100% / 0.65)" }}
@@ -227,7 +252,7 @@ const ServicesSection = () => {
 
       {/* Bento Grid */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[400px] md:auto-rows-[460px] lg:auto-rows-[440px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[450px] md:auto-rows-[520px] lg:auto-rows-[500px]">
           {/* Live Events - large, spans 2 cols */}
           <BentoCard
             service={services[0]}
