@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import liveEventsImg from "@/assets/live-events.webp";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
+import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 
 const services = [
   {
@@ -60,12 +61,18 @@ const services = [
     icon: Users,
     description: "A worldwide network of verified event professionals, matched within 48 hours across 70+ countries.",
     image: meetingProsImg,
+    video: meetingProsVideo,
     href: "/meeting-pros",
     stat: "70+",
     statLabel: "Countries",
     accent: "160 50% 35%",
   },
 ];
+
+// Indices of services that have videos
+const videoIndices = services
+  .map((s, i) => (s.video ? i : -1))
+  .filter((i) => i !== -1);
 
 /* ── Volatile entry presets per card ── */
 const volatilePresets = [
@@ -81,16 +88,45 @@ const BentoCard = ({
   service,
   index,
   className,
+  isVideoActive,
+  onVideoEnded,
 }: {
   service: (typeof services)[number];
   index: number;
   className?: string;
+  isVideoActive: boolean;
+  onVideoEnded: () => void;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [hovered, setHovered] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const Icon = service.icon;
   const preset = volatilePresets[index % volatilePresets.length];
+
+  // When isVideoActive changes, start or stop the video
+  useEffect(() => {
+    if (isVideoActive && service.video) {
+      setShowVideo(true);
+      // Small delay to let the video element mount
+      const t = setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play().catch(() => {});
+        }
+      }, 100);
+      return () => clearTimeout(t);
+    } else {
+      // Fade back to image
+      setShowVideo(false);
+    }
+  }, [isVideoActive, service.video]);
+
+  const handleVideoEnded = () => {
+    setShowVideo(false);
+    onVideoEnded();
+  };
 
   return (
     <motion.div
@@ -121,21 +157,35 @@ const BentoCard = ({
 
       {/* Media background */}
       <div className="absolute inset-0">
-        {service.video ? (
-          <video
-            src={service.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        ) : (
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+        {/* Image always present as base */}
+        <img
+          src={service.image}
+          alt={service.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+
+        {/* Video overlay with fade */}
+        {service.video && (
+          <AnimatePresence>
+            {showVideo && (
+              <motion.div
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2 }}
+              >
+                <video
+                  ref={videoRef}
+                  src={service.video}
+                  muted
+                  playsInline
+                  onEnded={handleVideoEnded}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         )}
 
         {/* Dark overlay */}
@@ -226,6 +276,53 @@ const ServicesSection = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
+  // Track which service indices currently have active video (max 2)
+  const [activeVideos, setActiveVideos] = useState<Set<number>>(new Set());
+  const nextQueueIndexRef = useRef(0);
+
+  const startNextVideo = useCallback(() => {
+    setActiveVideos((prev) => {
+      if (prev.size >= 2) return prev;
+
+      // Find next video index that isn't already active
+      let attempts = 0;
+      let idx = nextQueueIndexRef.current;
+      while (attempts < videoIndices.length) {
+        const candidate = videoIndices[idx % videoIndices.length];
+        if (!prev.has(candidate)) {
+          nextQueueIndexRef.current = (idx + 1) % videoIndices.length;
+          return new Set([...prev, candidate]);
+        }
+        idx++;
+        attempts++;
+      }
+      return prev;
+    });
+  }, []);
+
+  const handleVideoEnded = useCallback(
+    (serviceIndex: number) => {
+      setActiveVideos((prev) => {
+        const next = new Set(prev);
+        next.delete(serviceIndex);
+        return next;
+      });
+      // Start a new video after a short pause
+      setTimeout(() => startNextVideo(), 800);
+    },
+    [startNextVideo]
+  );
+
+  // Kick off the first 2 videos on mount with stagger
+  useEffect(() => {
+    const t1 = setTimeout(() => startNextVideo(), 2000);
+    const t2 = setTimeout(() => startNextVideo(), 5000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [startNextVideo]);
+
   return (
     <section id="services" className="py-28 lg:py-40 relative">
       {/* Section header */}
@@ -253,40 +350,11 @@ const ServicesSection = () => {
       {/* Bento Grid */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[450px] md:auto-rows-[520px] lg:auto-rows-[500px]">
-          {/* Live Events - large, spans 2 cols */}
-          <BentoCard
-            service={services[0]}
-            index={0}
-            className="md:col-span-2 md:row-span-1"
-          />
-
-          {/* Virtual Events - tall, spans 2 rows */}
-          <BentoCard
-            service={services[1]}
-            index={1}
-            className="lg:row-span-2"
-          />
-
-          {/* Hybrid Events - standard */}
-          <BentoCard
-            service={services[2]}
-            index={2}
-            className=""
-          />
-
-          {/* Video Production - standard */}
-          <BentoCard
-            service={services[3]}
-            index={3}
-            className=""
-          />
-
-          {/* Meeting Pros - large, spans 3 cols on lg */}
-          <BentoCard
-            service={services[4]}
-            index={4}
-            className="md:col-span-2 lg:col-span-3"
-          />
+          <BentoCard service={services[0]} index={0} className="md:col-span-2 md:row-span-1" isVideoActive={activeVideos.has(0)} onVideoEnded={() => handleVideoEnded(0)} />
+          <BentoCard service={services[1]} index={1} className="lg:row-span-2" isVideoActive={activeVideos.has(1)} onVideoEnded={() => handleVideoEnded(1)} />
+          <BentoCard service={services[2]} index={2} className="" isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />
+          <BentoCard service={services[3]} index={3} className="" isVideoActive={activeVideos.has(3)} onVideoEnded={() => handleVideoEnded(3)} />
+          <BentoCard service={services[4]} index={4} className="md:col-span-2 lg:col-span-3" isVideoActive={activeVideos.has(4)} onVideoEnded={() => handleVideoEnded(4)} />
         </div>
       </div>
     </section>
