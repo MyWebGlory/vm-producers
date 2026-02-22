@@ -43,7 +43,7 @@ const ClientLogos = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Bold header */}
-        <ScrollReveal className="text-center mb-16">
+        <ScrollReveal className="text-center mb-24 lg:mb-32">
           <motion.p
             className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
           >
