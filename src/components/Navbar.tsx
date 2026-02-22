@@ -45,6 +45,7 @@ const Navbar = () => {
             className={`font-display font-bold text-xl tracking-tight transition-colors duration-500 ${
               scrolled ? "text-foreground" : "text-white"
             }`}
+            style={!scrolled ? { textShadow: "0 1px 8px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.4)" } : undefined}
           >
             Virtual Producers
           </span>
@@ -56,15 +57,16 @@ const Navbar = () => {
             <Link
               key={link.label}
               to={link.href}
-              className={`text-sm font-medium transition-colors duration-500 ${
+              className={`text-sm font-semibold transition-all duration-500 ${
                 isActive(link.href)
                   ? scrolled
                     ? "text-primary"
                     : "text-white"
                   : scrolled
                     ? "text-muted-foreground hover:text-foreground"
-                    : "text-white/70 hover:text-white"
+                    : "text-white/90 hover:text-white"
               }`}
+              style={!scrolled ? { textShadow: "0 1px 8px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.4)" } : undefined}
             >
               {link.label}
             </Link>
