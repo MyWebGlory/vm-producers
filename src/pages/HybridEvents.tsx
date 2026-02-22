@@ -1,12 +1,14 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
+import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
 
 const HybridEvents = () => (
-  <ServicePageLayout
+    <ServicePageLayout
     title="Hybrid Events"
     subtitle="Best of Both Worlds"
     description="Bridging in-person and virtual audiences into one cohesive, engaging experience that maximizes reach and impact."
     heroImage={hybridEventsImg}
+    heroVideo={hybridEventsVideo}
     stats={[
       { value: 95, suffix: "%", label: "Retention Rate" },
       { value: 3, suffix: "x", label: "Audience Reach" },

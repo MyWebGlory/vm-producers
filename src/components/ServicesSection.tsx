@@ -9,6 +9,7 @@ import meetingProsImg from "@/assets/meeting-pros.webp";
 import liveEventsImg from "@/assets/live-events.webp";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
+import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
 
 const services = [
   {
@@ -37,6 +38,7 @@ const services = [
     icon: Globe,
     description: "Bridging in-person and virtual audiences into one cohesive, engaging experience.",
     image: hybridEventsImg,
+    video: hybridEventsVideo,
     href: "/hybrid-events",
     stat: "95%",
     statLabel: "Retention",
