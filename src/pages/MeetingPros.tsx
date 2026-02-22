@@ -1,5 +1,6 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import meetingProsImg from "@/assets/meeting-pros.webp";
+import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 
 const MeetingPros = () => (
   <ServicePageLayout
@@ -7,6 +8,7 @@ const MeetingPros = () => (
     subtitle="Your Global Network"
     description="A worldwide network of verified event professionals, matched within 48 hours across 70+ countries for any event need."
     heroImage={meetingProsImg}
+    heroVideo={meetingProsVideo}
     stats={[
       { value: 70, suffix: "+", label: "Countries" },
       { value: 48, suffix: "h", label: "Matching Time" },
