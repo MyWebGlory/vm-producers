@@ -58,14 +58,19 @@ const ServicePageLayout = ({
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
           {heroVideo ? (
-            <video
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
+            <>
+              <video
+                src={heroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover scale-110 blur-[2px]"
+              />
+              {/* Glass overlay to soften AI-generated video */}
+              <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+            </>
           ) : (
             <img src={heroImage} alt={title} className="w-full h-full object-cover" />
           )}
