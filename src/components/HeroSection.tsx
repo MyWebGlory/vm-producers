@@ -87,7 +87,7 @@ const HeroSection = () => {
               <MagneticHover>
                 <a
                   href="#contact"
-                  className="inline-flex px-10 py-4 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105"
+                  className="inline-flex px-10 py-4 rounded-full bg-primary text-primary-foreground font-display font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105"
                 >
                   Get Your Free Consultation
                 </a>
