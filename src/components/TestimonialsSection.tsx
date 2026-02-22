@@ -109,25 +109,25 @@ const TestimonialsSection = () => {
         <img
           src={liveEventsImg}
           alt=""
-          className="absolute -top-10 -left-10 w-[65%] h-[75%] object-cover blur-[40px] opacity-[0.55]"
+          className="absolute -top-10 -left-10 w-[70%] h-[80%] object-cover blur-[30px] opacity-[0.75]"
         />
         <img
           src={hybridEventsImg}
           alt=""
-          className="absolute -bottom-10 -right-10 w-[65%] h-[75%] object-cover blur-[40px] opacity-[0.5]"
+          className="absolute -bottom-10 -right-10 w-[70%] h-[80%] object-cover blur-[30px] opacity-[0.7]"
         />
         <img
           src={virtualEventsImg}
           alt=""
-          className="absolute top-1/4 right-1/5 w-[50%] h-[60%] object-cover blur-[50px] opacity-[0.4]"
+          className="absolute top-1/4 right-1/5 w-[55%] h-[65%] object-cover blur-[35px] opacity-[0.6]"
         />
         <img
           src={meetingProsImg}
           alt=""
-          className="absolute bottom-1/4 left-1/5 w-[50%] h-[60%] object-cover blur-[50px] opacity-[0.35]"
+          className="absolute bottom-1/4 left-1/5 w-[55%] h-[65%] object-cover blur-[35px] opacity-[0.55]"
         />
         {/* White veil overlay */}
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-background/25" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
