@@ -1,6 +1,10 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import liveEventsImg from "@/assets/live-events.webp";
+import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
+import virtualEventsImg from "@/assets/virtual-events-conference.webp";
+import meetingProsImg from "@/assets/meeting-pros.webp";
 
 const testimonials = [
   {
@@ -100,24 +104,30 @@ const TestimonialsSection = () => {
       ref={sectionRef}
       className="py-32 lg:py-44 overflow-hidden relative"
     >
-      {/* Ambient glow background */}
+      {/* Blurry photo background with white veil */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
-          }}
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.6, 1, 0.6],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+        <img
+          src={liveEventsImg}
+          alt=""
+          className="absolute -top-20 -left-20 w-[50%] h-[60%] object-cover blur-[80px] opacity-[0.12]"
         />
+        <img
+          src={hybridEventsImg}
+          alt=""
+          className="absolute -bottom-20 -right-20 w-[50%] h-[60%] object-cover blur-[80px] opacity-[0.12]"
+        />
+        <img
+          src={virtualEventsImg}
+          alt=""
+          className="absolute top-1/4 right-1/4 w-[40%] h-[50%] object-cover blur-[100px] opacity-[0.08]"
+        />
+        <img
+          src={meetingProsImg}
+          alt=""
+          className="absolute bottom-1/4 left-1/4 w-[40%] h-[50%] object-cover blur-[100px] opacity-[0.08]"
+        />
+        {/* White veil overlay */}
+        <div className="absolute inset-0 bg-background/80" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
