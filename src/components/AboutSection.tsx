@@ -18,21 +18,19 @@ const AboutSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [currentVideo, setCurrentVideo] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const playNext = useCallback(() => {
     setCurrentVideo((prev) => (prev + 1) % videos.length);
   }, []);
 
-  // Start playing when a new video mounts
+  // Play the new video when it becomes active
   useEffect(() => {
-    const t = setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play().catch(() => {});
-      }
-    }, 100);
-    return () => clearTimeout(t);
+    const video = videoRefs.current[currentVideo];
+    if (video) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
   }, [currentVideo]);
 
   return (
@@ -42,21 +40,19 @@ const AboutSection = () => {
           {/* Video carousel */}
           <ScrollReveal direction="left" className="w-full md:w-1/2">
             <div className="rounded-3xl overflow-hidden relative aspect-[4/3]">
-              <AnimatePresence mode="wait">
+              {videos.map((src, i) => (
                 <motion.video
-                  key={currentVideo}
-                  ref={videoRef}
-                  src={videos[currentVideo]}
+                  key={i}
+                  ref={(el) => { videoRefs.current[i] = el; }}
+                  src={src}
                   muted
                   playsInline
                   onEnded={playNext}
                   className="absolute inset-0 w-full h-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  animate={{ opacity: i === currentVideo ? 1 : 0 }}
                   transition={{ duration: 1.2 }}
                 />
-              </AnimatePresence>
+              ))}
             </div>
           </ScrollReveal>
 
