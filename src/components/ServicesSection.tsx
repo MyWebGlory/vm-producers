@@ -326,7 +326,7 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-28 lg:py-40 relative">
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-16 lg:mb-24">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-16 lg:mb-24 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
