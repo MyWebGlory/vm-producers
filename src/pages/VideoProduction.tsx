@@ -1,5 +1,6 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import videoProductionImg from "@/assets/video-production.webp";
+import videoProductionVideo from "@/assets/video-production-video.mp4";
 
 const VideoProduction = () => (
   <ServicePageLayout
@@ -7,6 +8,7 @@ const VideoProduction = () => (
     subtitle="Visual Storytelling"
     description="Captivating video content from teasers to highlight reels that elevate your brand and leave a lasting impression."
     heroImage={videoProductionImg}
+    heroVideo={videoProductionVideo}
     stats={[
       { value: 2000, suffix: "+", label: "Videos Produced" },
       { value: 4, suffix: "K", label: "Resolution" },

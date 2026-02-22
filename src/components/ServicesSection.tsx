@@ -8,6 +8,7 @@ import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import liveEventsImg from "@/assets/live-events.webp";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
+import videoProductionVideo from "@/assets/video-production-video.mp4";
 
 const services = [
   {
@@ -43,6 +44,7 @@ const services = [
     icon: Video,
     description: "Captivating video content from teasers to highlight reels that elevate your brand.",
     image: videoProductionImg,
+    video: videoProductionVideo,
     href: "/video-production",
     stat: "2000+ Videos",
     accent: "340 60% 45%",
