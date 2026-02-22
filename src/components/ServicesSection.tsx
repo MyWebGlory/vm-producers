@@ -324,7 +324,7 @@ const ServicesSection = () => {
   }, [startNextVideo]);
 
   return (
-    <section id="services" className="py-28 lg:py-40 relative">
+    <section id="services" className="pb-28 lg:pb-40 pt-10 lg:pt-16 relative">
       {/* Section header */}
       <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-16 lg:mb-24 text-center">
         <motion.p
