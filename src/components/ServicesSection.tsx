@@ -225,7 +225,7 @@ const ServicesSection = () => {
 
       {/* Bento Grid */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-[340px] md:auto-rows-[400px] lg:auto-rows-[380px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[400px] md:auto-rows-[460px] lg:auto-rows-[440px]">
           {/* Live Events - large, spans 2 cols */}
           <BentoCard
             service={services[0]}
