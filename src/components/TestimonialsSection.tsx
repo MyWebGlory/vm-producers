@@ -1,6 +1,6 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -23,21 +23,26 @@ const testimonials = [
   },
 ];
 
+const AUTOPLAY_INTERVAL = 6000;
+
 const slideVariants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 400 : -400,
+    x: direction > 0 ? 300 : -300,
     opacity: 0,
-    scale: 0.95,
+    scale: 0.92,
+    filter: "blur(8px)",
   }),
   center: {
     x: 0,
     opacity: 1,
     scale: 1,
+    filter: "blur(0px)",
   },
   exit: (direction: number) => ({
-    x: direction > 0 ? -400 : 400,
+    x: direction > 0 ? -300 : 300,
     opacity: 0,
-    scale: 0.95,
+    scale: 0.92,
+    filter: "blur(8px)",
   }),
 };
 
@@ -46,8 +51,10 @@ const TestimonialsSection = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [[current, direction], setCurrent] = useState([0, 0]);
   const [isDragging, setIsDragging] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const paginate = useCallback((newDirection: number) => {
+    setProgress(0);
     setCurrent(([prev]) => {
       let next = prev + newDirection;
       if (next < 0) next = testimonials.length - 1;
@@ -55,6 +62,21 @@ const TestimonialsSection = () => {
       return [next, newDirection];
     });
   }, []);
+
+  // Autoplay
+  useEffect(() => {
+    if (!isInView) return;
+    const interval = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) {
+          paginate(1);
+          return 0;
+        }
+        return p + 100 / (AUTOPLAY_INTERVAL / 50);
+      });
+    }, 50);
+    return () => clearInterval(interval);
+  }, [isInView, paginate]);
 
   const handleDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
     const swipe = Math.abs(info.velocity.x) * info.offset.x;
@@ -66,16 +88,44 @@ const TestimonialsSection = () => {
     setIsDragging(false);
   };
 
+  const goTo = (i: number) => {
+    setProgress(0);
+    setCurrent(([prev]) => [i, i > prev ? 1 : -1]);
+  };
+
   const t = testimonials[current];
 
   return (
-    <section ref={sectionRef} className="py-32 lg:py-44 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      ref={sectionRef}
+      className="py-32 lg:py-44 overflow-hidden relative"
+    >
+      {/* Ambient glow background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(ellipse, hsl(var(--primary) / 0.06) 0%, transparent 70%)",
+          }}
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.6, 1, 0.6],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+          animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          transition={{ duration: 0.9 }}
           className="text-center mb-20 lg:mb-28"
         >
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
@@ -88,29 +138,29 @@ const TestimonialsSection = () => {
 
         {/* Carousel area */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="relative"
         >
-          {/* Arrows - desktop only */}
+          {/* Navigation arrows */}
           <button
             onClick={() => paginate(-1)}
-            className="hidden md:flex absolute -left-4 lg:-left-10 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+            className="hidden md:flex absolute -left-4 lg:-left-14 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full items-center justify-center border border-border/60 bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:border-primary/30 hover:shadow-lg transition-all duration-300"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={22} />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="hidden md:flex absolute -right-4 lg:-right-10 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+            className="hidden md:flex absolute -right-4 lg:-right-14 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full items-center justify-center border border-border/60 bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:border-primary/30 hover:shadow-lg transition-all duration-300"
             aria-label="Next testimonial"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={22} />
           </button>
 
-          {/* Slide container */}
-          <div className="relative min-h-[320px] md:min-h-[280px] flex items-center justify-center">
+          {/* Card container */}
+          <div className="relative min-h-[400px] md:min-h-[360px] flex items-center justify-center">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={current}
@@ -120,9 +170,10 @@ const TestimonialsSection = () => {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 250, damping: 30 },
-                  opacity: { duration: 0.3 },
-                  scale: { duration: 0.3 },
+                  x: { type: "spring", stiffness: 200, damping: 28 },
+                  opacity: { duration: 0.4 },
+                  scale: { duration: 0.4 },
+                  filter: { duration: 0.4 },
                 }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -131,26 +182,66 @@ const TestimonialsSection = () => {
                 onDragEnd={handleDragEnd}
                 className="w-full cursor-grab active:cursor-grabbing select-none"
               >
-                <div className="text-center max-w-3xl mx-auto px-4">
-                  {/* Quote */}
-                  <p className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-foreground leading-relaxed tracking-tight">
-                    "{t.text}"
-                  </p>
-
-                  {/* Author */}
-                  <div className="mt-10 flex items-center justify-center gap-4">
-                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-display font-semibold text-sm">
-                        {t.initials}
-                      </span>
+                <div className="max-w-4xl mx-auto">
+                  {/* Glass card */}
+                  <div className="relative p-10 md:p-14 lg:p-16 rounded-3xl border border-border/50 bg-card/60 backdrop-blur-md shadow-[0_8px_60px_hsl(var(--primary)/0.06),0_2px_20px_hsl(220_25%_10%/0.05)]">
+                    {/* Large decorative quote */}
+                    <div className="absolute -top-5 left-8 md:left-12">
+                      <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-lg shadow-primary/5">
+                        <Quote
+                          size={22}
+                          className="text-primary"
+                          style={{ transform: "scaleX(-1)" }}
+                        />
+                      </div>
                     </div>
-                    <div className="text-left">
-                      <p className="font-display font-semibold text-foreground text-sm">
-                        {t.author}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {t.company}
-                      </p>
+
+                    {/* Quote text */}
+                    <p className="text-xl md:text-2xl lg:text-[1.75rem] font-display font-medium text-foreground leading-[1.5] tracking-[-0.01em] mt-2">
+                      "{t.text}"
+                    </p>
+
+                    {/* Divider */}
+                    <div className="mt-10 mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+                    {/* Author row */}
+                    <div className="flex items-center gap-5">
+                      <motion.div
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 border border-primary/20"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, hsl(var(--primary) / 0.12), hsl(var(--primary) / 0.04))",
+                        }}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{
+                          delay: 0.3,
+                          type: "spring",
+                          stiffness: 300,
+                        }}
+                      >
+                        <span className="text-primary font-display font-bold text-base">
+                          {t.initials}
+                        </span>
+                      </motion.div>
+                      <div>
+                        <motion.p
+                          className="font-display font-bold text-foreground text-base"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.35 }}
+                        >
+                          {t.author}
+                        </motion.p>
+                        <motion.p
+                          className="text-sm text-muted-foreground mt-0.5"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.4 }}
+                        >
+                          {t.company}
+                        </motion.p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -158,22 +249,26 @@ const TestimonialsSection = () => {
             </AnimatePresence>
           </div>
 
-          {/* Dots */}
-          <div className="flex justify-center gap-2.5 mt-12">
+          {/* Progress dots */}
+          <div className="flex justify-center gap-3 mt-14">
             {testimonials.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent([i, i > current ? 1 : -1])}
-                className="relative p-1"
+                onClick={() => goTo(i)}
+                className="relative h-1.5 rounded-full overflow-hidden transition-all duration-500"
+                style={{ width: i === current ? 48 : 12 }}
                 aria-label={`Go to testimonial ${i + 1}`}
               >
-                <div
-                  className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                    i === current
-                      ? "bg-primary scale-125"
-                      : "bg-border hover:bg-muted-foreground/30"
-                  }`}
-                />
+                <div className="absolute inset-0 bg-border rounded-full" />
+                {i === current && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-primary"
+                    style={{
+                      transformOrigin: "left",
+                      scaleX: progress / 100,
+                    }}
+                  />
+                )}
               </button>
             ))}
           </div>
