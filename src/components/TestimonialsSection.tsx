@@ -141,7 +141,7 @@ const TestimonialsSection = () => {
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
             Testimonials
           </p>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold" style={{ color: "white" }}>
             What they say.
           </h2>
         </motion.div>
