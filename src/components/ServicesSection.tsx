@@ -163,7 +163,7 @@ const BentoCard = ({
 
         {/* Title */}
         <motion.h3
-          className="font-display text-2xl md:text-3xl font-bold mb-2"
+          className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3"
           style={{ color: "white" }}
           animate={{ x: hovered ? 4 : 0 }}
           transition={{ duration: 0.3 }}
@@ -171,21 +171,13 @@ const BentoCard = ({
           {service.title}
         </motion.h3>
 
-        {/* Description - revealed on hover */}
-        <AnimatePresence>
-          {hovered && (
-            <motion.p
-              initial={{ opacity: 0, height: 0, y: 10 }}
-              animate={{ opacity: 1, height: "auto", y: 0 }}
-              exit={{ opacity: 0, height: 0, y: 10 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="text-sm md:text-base leading-relaxed mb-4"
-              style={{ color: "hsl(0 0% 100% / 0.7)" }}
-            >
-              {service.description}
-            </motion.p>
-          )}
-        </AnimatePresence>
+        {/* Description - always visible */}
+        <p
+          className="text-sm md:text-base leading-relaxed mb-4 max-w-md"
+          style={{ color: "hsl(0 0% 100% / 0.65)" }}
+        >
+          {service.description}
+        </p>
 
         {/* CTA arrow */}
         <motion.div
@@ -233,7 +225,7 @@ const ServicesSection = () => {
 
       {/* Bento Grid */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-[280px] md:auto-rows-[320px] lg:auto-rows-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-[340px] md:auto-rows-[400px] lg:auto-rows-[380px]">
           {/* Live Events - large, spans 2 cols */}
           <BentoCard
             service={services[0]}
