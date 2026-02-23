@@ -2,7 +2,8 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import virtualEventsImg from "@/assets/virtual-events-conference.webp";
+import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
+import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import meetingProsImg from "@/assets/meeting-pros.webp";
@@ -29,6 +30,7 @@ const services = [
     icon: Monitor,
     description: "All-inclusive virtual production for webinars to conferences with up to 100,000 attendees.",
     image: virtualEventsImg,
+    video: virtualEventsVideo,
     href: "/virtual-events",
     stat: "100K",
     statLabel: "Attendees",
