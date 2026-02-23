@@ -2,16 +2,21 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useDeferredVideo } from "@/hooks/useDeferredVideo";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
-import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import liveEventsImg from "@/assets/live-events.webp";
-import liveEventsVideo from "@/assets/live-events-video.mp4";
-import videoProductionVideo from "@/assets/video-production-video.mp4";
-import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
-import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
+
+// Video paths as strings for deferred loading
+const VIDEO_SRCS = {
+  liveEvents: () => import("@/assets/live-events-video.mp4"),
+  virtualEvents: () => import("@/assets/virtual-events-video.mp4"),
+  videoProduction: () => import("@/assets/video-production-video.mp4"),
+  hybridEvents: () => import("@/assets/hybrid-events-video.mp4"),
+  meetingPros: () => import("@/assets/meeting-pros-video.mp4"),
+};
 
 const services = [
   {
@@ -19,7 +24,7 @@ const services = [
     icon: Mic,
     description: "Seamless, unforgettable in-person experiences, from intimate gatherings to large-scale productions.",
     image: liveEventsImg,
-    video: liveEventsVideo,
+    videoKey: "liveEvents" as const,
     href: "/live-events",
     stat: "500+",
     statLabel: "Events",
@@ -30,7 +35,7 @@ const services = [
     icon: Monitor,
     description: "All-inclusive virtual production for webinars to conferences with up to 100,000 attendees.",
     image: virtualEventsImg,
-    video: virtualEventsVideo,
+    videoKey: "virtualEvents" as const,
     href: "/virtual-events",
     stat: "100K",
     statLabel: "Attendees",
@@ -41,7 +46,7 @@ const services = [
     icon: Globe,
     description: "Bridging in-person and virtual audiences into one cohesive, engaging experience.",
     image: hybridEventsImg,
-    video: hybridEventsVideo,
+    videoKey: "hybridEvents" as const,
     href: "/hybrid-events",
     stat: "95%",
     statLabel: "Retention",
@@ -52,7 +57,7 @@ const services = [
     icon: Video,
     description: "Captivating video content from teasers to highlight reels that elevate your brand.",
     image: videoProductionImg,
-    video: videoProductionVideo,
+    videoKey: "videoProduction" as const,
     href: "/video-production",
     stat: "2000+",
     statLabel: "Videos",
@@ -63,7 +68,7 @@ const services = [
     icon: Users,
     description: "A worldwide network of verified event professionals, matched within 48 hours across 70+ countries.",
     image: meetingProsImg,
-    video: meetingProsVideo,
+    videoKey: "meetingPros" as const,
     href: "/meeting-pros",
     stat: "70+",
     statLabel: "Countries",
@@ -71,9 +76,9 @@ const services = [
   },
 ];
 
-// Indices of services that have videos
+// Indices of services that have videos (all have videoKey)
 const videoIndices = services
-  .map((s, i) => (s.video ? i : -1))
+  .map((s, i) => (s.videoKey ? i : -1))
   .filter((i) => i !== -1);
 
 /* ── Volatile entry presets per card ── */
@@ -104,14 +109,23 @@ const BentoCard = ({
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [hovered, setHovered] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const Icon = service.icon;
   const preset = volatilePresets[index % volatilePresets.length];
 
-  // When isVideoActive changes, start or stop the video
+  // Dynamically import video only when activated
   useEffect(() => {
-    if (isVideoActive && service.video) {
+    if (isVideoActive && service.videoKey && !videoSrc) {
+      VIDEO_SRCS[service.videoKey]().then((mod) => {
+        setVideoSrc(mod.default);
+      });
+    }
+  }, [isVideoActive, service.videoKey, videoSrc]);
+
+  // When isVideoActive and video is loaded, play it
+  useEffect(() => {
+    if (isVideoActive && videoSrc) {
       setShowVideo(true);
-      // Small delay to let the video element mount
       const t = setTimeout(() => {
         if (videoRef.current) {
           videoRef.current.currentTime = 0;
@@ -119,11 +133,10 @@ const BentoCard = ({
         }
       }, 100);
       return () => clearTimeout(t);
-    } else {
-      // Fade back to image
+    } else if (!isVideoActive) {
       setShowVideo(false);
     }
-  }, [isVideoActive, service.video]);
+  }, [isVideoActive, videoSrc]);
 
   const handleVideoEnded = () => {
     setShowVideo(false);
@@ -168,7 +181,7 @@ const BentoCard = ({
         />
 
         {/* Video overlay with fade */}
-        {service.video && (
+        {videoSrc && (
           <AnimatePresence>
             {showVideo && (
               <motion.div
@@ -180,7 +193,7 @@ const BentoCard = ({
               >
                 <video
                   ref={videoRef}
-                  src={service.video}
+                  src={videoSrc}
                   muted
                   playsInline
                   preload="none"
@@ -316,9 +329,9 @@ const ServicesSection = () => {
     [fillSlots]
   );
 
-  // Kick off 2 videos quickly on mount
+  // Kick off videos after images have loaded
   useEffect(() => {
-    const t1 = setTimeout(() => fillSlots(), 500);
+    const t1 = setTimeout(() => fillSlots(), 4000);
     return () => clearTimeout(t1);
   }, [fillSlots]);
 
