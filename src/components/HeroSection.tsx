@@ -96,19 +96,21 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — mouse with sliding pill */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            className="w-7 h-11 rounded-full border-2 border-white/25 flex items-start justify-center pt-2"
           >
-            <motion.div className="w-1.5 h-1.5 rounded-full bg-white/60" />
+            <motion.div
+              animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+              transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+              className="w-1 h-3 rounded-full bg-white/70"
+            />
           </motion.div>
         </motion.div>
       </div>
