@@ -109,21 +109,25 @@ const TestimonialsSection = () => {
         <img
           src={liveEventsImg}
           alt=""
+          loading="lazy"
           className="absolute -top-10 -left-10 w-[70%] h-[80%] object-cover blur-[30px] opacity-[0.75]"
         />
         <img
           src={hybridEventsImg}
           alt=""
+          loading="lazy"
           className="absolute -bottom-10 -right-10 w-[70%] h-[80%] object-cover blur-[30px] opacity-[0.7]"
         />
         <img
           src={virtualEventsImg}
           alt=""
+          loading="lazy"
           className="absolute top-1/4 right-1/5 w-[55%] h-[65%] object-cover blur-[35px] opacity-[0.6]"
         />
         <img
           src={meetingProsImg}
           alt=""
+          loading="lazy"
           className="absolute bottom-1/4 left-1/5 w-[55%] h-[65%] object-cover blur-[35px] opacity-[0.55]"
         />
         {/* White veil overlay */}

@@ -161,6 +161,7 @@ const BentoCard = ({
         <img
           src={service.image}
           alt={service.title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
@@ -180,6 +181,7 @@ const BentoCard = ({
                   src={service.video}
                   muted
                   playsInline
+                  preload="none"
                   onEnded={handleVideoEnded}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
