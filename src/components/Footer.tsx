@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import vmLogo from "@/assets/vm-logo.png";
+import vpLogo from "@/assets/vp-logo-white.png";
 
 const Footer = () => {
   return (
@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           {/* Brand & Description */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <img src={vmLogo} alt="Virtual Producers" className="h-10 w-auto" />
+            <Link to="/" className="flex items-center">
+              <img src={vpLogo} alt="Virtual Producers" className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Virtual Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.

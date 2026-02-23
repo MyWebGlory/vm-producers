@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import vpLogo from "@/assets/vp-logo-white.png";
 
 const navLinks = [
   { label: "Live", href: "/live-events" },
@@ -40,15 +41,14 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <span
-            className={`font-display font-bold text-xl tracking-tight transition-colors duration-500 ${
-              scrolled ? "text-foreground" : "text-white"
+        <Link to="/" className="flex items-center">
+          <img
+            src={vpLogo}
+            alt="Virtual Producers"
+            className={`h-10 w-auto transition-all duration-500 ${
+              scrolled ? "invert" : ""
             }`}
-            style={!scrolled ? { textShadow: "0 1px 8px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.4)" } : undefined}
-          >
-            Virtual Producers
-          </span>
+          />
         </Link>
 
         {/* Desktop nav */}
