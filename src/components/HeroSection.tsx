@@ -30,6 +30,7 @@ const HeroSection = () => {
             src={heroBg}
             alt="Fireworks event with crowd"
             className="w-full h-full object-cover"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 hero-gradient" />
         </motion.div>

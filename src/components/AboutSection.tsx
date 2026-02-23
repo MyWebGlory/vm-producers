@@ -47,6 +47,7 @@ const AboutSection = () => {
                   src={src}
                   muted
                   playsInline
+                  preload="none"
                   onEnded={playNext}
                   className="absolute inset-0 w-full h-full object-cover"
                   animate={{ opacity: i === currentVideo ? 1 : 0 }}
