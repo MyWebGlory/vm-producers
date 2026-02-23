@@ -20,7 +20,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 10%;
 
-    --primary: 348 75% 43%;
+    --primary: 36 55% 42%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 15% 93%;
@@ -29,7 +29,7 @@
     --muted: 220 15% 94%;
     --muted-foreground: 220 10% 45%;
 
-    --accent: 348 65% 50%;
+    --accent: 36 50% 48%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -37,21 +37,21 @@
 
     --border: 220 15% 90%;
     --input: 220 15% 90%;
-    --ring: 348 75% 43%;
+    --ring: 36 55% 42%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 25% 15%;
-    --sidebar-primary: 348 75% 43%;
+    --sidebar-primary: 36 55% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 15% 95%;
     --sidebar-accent-foreground: 220 25% 15%;
     --sidebar-border: 220 15% 90%;
-    --sidebar-ring: 348 75% 43%;
+    --sidebar-ring: 36 55% 42%;
 
     /* Custom tokens */
-    --glow: 348 70% 45%;
+    --glow: 36 55% 45%;
     --glass: 0 0% 100%;
     --glass-border: 220 15% 88%;
     --surface-elevated: 0 0% 100%;
@@ -95,7 +95,7 @@
   }
 
   .glow-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(350 35% 45%));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(30 45% 38%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
