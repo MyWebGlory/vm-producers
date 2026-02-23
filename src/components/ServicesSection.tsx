@@ -280,23 +280,22 @@ const ServicesSection = () => {
   const [activeVideos, setActiveVideos] = useState<Set<number>>(new Set());
   const nextQueueIndexRef = useRef(0);
 
-  const startNextVideo = useCallback(() => {
+  const fillSlots = useCallback(() => {
     setActiveVideos((prev) => {
       if (prev.size >= 2) return prev;
-
-      // Find next video index that isn't already active
-      let attempts = 0;
+      const next = new Set(prev);
       let idx = nextQueueIndexRef.current;
-      while (attempts < videoIndices.length) {
+      let attempts = 0;
+      while (next.size < 2 && attempts < videoIndices.length) {
         const candidate = videoIndices[idx % videoIndices.length];
-        if (!prev.has(candidate)) {
+        if (!next.has(candidate)) {
+          next.add(candidate);
           nextQueueIndexRef.current = (idx + 1) % videoIndices.length;
-          return new Set([...prev, candidate]);
         }
         idx++;
         attempts++;
       }
-      return prev;
+      return next;
     });
   }, []);
 
@@ -307,21 +306,17 @@ const ServicesSection = () => {
         next.delete(serviceIndex);
         return next;
       });
-      // Start a new video after a short pause
-      setTimeout(() => startNextVideo(), 800);
+      // Immediately fill the open slot
+      setTimeout(() => fillSlots(), 300);
     },
-    [startNextVideo]
+    [fillSlots]
   );
 
-  // Kick off the first 2 videos on mount with stagger
+  // Kick off 2 videos quickly on mount
   useEffect(() => {
-    const t1 = setTimeout(() => startNextVideo(), 2000);
-    const t2 = setTimeout(() => startNextVideo(), 5000);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [startNextVideo]);
+    const t1 = setTimeout(() => fillSlots(), 500);
+    return () => clearTimeout(t1);
+  }, [fillSlots]);
 
   return (
     <section id="services" className="pb-28 lg:pb-40 pt-10 lg:pt-16 relative">
