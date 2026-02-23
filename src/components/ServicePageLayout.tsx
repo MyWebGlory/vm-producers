@@ -1,5 +1,5 @@
-import { useRef, ReactNode } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, ReactNode, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { MagneticHover, AnimatedCounter } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -26,6 +26,40 @@ interface ServicePageLayoutProps {
   features: ServiceFeature[];
   additionalContent?: ReactNode;
 }
+
+/** Shows image immediately, fades video in after 2s delay */
+const DeferredHeroVideo = ({ src }: { src: string }) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShow(true), 2000);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <video
+            src={src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-110 blur-[2px]"
+          />
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const ServicePageLayout = ({
   title,
@@ -57,22 +91,16 @@ const ServicePageLayout = ({
       {/* Hero */}
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
-          {heroVideo ? (
-            <>
-              <video
-                src={heroVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover scale-110 blur-[2px]"
-              />
-              {/* Glass overlay to soften AI-generated video */}
-              <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
-            </>
-          ) : (
-            <img src={heroImage} alt={title} className="w-full h-full object-cover" />
+          {/* Image always shown first */}
+          <img
+            src={heroImage}
+            alt={title}
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+          {/* Video fades in after loading */}
+          {heroVideo && (
+            <DeferredHeroVideo src={heroVideo} />
           )}
           <div className="absolute inset-0 hero-gradient" />
         </motion.div>

@@ -1,27 +1,37 @@
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ScrollReveal, AnimatedCounter } from "@/components/ScrollAnimations";
 
-import liveEventsVideo from "@/assets/live-events-video.mp4";
-import videoProductionVideo from "@/assets/video-production-video.mp4";
-import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
-import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
-
-const videos = [
-  liveEventsVideo,
-  videoProductionVideo,
-  hybridEventsVideo,
-  meetingProsVideo,
+// Dynamic imports - videos loaded only when section is visible
+const videoImports = [
+  () => import("@/assets/live-events-video.mp4"),
+  () => import("@/assets/video-production-video.mp4"),
+  () => import("@/assets/hybrid-events-video.mp4"),
+  () => import("@/assets/meeting-pros-video.mp4"),
 ];
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [currentVideo, setCurrentVideo] = useState(0);
+  const [videoSrcs, setVideoSrcs] = useState<string[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
+  // Load videos only when section comes into view
+  useEffect(() => {
+    if (!isInView || videoSrcs.length > 0) return;
+    // Load first video immediately, rest after a delay
+    videoImports[0]().then((mod) => {
+      setVideoSrcs([mod.default]);
+      // Load remaining videos in background
+      Promise.all(videoImports.slice(1).map((imp) => imp())).then((mods) => {
+        setVideoSrcs((prev) => [...prev, ...mods.map((m) => m.default)]);
+      });
+    });
+  }, [isInView, videoSrcs.length]);
+
   const playNext = useCallback(() => {
-    setCurrentVideo((prev) => (prev + 1) % videos.length);
+    setCurrentVideo((prev) => (prev + 1) % videoImports.length);
   }, []);
 
   // Play the new video when it becomes active
@@ -31,7 +41,7 @@ const AboutSection = () => {
       video.currentTime = 0;
       video.play().catch(() => {});
     }
-  }, [currentVideo]);
+  }, [currentVideo, videoSrcs]);
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-44 bg-card">
@@ -39,8 +49,8 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row gap-16 md:gap-20 items-center">
           {/* Video carousel */}
           <ScrollReveal direction="left" className="w-full md:w-1/2">
-            <div className="rounded-3xl overflow-hidden relative aspect-[4/3]">
-              {videos.map((src, i) => (
+            <div className="rounded-3xl overflow-hidden relative aspect-[4/3] bg-muted">
+              {videoSrcs.map((src, i) => (
                 <motion.video
                   key={i}
                   ref={(el) => { videoRefs.current[i] = el; }}
