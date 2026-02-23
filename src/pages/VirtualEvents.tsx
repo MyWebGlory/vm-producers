@@ -1,5 +1,6 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
-import virtualEventsImg from "@/assets/virtual-events-conference.webp";
+import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
+import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 
 const VirtualEvents = () => (
   <ServicePageLayout
@@ -7,6 +8,7 @@ const VirtualEvents = () => (
     subtitle="Global Reach, Zero Limits"
     description="All-inclusive virtual production for webinars to large-scale conferences with up to 100,000 attendees across the globe."
     heroImage={virtualEventsImg}
+    heroVideo={virtualEventsVideo}
     stats={[
       { value: 100, suffix: "K", label: "Max Attendees" },
       { value: 5, suffix: "+", label: "Languages Supported" },
