@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { ScrollReveal, AnimatedCounter } from "@/components/ScrollAnimations";
+import aboutEventImg from "@/assets/about-event.webp";
 
 // Dynamic imports - videos loaded only when section is visible
 const videoImports = [
@@ -50,6 +51,12 @@ const AboutSection = () => {
           {/* Video carousel */}
           <ScrollReveal direction="left" className="w-full md:w-1/2">
             <div className="rounded-3xl overflow-hidden relative aspect-[4/3] bg-muted">
+              {/* Static image shown immediately as placeholder */}
+              <img
+                src={aboutEventImg}
+                alt="Event production"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
               {videoSrcs.map((src, i) => (
                 <motion.video
                   key={i}
