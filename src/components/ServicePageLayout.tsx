@@ -165,7 +165,7 @@ const ServicePageLayout = ({
 }: ServicePageLayoutProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
-  const showcaseRef = useRef<HTMLDivElement>(null);
+  
   const ctaRef = useRef<HTMLDivElement>(null);
   const featuresInView = useInView(featuresRef, { once: true, margin: "-80px" });
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
@@ -178,13 +178,6 @@ const ServicePageLayout = ({
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -60]);
-
-  // Showcase parallax
-  const { scrollYProgress: showcaseProgress } = useScroll({
-    target: showcaseRef,
-    offset: ["start end", "end start"],
-  });
-  const showcaseBgY = useTransform(showcaseProgress, [0, 1], ["0%", "20%"]);
 
   // CTA parallax
   const { scrollYProgress: ctaProgress } = useScroll({
@@ -283,33 +276,6 @@ const ServicePageLayout = ({
           </div>
         </div>
       </div>
-
-      {/* ═══ Full-width Showcase Parallax ═══ */}
-      <section ref={showcaseRef} className="relative h-[50vh] min-h-[350px] overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ y: showcaseBgY }}>
-          <img
-            src={heroImage}
-            alt={`${title} showcase`}
-            loading="lazy"
-            className="w-full h-[130%] object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-card via-transparent to-background" />
-        </motion.div>
-
-        {/* Floating text overlay */}
-        <div className="relative z-10 h-full flex items-center justify-center px-6">
-          <ScrollReveal direction="up" distance={40}>
-            <div className="text-center">
-              <p
-                className="text-6xl md:text-8xl lg:text-9xl font-display font-bold select-none"
-                style={{ color: "hsl(0 0% 100% / 0.12)" }}
-              >
-                {title}
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* ═══ Features ═══ */}
       <section ref={featuresRef} className="py-28 lg:py-40">
