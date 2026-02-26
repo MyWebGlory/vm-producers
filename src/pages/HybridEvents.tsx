@@ -1,12 +1,13 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
+import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
 
 const HybridEvents = () => (
     <ServicePageLayout
     title="Hybrid Events"
     subtitle="Best of Both Worlds"
-    description="Bridging in-person and virtual audiences into one cohesive, engaging experience that maximizes reach and impact."
+    description="We create hybrid events that effectively engage both in-person and online attendees - from the same stage, at the same time."
     heroImage={hybridEventsImg}
     heroVideo={hybridEventsVideo}
     stats={[
@@ -16,20 +17,39 @@ const HybridEvents = () => (
     ]}
     features={[
       {
+        icon: Layers,
         title: "Unified Experience Design",
-        description: "Both rooms get the same show. In-person and online audiences feel the same energy.",
+        description: "In-person and online audiences feel the same show. Same energy, same content, same moments - no second-class stream.",
       },
       {
-        title: "Synchronized Content Delivery",
-        description: "Real-time content syncing between venues and screens: presentations, polls, and interactions work in perfect harmony.",
+        icon: Camera,
+        title: "Multi-Camera Live Production",
+        description: "Award-winning technical producers run your event on-site and remotely. Branded streams, split-screen layouts, and seamless feed switching.",
       },
       {
-        title: "Flexible Scaling",
-        description: "Start with an intimate room and extend to 100,000 online viewers. Our infrastructure adapts to your ambition.",
+        icon: Volume2,
+        title: "Full AV Production",
+        description: "Lighting, sound, staging, and dedicated crew for the in-person side. We assemble teams of any size, all delivering to the same standard.",
       },
       {
+        icon: Monitor,
+        title: "Platform Management",
+        description: "Complete virtual platform setup, customization, and live support. We handle all the technology so you can concentrate on your content.",
+      },
+      {
+        icon: MessageSquare,
+        title: "Audience Engagement for Both Rooms",
+        description: "Live polls, speaker Q&A, shared social wall, virtual booths, and group messaging - keeping every attendee active regardless of where they are.",
+      },
+      {
+        icon: Laptop,
+        title: "Online-Only Sessions",
+        description: "Extend beyond the physical venue with exclusive online-only sessions, breakouts, and networking for your remote audience.",
+      },
+      {
+        icon: Archive,
         title: "Post-Event Content Hub",
-        description: "All sessions recorded, edited, and delivered as on-demand content, extending the life of your event long after the curtain falls.",
+        description: "All sessions recorded, edited, and delivered as on-demand content. Your event keeps generating value long after the room empties.",
       },
     ]}
   />

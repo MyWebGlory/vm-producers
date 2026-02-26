@@ -6,6 +6,7 @@ import {
   useInView,
   AnimatePresence,
 } from "framer-motion";
+import { LucideIcon } from "lucide-react";
 import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ interface ServiceStat {
 }
 
 interface ServiceFeature {
+  icon?: LucideIcon;
   title: string;
   description: string;
 }
@@ -71,26 +73,31 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
 const FeatureCard = ({
   feature,
   index,
-  inView,
 }: {
   feature: ServiceFeature;
   index: number;
-  inView: boolean;
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
   const [hovered, setHovered] = useState(false);
+  const Icon = feature.icon;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.92 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      ref={ref}
+      initial={{ opacity: 0, y: 70, scale: 0.93, rotateX: 8 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : {}}
       transition={{
-        delay: 0.12 * index,
+        delay: index * 0.13,
         duration: 0.9,
         ease: [0.16, 1, 0.3, 1],
       }}
+      style={{ transformPerspective: 900 }}
+    >
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/25 hover:shadow-[0_8px_40px_hsl(var(--primary)/0.08)]"
+      className="group relative p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/25 hover:shadow-[0_8px_40px_hsl(var(--primary)/0.08)] h-full"
     >
       {/* Accent glow on hover */}
       <motion.div
@@ -103,30 +110,24 @@ const FeatureCard = ({
         }}
       />
 
-      {/* Large decorative number */}
-      <motion.span
-        className="absolute -top-4 -right-2 text-[8rem] lg:text-[10rem] font-display font-bold leading-none pointer-events-none select-none"
-        style={{ color: "hsl(var(--primary) / 0.04)" }}
-        animate={{ scale: hovered ? 1.08 : 1, x: hovered ? -8 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </motion.span>
-
       <div className="relative z-10">
-        {/* Small number badge */}
-        <motion.div
-          className="w-10 h-10 rounded-xl flex items-center justify-center mb-6 border border-primary/15"
-          style={{
-            background: "hsl(var(--primary) / 0.06)",
-          }}
-          animate={{ scale: hovered ? 1.1 : 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <span className="text-primary font-display font-bold text-sm">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </motion.div>
+        {/* Icon badge */}
+        {Icon && (
+          <motion.div
+            className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+            style={{
+              background: "hsl(var(--primary) / 0.08)",
+              border: "1px solid hsl(var(--primary) / 0.18)",
+            }}
+            animate={{ scale: hovered ? 1.12 : 1, rotate: hovered ? 6 : 0 }}
+            transition={{ duration: 0.35 }}
+          >
+            <Icon
+              strokeWidth={1.4}
+              style={{ width: "1.35rem", height: "1.35rem", color: "hsl(var(--primary))" }}
+            />
+          </motion.div>
+        )}
 
         <motion.h3
           className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-foreground mb-4"
@@ -148,6 +149,7 @@ const FeatureCard = ({
           transition={{ duration: 0.5 }}
         />
       </div>
+    </div>
     </motion.div>
   );
 };
@@ -164,10 +166,7 @@ const ServicePageLayout = ({
   additionalContent,
 }: ServicePageLayoutProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const featuresRef = useRef<HTMLDivElement>(null);
-  
   const ctaRef = useRef<HTMLDivElement>(null);
-  const featuresInView = useInView(featuresRef, { once: true, margin: "-80px" });
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
@@ -279,7 +278,7 @@ const ServicePageLayout = ({
       </div>
 
       {/* ═══ Features ═══ */}
-      <section ref={featuresRef} className="py-28 lg:py-40 relative overflow-hidden">
+      <section className="py-28 lg:py-40 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20 lg:mb-28">
             <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
@@ -293,14 +292,20 @@ const ServicePageLayout = ({
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {features.map((feature, i) => (
-              <FeatureCard
-                key={feature.title}
-                feature={feature}
-                index={i}
-                inView={featuresInView}
-              />
-            ))}
+            {features.map((feature, i) => {
+              const isOrphan = features.length % 2 !== 0 && i === features.length - 1;
+              return (
+                <div
+                  key={feature.title}
+                  className={isOrphan ? "md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto w-full" : ""}
+                >
+                  <FeatureCard
+                    feature={feature}
+                    index={i}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

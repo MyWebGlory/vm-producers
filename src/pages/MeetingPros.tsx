@@ -1,35 +1,50 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
+import { Zap, ClipboardList, MapPin, Plane, Monitor, Grid2x2 } from "lucide-react";
 
 const MeetingPros = () => (
   <ServicePageLayout
     title="Meeting Pros"
-    subtitle="Your Global Network"
-    description="A worldwide network of verified event professionals, matched within 48 hours across 70+ countries for any event need."
+    subtitle="Your Global Talent Network"
+    description="A worldwide network of verified event professionals matched within 48 hours, covering 70+ countries and 55+ specialties."
     heroImage={meetingProsImg}
     heroVideo={meetingProsVideo}
     stats={[
       { value: 70, suffix: "+", label: "Countries" },
       { value: 48, suffix: "h", label: "Matching Time" },
-      { value: 1000, suffix: "+", label: "Verified Pros" },
+      { value: 12, suffix: "K", label: "Meetings Supported" },
     ]}
     features={[
       {
-        title: "Vetted Professionals",
-        description: "Every professional in our network is thoroughly vetted: background checks, portfolio reviews, and client references verified.",
+        icon: Zap,
+        title: "48-Hour Talent Matching",
+        description: "Tell us what you need and we match you with the right professional within 48 hours or less - anywhere in the world, without compromise on quality.",
       },
       {
-        title: "48-Hour Matching",
-        description: "Tell us what you need and we'll match you with the perfect event professional within 48 hours, anywhere in the world.",
+        icon: ClipboardList,
+        title: "Project Management",
+        description: "Full-service event and project management from planning and logistics through to execution. Every detail handled, nothing left to chance.",
       },
       {
-        title: "On-Demand Staffing",
-        description: "Scale your team up or down for any event. From event managers to AV technicians, we have the talent you need.",
+        icon: MapPin,
+        title: "On-Site Implementation",
+        description: "Local meeting experts who know the venue, the market, and the logistics. They oversee and enhance your on-site operations from setup to strike.",
       },
       {
-        title: "Global Coverage",
-        description: "Whether it's Tokyo, New York, or Lagos, our network spans 70+ countries so you always have local expertise on the ground.",
+        icon: Plane,
+        title: "Travel Management",
+        description: "Dedicated travel managers handle all attendee transportation, accommodations, and scheduling so arrivals and departures just work.",
+      },
+      {
+        icon: Monitor,
+        title: "Virtual Producers & AV Specialists",
+        description: "Experienced virtual producers on the technical side, local AV specialists on the ground. State-of-the-art equipment, skilled operators.",
+      },
+      {
+        icon: Grid2x2,
+        title: "55+ Event Specialties",
+        description: "VIP coordinators, trade show supervisors, registration managers, booth supervisors, F&B planners, procurement experts, and more - all in one network.",
       },
     ]}
   />

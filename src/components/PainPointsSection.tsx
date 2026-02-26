@@ -39,7 +39,7 @@ const PainPointsSection = () => {
       <div className="max-w-5xl mx-auto px-6 py-28 lg:py-44">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-24 lg:mb-36">
+        <div ref={headerRef} className="mb-24 lg:mb-36 text-center">
           <motion.p
             initial={{ opacity: 0 }}
             animate={isHeaderInView ? { opacity: 1 } : {}}
@@ -50,7 +50,7 @@ const PainPointsSection = () => {
             What we hear every week
           </motion.p>
 
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.04] tracking-tight max-w-3xl">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.04] tracking-tight">
             {[
               { text: "We've seen what happens", dark: true },
               { text: "when events go wrong.", dark: false },

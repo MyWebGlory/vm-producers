@@ -82,14 +82,8 @@ const videoIndices = services
   .map((s, i) => (s.videoKey ? i : -1))
   .filter((i) => i !== -1);
 
-/* Volatile entry presets per card */
-const volatilePresets = [
-  { y: 120, x: -40, rotate: -2.5, scale: 0.88 },
-  { y: 160, x: 50, rotate: 3, scale: 0.85 },
-  { y: 140, x: -30, rotate: 1.5, scale: 0.9 },
-  { y: 180, x: 40, rotate: -2, scale: 0.86 },
-  { y: 100, x: 0, rotate: 1, scale: 0.92 },
-];
+/* Entry animation - y + scale only for smooth GPU compositing */
+const cardEntryDelays = [0, 0.13, 0.26, 0.39, 0.52];
 
 /* Single Bento Card */
 const BentoCard = ({
@@ -107,12 +101,12 @@ const BentoCard = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [hovered, setHovered] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const Icon = service.icon;
-  const preset = volatilePresets[index % volatilePresets.length];
+  const entryDelay = cardEntryDelays[index % cardEntryDelays.length];
 
   // Dynamically import video only when activated
   useEffect(() => {
@@ -147,22 +141,12 @@ const BentoCard = ({
   return (
     <motion.div
       ref={ref}
-      initial={{
-        opacity: 0,
-        y: preset.y,
-        x: preset.x,
-        rotate: preset.rotate,
-        scale: preset.scale,
-      }}
-      animate={
-        inView
-          ? { opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 }
-          : {}
-      }
+      initial={{ opacity: 0, y: 72, scale: 0.94 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{
-        duration: 1,
-        delay: index * 0.12,
-        ease: [0.16, 1, 0.3, 1],
+        duration: 1.0,
+        delay: entryDelay,
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={`relative group rounded-2xl overflow-hidden cursor-pointer ${className}`}
       style={{ willChange: "transform, opacity" }}

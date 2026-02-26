@@ -1,12 +1,13 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import videoProductionImg from "@/assets/video-production.webp";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
+import { Play, Camera, Star, PenTool, Film, RefreshCw, Sliders } from "lucide-react";
 
 const VideoProduction = () => (
   <ServicePageLayout
     title="Video Production"
     subtitle="Visual Storytelling"
-    description="Video that looks like it cost three times what it did. Fast turnaround, broadcast quality."
+    description="Video that looks like it cost three times what it did. Fast turnaround, broadcast quality, before and after your event."
     heroImage={videoProductionImg}
     heroVideo={videoProductionVideo}
     stats={[
@@ -16,20 +17,39 @@ const VideoProduction = () => (
     ]}
     features={[
       {
-        title: "Corporate Films & Brand Stories",
-        description: "Cinematic storytelling that captures your brand's essence, from company culture pieces to product launches and brand anthems.",
+        icon: Play,
+        title: "Event Promos & Teasers",
+        description: "Build pre-event excitement with sharp promotional videos. Promote your event, campaign, or organization to the right audience before the doors open.",
       },
       {
-        title: "Event Highlight Reels",
-        description: "Professional post-event videos that capture the energy and key moments, perfect for social media and stakeholder reports.",
-      },
-      {
+        icon: Camera,
         title: "Live Multi-Camera Production",
-        description: "Broadcast-quality multi-camera setups with real-time switching, graphics overlay, and professional directing.",
+        description: "Broadcast-quality multi-camera setups with real-time switching, graphics overlay, and professional directing - on-site or remote.",
       },
       {
+        icon: Star,
+        title: "Event Highlight Reels",
+        description: "Post-event videos that capture the energy and key moments. Built for social sharing, sponsor reports, and board decks.",
+      },
+      {
+        icon: PenTool,
+        title: "Whiteboard & Explainer Videos",
+        description: "Hand-drawn style explainer videos that educate and hold attention. Ideal for training, onboarding, and complex ideas that need clarity.",
+      },
+      {
+        icon: Film,
+        title: "Corporate Films & Brand Stories",
+        description: "Cinematic storytelling for company culture, product launches, and brand anthems. Produced for the long shelf life, not just the launch week.",
+      },
+      {
+        icon: RefreshCw,
+        title: "Evergreen & On-Demand Content",
+        description: "Turn your event recordings into replay-ready content, gated assets, or a full content library that keeps generating value month after month.",
+      },
+      {
+        icon: Sliders,
         title: "Post-Production Excellence",
-        description: "Color grading, motion graphics, sound design. Raw footage in, finished content out.",
+        description: "Color grading, motion graphics, sound design, and subtitles. Raw footage in, polished deliverable out - on your deadline.",
       },
     ]}
   />

@@ -1,6 +1,7 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import liveEventsImg from "@/assets/live-events.webp";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
+import { Layers, MapPin, Radio, Wrench } from "lucide-react";
 
 const LiveEvents = () => (
   <ServicePageLayout
@@ -16,18 +17,22 @@ const LiveEvents = () => (
     ]}
     features={[
       {
+        icon: Layers,
         title: "End-to-End Production",
         description: "From concept to execution, we manage every detail: staging, lighting, sound, and logistics, so you can focus on your message.",
       },
       {
+        icon: MapPin,
         title: "Venue Sourcing & Management",
         description: "We know the venues, handle the negotiations, and get it set up the way it needs to be.",
       },
       {
+        icon: Radio,
         title: "Live Streaming Integration",
         description: "Extend your reach beyond the venue with broadcast-quality live streaming, bringing your event to audiences worldwide in real time.",
       },
       {
+        icon: Wrench,
         title: "On-Site Technical Support",
         description: "AV, networking, power, and backup plans. Our crew has seen it before and knows how to fix it fast.",
       },

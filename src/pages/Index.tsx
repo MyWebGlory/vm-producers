@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
-const AboutSection = lazy(() => import("@/components/AboutSection"));
 const PainPointsSection = lazy(() => import("@/components/PainPointsSection"));
 const WhatYouGetSection = lazy(() => import("@/components/WhatYouGetSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
@@ -27,7 +26,6 @@ const Index = () => {
       <Suspense fallback={<div className="h-96" />}>
         <ServicesSection />
           <TestimonialsSection />
-          <AboutSection />
           <PainPointsSection />
           <WhatYouGetSection />
         <CTASection />
