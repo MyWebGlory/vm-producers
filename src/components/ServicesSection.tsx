@@ -192,7 +192,7 @@ const BentoCard = ({
 
         {/* Dark overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10"
+          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10 md:from-black/80 md:via-black/40"
           animate={{ opacity: hovered ? 1 : 0.85 }}
           transition={{ duration: 0.4 }}
         />
@@ -209,10 +209,10 @@ const BentoCard = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
+      <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 md:p-8">
         {/* Stat badge */}
         <motion.div
-          className="absolute top-5 right-5 flex flex-col items-end"
+          className="absolute top-3 right-3 sm:top-5 sm:right-5 flex flex-col items-end"
           animate={{ y: hovered ? -4 : 0 }}
           transition={{ duration: 0.4 }}
         >
@@ -242,7 +242,7 @@ const BentoCard = ({
 
         {/* Title */}
         <motion.h3
-          className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3"
+          className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3"
           style={{ color: "white" }}
           animate={{ x: hovered ? 4 : 0 }}
           transition={{ duration: 0.3 }}
@@ -252,7 +252,7 @@ const BentoCard = ({
 
         {/* Description */}
         <p
-          className="text-sm md:text-base leading-relaxed mb-4 max-w-md"
+          className="hidden sm:block text-sm md:text-base leading-relaxed mb-3 md:mb-4 max-w-md"
           style={{ color: "hsl(0 0% 100% / 0.65)" }}
         >
           {service.description}
@@ -342,7 +342,7 @@ const ServicesSection = () => {
         >
           Our Services
         </motion.p>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.05]">
+        <h2 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
           <SplitTextReveal text="Crafted to impress." delay={0.1} stagger={0.06} />
           <br />
           <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} className="text-muted-foreground" />
@@ -360,7 +360,7 @@ const ServicesSection = () => {
 
       {/* Bento Grid */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[380px] md:auto-rows-[420px] lg:auto-rows-[440px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 lg:gap-8 auto-rows-[240px] sm:auto-rows-[280px] md:auto-rows-[420px] lg:auto-rows-[440px]">
           <BentoCard service={services[0]} index={0} className="md:col-span-2 lg:col-span-3" isVideoActive={activeVideos.has(0)} onVideoEnded={() => handleVideoEnded(0)} />
           <BentoCard service={services[2]} index={2} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />
           <BentoCard service={services[1]} index={1} className="md:col-span-1 lg:col-span-1" isVideoActive={activeVideos.has(1)} onVideoEnded={() => handleVideoEnded(1)} />

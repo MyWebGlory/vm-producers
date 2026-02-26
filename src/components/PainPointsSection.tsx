@@ -36,10 +36,10 @@ const PainPointsSection = () => {
 
   return (
     <section className="relative bg-white overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 py-28 lg:py-44">
+<div className="max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-28 lg:py-44">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-24 lg:mb-36 text-center">
+        <div ref={headerRef} className="mb-10 md:mb-24 lg:mb-36 text-center">
           <motion.p
             initial={{ opacity: 0 }}
             animate={isHeaderInView ? { opacity: 1 } : {}}
@@ -50,7 +50,7 @@ const PainPointsSection = () => {
             What we hear every week
           </motion.p>
 
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.04] tracking-tight">
+          <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
             {[
               { text: "We've seen what happens", dark: true },
               { text: "when events go wrong.", dark: false },
@@ -73,7 +73,7 @@ const PainPointsSection = () => {
         </div>
 
         {/* Bento card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {/* Row 1: wide + narrow */}
           <PainCard point={painPoints[0]} index={0} wide />
           <PainCard point={painPoints[1]} index={1} />
@@ -113,10 +113,10 @@ const PainCard = ({
       animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : {}}
       transition={{ duration: 0.85, delay: index * 0.13, ease: [0.16, 1, 0.3, 1] }}
       style={{ transformPerspective: 900 }}
-      className={`${wide ? "md:col-span-2" : ""} ${full ? "md:col-span-3 flex justify-center" : ""}`}
+      className={`${wide ? "col-span-2 md:col-span-2" : "col-span-1"} ${full ? "col-span-2 md:col-span-3 flex justify-center" : ""}`}
     >
       <div
-        className={`relative flex flex-col justify-between gap-8 rounded-3xl p-8 lg:p-10 h-full overflow-hidden group ${full ? "w-full md:max-w-lg" : ""}`}
+        className={`relative flex flex-col justify-between gap-5 md:gap-8 rounded-3xl p-5 md:p-8 lg:p-10 h-full overflow-hidden group ${full ? "w-full md:max-w-lg" : ""}`}
         style={{
           background: "hsl(0 70% 98%)",
           border: "1.5px solid hsl(0 70% 52% / 0.45)",
@@ -131,16 +131,16 @@ const PainCard = ({
         />
 
         {/* Top row: icon + aside tag */}
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-2 md:gap-4">
           <div
-            className="flex items-center justify-center w-12 h-12 rounded-2xl shrink-0"
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-2xl shrink-0"
             style={{ background: "hsl(36 55% 42% / 0.1)", border: "1px solid hsl(36 55% 42% / 0.18)" }}
           >
-            <Icon strokeWidth={1.4} style={{ width: "1.35rem", height: "1.35rem", color: "hsl(36 55% 42%)" }} />
+            <Icon strokeWidth={1.4} style={{ width: "1.15rem", height: "1.15rem", color: "hsl(36 55% 42%)" }} />
           </div>
 
           <span
-            className="text-[10px] uppercase tracking-[0.22em] font-semibold font-display px-3 py-1.5 rounded-full shrink-0"
+            className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] md:tracking-[0.22em] font-semibold font-display px-2 md:px-3 py-1 md:py-1.5 rounded-full shrink-0 text-right leading-tight"
             style={{
               background: "hsl(36 55% 42% / 0.08)",
               color: "hsl(36 45% 38%)",
@@ -153,9 +153,8 @@ const PainCard = ({
 
         {/* Title */}
         <h3
-          className="font-display font-bold leading-snug relative z-10"
+          className="font-display font-bold leading-snug relative z-10 text-sm sm:text-base md:text-lg"
           style={{
-            fontSize: "clamp(1.15rem, 1.8vw, 1.3rem)",
             color: "hsl(var(--foreground))",
           }}
         >

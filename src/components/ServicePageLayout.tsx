@@ -280,24 +280,24 @@ const ServicePageLayout = ({
       {/* ═══ Features ═══ */}
       <section className="py-16 md:py-28 lg:py-40 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12 md:mb-20 lg:mb-28">
+          <div className="text-center mb-10 md:mb-20 lg:mb-28">
             <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
               What We Offer
             </p>
             <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
-            <h2 className="text-3xl md:text-5xl lg:text-7xl font-display font-bold text-foreground leading-tight">
+            <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-7xl font-display font-bold text-foreground">
               <SplitTextReveal text="Built for" delay={0.1} />{" "}
               <SplitTextReveal text="excellence." delay={0.3} className="text-muted-foreground" />
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
             {features.map((feature, i) => {
               const isOrphan = features.length % 2 !== 0 && i === features.length - 1;
               return (
                 <div
                   key={feature.title}
-                  className={isOrphan ? "md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto w-full" : ""}
+                  className={isOrphan ? "col-span-2 md:col-span-2 md:max-w-[calc(50%-0.75rem)] md:mx-auto w-full" : "col-span-1"}
                 >
                   <FeatureCard
                     feature={feature}

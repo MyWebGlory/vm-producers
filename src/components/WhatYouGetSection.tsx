@@ -137,7 +137,7 @@ const ItemCard = ({
               : "hsl(0 0% 0% / 0.1)",
           }}
           transition={{ duration: 0.35 }}
-          className="relative p-7 lg:p-9 rounded-3xl h-full flex flex-col items-center text-center gap-5 overflow-hidden"
+          className="relative p-5 md:p-7 lg:p-9 rounded-3xl h-full flex flex-col items-center text-center gap-4 md:gap-5 overflow-hidden"
           style={{
             background: "hsl(142 45% 97%)",
             border: "1.5px solid hsl(142 45% 40% / 0.55)",
@@ -161,7 +161,7 @@ const ItemCard = ({
               rotate: hovered ? 8 : 0,
             }}
             transition={{ type: "spring", stiffness: 300, damping: 18 }}
-            className="relative z-10 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
+            className="relative z-10 w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shrink-0"
             style={{
               background: hovered
                 ? "hsl(var(--primary) / 0.22)"
@@ -170,7 +170,7 @@ const ItemCard = ({
               transition: "background 0.35s",
             }}
           >
-            <Icon className="w-6 h-6" style={{ color: "hsl(var(--primary))" }} />
+            <Icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: "hsl(var(--primary))" }} />
           </motion.div>
 
           {/* Tag */}
@@ -192,7 +192,7 @@ const ItemCard = ({
 
           {/* Title masked slide-up */}
           <h3
-            className="relative z-10 text-lg md:text-xl lg:text-2xl font-display font-bold leading-tight overflow-hidden"
+            className="relative z-10 text-base md:text-xl lg:text-2xl font-display font-bold leading-tight overflow-hidden"
             style={{ color: "hsl(var(--foreground))" }}
           >
             <motion.span
@@ -278,7 +278,7 @@ const WhatYouGetSection = () => {
           </motion.p>
 
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.05]"
+            className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-6xl font-display font-bold"
             style={{ color: "hsl(var(--foreground))" }}
           >
             {["What you get", "with Virtual", "Producers."].map((line, li) => (
@@ -334,14 +334,14 @@ const WhatYouGetSection = () => {
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           {items.slice(0, 6).map((item, i) => (
             <ItemCard key={item.title} item={item} index={i} />
           ))}
         </div>
         {/* Last card centered */}
         {items[6] && (
-          <div className="mt-5 lg:mt-6 flex justify-center">
+            <div className="mt-4 md:mt-5 lg:mt-6 flex justify-center">
             <div className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.833rem)]">
               <ItemCard item={items[6]} index={6} />
             </div>
