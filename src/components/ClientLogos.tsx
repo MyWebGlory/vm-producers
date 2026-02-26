@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ScrollReveal } from "@/components/ScrollAnimations";
+import { ScrollReveal, SplitTextReveal, VelocityScrollBand, RevealLine } from "@/components/ScrollAnimations";
 
 import nikeLogo from "@/assets/logos/nike.png";
 import samsungLogo from "@/assets/logos/samsung-hd.png";
@@ -50,8 +50,8 @@ const ClientLogos = () => {
             They Trust Us
           </motion.p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
-            Backed by the{" "}
-            <span className="glow-text">World's Best</span>
+            <SplitTextReveal text="Backed by the" delay={0.1} />{" "}
+            <SplitTextReveal text="World's Best" delay={0.3} className="glow-text" />
           </h2>
           <p className="text-muted-foreground text-lg mt-4 max-w-xl mx-auto">
             From Fortune 500 giants to iconic brands, they chose us for their biggest moments.
@@ -111,6 +111,14 @@ const ClientLogos = () => {
           ))}
         </div>
       </motion.div>
+      {/* Velocity-reactive marquee band */}
+      <div className="relative z-10 mt-16 border-t border-b border-border/30">
+        <VelocityScrollBand
+          items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Fortune 500", "2000+ Events", "70+ Countries"]}
+          baseSpeed={60}
+          separator="◆"
+        />
+      </div>
     </section>
   );
 };

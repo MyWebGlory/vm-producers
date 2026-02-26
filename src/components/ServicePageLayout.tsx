@@ -6,7 +6,7 @@ import {
   useInView,
   AnimatePresence,
 } from "framer-motion";
-import { ScrollReveal, AnimatedCounter, MagneticHover } from "@/components/ScrollAnimations";
+import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -275,20 +275,22 @@ const ServicePageLayout = ({
             ))}
           </div>
         </div>
+        <RevealLine delay={0.2} />
       </div>
 
       {/* ═══ Features ═══ */}
-      <section ref={featuresRef} className="py-28 lg:py-40">
-        <div className="max-w-6xl mx-auto px-6">
-          <ScrollReveal direction="up" distance={40} className="text-center mb-20 lg:mb-28">
+      <section ref={featuresRef} className="py-28 lg:py-40 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20 lg:mb-28">
             <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
               What We Offer
             </p>
+            <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-foreground leading-tight">
-              Built for{" "}
-              <span className="text-muted-foreground">excellence.</span>
+              <SplitTextReveal text="Built for" delay={0.1} />{" "}
+              <SplitTextReveal text="excellence." delay={0.3} className="text-muted-foreground" />
             </h2>
-          </ScrollReveal>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {features.map((feature, i) => (

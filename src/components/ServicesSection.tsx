@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDeferredVideo } from "@/hooks/useDeferredVideo";
+import { SplitTextReveal, VelocityScrollBand } from "@/components/ScrollAnimations";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
@@ -336,9 +337,19 @@ const ServicesSection = () => {
   }, [fillSlots]);
 
   return (
-    <section id="services" className="pb-28 lg:pb-40 pt-10 lg:pt-16 relative">
+    <section id="services" className="pb-28 lg:pb-40 pt-10 lg:pt-16 relative overflow-hidden">
+      {/* Subtle warm-to-cool background gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 50% at 20% 0%, hsl(36 55% 42% / 0.05) 0%, transparent 60%)," +
+            "radial-gradient(ellipse 60% 40% at 80% 100%, hsl(36 55% 42% / 0.04) 0%, transparent 55%)," +
+            "radial-gradient(ellipse 50% 60% at 50% 50%, hsl(215 60% 40% / 0.025) 0%, transparent 70%)",
+        }}
+      />
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-16 lg:mb-24 text-center">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-10 lg:mb-16 text-center relative z-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -347,20 +358,24 @@ const ServicesSection = () => {
         >
           Our Services
         </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-          animate={headerInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.05]"
-        >
-          Crafted to impress.
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.05]">
+          <SplitTextReveal text="Crafted to impress." delay={0.1} stagger={0.06} />
           <br />
-          <span className="text-muted-foreground">Built to perform.</span>
-        </motion.h2>
+          <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} className="text-muted-foreground" />
+        </h2>
+      </div>
+
+      {/* Velocity scroll band - reacts to scroll speed */}
+      <div className="border-t border-b border-border/25 mb-14 lg:mb-20 relative z-10">
+        <VelocityScrollBand
+          items={["Live Events", "Virtual Events", "Hybrid", "Video Production", "Meeting Pros", "Fortune 500", "10K+ Attendees", "70+ Countries", "2000+ Events", "95% Retention"]}
+          baseSpeed={55}
+          separator="◆"
+        />
       </div>
 
       {/* Bento Grid */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-8 auto-rows-[380px] md:auto-rows-[420px] lg:auto-rows-[440px]">
           <BentoCard service={services[0]} index={0} className="md:col-span-2 lg:col-span-3" isVideoActive={activeVideos.has(0)} onVideoEnded={() => handleVideoEnded(0)} />
           <BentoCard service={services[2]} index={2} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />

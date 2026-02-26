@@ -1,23 +1,40 @@
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { RevealLine } from "@/components/ScrollAnimations";
 import vpLogo from "@/assets/vp-logo-white.png";
 
 const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
   return (
-    <footer className="bg-card border-t border-border">
+    <footer ref={ref} className="bg-card border-t border-border">
+      <RevealLine delay={0} className="" />
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           {/* Brand & Description */}
-          <div className="space-y-6">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
             <Link to="/" className="flex items-center">
               <img src={vpLogo} alt="Virtual Producers" className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Virtual Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.
             </p>
-          </div>
+          </motion.div>
 
           {/* Get in Touch */}
-          <div className="space-y-5">
+          <motion.div
+            className="space-y-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
             <h3 className="font-display font-bold text-foreground text-lg">Get in Touch</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
@@ -50,10 +67,15 @@ const Footer = () => {
             >
               Schedule a Call
             </a>
-          </div>
+          </motion.div>
 
           {/* Navigation */}
-          <div className="space-y-5">
+          <motion.div
+            className="space-y-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
             <h3 className="font-display font-bold text-foreground text-lg">About</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
@@ -85,7 +107,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
 

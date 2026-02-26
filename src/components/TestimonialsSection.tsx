@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { RevealLine, SplitTextReveal } from "@/components/ScrollAnimations";
 import liveEventsImg from "@/assets/live-events.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import virtualEventsImg from "@/assets/virtual-events-conference.webp";
@@ -145,8 +146,9 @@ const TestimonialsSection = () => {
           <p className="font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium" style={{ color: "white", textShadow: "0 0 8px hsl(var(--primary)), 0 0 2px hsl(var(--primary))" }}>
             Testimonials
           </p>
+          <RevealLine delay={0.05} color="from-transparent via-white/20 to-transparent" className="max-w-[80px] mx-auto mb-6" />
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold" style={{ color: "white" }}>
-            What they say.
+            <SplitTextReveal text="What they say." delay={0.1} stagger={0.07} />
           </h2>
         </motion.div>
 

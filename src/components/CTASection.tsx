@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { MagneticHover } from "@/components/ScrollAnimations";
+import { MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
+import { ConstellationBG } from "@/components/ConstellationBG";
 import heroBg from "@/assets/hero-bg.webp";
 
 const CTASection = () => {
@@ -29,27 +30,25 @@ const CTASection = () => {
         <div className="absolute inset-0 bg-black/65" />
       </motion.div>
 
+      {/* Constellation network background */}
+      <ConstellationBG variant="dark" className="z-[1] opacity-70" />
+
       {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="font-display text-xs uppercase tracking-[0.3em] mb-6 font-medium"
           style={{ color: "hsl(var(--primary))" }}
         >
           Let's Talk
         </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-          transition={{ delay: 0.15, duration: 0.9 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight"
-          style={{ color: "white" }}
-        >
-          Ready to create something{" "}
-          <span style={{ color: "hsl(0 0% 100% / 0.5)" }}>extraordinary?</span>
-        </motion.h2>
+        <RevealLine delay={0.05} className="mb-8 max-w-[120px] mx-auto" />
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight" style={{ color: "white" }}>
+          <SplitTextReveal text="Ready to create something" delay={0.1} stagger={0.04} className="justify-center" />{" "}
+          <SplitTextReveal text="extraordinary?" delay={0.45} stagger={0.06} className="opacity-50 justify-center" />
+        </h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

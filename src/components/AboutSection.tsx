@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { ScrollReveal, AnimatedCounter } from "@/components/ScrollAnimations";
+import { ScrollReveal, AnimatedCounter, SplitTextReveal, ImageReveal, RevealLine } from "@/components/ScrollAnimations";
 import aboutEventImg from "@/assets/about-event.webp";
 
 // Dynamic imports - videos loaded only when section is visible
@@ -45,11 +45,14 @@ const AboutSection = () => {
   }, [currentVideo, videoSrcs]);
 
   return (
-    <section ref={sectionRef} className="py-32 lg:py-44 bg-card">
-      <div className="max-w-6xl mx-auto px-6">
+    <section ref={sectionRef} className="py-32 lg:py-44 bg-card relative overflow-hidden">
+      {/* Ambient floating orbs */}
+      {/* About section content */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row gap-16 md:gap-20 items-center">
           {/* Video carousel */}
-          <ScrollReveal direction="left" className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2">
+          <ImageReveal className="rounded-3xl" delay={0.1}>
             <div className="rounded-3xl overflow-hidden relative aspect-[4/3] bg-muted">
               {/* Static image shown immediately as placeholder */}
               <img
@@ -72,7 +75,8 @@ const AboutSection = () => {
                 />
               ))}
             </div>
-          </ScrollReveal>
+          </ImageReveal>
+          </div>
 
           {/* Content */}
           <ScrollReveal direction="right" className="w-full md:w-1/2 space-y-8">
@@ -84,15 +88,10 @@ const AboutSection = () => {
             >
               Why Us
             </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.7 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground"
-            >
-              Experience the best in{" "}
-              <span className="text-muted-foreground">event production.</span>
-            </motion.h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
+              <SplitTextReveal text="Experience the best in" delay={0.2} />{" "}
+              <SplitTextReveal text="event production." delay={0.45} className="text-muted-foreground" />
+            </h2>
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -117,6 +116,7 @@ const AboutSection = () => {
               <span className="text-muted-foreground text-sm">client retention rate</span>
             </motion.div>
 
+            <RevealLine delay={0.55} className="mb-2" />
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
