@@ -23,7 +23,7 @@ const services = [
   {
     title: "Live Events",
     icon: Mic,
-    description: "Seamless, unforgettable in-person experiences, from intimate gatherings to large-scale productions.",
+    description: "In-person events from 50 to 50,000. Run tight, on budget, on time.",
     image: liveEventsImg,
     videoKey: "liveEvents" as const,
     href: "/live-events",
@@ -56,7 +56,7 @@ const services = [
   {
     title: "Video Production",
     icon: Video,
-    description: "Captivating video content from teasers to highlight reels that elevate your brand.",
+    description: "Teasers, recaps, brand films. Shot and delivered fast.",
     image: videoProductionImg,
     videoKey: "videoProduction" as const,
     href: "/video-production",
@@ -82,7 +82,7 @@ const videoIndices = services
   .map((s, i) => (s.videoKey ? i : -1))
   .filter((i) => i !== -1);
 
-/* ── Volatile entry presets per card ── */
+/* Volatile entry presets per card */
 const volatilePresets = [
   { y: 120, x: -40, rotate: -2.5, scale: 0.88 },
   { y: 160, x: 50, rotate: 3, scale: 0.85 },
@@ -91,7 +91,7 @@ const volatilePresets = [
   { y: 100, x: 0, rotate: 1, scale: 0.92 },
 ];
 
-/* ── Single Bento Card ── */
+/* Single Bento Card */
 const BentoCard = ({
   service,
   index,
@@ -289,7 +289,7 @@ const BentoCard = ({
   );
 };
 
-/* ── Main Section ── */
+/* Main Section */
 const ServicesSection = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });

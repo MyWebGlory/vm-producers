@@ -33,7 +33,7 @@ interface ServicePageLayoutProps {
   additionalContent?: ReactNode;
 }
 
-/* ── Deferred Hero Video ── */
+/* Deferred Hero Video */
 const DeferredHeroVideo = ({ src }: { src: string }) => {
   const [show, setShow] = useState(false);
 
@@ -67,7 +67,7 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
   );
 };
 
-/* ── Feature Card ── */
+/* Feature Card */
 const FeatureCard = ({
   feature,
   index,
@@ -152,7 +152,7 @@ const FeatureCard = ({
   );
 };
 
-/* ── Main Layout ── */
+/* Main Layout */
 const ServicePageLayout = ({
   title,
   subtitle,
@@ -352,7 +352,7 @@ const ServicePageLayout = ({
             className="text-lg max-w-xl mx-auto mb-12 leading-relaxed"
             style={{ color: "hsl(0 0% 100% / 0.7)" }}
           >
-            We fit seamlessly within any organization. Don't tackle it on your own.
+            Your event deserves a team that's done it before. We're ready when you are.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 15 }}

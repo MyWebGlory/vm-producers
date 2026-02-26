@@ -29,7 +29,7 @@ const VirtualEvents = () => (
       },
       {
         title: "Analytics & Reporting",
-        description: "Comprehensive post-event data: attendance metrics, engagement scores, session analytics, and ROI measurement dashboards.",
+        description: "Attendance, drop-off rates, session engagement, ROI. One clean report after the event.",
       },
     ]}
   />

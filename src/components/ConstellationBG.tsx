@@ -1,5 +1,5 @@
 /**
- * ConstellationBG — static SVG network of nodes + edges used as a decorative
+ * ConstellationBG - static SVG network of nodes + edges used as a decorative
  * section background. Zero animations, zero canvas, zero JS at runtime.
  */
 
@@ -14,34 +14,34 @@ interface EdgeDef {
   b: number;
 }
 
-// Nodes spread across a 1400×3200 viewBox — covers Services through Testimonials.
+// Nodes spread across a 1400x3200 viewBox - covers Services through Testimonials.
 const NODES: NodeDef[] = [
-  // ── Services band (y 80–600) ──
+  // Services band (y 80-600)
   { x: 110,  y: 130,  label: "Live Events" },        // 0
   { x: 1295, y: 180,  label: "Virtual Events" },     // 1
   { x: 700,  y: 220,  label: "70+ Countries" },      // 2
   { x: 980,  y: 300,  label: "Fortune 500" },        // 3
   { x: 355,  y: 420,  label: "Hybrid" },             // 4
   { x: 1055, y: 530,  label: "Video Production" },   // 5
-  // ── About band (y 650–1200) ──
+  // About band (y 650-1200)
   { x: 190,  y: 720,  label: "100K Attendees" },     // 6
   { x: 845,  y: 780,  label: "Streaming" },          // 7
   { x: 1200, y: 880,  label: "95% Retention" },      // 8
   { x: 500,  y: 990,  label: "Meeting Pros" },       // 9
   { x: 700,  y: 1100, label: "2,000+ Events" },      // 10
-  // ── PainPoints band (y 1250–1750) ──
+  // PainPoints band (y 1250-1750)
   { x: 130,  y: 1300, label: "On-Site Support" },    // 11
   { x: 1260, y: 1380, label: "Hybrid Production" },  // 12
   { x: 600,  y: 1480, label: "48-hr Match" },        // 13
   { x: 980,  y: 1600, label: "Global Network" },     // 14
-  // ── WhatYouGet band (y 1850–2500) ──
+  // WhatYouGet band (y 1850-2500)
   { x: 280,  y: 1870, label: "500+ Events" },        // 15
   { x: 1100, y: 1950, label: "White-Glove" },        // 16
   { x: 700,  y: 2100, label: "Broadcast Quality" },  // 17
   { x: 170,  y: 2310, label: "Live Streaming" },     // 18
   { x: 1280, y: 2280, label: "100% Success" },       // 19
   { x: 650,  y: 2480, label: "70+ Destinations" },   // 20
-  // ── Testimonials band (y 2600–3100) ──
+  // Testimonials band (y 2600-3100)
   { x: 360,  y: 2680, label: "Client Success" },     // 21
   { x: 1050, y: 2720, label: "Trusted Worldwide" },  // 22
   { x: 700,  y: 2900, label: "5-Star Reviews" },     // 23
@@ -123,7 +123,7 @@ export function ConstellationBG({
           );
         })}
 
-        {/* Nodes — dot only, no outer ring */}
+        {/* Nodes - dot only, no outer ring */}
         {NODES.map((n, i) => (
           <g key={i} transform={`translate(${n.x},${n.y})`}>
             <circle r="3" fill={dotFill} />

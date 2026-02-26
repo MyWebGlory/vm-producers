@@ -76,8 +76,8 @@ const HeroSection = () => {
               className="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
               style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
             >
-              Turn your vision into reality with expert event production, seamless logistics,
-              and unforgettable experiences that captivate.
+              We produce events that run on time, look great,
+              and keep people talking.
             </motion.p>
 
             <motion.div

@@ -13,7 +13,7 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Subtle ambient color patches — very low opacity golden tones */}
+      {/* Subtle ambient color patches - very low opacity golden tones */}
       <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden" style={{ zIndex: 0 }}>
         <div style={{ position: "absolute", top: "8%",  left: "-10%", width: "55vw", height: "55vw", borderRadius: "50%", background: "radial-gradient(circle, hsl(36 55% 55% / 0.07) 0%, transparent 70%)" }} />
         <div style={{ position: "absolute", top: "30%", right: "-12%", width: "45vw", height: "45vw", borderRadius: "50%", background: "radial-gradient(circle, hsl(36 55% 55% / 0.05) 0%, transparent 70%)" }} />

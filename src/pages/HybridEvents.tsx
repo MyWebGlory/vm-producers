@@ -17,7 +17,7 @@ const HybridEvents = () => (
     features={[
       {
         title: "Unified Experience Design",
-        description: "We craft seamless experiences where both physical and remote attendees feel equally valued and engaged throughout your event.",
+        description: "Both rooms get the same show. In-person and online audiences feel the same energy.",
       },
       {
         title: "Synchronized Content Delivery",

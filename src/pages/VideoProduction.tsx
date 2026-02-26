@@ -6,7 +6,7 @@ const VideoProduction = () => (
   <ServicePageLayout
     title="Video Production"
     subtitle="Visual Storytelling"
-    description="Captivating video content from teasers to highlight reels that elevate your brand and leave a lasting impression."
+    description="Video that looks like it cost three times what it did. Fast turnaround, broadcast quality."
     heroImage={videoProductionImg}
     heroVideo={videoProductionVideo}
     stats={[
@@ -29,7 +29,7 @@ const VideoProduction = () => (
       },
       {
         title: "Post-Production Excellence",
-        description: "Color grading, motion graphics, sound design, and editing that transforms raw footage into polished, compelling content.",
+        description: "Color grading, motion graphics, sound design. Raw footage in, finished content out.",
       },
     ]}
   />

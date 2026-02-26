@@ -6,7 +6,7 @@ const LiveEvents = () => (
   <ServicePageLayout
     title="Live Events"
     subtitle="In-Person Excellence"
-    description="Seamless and unforgettable in-person experiences, from intimate gatherings to large-scale productions that leave lasting impressions."
+    description="In-person events that run on time, look sharp, and hold together under pressure."
     heroImage={liveEventsImg}
     heroVideo={liveEventsVideo}
     stats={[
@@ -21,7 +21,7 @@ const LiveEvents = () => (
       },
       {
         title: "Venue Sourcing & Management",
-        description: "Access our global network of premium venues. We handle negotiations, setup, and coordination to ensure a flawless experience.",
+        description: "We know the venues, handle the negotiations, and get it set up the way it needs to be.",
       },
       {
         title: "Live Streaming Integration",
@@ -29,7 +29,7 @@ const LiveEvents = () => (
       },
       {
         title: "On-Site Technical Support",
-        description: "Our experienced technical crew ensures everything runs smoothly: AV, networking, power, and contingency plans for any scenario.",
+        description: "AV, networking, power, and backup plans. Our crew has seen it before and knows how to fix it fast.",
       },
     ]}
   />

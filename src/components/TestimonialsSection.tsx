@@ -15,7 +15,7 @@ const testimonials = [
     initials: "JM",
   },
   {
-    text: "Their team was incredibly professional and made our hybrid conference seamless. The production quality was outstanding and our attendees loved every moment.",
+    text: "Their team ran our hybrid conference without a single hitch. The production held up under pressure, and attendees on both sides felt it.",
     author: "Sarah Chen",
     company: "Fortune 500 Client",
     initials: "SC",

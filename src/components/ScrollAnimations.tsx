@@ -193,10 +193,10 @@ export const MagneticHover = ({ children, className = "" }: { children: React.Re
   );
 };
 
-// ─── PREMIUM SCROLL ANIMATIONS ───────────────────────────────────────────────
+// PREMIUM SCROLL ANIMATIONS
 
 /**
- * SplitTextReveal — word-by-word masked slide-up reveal
+ * SplitTextReveal - word-by-word masked slide-up reveal
  * Each word is wrapped in an overflow-hidden container;
  * the inner span slides up from below (cinema subtitle style).
  */
@@ -222,7 +222,7 @@ export const SplitTextReveal = ({
   const words = text.split(" ");
 
   return (
-    // @ts-ignore – dynamic tag
+    // @ts-ignore - dynamic tag
     <Tag ref={ref} className={`inline-flex flex-wrap gap-x-[0.25em] ${className}`}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden">
@@ -245,7 +245,7 @@ export const SplitTextReveal = ({
 };
 
 /**
- * RevealLine — a horizontal rule that expands from left on scroll
+ * RevealLine - a horizontal rule that expands from left on scroll
  */
 export const RevealLine = ({
   className = "",
@@ -273,7 +273,7 @@ export const RevealLine = ({
 };
 
 /**
- * FloatingOrbs — decorative ambient glow orbs that float in the background
+ * FloatingOrbs - decorative ambient glow orbs that float in the background
  */
 export const FloatingOrbs = ({
   className = "",
@@ -320,7 +320,7 @@ export const FloatingOrbs = ({
 };
 
 /**
- * ScrollBand — infinite horizontal marquee of short text items
+ * ScrollBand - infinite horizontal marquee of short text items
  * Creates the luxury-brand style scrolling text band
  */
 export const ScrollBand = ({
@@ -361,7 +361,7 @@ export const ScrollBand = ({
 };
 
 /**
- * ImageReveal — reveals an image with a solid panel sweeping away
+ * ImageReveal - reveals an image with a solid panel sweeping away
  * Wraps children in a clip masking container
  */
 export const ImageReveal = ({
@@ -400,7 +400,7 @@ export const ImageReveal = ({
 };
 
 /**
- * VelocityScrollBand — speed changes based on scroll velocity (most premium)
+ * VelocityScrollBand - speed changes based on scroll velocity (most premium)
  * Wraps a ScrollBand whose speed reacts to the user's scroll speed.
  */
 export const VelocityScrollBand = ({
