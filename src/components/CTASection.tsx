@@ -18,7 +18,7 @@ const CTASection = () => {
     <section
       id="contact"
       ref={ref}
-      className="relative py-36 lg:py-52 overflow-hidden"
+      className="relative py-20 md:py-36 lg:py-52 overflow-hidden"
     >
       {/* Parallax background image */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
@@ -45,7 +45,7 @@ const CTASection = () => {
           Let's Talk
         </motion.p>
         <RevealLine delay={0.05} className="mb-8 max-w-[120px] mx-auto" />
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight" style={{ color: "white" }}>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 md:mb-8 leading-tight" style={{ color: "white" }}>
           <SplitTextReveal text="Ready to create something" delay={0.1} stagger={0.04} className="justify-center" />{" "}
           <SplitTextReveal text="extraordinary?" delay={0.45} stagger={0.06} className="opacity-50 justify-center" />
         </h2>

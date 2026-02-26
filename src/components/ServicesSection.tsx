@@ -342,7 +342,7 @@ const ServicesSection = () => {
         >
           Our Services
         </motion.p>
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.05]">
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.05]">
           <SplitTextReveal text="Crafted to impress." delay={0.1} stagger={0.06} />
           <br />
           <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} className="text-muted-foreground" />

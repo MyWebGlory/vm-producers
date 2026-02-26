@@ -52,7 +52,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden lg:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -77,12 +77,12 @@ const Navbar = () => {
           href="https://www.vmproducers.com/contact"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
+          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
         >
           Free Consultation
         </a>
 
-        <button onClick={() => setIsOpen(!isOpen)} className={`md:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
+        <button onClick={() => setIsOpen(!isOpen)} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-t border-border/50"
+            className="lg:hidden glass-strong border-t border-border/50"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (

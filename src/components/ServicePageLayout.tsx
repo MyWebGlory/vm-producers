@@ -97,7 +97,7 @@ const FeatureCard = ({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/25 hover:shadow-[0_8px_40px_hsl(var(--primary)/0.08)] h-full"
+      className="group relative p-6 md:p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/25 hover:shadow-[0_8px_40px_hsl(var(--primary)/0.08)] h-full"
     >
       {/* Accent glow on hover */}
       <motion.div
@@ -220,7 +220,7 @@ const ServicePageLayout = ({
               initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.5, duration: 0.9 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] mb-8"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.05] md:leading-[0.95] mb-6 md:mb-8"
               style={{ color: "white" }}
             >
               {title}
@@ -254,12 +254,12 @@ const ServicePageLayout = ({
 
       {/* ═══ Stats ═══ */}
       <div className="relative z-20 bg-card border-t border-border/40">
-        <div className="max-w-5xl mx-auto px-6 py-10 md:py-14">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14">
           <div className="grid grid-cols-3 divide-x divide-border/60">
             {stats.map((stat) => (
               <ScrollReveal key={stat.label} direction="up" distance={30}>
                 <div className="text-center px-4">
-                  <p className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
+                  <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
                     <AnimatedCounter
                       value={stat.value}
                       prefix={stat.prefix || ""}
@@ -278,14 +278,14 @@ const ServicePageLayout = ({
       </div>
 
       {/* ═══ Features ═══ */}
-      <section className="py-28 lg:py-40 relative overflow-hidden">
+      <section className="py-16 md:py-28 lg:py-40 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-20 lg:mb-28">
+          <div className="text-center mb-12 md:mb-20 lg:mb-28">
             <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
               What We Offer
             </p>
             <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-foreground leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-display font-bold text-foreground leading-tight">
               <SplitTextReveal text="Built for" delay={0.1} />{" "}
               <SplitTextReveal text="excellence." delay={0.3} className="text-muted-foreground" />
             </h2>

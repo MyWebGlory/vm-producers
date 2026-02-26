@@ -55,7 +55,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] mb-8"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] mb-6 md:mb-8"
               style={{ color: "white" }}
             >
               Your Ultimate
@@ -73,7 +73,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+              className="text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
               style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
             >
               We produce events that run on time, look great,
@@ -117,15 +117,15 @@ const HeroSection = () => {
         <div className="max-w-5xl mx-auto px-6 py-10 md:py-14">
           <div className="grid grid-cols-3 divide-x divide-border/60">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center px-4">
-                <p className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground">
+              <div key={stat.label} className="text-center px-2 md:px-4">
+                <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold text-foreground">
                   <AnimatedCounter
                     value={stat.value}
                     prefix={stat.prefix || ""}
                     suffix={stat.suffix || ""}
                   />
                 </p>
-                <p className="text-sm md:text-base mt-2 text-muted-foreground font-medium">
+                <p className="text-xs sm:text-sm md:text-base mt-1.5 md:mt-2 text-muted-foreground font-medium">
                   {stat.label}
                 </p>
               </div>
@@ -136,7 +136,7 @@ const HeroSection = () => {
 
       {/* Review platform badges - standalone centered strip */}
       <div className="relative z-20 bg-card pb-14 md:pb-20">
-        <div className="flex items-center justify-center gap-8 md:gap-14">
+        <div className="flex items-center justify-center gap-4 md:gap-8 lg:gap-14 flex-wrap">
           {/* Stars */}
           <div className="flex items-center gap-1.5">
             {[...Array(5)].map((_, i) => (
@@ -146,7 +146,7 @@ const HeroSection = () => {
             ))}
           </div>
           {/* Capterra */}
-          <span className="text-muted-foreground font-bold text-lg md:text-xl tracking-wide flex items-center gap-2.5">
+          <span className="text-muted-foreground font-bold text-base md:text-xl tracking-wide flex items-center gap-2">
             <svg className="w-7 h-7 md:w-8 md:h-8" viewBox="0 0 24 24" fill="none">
               <path d="M5 2l7 4 7-4v8l-7 4-7-4V2z" fill="hsl(var(--primary))" opacity="0.7" />
               <path d="M5 10l7 4 7-4v8l-7 4-7-4v-8z" fill="hsl(var(--primary))" opacity="0.4" />
@@ -154,14 +154,14 @@ const HeroSection = () => {
             Capterra
           </span>
           {/* Trustpilot */}
-          <span className="text-muted-foreground font-bold text-lg md:text-xl tracking-wide flex items-center gap-2.5">
+          <span className="text-muted-foreground font-bold text-base md:text-xl tracking-wide flex items-center gap-2">
             <svg className="w-7 h-7 md:w-8 md:h-8" viewBox="0 0 24 24" fill="none">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00b67a" />
             </svg>
             Trustpilot
           </span>
           {/* Google */}
-          <span className="text-muted-foreground font-bold text-lg md:text-xl tracking-wide flex items-center gap-2.5">
+          <span className="text-muted-foreground font-bold text-base md:text-xl tracking-wide flex items-center gap-2">
             <svg className="w-7 h-7 md:w-8 md:h-8" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
