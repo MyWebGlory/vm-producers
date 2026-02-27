@@ -164,8 +164,8 @@ const ItemCard = ({ item, index }: { item: (typeof items)[number]; index: number
 
           {/* Title */}
           <h3
-            className="relative z-10 text-base md:text-lg lg:text-xl font-display font-bold leading-tight"
-            style={{ color: "hsl(var(--foreground))" }}
+            className="relative z-10 text-base md:text-xl lg:text-2xl font-display font-black leading-tight"
+            style={{ color: a.icon }}
           >
             <span className="block overflow-hidden">
               <motion.span
@@ -224,12 +224,12 @@ const WhatYouGetSection = () => {
           backgroundSize: "28px 28px",
         }}
       />
-      {/* Large arc ring — right side */}
+      {/* Large arc ring - right side */}
       <svg className="absolute -right-32 top-1/4 w-[580px] h-[580px] pointer-events-none opacity-[0.05]" viewBox="0 0 580 580" fill="none">
         <circle cx="580" cy="290" r="480" stroke="hsl(152 50% 40%)" strokeWidth="100" />
         <circle cx="580" cy="290" r="330" stroke="hsl(152 50% 40%)" strokeWidth="45" />
       </svg>
-      {/* Smaller arcs — bottom-left */}
+      {/* Smaller arcs - bottom-left */}
       <svg className="absolute -bottom-20 -left-20 w-[400px] h-[400px] pointer-events-none opacity-[0.045]" viewBox="0 0 400 400" fill="none">
         <circle cx="0" cy="400" r="310" stroke="hsl(163 50% 40%)" strokeWidth="75" />
         <circle cx="0" cy="400" r="200" stroke="hsl(163 50% 40%)" strokeWidth="38" />

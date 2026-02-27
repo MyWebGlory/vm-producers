@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+﻿import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { RevealLine } from "@/components/ScrollAnimations";
@@ -7,7 +7,7 @@ const faqs = [
   {
     question: "What types of events does VM Producers handle?",
     answer:
-      "We manage the full spectrum — live in-person conferences, virtual summits, hybrid events, product launches, corporate galas, and more. Whether you have 50 attendees or 50,000+, we scale to fit. Our team has executed events across entertainment, tech, healthcare, finance, and non-profit sectors.",
+      "We manage the full spectrum - live in-person conferences, virtual summits, hybrid events, product launches, corporate galas, and more. Whether you have 50 attendees or 50,000+, we scale to fit. Our team has executed events across entertainment, tech, healthcare, finance, and non-profit sectors.",
   },
   {
     question: "Do you operate internationally?",
@@ -22,12 +22,12 @@ const faqs = [
   {
     question: "What does 'full-service' actually mean?",
     answer:
-      "It means we handle everything — concept design, venue sourcing, AV & technical production, speaker management, live streaming, registration & attendee experience, post-event video editing, and reporting. You make the key decisions; we execute every detail.",
+      "It means we handle everything - concept design, venue sourcing, AV & technical production, speaker management, live streaming, registration & attendee experience, post-event video editing, and reporting. You make the key decisions; we execute every detail.",
   },
   {
     question: "What's your guarantee if something goes wrong?",
     answer:
-      "We maintain a 100% success rate across 2,000+ events. Every production has redundancy built in — backup tech, backup crew, contingency plans. But if an issue arises, our on-site producer owns it and resolves it in real time. You'll never be left scrambling.",
+      "We maintain a 100% success rate across 2,000+ events. Every production has redundancy built in - backup tech, backup crew, contingency plans. But if an issue arises, our on-site producer owns it and resolves it in real time. You'll never be left scrambling.",
   },
   {
     question: "Do you work with virtual-only or hybrid formats?",

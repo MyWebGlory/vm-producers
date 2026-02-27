@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+﻿import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
@@ -94,13 +94,13 @@ const Index = () => {
       <HeroSection />
       <ClientLogos />
       <Suspense fallback={<div className="h-96" />}>
-        {/* Social proof first — build trust before pitching services */}
+        {/* Social proof first - build trust before pitching services */}
         <TestimonialsSection />
         <ResultsSection />
         <ServicesSection />
         <PainPointsSection />
         <WhatYouGetSection />
-        {/* FAQ before final CTA — answer objections */}
+        {/* FAQ before final CTA - answer objections */}
         <FAQSection />
         <CTASection />
         <Footer />

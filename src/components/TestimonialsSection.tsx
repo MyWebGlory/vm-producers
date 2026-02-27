@@ -35,7 +35,7 @@ const testimonials = [
     featured: false,
   },
   {
-    text: "We have worked with many production agencies. VM Producers is in a league of their own — startup agility with enterprise-level quality. Zero missed deadlines across 4 events.",
+    text: "We have worked with many production agencies. VM Producers is in a league of their own - startup agility with enterprise-level quality. Zero missed deadlines across 4 events.",
     author: "Diana Foster",
     role: "Head of Marketing",
     company: "Global Pharma Corp",

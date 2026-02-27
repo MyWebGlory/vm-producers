@@ -1,4 +1,4 @@
-import { useRef } from "react";
+﻿import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, UserX, WifiOff, MonitorOff, Flame, Archive } from "lucide-react";
 
@@ -67,12 +67,12 @@ const PainPointsSection = () => {
           backgroundSize: "30px 30px",
         }}
       />
-      {/* Large arc ring — top-right corner */}
+      {/* Large arc ring - top-right corner */}
       <svg className="absolute -top-24 -right-24 w-[520px] h-[520px] pointer-events-none opacity-[0.055]" viewBox="0 0 520 520" fill="none">
         <circle cx="520" cy="0" r="420" stroke="hsl(0 60% 48%)" strokeWidth="90" />
         <circle cx="520" cy="0" r="290" stroke="hsl(0 60% 48%)" strokeWidth="40" />
       </svg>
-      {/* Smaller arcs — bottom-left corner */}
+      {/* Smaller arcs - bottom-left corner */}
       <svg className="absolute -bottom-20 -left-20 w-[380px] h-[380px] pointer-events-none opacity-[0.045]" viewBox="0 0 380 380" fill="none">
         <circle cx="0" cy="380" r="300" stroke="hsl(350 60% 50%)" strokeWidth="70" />
         <circle cx="0" cy="380" r="190" stroke="hsl(350 60% 50%)" strokeWidth="35" />
@@ -231,9 +231,9 @@ const PainCard = ({
 
         {/* Title */}
         <h3
-          className="font-display font-bold leading-snug relative z-10 text-sm sm:text-base md:text-lg"
+          className="font-display font-black leading-snug relative z-10 text-base sm:text-lg md:text-xl lg:text-2xl"
           style={{
-            color: "hsl(var(--foreground))",
+            color: painPalette[index].icon,
           }}
         >
           {point.title}

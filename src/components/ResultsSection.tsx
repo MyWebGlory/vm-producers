@@ -212,7 +212,7 @@ const ResultsSection = () => {
                 "10 speakers. 5 languages. Thousands of attendees. Zero issues."
               </p>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Last-minute large-scale webinar with multi-language translation, complex speaker logistics and global broadcast — delivered flawlessly under pressure.
+                Last-minute large-scale webinar with multi-language translation, complex speaker logistics and global broadcast - delivered flawlessly under pressure.
               </p>
             </div>
             <div className="flex-shrink-0 flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-3">
