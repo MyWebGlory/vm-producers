@@ -77,7 +77,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
+              className="text-base md:text-xl max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed"
               style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
             >
               We produce events that run on time, look great,
@@ -104,6 +104,49 @@ const HeroSection = () => {
                 </a>
               </MagneticHover>
             </motion.div>
+
+            {/* ── Stats inside hero ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.3, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mt-8 flex items-center justify-center divide-x divide-white/20"
+            >
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  className="text-center px-6 md:px-10"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3 + i * 0.12, duration: 0.6 }}
+                >
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">
+                    <AnimatedCounter value={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix || ""} />
+                  </p>
+                  <p className="text-[11px] sm:text-xs mt-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* ── Social Proof Strip ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mt-6 flex flex-col items-center justify-center gap-1"
+            >
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+                <span className="ml-1.5 text-white text-sm font-semibold">5.0</span>
+              </div>
+              <span className="text-white/60 text-[11px]">Trusted by 200+ event teams</span>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -122,38 +165,9 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Stats row */}
-      <div className="relative z-20 bg-card border-t border-border/40">
-        <div className="max-w-5xl mx-auto px-6 py-10 md:py-14">
-          <div className="grid grid-cols-3 divide-x divide-border/60">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className="text-center px-2 md:px-4"
-                initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.18, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold text-foreground">
-                  <AnimatedCounter
-                    value={stat.value}
-                    prefix={stat.prefix || ""}
-                    suffix={stat.suffix || ""}
-                  />
-                </p>
-                <p className="text-xs sm:text-sm md:text-base mt-1.5 md:mt-2 text-muted-foreground font-medium">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Review platform badges - standalone centered strip */}
       <motion.div
-        className="relative z-20 bg-card pb-14 md:pb-20"
+        className="relative z-20 bg-card pt-12 md:pt-16 pb-10 md:pb-12"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -193,6 +207,29 @@ const HeroSection = () => {
             </svg>
             Google
           </span>
+        </div>
+
+        {/* Stats row below logos */}
+        <div className="max-w-3xl mx-auto px-6 pt-10 md:pt-14 pb-6 md:pb-8">
+          <div className="grid grid-cols-3 divide-x divide-border/60">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="text-center px-2 md:px-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <p className="text-2xl sm:text-3xl md:text-5xl font-display font-bold text-foreground">
+                  <AnimatedCounter value={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix || ""} />
+                </p>
+                <p className="text-xs sm:text-sm mt-1.5 text-muted-foreground font-medium">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>

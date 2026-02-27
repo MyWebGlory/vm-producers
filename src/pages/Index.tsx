@@ -3,10 +3,11 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
 import { SEO } from "@/components/SEO";
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const PainPointsSection = lazy(() => import("@/components/PainPointsSection"));
 const WhatYouGetSection = lazy(() => import("@/components/WhatYouGetSection"));
-const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
 const CTASection = lazy(() => import("@/components/CTASection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -92,10 +93,13 @@ const Index = () => {
       <HeroSection />
       <ClientLogos />
       <Suspense fallback={<div className="h-96" />}>
+        {/* Social proof first — build trust before pitching services */}
+        <TestimonialsSection />
         <ServicesSection />
-          <TestimonialsSection />
-          <PainPointsSection />
-          <WhatYouGetSection />
+        <PainPointsSection />
+        <WhatYouGetSection />
+        {/* FAQ before final CTA — answer objections */}
+        <FAQSection />
         <CTASection />
         <Footer />
       </Suspense>
