@@ -1,9 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import heroBg from "@/assets/hero-bg.webp";
 import { AnimatedCounter } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
-
-const heroBg = "/hero-bg.webp";
 
 const stats = [
   { value: 2000, suffix: "+", label: "Successful Events" },
