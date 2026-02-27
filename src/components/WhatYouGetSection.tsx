@@ -10,7 +10,7 @@ import {
   Heart,
   ArrowRight,
 } from "lucide-react";
-import { MagneticHover } from "@/components/ScrollAnimations";
+import { MagneticHover, FloatingOrbs, RevealLine } from "@/components/ScrollAnimations";
 
 const items = [
   {
@@ -247,21 +247,8 @@ const WhatYouGetSection = () => {
       ref={sectionRef}
       className="relative overflow-hidden bg-white"
     >
-      {/* Background glows */}
-      <div
-        className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 70% 25%, hsl(var(--primary) / 0.07), transparent 65%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 30% 75%, hsl(var(--primary) / 0.05), transparent 65%)",
-          filter: "blur(70px)",
-        }}
-      />
+      {/* Animated ambient orbs */}
+      <FloatingOrbs count={4} />
 
       <div className="max-w-6xl mx-auto px-6 py-28 lg:py-44">
 
@@ -276,7 +263,7 @@ const WhatYouGetSection = () => {
           >
             Why Virtual Producers
           </motion.p>
-
+          <RevealLine delay={0.2} color="from-transparent via-primary/30 to-transparent" className="max-w-[60px] mx-auto" />
           <h2
             className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-6xl font-display font-bold"
             style={{ color: "hsl(var(--foreground))" }}
@@ -360,10 +347,10 @@ const WhatYouGetSection = () => {
               <motion.div
                 key={stat.label}
                 className="space-y-1"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.65 }}
+                transition={{ delay: i * 0.12, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               >
                 <p
                   className="text-3xl md:text-4xl font-display font-bold"

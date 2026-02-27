@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { ScrollReveal, AnimatedCounter, SplitTextReveal, ImageReveal, RevealLine } from "@/components/ScrollAnimations";
+import { ScrollReveal, AnimatedCounter, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import aboutEventImg from "@/assets/about-event.webp";
 
 // Dynamic imports - videos loaded only when section is visible
@@ -46,8 +46,9 @@ const AboutSection = () => {
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-44 bg-card relative overflow-hidden">
-      {/* Ambient floating orbs */}
-      {/* About section content */}
+      {/* Ambient floating light orbs */}
+      <FloatingOrbs count={4} />
+      {/* About section content */}}
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row gap-16 md:gap-20 items-center">
           {/* Video carousel */}

@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.webp";
-import { AnimatedCounter } from "@/components/ScrollAnimations";
+import { AnimatedCounter, FloatingOrbs, RevealLine } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
 
 const stats = [
@@ -35,6 +35,9 @@ const HeroSection = () => {
           />
           <div className="absolute inset-0 hero-gradient" />
         </motion.div>
+
+        {/* Ambient floating light orbs over hero */}
+        <FloatingOrbs count={4} className="z-[2] opacity-50" />
 
         {/* Content with scroll fade */}
         <motion.div
@@ -89,9 +92,15 @@ const HeroSection = () => {
               <MagneticHover>
                 <a
                   href="#contact"
-                  className="inline-flex px-10 py-4 rounded-full bg-primary text-primary-foreground font-display font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105"
+                  className="relative inline-flex px-10 py-4 rounded-full bg-primary text-primary-foreground font-display font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105 overflow-hidden"
                 >
                   Get Your Free Consultation
+                  <motion.span
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.22) 50%, transparent 100%)" }}
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 3.5, ease: "easeInOut" }}
+                  />
                 </a>
               </MagneticHover>
             </motion.div>
@@ -117,8 +126,15 @@ const HeroSection = () => {
       <div className="relative z-20 bg-card border-t border-border/40">
         <div className="max-w-5xl mx-auto px-6 py-10 md:py-14">
           <div className="grid grid-cols-3 divide-x divide-border/60">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center px-2 md:px-4">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="text-center px-2 md:px-4"
+                initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.18, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold text-foreground">
                   <AnimatedCounter
                     value={stat.value}
@@ -129,14 +145,20 @@ const HeroSection = () => {
                 <p className="text-xs sm:text-sm md:text-base mt-1.5 md:mt-2 text-muted-foreground font-medium">
                   {stat.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
 
       {/* Review platform badges - standalone centered strip */}
-      <div className="relative z-20 bg-card pb-14 md:pb-20">
+      <motion.div
+        className="relative z-20 bg-card pb-14 md:pb-20"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="flex items-center justify-center gap-4 md:gap-8 lg:gap-14 flex-wrap">
           {/* Stars */}
           <div className="flex items-center gap-1.5">
@@ -172,7 +194,7 @@ const HeroSection = () => {
             Google
           </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

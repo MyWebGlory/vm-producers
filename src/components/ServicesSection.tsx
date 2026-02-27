@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDeferredVideo } from "@/hooks/useDeferredVideo";
-import { SplitTextReveal, VelocityScrollBand } from "@/components/ScrollAnimations";
+import { SplitTextReveal, VelocityScrollBand, FloatingOrbs, RevealLine } from "@/components/ScrollAnimations";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
@@ -332,6 +332,8 @@ const ServicesSection = () => {
             "radial-gradient(ellipse 50% 60% at 50% 50%, hsl(215 60% 40% / 0.025) 0%, transparent 70%)",
         }}
       />
+      {/* Animated ambient orbs */}
+      <FloatingOrbs count={3} className="opacity-70" />
       {/* Section header */}
       <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-10 lg:mb-16 text-center relative z-10">
         <motion.p
@@ -347,6 +349,7 @@ const ServicesSection = () => {
           <br />
           <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} style={{ color: "hsl(var(--primary))" }} />
         </h2>
+        <RevealLine delay={0.65} color="from-transparent via-primary/25 to-transparent" className="mt-8 max-w-[140px] mx-auto" />
       </div>
 
       {/* Velocity scroll band - reacts to scroll speed */}

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, UserX, WifiOff, MonitorOff, Flame, Archive } from "lucide-react";
 
 const painPoints = [
@@ -31,11 +31,59 @@ const painPoints = [
 ];
 
 const PainPointsSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 70%", "end 20%"],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section ref={sectionRef} className="relative bg-white overflow-hidden">
+      {/* Atmospheric warm ambient gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 50% at 10% 20%, hsl(36 60% 55% / 0.06), transparent 55%)," +
+            "radial-gradient(ellipse 60% 40% at 90% 80%, hsl(0 65% 60% / 0.04), transparent 55%)",
+        }}
+      />
+      {/* Animated vertical progress thread */}
+      <div className="absolute left-5 lg:left-10 top-0 bottom-0 w-px hidden md:block overflow-hidden">
+        <motion.div
+          className="w-full origin-top"
+          style={{
+            height: lineHeight,
+            background: "linear-gradient(to bottom, transparent 0%, hsl(36 55% 42% / 0.55) 30%, hsl(36 55% 42% / 0.25) 70%, transparent 100%)",
+          }}
+        />
+      </div>
+      {/* Pulse dots along the thread */}
+      {[22, 44, 66, 85].map((pct, i) => (
+        <motion.div
+          key={i}
+          className="absolute left-5 lg:left-10 w-2 h-2 rounded-full -translate-x-1/2 hidden md:block"
+          style={{ top: `${pct}%` }}
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.25 + 0.3, duration: 0.5, ease: "backOut" }}
+        >
+          <div
+            className="w-full h-full rounded-full"
+            style={{ background: "hsl(36 55% 42%)" }}
+          />
+          <motion.div
+            className="absolute inset-0 rounded-full"
+            style={{ background: "hsl(36 55% 42% / 0.3)" }}
+            animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
+          />
+        </motion.div>
+      ))}
 <div className="max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-28 lg:py-44">
 
         {/* Header */}

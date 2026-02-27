@@ -322,6 +322,37 @@ export const FloatingOrbs = ({
 };
 
 /**
+ * BlurReveal - entry animation from blurry to razor-sharp, with a lift
+ */
+export const BlurReveal = ({
+  children,
+  className = "",
+  delay = 0,
+  duration = 0.85,
+  once = true,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+  once?: boolean;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once, margin: "-60px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, filter: "blur(16px)", y: 24 }}
+      animate={isInView ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/**
  * ScrollBand - infinite horizontal marquee of short text items
  * Creates the luxury-brand style scrolling text band
  */

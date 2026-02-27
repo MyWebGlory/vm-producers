@@ -7,7 +7,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { LucideIcon } from "lucide-react";
-import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
+import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
@@ -87,36 +87,57 @@ const FeatureCard = ({
   feature: ServiceFeature;
   index: number;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
   const [hovered, setHovered] = useState(false);
   const Icon = feature.icon;
 
+  const col = index % 2;
+  const xFrom = col === 0 ? -56 : 56;
+  const rowDelay = Math.floor(index / 2) * 0.1;
+
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 70, scale: 0.93, rotateX: 8 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : {}}
+      initial={{ opacity: 0, x: xFrom, y: 48, filter: "blur(14px)", scale: 0.94 }}
+      whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)", scale: 1 }}
+      viewport={{ once: true, amount: 0.15, margin: "-60px" }}
       transition={{
-        delay: index * 0.13,
-        duration: 0.9,
+        delay: rowDelay,
+        duration: 1.05,
         ease: [0.16, 1, 0.3, 1],
       }}
-      style={{ transformPerspective: 900 }}
+      style={{ transformPerspective: 1000 }}
     >
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative p-6 md:p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/25 hover:shadow-[0_8px_40px_hsl(var(--primary)/0.08)] h-full"
+      className="group relative p-6 md:p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_12px_60px_hsl(var(--primary)/0.10)] h-full"
     >
+      {/* Corner number */}
+      <span
+        className="absolute top-5 right-6 font-display font-bold text-4xl md:text-5xl select-none pointer-events-none"
+        style={{ color: "hsl(var(--primary) / 0.07)" }}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      {/* Shimmer sweep on hover */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={hovered ? { x: "220%", opacity: 1 } : { x: "-100%", opacity: 0 }}
+        transition={{ duration: 0.75, ease: "easeInOut" }}
+        style={{
+          background: "linear-gradient(105deg, transparent 30%, hsl(var(--primary) / 0.08) 50%, transparent 70%)",
+          width: "60%",
+        }}
+      />
+
       {/* Accent glow on hover */}
       <motion.div
         className="absolute inset-0 rounded-3xl pointer-events-none"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.5 }}
         style={{
-          background:
-            "radial-gradient(ellipse at 20% 0%, hsl(var(--primary) / 0.06), transparent 60%)",
+          background: "radial-gradient(ellipse at 20% 0%, hsl(var(--primary) / 0.08), transparent 65%)",
         }}
       />
 
@@ -126,37 +147,76 @@ const FeatureCard = ({
           <motion.div
             className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
             style={{
-              background: "hsl(var(--primary) / 0.08)",
-              border: "1px solid hsl(var(--primary) / 0.18)",
+              background: "hsl(var(--primary) / 0.09)",
+              border: "1px solid hsl(var(--primary) / 0.20)",
             }}
-            animate={{ scale: hovered ? 1.12 : 1, rotate: hovered ? 6 : 0 }}
-            transition={{ duration: 0.35 }}
+            initial={{ scale: 0, rotate: -20 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true, amount: 0.15, margin: "-60px" }}
+            transition={{
+              delay: rowDelay + 0.3,
+              duration: 0.65,
+              type: "spring",
+              stiffness: 240,
+              damping: 17,
+            }}
           >
-            <Icon
-              strokeWidth={1.4}
-              style={{ width: "1.35rem", height: "1.35rem", color: "hsl(var(--primary))" }}
-            />
+            <motion.div
+              animate={{ scale: hovered ? 1.18 : 1, rotate: hovered ? 8 : 0 }}
+              transition={{ duration: 0.35 }}
+            >
+              <Icon
+                strokeWidth={1.4}
+                style={{ width: "1.35rem", height: "1.35rem", color: "hsl(var(--primary))" }}
+              />
+            </motion.div>
           </motion.div>
         )}
 
-        <motion.h3
-          className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-foreground mb-4"
-          animate={{ x: hovered ? 4 : 0 }}
-          transition={{ duration: 0.3 }}
+        {/* Title masked reveal */}
+        <div className="overflow-hidden mb-4">
+          <motion.h3
+            className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-foreground"
+            initial={{ y: "110%" }}
+            whileInView={{ y: "0%" }}
+            viewport={{ once: true, amount: 0.15, margin: "-60px" }}
+            transition={{
+              delay: rowDelay + 0.2,
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            {feature.title}
+          </motion.h3>
+        </div>
+
+        <motion.p
+          className="text-muted-foreground leading-relaxed text-base lg:text-lg"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15, margin: "-60px" }}
+          transition={{
+            delay: rowDelay + 0.38,
+            duration: 0.75,
+            ease: [0.16, 1, 0.3, 1],
+          }}
         >
-          {feature.title}
-        </motion.h3>
-
-        <p className="text-muted-foreground leading-relaxed text-base lg:text-lg">
           {feature.description}
-        </p>
+        </motion.p>
 
-        {/* Animated line */}
+        {/* Animated reveal line */}
         <motion.div
-          className="mt-6 h-0.5 rounded-full bg-primary/20"
-          animate={{ scaleX: hovered ? 1 : 0.3 }}
-          style={{ transformOrigin: "left" }}
-          transition={{ duration: 0.5 }}
+          className="mt-6 h-px rounded-full"
+          style={{
+            background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.1))",
+            transformOrigin: "left",
+          }}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 0.35 }}
+          viewport={{ once: true, amount: 0.15, margin: "-60px" }}
+          animate={hovered ? { scaleX: 1 } : undefined}
+          transition={{ duration: hovered ? 0.4 : 1.0, delay: hovered ? 0 : rowDelay + 0.55, ease: [0.16, 1, 0.3, 1] }}
+        />
         />
       </div>
     </div>
@@ -276,9 +336,15 @@ const ServicePageLayout = ({
       <div className="relative z-20 bg-card border-t border-border/40">
         <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14">
           <div className="grid grid-cols-3 divide-x divide-border/60">
-            {stats.map((stat) => (
-              <ScrollReveal key={stat.label} direction="up" distance={30}>
-                <div className="text-center px-4">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="text-center px-4"
+                initial={{ opacity: 0, y: 28, filter: "blur(12px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.18, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              >
                   <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
                     <AnimatedCounter
                       value={stat.value}
@@ -289,8 +355,7 @@ const ServicePageLayout = ({
                   <p className="text-sm md:text-base mt-2 text-muted-foreground font-medium">
                     {stat.label}
                   </p>
-                </div>
-              </ScrollReveal>
+                </motion.div>
             ))}
           </div>
         </div>
@@ -299,11 +364,30 @@ const ServicePageLayout = ({
 
       {/* ═══ Features ═══ */}
       <section className="py-16 md:py-28 lg:py-40 relative overflow-hidden">
+        {/* Ambient orbs */}
+        <FloatingOrbs count={4} className="opacity-60" />
+        {/* Vertical thread */}
+        <div className="absolute right-8 lg:right-16 top-0 bottom-0 w-px hidden lg:block overflow-hidden">
+          <motion.div
+            className="w-full"
+            style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary) / 0.35) 30%, hsl(var(--primary) / 0.12) 70%, transparent 100%)" }}
+            initial={{ height: "0%" }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          />
+        </div>
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-10 md:mb-20 lg:mb-28">
-            <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium">
+            <motion.p
+              className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               What We Offer
-            </p>
+            </motion.p>
             <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
             <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-7xl font-display font-bold text-foreground">
               <SplitTextReveal text="Built for" delay={0.1} />{" "}
