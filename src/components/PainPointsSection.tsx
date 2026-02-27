@@ -156,7 +156,7 @@ const PainPointsSection = () => {
         </div>
 
         {/* Uniform card grid - all 5 visible at once */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
           {painPoints.map((point, i) => (
             <PainCard key={i} point={point} index={i} />
           ))}

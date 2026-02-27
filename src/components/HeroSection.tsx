@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.webp";
+import vmLogoWhite from "@/assets/vp-logo-white.png";
 import { AnimatedCounter, FloatingOrbs, RevealLine } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
 import { Globe, Video, Users, CheckCircle } from "lucide-react";
@@ -71,6 +72,7 @@ const ORBIT_TIMES = [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1];
 
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -158,40 +160,32 @@ const HeroSection = () => {
           className="relative z-10 h-full flex flex-col items-center justify-center px-6"
         >
           <div className="max-w-5xl mx-auto text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="font-display font-medium text-sm uppercase tracking-[0.3em] mb-6"
-              style={{ color: "hsl(0, 0%, 100%, 0.7)" }}
-            >
-              Event Production & Management
-            </motion.p>
-
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.95] mb-6 md:mb-8"
-              style={{ color: "white" }}
+              className="flex flex-col items-center gap-5 md:gap-7 mb-6 md:mb-8"
             >
-              Your Ultimate
-              <br />
-              <motion.span
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
+              <img
+                src={vmLogoWhite}
+                alt="VM Producers"
+                className="h-12 md:h-16 lg:h-20 w-auto object-contain"
+                style={{ filter: "drop-shadow(0 2px 16px rgba(0,0,0,0.7)) drop-shadow(0 0 24px hsl(43 80% 55% / 0.4))" }}
+              />
+              <h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[0.95]"
+                style={{ color: "white", textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.5)" }}
               >
-                Event Experience
-              </motion.span>
-            </motion.h1>
+                Events that make sense.
+              </h1>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
               className="text-base md:text-xl max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed"
-              style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
+              style={{ color: "hsl(0, 0%, 100%, 0.85)", textShadow: "0 1px 12px rgba(0,0,0,0.9), 0 2px 24px rgba(0,0,0,0.6)" }}
             >
               We produce events that run on time, look great,
               and keep people talking.
@@ -233,10 +227,10 @@ const HeroSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.3 + i * 0.12, duration: 0.6 }}
                 >
-                  <p className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.8)" }}>
                     <AnimatedCounter value={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix || ""} />
                   </p>
-                  <p className="text-[11px] sm:text-xs mt-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
+                  <p className="text-[11px] sm:text-xs mt-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.65)", textShadow: "0 1px 8px rgba(0,0,0,0.9)" }}>
                     {stat.label}
                   </p>
                 </motion.div>
