@@ -90,7 +90,7 @@ const AboutSection = () => {
             </motion.p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
               <SplitTextReveal text="Experience the best in" delay={0.2} />{" "}
-              <SplitTextReveal text="event production." delay={0.45} className="text-muted-foreground" />
+              <SplitTextReveal text="event production." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>
             <motion.p
               initial={{ opacity: 0, y: 15 }}

@@ -345,7 +345,7 @@ const ServicesSection = () => {
         <h2 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
           <SplitTextReveal text="Crafted to impress." delay={0.1} stagger={0.06} />
           <br />
-          <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} className="text-muted-foreground" />
+          <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} style={{ color: "hsl(var(--primary))" }} />
         </h2>
       </div>
 

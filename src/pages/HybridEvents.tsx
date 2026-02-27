@@ -3,8 +3,47 @@ import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
 import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
 
+const seo = {
+  title: "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
+  description: "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, and post-event content hub. 95% audience retention rate.",
+  canonical: "/hybrid-events",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": "Hybrid Event Production",
+        "name": "Hybrid Events",
+        "description": "Expert hybrid event production bridging in-person and virtual audiences. Full AV production, multi-camera streaming, and unified audience experience.",
+        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
+        "url": "https://www.vmproducers.com/hybrid-events",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Hybrid Event Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unified Experience Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Multi-Camera Live Production" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full AV Production" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audience Engagement for Both Rooms" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Event Content Hub" } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Hybrid Events", "item": "https://www.vmproducers.com/hybrid-events" }
+        ]
+      }
+    ]
+  }
+};
+
 const HybridEvents = () => (
     <ServicePageLayout
+    seo={seo}
     title="Hybrid Events"
     subtitle="Best of Both Worlds"
     description="We create hybrid events that effectively engage both in-person and online attendees - from the same stage, at the same time."

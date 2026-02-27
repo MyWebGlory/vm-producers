@@ -10,6 +10,7 @@ import { LucideIcon } from "lucide-react";
 import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 interface ServiceStat {
   value: number;
@@ -24,6 +25,13 @@ interface ServiceFeature {
   description: string;
 }
 
+interface ServiceSEO {
+  title: string;
+  description: string;
+  canonical: string;
+  jsonLd?: object;
+}
+
 interface ServicePageLayoutProps {
   title: string;
   subtitle: string;
@@ -33,6 +41,7 @@ interface ServicePageLayoutProps {
   stats: ServiceStat[];
   features: ServiceFeature[];
   additionalContent?: ReactNode;
+  seo?: ServiceSEO;
 }
 
 /* Deferred Hero Video */
@@ -164,6 +173,7 @@ const ServicePageLayout = ({
   stats,
   features,
   additionalContent,
+  seo,
 }: ServicePageLayoutProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -187,6 +197,14 @@ const ServicePageLayout = ({
 
   return (
     <div className="min-h-screen bg-background">
+      {seo && (
+        <SEO
+          title={seo.title}
+          description={seo.description}
+          canonical={seo.canonical}
+          jsonLd={seo.jsonLd}
+        />
+      )}
       <Navbar />
 
       {/* ═══ Hero ═══ */}
@@ -287,7 +305,7 @@ const ServicePageLayout = ({
             <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
             <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-7xl font-display font-bold text-foreground">
               <SplitTextReveal text="Built for" delay={0.1} />{" "}
-              <SplitTextReveal text="excellence." delay={0.3} className="text-muted-foreground" />
+              <SplitTextReveal text="excellence." delay={0.3} style={{ color: "hsl(var(--primary))" }} />
             </h2>
           </div>
 
@@ -348,7 +366,7 @@ const ServicePageLayout = ({
             style={{ color: "white" }}
           >
             Ready to create something{" "}
-            <span style={{ color: "hsl(0 0% 100% / 0.5)" }}>extraordinary?</span>
+            <span style={{ color: "hsl(var(--primary))" }}>extraordinary?</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

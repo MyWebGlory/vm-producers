@@ -82,7 +82,7 @@ const Navbar = () => {
           Free Consultation
         </a>
 
-        <button onClick={() => setIsOpen(!isOpen)} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
+        <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>

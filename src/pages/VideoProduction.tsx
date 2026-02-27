@@ -3,8 +3,47 @@ import videoProductionImg from "@/assets/video-production.webp";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
 import { Play, Camera, Star, PenTool, Film, RefreshCw, Sliders } from "lucide-react";
 
+const seo = {
+  title: "Corporate Video Production Services | Event Films & Recaps | VM Producers",
+  description: "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, explainer videos, and post-production. 2000+ videos delivered, 48h turnaround.",
+  canonical: "/video-production",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": "Video Production",
+        "name": "Video Production",
+        "description": "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround.",
+        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
+        "url": "https://www.vmproducers.com/video-production",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Video Production Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Promos & Teasers" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Live Multi-Camera Production" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Highlight Reels" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Films & Brand Stories" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Production Excellence" } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Video Production", "item": "https://www.vmproducers.com/video-production" }
+        ]
+      }
+    ]
+  }
+};
+
 const VideoProduction = () => (
   <ServicePageLayout
+    seo={seo}
     title="Video Production"
     subtitle="Visual Storytelling"
     description="Video that looks like it cost three times what it did. Fast turnaround, broadcast quality, before and after your event."

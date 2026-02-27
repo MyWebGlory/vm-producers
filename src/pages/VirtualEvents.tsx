@@ -3,8 +3,47 @@ import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import { Tv, Layout, Users, TrendingUp, Globe, Zap, BarChart2 } from "lucide-react";
 
+const seo = {
+  title: "Virtual Event Production Services | Webinars & Conferences | VM Producers",
+  description: "Full-service virtual event production for webinars, conferences, and global summits with up to 100,000 attendees. TV-quality livestreaming, multi-language support in 5+ languages, custom branded platforms, and 99.9% uptime.",
+  canonical: "/virtual-events",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": "Virtual Event Production",
+        "name": "Virtual Events",
+        "description": "Full-service virtual event production for webinars and conferences with up to 100,000 attendees. TV-quality livestreaming, multi-language support, custom branded platforms.",
+        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
+        "url": "https://www.vmproducers.com/virtual-events",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Virtual Event Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TV-Quality Livestream Production" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Branded Platforms" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Multi-Language Support" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Real-Time Engagement Tools" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analytics & Post-Event Reporting" } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Virtual Events", "item": "https://www.vmproducers.com/virtual-events" }
+        ]
+      }
+    ]
+  }
+};
+
 const VirtualEvents = () => (
   <ServicePageLayout
+    seo={seo}
     title="Virtual Events"
     subtitle="Global Reach, Zero Limits"
     description="All-inclusive virtual production for webinars to large-scale conferences with up to 100,000 attendees across the globe."

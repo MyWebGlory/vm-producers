@@ -3,8 +3,47 @@ import meetingProsImg from "@/assets/meeting-pros.webp";
 import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 import { Zap, ClipboardList, MapPin, Plane, Monitor, Grid2x2 } from "lucide-react";
 
+const seo = {
+  title: "Meeting Professionals Network | Global Event Staffing | VM Producers",
+  description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, on-site coordinators, and more. 12,000+ meetings supported.",
+  canonical: "/meeting-pros",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": "Event Staffing & Talent Matching",
+        "name": "Meeting Pros",
+        "description": "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties.",
+        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
+        "url": "https://www.vmproducers.com/meeting-pros",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Meeting Pros Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "48-Hour Talent Matching" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Project Management" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "On-Site Implementation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Travel Management" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "55+ Event Specialties" } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Meeting Pros", "item": "https://www.vmproducers.com/meeting-pros" }
+        ]
+      }
+    ]
+  }
+};
+
 const MeetingPros = () => (
   <ServicePageLayout
+    seo={seo}
     title="Meeting Pros"
     subtitle="Your Global Talent Network"
     description="A worldwide network of verified event professionals matched within 48 hours, covering 70+ countries and 55+ specialties."

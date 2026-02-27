@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView, useSpring, useVelocity, useMotionValue, useAnimationFrame } from "framer-motion";
 
 interface ScrollRevealProps {
@@ -203,6 +203,7 @@ export const MagneticHover = ({ children, className = "" }: { children: React.Re
 export const SplitTextReveal = ({
   text,
   className = "",
+  style,
   delay = 0,
   duration = 0.65,
   stagger = 0.045,
@@ -211,6 +212,7 @@ export const SplitTextReveal = ({
 }: {
   text: string;
   className?: string;
+  style?: React.CSSProperties;
   delay?: number;
   duration?: number;
   stagger?: number;
@@ -223,7 +225,7 @@ export const SplitTextReveal = ({
 
   return (
     // @ts-ignore - dynamic tag
-    <Tag ref={ref} className={`inline-flex flex-wrap gap-x-[0.25em] ${className}`}>
+    <Tag ref={ref} className={`inline-flex flex-wrap gap-x-[0.25em] ${className}`} style={style}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden">
           <motion.span

@@ -76,6 +76,7 @@
 @layer utilities {
   .glass {
     background: hsl(var(--glass) / 0.85);
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glass-border) / 0.6);
     box-shadow: 0 4px 30px hsl(220 25% 10% / 0.04);
@@ -83,6 +84,7 @@
 
   .glass-strong {
     background: hsl(var(--glass) / 0.95);
+    -webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
     border: 1px solid hsl(var(--glass-border) / 0.7);
     box-shadow: 0 8px 40px hsl(220 25% 10% / 0.06);
@@ -90,6 +92,7 @@
 
   .glass-dark {
     background: hsl(var(--hero-overlay) / 0.7);
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     border: 1px solid hsl(0 0% 100% / 0.1);
   }
@@ -127,5 +130,18 @@
   .elevated {
     background: hsl(var(--surface-elevated));
     box-shadow: 0 1px 3px hsl(220 25% 10% / 0.04), 0 6px 24px hsl(220 25% 10% / 0.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
