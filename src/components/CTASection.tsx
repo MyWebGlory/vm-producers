@@ -2,8 +2,7 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import { ConstellationBG } from "@/components/ConstellationBG";
-
-const heroBg = "/hero-bg.webp";
+import heroBg from "@/assets/hero-bg.webp";
 
 const CTASection = () => {
   const ref = useRef<HTMLDivElement>(null);
