@@ -327,8 +327,8 @@ const ServicesSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 20% 0%, hsl(36 55% 42% / 0.05) 0%, transparent 60%)," +
-            "radial-gradient(ellipse 60% 40% at 80% 100%, hsl(36 55% 42% / 0.04) 0%, transparent 55%)," +
+            "radial-gradient(ellipse 80% 50% at 20% 0%, hsl(43 80% 48% / 0.05) 0%, transparent 60%)," +
+            "radial-gradient(ellipse 60% 40% at 80% 100%, hsl(43 80% 48% / 0.04) 0%, transparent 55%)," +
             "radial-gradient(ellipse 50% 60% at 50% 50%, hsl(215 60% 40% / 0.025) 0%, transparent 70%)",
         }}
       />
@@ -345,9 +345,9 @@ const ServicesSection = () => {
           Our Services
         </motion.p>
         <h2 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
-          <SplitTextReveal text="Crafted to impress." delay={0.1} stagger={0.06} />
+          <SplitTextReveal text="From concept" delay={0.1} stagger={0.06} />
           <br />
-          <SplitTextReveal text="Built to perform." delay={0.35} stagger={0.06} style={{ color: "hsl(var(--primary))" }} />
+          <SplitTextReveal text="to standing ovation." delay={0.35} stagger={0.06} style={{ color: "hsl(var(--primary))" }} />
         </h2>
         <RevealLine delay={0.65} color="from-transparent via-primary/25 to-transparent" className="mt-8 max-w-[140px] mx-auto" />
       </div>

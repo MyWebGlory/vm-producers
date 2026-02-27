@@ -80,6 +80,13 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
 };
 
 /* Feature Card */
+const cardPalette = [
+  { bg: "hsl(43 90% 52% / 0.09)",  border: "hsl(43 80% 48% / 0.30)",  glow: "hsl(43 80% 52% / 0.10)",  num: "hsl(43 80% 58% / 0.16)",  icon: "hsl(43 75% 45%)" },
+  { bg: "hsl(205 80% 72% / 0.09)", border: "hsl(205 70% 68% / 0.28)", glow: "hsl(205 70% 72% / 0.09)", num: "hsl(205 70% 74% / 0.14)", icon: "hsl(205 60% 52%)" },
+  { bg: "hsl(32 85% 58% / 0.09)",  border: "hsl(32 78% 54% / 0.28)",  glow: "hsl(32 78% 58% / 0.10)",  num: "hsl(32 80% 62% / 0.15)",  icon: "hsl(32 68% 46%)" },
+  { bg: "hsl(340 70% 68% / 0.08)", border: "hsl(340 60% 64% / 0.26)", glow: "hsl(340 60% 68% / 0.09)", num: "hsl(340 62% 72% / 0.14)", icon: "hsl(340 52% 54%)" },
+];
+
 const FeatureCard = ({
   feature,
   index,
@@ -89,6 +96,7 @@ const FeatureCard = ({
 }) => {
   const [hovered, setHovered] = useState(false);
   const Icon = feature.icon;
+  const pal = cardPalette[index % cardPalette.length];
 
   const col = index % 2;
   const xFrom = col === 0 ? -56 : 56;
@@ -99,22 +107,23 @@ const FeatureCard = ({
       initial={{ opacity: 0, x: xFrom, y: 48, filter: "blur(14px)", scale: 0.94 }}
       whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)", scale: 1 }}
       viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-      transition={{
-        delay: rowDelay,
-        duration: 1.05,
-        ease: [0.16, 1, 0.3, 1],
-      }}
+      transition={{ delay: rowDelay, duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
       style={{ transformPerspective: 1000 }}
     >
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative p-6 md:p-8 lg:p-10 rounded-3xl border border-border/50 bg-card overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_12px_60px_hsl(var(--primary)/0.10)] h-full"
+      className="group relative p-6 md:p-8 lg:p-10 rounded-3xl overflow-hidden transition-all duration-500 h-full"
+      style={{ background: pal.bg, border: `1.5px solid ${pal.border}`, boxShadow: hovered ? `0 16px 50px ${pal.glow}, 0 4px 20px hsl(0 0% 0% / 0.05)` : "0 2px 12px hsl(0 0% 0% / 0.03)" }}
     >
+      {/* Decorative blobs */}
+      <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${pal.num} 0%, transparent 65%)` }} />
+      <div className="absolute -top-8 -left-8 w-24 h-24 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${pal.num} 0%, transparent 65%)` }} />
+
       {/* Corner number */}
       <span
-        className="absolute top-5 right-6 font-display font-bold text-4xl md:text-5xl select-none pointer-events-none"
-        style={{ color: "hsl(var(--primary) / 0.07)" }}
+        className="absolute top-5 right-6 font-display font-black text-4xl md:text-5xl select-none pointer-events-none"
+        style={{ color: pal.num, letterSpacing: "-0.04em" }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -125,10 +134,7 @@ const FeatureCard = ({
         initial={{ x: "-100%", opacity: 0 }}
         animate={hovered ? { x: "220%", opacity: 1 } : { x: "-100%", opacity: 0 }}
         transition={{ duration: 0.75, ease: "easeInOut" }}
-        style={{
-          background: "linear-gradient(105deg, transparent 30%, hsl(var(--primary) / 0.08) 50%, transparent 70%)",
-          width: "60%",
-        }}
+        style={{ background: `linear-gradient(105deg, transparent 30%, ${pal.glow} 50%, transparent 70%)`, width: "60%" }}
       />
 
       {/* Accent glow on hover */}
@@ -136,62 +142,41 @@ const FeatureCard = ({
         className="absolute inset-0 rounded-3xl pointer-events-none"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.5 }}
-        style={{
-          background: "radial-gradient(ellipse at 20% 0%, hsl(var(--primary) / 0.08), transparent 65%)",
-        }}
+        style={{ background: `radial-gradient(ellipse at 20% 0%, ${pal.glow}, transparent 65%)` }}
       />
 
       <div className="relative z-10">
         {/* Icon badge */}
         {Icon && (
-          <motion.div
+        <motion.div
             className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-            style={{
-              background: "hsl(var(--primary) / 0.09)",
-              border: "1px solid hsl(var(--primary) / 0.20)",
-            }}
+            style={{ background: `${pal.bg}`, border: `1.5px solid ${pal.border}`, backgroundColor: "hsl(0 0% 100% / 0.7)" }}
             initial={{ scale: 0, rotate: -20 }}
             whileInView={{ scale: 1, rotate: 0 }}
             viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-            transition={{
-              delay: rowDelay + 0.3,
-              duration: 0.65,
-              type: "spring",
-              stiffness: 240,
-              damping: 17,
-            }}
+            transition={{ delay: rowDelay + 0.3, duration: 0.65, type: "spring", stiffness: 240, damping: 17 }}
           >
             <motion.div
               animate={{ scale: hovered ? 1.18 : 1, rotate: hovered ? 8 : 0 }}
               transition={{ duration: 0.35 }}
             >
-              <Icon
-                strokeWidth={1.4}
-                style={{ width: "1.35rem", height: "1.35rem", color: "hsl(var(--primary))" }}
-              />
+              <Icon strokeWidth={1.4} style={{ width: "1.35rem", height: "1.35rem", color: pal.icon }} />
             </motion.div>
           </motion.div>
         )}
 
-        {/* Title masked reveal */}
-        <div className="overflow-hidden mb-4">
-          <motion.h3
-            className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-foreground"
-            initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-            transition={{
-              delay: rowDelay + 0.2,
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+        {/* Title */}
+        <div className="mb-3 mt-1">
+          <h3
+            className="text-lg md:text-xl lg:text-2xl font-display font-black leading-tight"
+            style={{ color: pal.icon }}
           >
             {feature.title}
-          </motion.h3>
+          </h3>
         </div>
 
         <motion.p
-          className="text-muted-foreground leading-relaxed text-base lg:text-lg"
+          className="text-foreground/70 leading-relaxed text-sm lg:text-base"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15, margin: "-60px" }}

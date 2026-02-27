@@ -48,7 +48,7 @@ const FAQSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 90% 60%, hsl(36 60% 55% / 0.05), transparent 55%)",
+            "radial-gradient(ellipse 60% 40% at 90% 60%, hsl(43 80% 55% / 0.05), transparent 55%)",
         }}
       />
 
