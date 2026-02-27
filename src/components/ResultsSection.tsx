@@ -3,31 +3,6 @@ import { motion, useInView } from "framer-motion";
 import { TrendingUp, Shield, Globe, Users } from "lucide-react";
 import { SplitTextReveal } from "@/components/ScrollAnimations";
 
-// Client logos
-import nikeLogo from "@/assets/logos/nike.webp";
-import samsungLogo from "@/assets/logos/samsung-hd.png";
-import hpLogo from "@/assets/logos/hp.webp";
-import oracleLogo from "@/assets/logos/oracle-hd.png";
-import adidasLogo from "@/assets/logos/adidas.webp";
-import nokiaLogo from "@/assets/logos/nokia-hd.png";
-import chevroletLogo from "@/assets/logos/chevrolet-hd.png";
-import secureworksLogo from "@/assets/logos/secureworks.png";
-import angryOrchardLogo from "@/assets/logos/angry-orchard-hd.svg";
-import atlantaUnitedLogo from "@/assets/logos/atlanta-united.png";
-
-const clients = [
-  { name: "Nike", logo: nikeLogo },
-  { name: "Samsung", logo: samsungLogo },
-  { name: "HP", logo: hpLogo },
-  { name: "Oracle", logo: oracleLogo },
-  { name: "Adidas", logo: adidasLogo },
-  { name: "Nokia", logo: nokiaLogo },
-  { name: "Chevrolet", logo: chevroletLogo },
-  { name: "Secureworks", logo: secureworksLogo },
-  { name: "Angry Orchard", logo: angryOrchardLogo },
-  { name: "Atlanta United", logo: atlantaUnitedLogo },
-];
-
 const stats = [
   {
     icon: TrendingUp,
@@ -152,46 +127,6 @@ const ResultsSection = () => {
             );
           })}
         </div>
-
-        {/* Divider */}
-        <motion.div
-          className="flex items-center gap-6 mb-14"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <div className="flex-1 h-px bg-border" />
-          <p className="text-muted-foreground text-xs font-medium tracking-[0.25em] uppercase whitespace-nowrap">
-            Trusted by global leaders
-          </p>
-          <div className="flex-1 h-px bg-border" />
-        </motion.div>
-
-        {/* Client logos grid */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-8 lg:gap-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: 0.7 }}
-        >
-          {clients.map((client, i) => (
-            <motion.div
-              key={client.name}
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.75 + i * 0.05 }}
-              className="flex items-center justify-center"
-            >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="h-6 md:h-7 w-auto object-contain"
-                style={{ filter: "brightness(0)", opacity: 0.45 }}
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Featured case study callout */}
         <motion.div

@@ -155,16 +155,11 @@ const PainPointsSection = () => {
           </h2>
         </div>
 
-        {/* Bento card grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-          {/* Row 1: wide + narrow */}
-          <PainCard point={painPoints[0]} index={0} wide />
-          <PainCard point={painPoints[1]} index={1} />
-          {/* Row 2: narrow + wide */}
-          <PainCard point={painPoints[2]} index={2} />
-          <PainCard point={painPoints[3]} index={3} wide />
-          {/* Row 3: full centered */}
-          <PainCard point={painPoints[4]} index={4} full />
+        {/* Uniform card grid - all 5 visible at once */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+          {painPoints.map((point, i) => (
+            <PainCard key={i} point={point} index={i} />
+          ))}
         </div>
 
         {/* Bottom callout */}
@@ -177,13 +172,9 @@ const PainPointsSection = () => {
 const PainCard = ({
   point,
   index,
-  wide = false,
-  full = false,
 }: {
   point: (typeof painPoints)[number];
   index: number;
-  wide?: boolean;
-  full?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
@@ -192,52 +183,44 @@ const PainCard = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 70, scale: 0.93, rotateX: 6 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : {}}
-      transition={{ duration: 0.85, delay: index * 0.13, ease: [0.16, 1, 0.3, 1] }}
-      style={{ transformPerspective: 900 }}
-      className={`${wide ? "col-span-2 md:col-span-2" : "col-span-1"} ${full ? "col-span-2 md:col-span-3 flex justify-center" : ""}`}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="col-span-1"
     >
       <div
-        className={`relative flex flex-col justify-between gap-5 md:gap-8 rounded-3xl p-5 md:p-8 lg:p-10 h-full overflow-hidden group ${full ? "w-full md:max-w-lg" : ""}`}
+        className="relative flex flex-col gap-3 rounded-2xl p-4 md:p-5 h-full overflow-hidden group"
         style={{ background: painPalette[index].bg, border: `1.5px solid ${painPalette[index].border}` }}
       >
-        {/* Decorative blobs */}
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${painPalette[index].deco} 0%, transparent 65%)` }} />
-        <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${painPalette[index].deco} 0%, transparent 65%)` }} />
-
-        {/* Hover glow */}
+        {/* Subtle hover glow */}
         <div
-          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{ background: `radial-gradient(ellipse 80% 60% at 20% 10%, ${painPalette[index].glow}, transparent 70%)` }}
         />
 
-        {/* Top row: icon + aside tag */}
-        <div className="flex items-start justify-between gap-2 md:gap-4">
-          <div
-            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-2xl shrink-0"
-            style={{ background: `${painPalette[index].bg}`, border: `1px solid ${painPalette[index].border}`, backgroundColor: "hsl(0 0% 100% / 0.65)" }}
-          >
-            <Icon strokeWidth={1.4} style={{ width: "1.15rem", height: "1.15rem", color: painPalette[index].icon }} />
-          </div>
-
-        <span
-            className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] md:tracking-[0.22em] font-semibold font-display px-2 md:px-3 py-1 md:py-1.5 rounded-full shrink-0 text-right leading-tight"
-            style={{ background: "hsl(0 0% 100% / 0.7)", color: "hsl(var(--foreground) / 0.7)", border: `1px solid ${painPalette[index].border}` }}
-          >
-            {point.aside}
-          </span>
+        {/* Icon */}
+        <div
+          className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0"
+          style={{ border: `1px solid ${painPalette[index].border}`, backgroundColor: "hsl(0 0% 100% / 0.65)" }}
+        >
+          <Icon strokeWidth={1.5} style={{ width: "1rem", height: "1rem", color: painPalette[index].icon }} />
         </div>
 
         {/* Title */}
         <h3
-          className="font-display font-black leading-snug relative z-10 text-base sm:text-lg md:text-xl lg:text-2xl"
-          style={{
-            color: painPalette[index].icon,
-          }}
+          className="font-display font-black leading-snug relative z-10 text-sm sm:text-base"
+          style={{ color: "hsl(var(--foreground))" }}
         >
           {point.title}
         </h3>
+
+        {/* Aside tag */}
+        <span
+          className="text-[9px] uppercase tracking-[0.18em] font-semibold font-display px-2 py-0.5 rounded-full self-start"
+          style={{ background: "hsl(0 0% 100% / 0.7)", color: painPalette[index].icon, border: `1px solid ${painPalette[index].border}` }}
+        >
+          {point.aside}
+        </span>
       </div>
     </motion.div>
   );

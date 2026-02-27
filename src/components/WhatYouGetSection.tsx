@@ -113,14 +113,14 @@ const ItemCard = ({ item, index }: { item: (typeof items)[number]; index: number
         <motion.div
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="relative p-6 md:p-7 lg:p-8 rounded-3xl h-full flex flex-col gap-4 overflow-hidden cursor-default"
+          className="relative p-4 md:p-5 rounded-2xl h-full flex flex-col gap-3 overflow-hidden cursor-default"
           style={{ background: a.bg, border: `1.5px solid ${a.border}` }}
           animate={{ boxShadow: hovered ? `0 16px 50px ${a.glow}, 0 4px 16px hsl(0 0% 0% / 0.06)` : "0 2px 12px hsl(0 0% 0% / 0.04)" }}
           transition={{ duration: 0.35 }}
         >
           {/* Large background number */}
           <span
-            className="absolute top-3 right-4 font-display font-black text-7xl leading-none select-none pointer-events-none"
+            className="absolute top-2 right-3 font-display font-black text-4xl leading-none select-none pointer-events-none"
             style={{ color: a.deco, letterSpacing: "-0.04em" }}
           >
             {a.num}
@@ -164,8 +164,8 @@ const ItemCard = ({ item, index }: { item: (typeof items)[number]; index: number
 
           {/* Title */}
           <h3
-            className="relative z-10 text-base md:text-xl lg:text-2xl font-display font-black leading-tight"
-            style={{ color: a.icon }}
+            className="relative z-10 text-sm md:text-base font-display font-black leading-tight"
+            style={{ color: "hsl(var(--foreground))" }}
           >
             <span className="block overflow-hidden">
               <motion.span
@@ -301,19 +301,12 @@ const WhatYouGetSection = () => {
           </motion.div>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
-          {items.slice(0, 6).map((item, i) => (
+        {/* Cards grid - all 7 visible */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+          {items.map((item, i) => (
             <ItemCard key={item.title} item={item} index={i} />
           ))}
         </div>
-        {items[6] && (
-          <div className="mt-4 md:mt-5 lg:mt-6 flex justify-center">
-            <div className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.833rem)]">
-              <ItemCard item={items[6]} index={6} />
-            </div>
-          </div>
-        )}
 
         {/* Bottom stats strip */}
         <div className="mt-20 lg:mt-28 pt-12 border-t border-black/[0.08]">
