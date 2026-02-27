@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroBg from "@/assets/hero-bg.webp";
 import { AnimatedCounter } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
+
+const heroBg = "/hero-bg.webp";
 
 const stats = [
   { value: 2000, suffix: "+", label: "Successful Events" },
@@ -31,6 +32,7 @@ const HeroSection = () => {
             alt="Fireworks event with crowd"
             className="w-full h-full object-cover"
             fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 hero-gradient" />
         </motion.div>

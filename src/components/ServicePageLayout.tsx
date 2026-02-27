@@ -68,6 +68,7 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
             loop
             muted
             playsInline
+            preload="none"
             className="w-full h-full object-cover scale-110 blur-[2px]"
           />
           <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
@@ -215,6 +216,7 @@ const ServicePageLayout = ({
             alt={title}
             className="w-full h-full object-cover"
             fetchPriority="high"
+            decoding="async"
           />
           {heroVideo && <DeferredHeroVideo src={heroVideo} />}
           <div className="absolute inset-0 hero-gradient" />

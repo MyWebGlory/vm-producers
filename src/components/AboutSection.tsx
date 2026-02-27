@@ -58,6 +58,8 @@ const AboutSection = () => {
               <img
                 src={aboutEventImg}
                 alt="Event production"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               {videoSrcs.map((src, i) => (
