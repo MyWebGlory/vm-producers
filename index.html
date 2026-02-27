@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SPA redirect handler for GitHub Pages (pairs with public/404.html) -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location));
+    </script>
+
     <!-- Primary SEO -->
     <title>VM Producers | Premium Event Production - Live, Virtual & Hybrid Events</title>
     <meta name="description" content="VM Producers is a full-service event production company specializing in live, virtual, and hybrid events. 2000+ successful events, 350K+ global attendees, 100% success rate. Operating in 70+ countries." />

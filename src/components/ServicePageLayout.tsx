@@ -217,7 +217,6 @@ const FeatureCard = ({
           animate={hovered ? { scaleX: 1 } : undefined}
           transition={{ duration: hovered ? 0.4 : 1.0, delay: hovered ? 0 : rowDelay + 0.55, ease: [0.16, 1, 0.3, 1] }}
         />
-        />
       </div>
     </div>
     </motion.div>
