@@ -1,10 +1,11 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
+import { useRef, useState, useEffect, useCallback, memo } from "react";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.webp";
 import vmLogoWhite from "@/assets/vp-logo-white.png";
 import { AnimatedCounter, FloatingOrbs, RevealLine } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
-import { Globe, Video, Users, CheckCircle } from "lucide-react";
+import { Radio, Monitor, Layers, Film, UserCheck } from "lucide-react";
 
 const stats = [
   { value: 2000, suffix: "+", label: "Successful Events" },
@@ -15,60 +16,247 @@ const stats = [
 // Ellipse formula: x = rx*sin(θ), y = ry*(1-cos(θ))  at 8 equal steps → smooth closed orbit
 const floatingCards = [
   {
-    id: "countries",
-    icon: Globe,
-    iconColor: "#60a5fa",
-    iconBg: "rgba(37,99,235,0.18)",
-    title: "70+ Countries",
-    sub: "Global reach",
-    position: "top-[22%] left-[4%]",
+    // Top-left — above headline, safe on md+
+    id: "live",
+    icon: Radio,
+    iconColor: "#f97316",
+    iconBg: "rgba(234,88,12,0.18)",
+    title: "Live Events",
+    sub: "In-person production",
+    description: "High-impact in-person events that run on time, look sharp, and hold together under pressure.",
+    href: "/live-events",
+    position: "top-[7%] left-[2%] lg:left-[4%] xl:left-[7%]",
+    showClass: "hidden md:block",
     delay: 0.8,
-    duration: 10,
+    duration: 12,
     kx: [0, 7.8, 11, 7.8, 0, -7.8, -11, -7.8, 0],
     ky: [0, 1.5, 5,  8.5, 10, 8.5,  5,   1.5,  0],
   },
   {
-    id: "live",
-    icon: Video,
-    iconColor: "#f97316",
-    iconBg: "rgba(234,88,12,0.18)",
-    title: "Live Production",
-    sub: "Broadcast quality",
-    position: "top-[18%] right-[5%]",
+    // Top-right — above headline, safe on md+
+    id: "virtual",
+    icon: Monitor,
+    iconColor: "#60a5fa",
+    iconBg: "rgba(37,99,235,0.18)",
+    title: "Virtual Events",
+    sub: "Online at any scale",
+    description: "Virtual events built for scale, from 100 to 100,000 live attendees worldwide.",
+    href: "/virtual-events",
+    position: "top-[7%] right-[2%] lg:right-[4%] xl:right-[7%]",
+    showClass: "hidden md:block",
     delay: 1.0,
     duration: 13,
     kx: [0, -7.1, -10, -7.1, 0, 7.1, 10, 7.1, 0],
     ky: [0,  1.2,   4,   6.8, 8, 6.8,  4,  1.2, 0],
   },
   {
-    id: "attendees",
-    icon: Users,
-    iconColor: "#34d399",
-    iconBg: "rgba(5,150,105,0.18)",
-    title: "100K+ Attendees",
-    sub: "Per virtual event",
-    position: "bottom-[26%] right-[4%]",
+    // Mid-right — only xl where side margins are wide enough
+    id: "hybrid",
+    icon: Layers,
+    iconColor: "#a78bfa",
+    iconBg: "rgba(109,40,217,0.18)",
+    title: "Hybrid Events",
+    sub: "In-room + online",
+    description: "Seamlessly connect your in-room audience with remote participants around the world.",
+    href: "/hybrid-events",
+    position: "top-[50%] right-[4%] xl:right-[7%]",
+    showClass: "hidden xl:block",
     delay: 1.1,
     duration: 11,
     kx: [0, -6.4, -9, -6.4, 0, 6.4, 9, 6.4, 0],
     ky: [0,  1.5,  5,   8.5, 10, 8.5, 5, 1.5, 0],
   },
   {
-    id: "guarantee",
-    icon: CheckCircle,
+    // Bottom-right — below social proof strip, only lg+ where margins exist
+    id: "video",
+    icon: Film,
     iconColor: "#fbbf24",
     iconBg: "rgba(217,119,6,0.18)",
-    title: "100% Success Rate",
-    sub: "Guaranteed delivery",
-    position: "bottom-[28%] left-[4%]",
+    title: "Video Production",
+    sub: "Broadcast-grade content",
+    description: "From event capture to polished post-production, we handle every frame.",
+    href: "/video-production",
+    position: "bottom-[3%] right-[2%] lg:right-[4%] xl:right-[7%]",
+    showClass: "hidden lg:block",
     delay: 1.3,
+    duration: 10,
+    kx: [0, -7.1, -10, -7.1, 0, 7.1, 10, 7.1, 0],
+    ky: [0,  1.2,   4,   6.8, 8, 6.8,  4,  1.2, 0],
+  },
+  {
+    // Bottom-left — below social proof strip, only lg+ where margins exist
+    id: "meetingpros",
+    icon: UserCheck,
+    iconColor: "#34d399",
+    iconBg: "rgba(5,150,105,0.18)",
+    title: "Meeting Pros",
+    sub: "70+ countries",
+    description: "Vetted local professionals deployed across 70+ countries, matched within 48 hours.",
+    href: "/meeting-pros",
+    position: "bottom-[3%] left-[2%] lg:left-[4%] xl:left-[7%]",
+    showClass: "hidden lg:block",
+    delay: 1.5,
     duration: 9,
     kx: [0, 7.1, 10, 7.1, 0, -7.1, -10, -7.1, 0],
     ky: [0, 1.2,  4,  6.8, 8,  6.8,  4,   1.2, 0],
   },
 ];
 
-const ORBIT_TIMES = [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1];
+// Defined outside component — stable references, no recreation per render
+const CARD_SPRING = { type: "spring", stiffness: 260, damping: 28, mass: 0.8 } as const;
+const CARD_EASE = { duration: 0.35, ease: [0.22, 1, 0.36, 1] } as const;
+const CARD_EASE_DELAYED = { duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: 0.05 } as const;
+
+/** Linear interpolation through the orbit keyframes at a given phase (0–1). */
+function orbitPos(kx: number[], ky: number[], phase: number) {
+  const last = kx.length - 1;
+  const t = phase * last;
+  const i0 = Math.min(Math.floor(t), last - 1);
+  const frac = t - i0;
+  return {
+    x: kx[i0] + (kx[i0 + 1] - kx[i0]) * frac,
+    y: ky[i0] + (ky[i0 + 1] - ky[i0]) * frac,
+  };
+}
+
+// ── FloatingCard ─────────────────────────────────────────────────────────
+type CardData = (typeof floatingCards)[number];
+
+const FloatingCard = memo(({ card }: { card: CardData }) => {
+  const Icon = card.icon;
+  const orbitX = useMotionValue(0);
+  const orbitY = useMotionValue(0);
+  const [hovered, setHovered] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  // Mutable refs — no re-renders needed for animation state
+  const phaseRef = useRef(0);          // 0–1 position in the orbit cycle
+  const runningRef = useRef(false);    // whether the RAF loop is active
+  const rafRef = useRef<number>(0);
+  const lastTsRef = useRef<number>(0);
+
+  const tick = useCallback((ts: number) => {
+    if (!runningRef.current) return;
+    if (lastTsRef.current) {
+      const delta = (ts - lastTsRef.current) / 1000;
+      phaseRef.current = (phaseRef.current + delta / card.duration) % 1;
+    }
+    lastTsRef.current = ts;
+    const pos = orbitPos(card.kx, card.ky, phaseRef.current);
+    orbitX.set(pos.x);
+    orbitY.set(pos.y);
+    rafRef.current = requestAnimationFrame(tick);
+  }, [card.kx, card.ky, card.duration, orbitX, orbitY]);
+
+  const startOrbit = useCallback(() => {
+    runningRef.current = true;
+    lastTsRef.current = 0;
+    rafRef.current = requestAnimationFrame(tick);
+  }, [tick]);
+
+  const stopOrbit = useCallback(() => {
+    runningRef.current = false;
+    cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  useEffect(() => {
+    const visTimer = setTimeout(() => setVisible(true), card.delay * 1000);
+    const orbitTimer = setTimeout(startOrbit, (card.delay + 0.8) * 1000);
+    return () => {
+      clearTimeout(visTimer);
+      clearTimeout(orbitTimer);
+      stopOrbit();
+    };
+  }, [card.delay, startOrbit, stopOrbit]);
+
+  const handleEnter = useCallback(() => {
+    setHovered(true);
+    stopOrbit(); // freeze at current phase — no reset
+  }, [stopOrbit]);
+
+  const handleLeave = useCallback(() => {
+    setHovered(false);
+    startOrbit(); // resume from the exact same phase
+  }, [startOrbit]);
+
+  return (
+    <motion.div
+      className={`absolute ${card.position} z-[20] ${card.showClass}`}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: visible ? (hovered ? 1 : 0.75) : 0, y: visible ? 0 : 10 }}
+      transition={CARD_EASE}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      style={{ cursor: "pointer" }}
+    >
+      {/* Orbit wrapper — driven by motion values via RAF, GPU-composited */}
+      <motion.div style={{ x: orbitX, y: orbitY, willChange: "transform" }}>
+        <Link to={card.href} style={{ textDecoration: "none", display: "block" }}>
+
+          {/* Pill */}
+          <motion.div
+            className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl"
+            animate={{
+              background: hovered ? "rgba(14,14,18,0.92)" : "rgba(14,14,18,0.40)",
+              boxShadow: hovered
+                ? "0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.18)"
+                : "0 4px 16px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.08)",
+            }}
+            style={{ backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+            transition={CARD_EASE}
+          >
+            <motion.span
+              className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0"
+              style={{ background: card.iconBg }}
+              animate={{ scale: hovered ? 1.08 : 1 }}
+              transition={CARD_SPRING}
+            >
+              <Icon size={15} style={{ color: card.iconColor }} strokeWidth={2} />
+            </motion.span>
+            <div className="leading-tight">
+              <p className="text-xs font-semibold whitespace-nowrap" style={{ color: "rgba(255,255,255,0.92)" }}>
+                {card.title}
+              </p>
+              <p className="text-[10px] whitespace-nowrap" style={{ color: "rgba(255,255,255,0.42)" }}>
+                {card.sub}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Description — always in DOM, animates opacity+y to avoid mount/unmount jank */}
+          <motion.div
+            animate={{
+              opacity: hovered ? 1 : 0,
+              y: hovered ? 0 : -8,
+            }}
+            transition={hovered ? CARD_EASE_DELAYED : CARD_EASE}
+            className="mt-2 px-3.5 py-3 rounded-2xl max-w-[200px]"
+            style={{
+              background: "rgba(14,14,18,0.92)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              boxShadow: "0 8px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.10)",
+              pointerEvents: hovered ? "auto" : "none",
+            }}
+          >
+            <p className="text-[11.5px] leading-relaxed" style={{ color: "rgba(255,255,255,0.72)" }}>
+              {card.description}
+            </p>
+            <motion.span
+              className="flex items-center gap-1 mt-2 text-[10.5px] font-semibold"
+              style={{ color: card.iconColor }}
+              animate={{ x: hovered ? 2 : 0 }}
+              transition={CARD_SPRING}
+            >
+              Explore →
+            </motion.span>
+          </motion.div>
+
+        </Link>
+      </motion.div>
+    </motion.div>
+  );
+});
 
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -101,58 +289,9 @@ const HeroSection = () => {
         <FloatingOrbs count={4} className="z-[2] opacity-50" />
 
         {/* ── Floating cards ── */}
-        {floatingCards.map((card) => {
-          const Icon = card.icon;
-          return (
-            <motion.div
-              key={card.id}
-              className={`absolute ${card.position} z-[8] hidden md:flex items-center gap-2 px-3 py-2 rounded-xl`}
-              style={{
-                background: "rgba(8,8,10,0.35)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-                opacity: 0,
-              }}
-              initial={{ opacity: 0, x: 0, y: 18, scale: 0.9 }}
-              animate={{
-                opacity: 0.7,
-                scale: 1,
-                x: card.kx,
-                y: card.ky,
-              }}
-              transition={{
-                opacity: { delay: card.delay, duration: 0.8 },
-                scale:   { delay: card.delay, duration: 0.8 },
-                x: {
-                  delay: card.delay + 0.8,
-                  duration: card.duration,
-                  repeat: Infinity,
-                  ease: "linear",
-                  times: ORBIT_TIMES,
-                },
-                y: {
-                  delay: card.delay + 0.8,
-                  duration: card.duration,
-                  repeat: Infinity,
-                  ease: "linear",
-                  times: ORBIT_TIMES,
-                },
-              }}
-            >
-              <span
-                className="flex items-center justify-center w-7 h-7 rounded-lg shrink-0"
-                style={{ background: card.iconBg }}
-              >
-                <Icon size={14} style={{ color: card.iconColor }} strokeWidth={2} />
-              </span>
-              <div className="leading-tight">
-                <p className="text-white/80 text-xs font-semibold whitespace-nowrap">{card.title}</p>
-                <p className="text-white/35 text-[10px] whitespace-nowrap">{card.sub}</p>
-              </div>
-            </motion.div>
-          );
-        })}
+        {floatingCards.map((card) => (
+          <FloatingCard key={card.id} card={card} />
+        ))}
 
         {/* Content with scroll fade */}
         <motion.div

@@ -303,6 +303,7 @@ export const FloatingOrbs = ({
             left: c.left,
             top: c.top,
             background: `radial-gradient(circle at 40% 40%, hsl(var(--primary) / 0.07) 0%, hsl(var(--primary) / 0.02) 50%, transparent 70%)`,
+            willChange: "transform",
           }}
           animate={{
             x: [0, c.dx, 0],
