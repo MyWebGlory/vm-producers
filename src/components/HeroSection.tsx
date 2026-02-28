@@ -59,11 +59,12 @@ const HeroSection = () => {
               <img
                 src={vmLogoWhite}
                 alt="VM Producers"
-                className="h-12 md:h-16 lg:h-20 w-auto object-contain"
+                className="h-8 xs:h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
                 style={{ filter: "drop-shadow(0 2px 16px rgba(0,0,0,0.7)) drop-shadow(0 0 24px hsl(43 80% 55% / 0.4))" }}
               />
+              
               <h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[0.95]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight break-words whitespace-pre-line mb-2 sm:mb-4"
                 style={{ color: "white", textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.5)" }}
               >
                 Events that make sense.
@@ -74,11 +75,10 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="text-base md:text-xl max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed"
-              style={{ color: "hsl(0, 0%, 100%, 0.85)", textShadow: "0 1px 12px rgba(0,0,0,0.9), 0 2px 24px rgba(0,0,0,0.6)" }}
+              className="text-xs sm:text-base md:text-xl max-w-[95vw] sm:max-w-2xl mx-auto mb-4 md:mb-8 leading-relaxed break-words text-white/90 drop-shadow"
+              style={{ textShadow: "0 1px 12px rgba(0,0,0,0.9), 0 2px 24px rgba(0,0,0,0.6)" }}
             >
-              We produce events that run on time, look great,
-              and keep people talking.
+              We produce events that run on time, look great, and keep people talking.
             </motion.p>
 
             <motion.div
@@ -89,7 +89,7 @@ const HeroSection = () => {
               <MagneticHover>
                 <a
                   href="#contact"
-                  className="relative inline-flex px-10 py-4 rounded-full bg-primary text-primary-foreground font-display font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105 overflow-hidden"
+                  className="relative inline-flex px-5 py-2 xs:px-6 xs:py-2.5 sm:px-8 sm:py-3 md:px-10 md:py-4 rounded-full bg-primary text-primary-foreground font-display font-semibold text-xs xs:text-sm sm:text-base hover:bg-primary/90 transition-all duration-300 glow-shadow hover:scale-105 overflow-hidden"
                 >
                   Get Your Free Consultation
                   <motion.span
@@ -107,20 +107,20 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.3, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="mt-8 flex items-center justify-center divide-x divide-white/20"
+              className="mt-4 sm:mt-8 flex flex-row items-center justify-center divide-x divide-white/20 gap-0"
             >
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
-                  className="text-center px-6 md:px-10"
+                  className="text-center px-2 sm:px-6 md:px-10"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.3 + i * 0.12, duration: 0.6 }}
                 >
-                  <p className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.8)" }}>
+                  <p className="text-xs xs:text-sm sm:text-lg md:text-3xl font-display font-bold text-white" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.8)" }}>
                     <AnimatedCounter value={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix || ""} />
                   </p>
-                  <p className="text-[11px] sm:text-xs mt-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.65)", textShadow: "0 1px 8px rgba(0,0,0,0.9)" }}>
+                  <p className="text-[8px] xs:text-[9px] sm:text-xs mt-0.5 font-medium" style={{ color: "hsl(0 0% 100% / 0.65)", textShadow: "0 1px 8px rgba(0,0,0,0.9)" }}>
                     {stat.label}
                   </p>
                 </motion.div>
