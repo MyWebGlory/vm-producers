@@ -69,22 +69,44 @@ const ResultsSection = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-20 lg:mb-24"
+          className="relative overflow-hidden text-center mb-20 lg:mb-24"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9 }}
         >
+          {/* Watermark icon */}
+          <TrendingUp
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+            style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(43 80% 48%)" }}
+          />
+          {/* Section icon badge */}
+          <div className="relative flex justify-center mb-4">
+            <span
+              className="flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{ background: "hsl(43 80% 48% / 0.10)", border: "1.5px solid hsl(43 80% 48% / 0.24)" }}
+            >
+              <TrendingUp size={26} style={{ color: "hsl(43 80% 48%)" }} />
+            </span>
+          </div>
           <p
             className="font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
             style={{ color: "hsl(43 80% 55%)" }}
           >
             Enterprise Track Record
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
-            <SplitTextReveal text="Results our clients" delay={0.1} />
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-center">
+            <SplitTextReveal text="Results our clients" delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="can count on." delay={0.3} />
+            <SplitTextReveal text="can count on." delay={0.3} className="justify-center" />
           </h2>
+          {/* Title divider */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(43 80% 48% / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(43 80% 48% / 0.10)", border: "1px solid hsl(43 80% 48% / 0.28)" }}>
+              <TrendingUp size={14} style={{ color: "hsl(43 80% 48%)" }} />
+            </span>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(43 80% 48% / 0.45))" }} />
+          </div>
         </motion.div>
 
         {/* Stats grid */}

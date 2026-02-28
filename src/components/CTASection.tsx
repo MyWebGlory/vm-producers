@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { Rocket } from "lucide-react";
 import { MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import { ConstellationBG } from "@/components/ConstellationBG";
 import heroBg from "@/assets/hero-bg.webp";
@@ -35,6 +36,20 @@ const CTASection = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        {/* Section icon badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center mb-6"
+        >
+          <span
+            className="flex items-center justify-center w-14 h-14 rounded-2xl"
+            style={{ background: "hsl(var(--primary) / 0.15)", border: "1.5px solid hsl(var(--primary) / 0.35)" }}
+          >
+            <Rocket size={26} style={{ color: "hsl(var(--primary))" }} />
+          </span>
+        </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -49,6 +64,14 @@ const CTASection = () => {
           <SplitTextReveal text="Ready to create something" delay={0.1} stagger={0.04} className="justify-center" />{" "}
           <SplitTextReveal text="extraordinary?" delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
+        {/* Title divider */}
+        <div className="flex items-center justify-center gap-3 mt-2 mb-6">
+          <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.5))" }} />
+          <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(var(--primary) / 0.15)", border: "1px solid hsl(var(--primary) / 0.35)" }}>
+            <Rocket size={14} style={{ color: "hsl(var(--primary))" }} />
+          </span>
+          <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.5))" }} />
+        </div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

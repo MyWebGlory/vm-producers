@@ -1,6 +1,6 @@
 ﻿import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 import { RevealLine } from "@/components/ScrollAnimations";
 
 const faqs = [
@@ -54,7 +54,21 @@ const FAQSection = () => {
 
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="relative overflow-hidden text-center mb-16">
+          {/* Watermark icon */}
+          <HelpCircle
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+            style={{ width: 260, height: 260, opacity: 0.045, color: "hsl(var(--primary))" }}
+          />
+          {/* Section icon badge */}
+          <div className="relative flex justify-center mb-4">
+            <span
+              className="flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}
+            >
+              <HelpCircle size={26} style={{ color: "hsl(var(--primary))" }} />
+            </span>
+          </div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -74,6 +88,14 @@ const FAQSection = () => {
             Frequently asked{" "}
             <span style={{ color: "hsl(var(--primary))" }}>questions</span>
           </motion.h2>
+          {/* Title divider */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
+              <HelpCircle size={14} style={{ color: "hsl(var(--primary))" }} />
+            </span>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.45))" }} />
+          </div>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check } from "lucide-react";
+import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight } from "lucide-react";
 
 const painPoints = [
   { Icon: UserX,       title: "You trusted the wrong person with too much." },
@@ -23,7 +23,68 @@ const benefits = [
 const ComparisonSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const isSectionInView = useInView(sectionRef, { once: true, margin: "-120px" });
+  const [activeCol, setActiveCol] = useState(0);
+  const activeColRef = useRef(0);
+  const isProgrammaticRef = useRef(false);
+
+  const scrollToCol = (col: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const target = el.children[col] as HTMLElement;
+    if (!target) return;
+    isProgrammaticRef.current = true;
+    el.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
+    // Clear the flag after scroll animation finishes (~600ms)
+    setTimeout(() => { isProgrammaticRef.current = false; }, 700);
+  };
+
+  // Auto-scroll carousel on mobile: start after 3s, then toggle every 2s
+  useEffect(() => {
+    if (!isSectionInView) return;
+    if (window.innerWidth >= 1024) return;
+
+    let interval: ReturnType<typeof setInterval>;
+    // Use a simple local counter so the interval never depends on scroll events
+    let col = 0;
+
+    const initial = setTimeout(() => {
+      col = 1;
+      activeColRef.current = 1;
+      setActiveCol(1);
+      scrollToCol(1);
+
+      interval = setInterval(() => {
+        col = col === 0 ? 1 : 0;
+        activeColRef.current = col;
+        setActiveCol(col);
+        scrollToCol(col);
+      }, 3000);
+    }, 3000);
+
+    return () => {
+      clearTimeout(initial);
+      clearInterval(interval);
+    };
+  }, [isSectionInView]);
+
+  // Track active dot based on manual scroll only (ignore programmatic)
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      if (isProgrammaticRef.current) return;
+      const mid = el.scrollLeft + el.clientWidth / 2;
+      const second = el.children[1] as HTMLElement;
+      const col = second && mid >= second.offsetLeft ? 1 : 0;
+      activeColRef.current = col;
+      setActiveCol(col);
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative py-24 lg:py-36 overflow-hidden bg-white">
@@ -43,7 +104,21 @@ const ComparisonSection = () => {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-16 lg:mb-20">
+        <div ref={headerRef} className="relative overflow-hidden text-center mb-16 lg:mb-20">
+          {/* Watermark icon */}
+          <Scale
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+            style={{ width: 280, height: 280, opacity: 0.045, color: "hsl(43 80% 48%)" }}
+          />
+          {/* Section icon badge */}
+          <div className="relative flex justify-center mb-5">
+            <span
+              className="flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{ background: "hsl(43 80% 48% / 0.10)", border: "1.5px solid hsl(43 80% 48% / 0.24)" }}
+            >
+              <Scale size={26} style={{ color: "hsl(43 80% 48%)" }} />
+            </span>
+          </div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={isHeaderInView ? { opacity: 1 } : {}}
@@ -71,36 +146,94 @@ const ComparisonSection = () => {
               </span>
             ))}
           </h2>
+          {/* Title divider */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(43 80% 48% / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(43 80% 48% / 0.10)", border: "1px solid hsl(43 80% 48% / 0.28)" }}>
+              <Scale size={14} style={{ color: "hsl(43 80% 48%)" }} />
+            </span>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(43 80% 48% / 0.45))" }} />
+          </div>
         </div>
 
-        {/* Comparison columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        {/* Scroll hint — mobile + tablet only */}
+        <div className="flex lg:hidden items-center justify-center gap-3 mb-5">
+          <motion.div
+            animate={{ x: [-3, 0, -3] }}
+            transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+            className="flex items-center gap-0.5"
+            style={{ color: "hsl(43 80% 48%)" }}
+          >
+            <ChevronLeft size={14} strokeWidth={2.5} />
+            <ChevronLeft size={14} strokeWidth={2.5} style={{ opacity: 0.5 }} />
+          </motion.div>
+          <span
+            className="text-[10px] font-semibold uppercase tracking-[0.22em]"
+            style={{ color: "hsl(43 80% 48% / 0.75)" }}
+          >
+            swipe to compare
+          </span>
+          <motion.div
+            animate={{ x: [3, 0, 3] }}
+            transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+            className="flex items-center gap-0.5"
+            style={{ color: "hsl(43 80% 48%)" }}
+          >
+            <ChevronRight size={14} strokeWidth={2.5} style={{ opacity: 0.5 }} />
+            <ChevronRight size={14} strokeWidth={2.5} />
+          </motion.div>
+        </div>
+
+        {/* Comparison columns — horizontal scroll on mobile+tablet, grid on desktop */}
+        <div
+          ref={scrollRef}
+          className="flex lg:grid lg:grid-cols-2 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-none"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {/* LEFT - Without */}
-          <Column
-            side="pain"
-            label="Without VM Producers"
-            icon={<X size={14} className="shrink-0" />}
-            headerBg="hsl(0 65% 55% / 0.08)"
-            headerBorder="hsl(0 60% 50% / 0.22)"
-            headerColor="hsl(0 55% 45%)"
-            sectionBg="hsl(0 60% 98%)"
-            sectionBorder="hsl(0 55% 88%)"
-            items={painPoints}
-            palette={{ bg: "hsl(0 65% 55% / 0.05)", border: "hsl(0 55% 50% / 0.16)", icon: "hsl(0 50% 48%)" }}
-          />
+          <div className="min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
+            <Column
+              side="pain"
+              label="Without VM Producers"
+              icon={<X size={14} className="shrink-0" />}
+              headerBg="hsl(0 65% 55% / 0.08)"
+              headerBorder="hsl(0 60% 50% / 0.22)"
+              headerColor="hsl(0 55% 45%)"
+              sectionBg="hsl(0 60% 98%)"
+              sectionBorder="hsl(0 55% 88%)"
+              items={painPoints}
+              palette={{ bg: "hsl(0 65% 55% / 0.05)", border: "hsl(0 55% 50% / 0.16)", icon: "hsl(0 50% 48%)" }}
+            />
+          </div>
 
           {/* RIGHT - With */}
-          <Column
-            side="benefit"
-            label="With VM Producers"
-            icon={<Check size={14} className="shrink-0" />}
-            headerBg="hsl(152 55% 42% / 0.08)"
-            headerBorder="hsl(152 50% 38% / 0.22)"
-            headerColor="hsl(152 45% 35%)"
-            sectionBg="hsl(152 50% 98%)"
-            sectionBorder="hsl(152 45% 85%)"
-            items={benefits}
-            palette={{ bg: "hsl(152 55% 42% / 0.05)", border: "hsl(152 48% 38% / 0.16)", icon: "hsl(152 42% 34%)" }}
+          <div className="min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
+            <Column
+              side="benefit"
+              label="With VM Producers"
+              icon={<Check size={14} className="shrink-0" />}
+              headerBg="hsl(152 55% 42% / 0.08)"
+              headerBorder="hsl(152 50% 38% / 0.22)"
+              headerColor="hsl(152 45% 35%)"
+              sectionBg="hsl(152 50% 98%)"
+              sectionBorder="hsl(152 45% 85%)"
+              items={benefits}
+              palette={{ bg: "hsl(152 55% 42% / 0.05)", border: "hsl(152 48% 38% / 0.16)", icon: "hsl(152 42% 34%)" }}
+            />
+          </div>
+        </div>
+
+        {/* Scroll hint dots — mobile + tablet */}
+        <div className="flex lg:hidden justify-center gap-2 mt-4">
+          <button
+            onClick={() => scrollRef.current?.scrollTo({ left: 0, behavior: "smooth" })}
+            className="rounded-full transition-all duration-300"
+            style={{ width: activeCol === 0 ? 16 : 6, height: 6, background: activeCol === 0 ? "hsl(0 55% 48%)" : "hsl(0 30% 80%)" }}
+          />
+          <button
+            onClick={() => { const s = scrollRef.current; if (s) { const c = s.children[1] as HTMLElement; s.scrollTo({ left: c.offsetLeft, behavior: "smooth" }); } }}
+            className="rounded-full transition-all duration-300"
+            style={{ width: activeCol === 1 ? 16 : 6, height: 6, background: activeCol === 1 ? "hsl(152 45% 40%)" : "hsl(152 20% 80%)" }}
           />
         </div>
       </div>

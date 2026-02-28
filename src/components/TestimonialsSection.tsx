@@ -1,6 +1,6 @@
 ﻿import { useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 
 const testimonials = [
@@ -82,11 +82,13 @@ const TestimonialsSection = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [expanded, setExpanded] = useState(false);
   const dragStartX = useRef(0);
 
   const go = useCallback((dir: number) => {
     setDirection(dir);
     setIndex((prev) => (prev + dir + testimonials.length) % testimonials.length);
+    setExpanded(false);
   }, []);
 
   const variants = {
@@ -107,20 +109,41 @@ const TestimonialsSection = () => {
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-14 lg:mb-18"
+          className="relative overflow-hidden text-center mb-14 lg:mb-18"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9 }}
         >
+          {/* Watermark icon */}
+          <Quote
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+            style={{ width: 260, height: 260, opacity: 0.045, color: "hsl(var(--primary))" }}
+          />
+          {/* Section icon badge */}
+          <div className="relative flex justify-center mb-4">
+            <span
+              className="flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}
+            >
+              <Star size={26} style={{ color: "hsl(var(--primary))" }} />
+            </span>
+          </div>
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
             Client Reviews
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
-            <SplitTextReveal text="Trusted by 200+" delay={0.1} />
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 text-center">
+            <SplitTextReveal text="Trusted by 200+" delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="event teams worldwide." delay={0.25} className="glow-text" />
+            <SplitTextReveal text="event teams worldwide." delay={0.25} className="justify-center glow-text" />
           </h2>
-          <RevealLine delay={0.4} className="max-w-[60px] mx-auto mb-8" />
+          {/* Title divider */}
+          <div className="flex items-center justify-center gap-3 mt-6 mb-8">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
+              <Star size={14} style={{ color: "hsl(var(--primary))" }} />
+            </span>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.45))" }} />
+          </div>
 
           {/* Aggregate ratings */}
           <motion.div
@@ -206,9 +229,22 @@ const TestimonialsSection = () => {
 
                   <Quote size={20} className="text-primary/25" style={{ transform: "scaleX(-1)" }} />
 
-                  <p className="text-base md:text-lg leading-relaxed text-foreground/80 font-medium flex-1">
-                    "{t.text}"
-                  </p>
+                  {/* Text — clamped on mobile with read more */}
+                  <div className="flex-1">
+                    <p
+                      className="text-base md:text-lg leading-relaxed text-foreground/80 font-medium"
+                      style={!expanded ? { display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" } : undefined}
+                    >
+                      "{t.text}"
+                    </p>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); }}
+                      className="md:hidden mt-2 text-xs font-semibold font-display"
+                      style={{ color: "hsl(var(--primary))" }}
+                    >
+                      {expanded ? "Show less ↑" : "Read more ↓"}
+                    </button>
+                  </div>
 
                   <div className="flex items-center gap-3 pt-4 border-t border-border/50">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xs font-bold font-display bg-primary/10 text-primary">

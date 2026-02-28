@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Globe, Monitor, Video, Users, Mic, ArrowRight } from "lucide-react";
+import { Globe, Monitor, Video, Users, Mic, ArrowRight, Sparkles, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDeferredVideo } from "@/hooks/useDeferredVideo";
 import { SplitTextReveal, VelocityScrollBand, FloatingOrbs, RevealLine } from "@/components/ScrollAnimations";
@@ -335,7 +335,21 @@ const ServicesSection = () => {
       {/* Animated ambient orbs */}
       <FloatingOrbs count={3} className="opacity-70" />
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-10 lg:mb-16 text-center relative z-10">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-10 lg:mb-16 text-center relative z-10 overflow-hidden">
+          {/* Watermark icon */}
+          <Sparkles
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+            style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(var(--primary))" }}
+          />
+          {/* Section icon badge */}
+          <div className="relative flex justify-center mb-6">
+            <span
+              className="flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}
+            >
+              <Layers size={26} style={{ color: "hsl(var(--primary))" }} />
+            </span>
+          </div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -345,11 +359,18 @@ const ServicesSection = () => {
           Our Services
         </motion.p>
         <h2 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
-          <SplitTextReveal text="From concept" delay={0.1} stagger={0.06} />
+          <SplitTextReveal text="From concept" delay={0.1} stagger={0.06} className="justify-center" />
           <br />
-          <SplitTextReveal text="to standing ovation." delay={0.35} stagger={0.06} style={{ color: "hsl(var(--primary))" }} />
+          <SplitTextReveal text="to standing ovation." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
-        <RevealLine delay={0.65} color="from-transparent via-primary/25 to-transparent" className="mt-8 max-w-[140px] mx-auto" />
+        {/* Title divider */}
+        <div className="flex items-center justify-center gap-3 mt-6">
+          <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
+          <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
+            <Layers size={14} style={{ color: "hsl(var(--primary))" }} />
+          </span>
+          <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.45))" }} />
+        </div>
       </div>
 
       {/* Velocity scroll band - reacts to scroll speed */}

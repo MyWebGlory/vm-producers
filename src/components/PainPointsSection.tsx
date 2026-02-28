@@ -1,6 +1,6 @@
 ﻿import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, UserX, WifiOff, MonitorOff, Flame, Archive } from "lucide-react";
+import { ArrowRight, UserX, WifiOff, MonitorOff, Flame, Archive, AlertTriangle } from "lucide-react";
 
 const painPalette = [
   { bg: "hsl(0 72% 54% / 0.05)",   border: "hsl(0 68% 50% / 0.18)",   glow: "hsl(0 68% 54% / 0.06)",   deco: "hsl(0 68% 64% / 0.09)",   icon: "hsl(0 55% 50%)" },
@@ -122,7 +122,21 @@ const PainPointsSection = () => {
 <div className="max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-28 lg:py-44">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-10 md:mb-24 lg:mb-36 text-center">
+        <div ref={headerRef} className="mb-10 md:mb-24 lg:mb-36 text-center relative overflow-hidden">
+          {/* Watermark icon */}
+          <AlertTriangle
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+            style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(0 65% 55%)" }}
+          />
+          {/* Section icon badge */}
+          <div className="relative flex justify-center mb-6">
+            <span
+              className="flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{ background: "hsl(0 65% 55% / 0.10)", border: "1.5px solid hsl(0 65% 55% / 0.24)" }}
+            >
+              <AlertTriangle size={26} style={{ color: "hsl(0 55% 50%)" }} />
+            </span>
+          </div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={isHeaderInView ? { opacity: 1 } : {}}
@@ -153,6 +167,14 @@ const PainPointsSection = () => {
               </span>
             ))}
           </h2>
+          {/* Title divider */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(0 60% 50% / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(0 55% 50% / 0.10)", border: "1px solid hsl(0 55% 50% / 0.28)" }}>
+              <AlertTriangle size={14} style={{ color: "hsl(0 52% 48%)" }} />
+            </span>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(0 60% 50% / 0.45))" }} />
+          </div>
         </div>
 
         {/* Uniform card grid - all 5 visible at once */}

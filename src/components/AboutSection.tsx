@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
+import { Award } from "lucide-react";
 import { ScrollReveal, AnimatedCounter, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import aboutEventImg from "@/assets/about-event.webp";
 
@@ -83,18 +84,34 @@ const AboutSection = () => {
 
           {/* Content */}
           <ScrollReveal direction="right" className="w-full md:w-1/2 space-y-8">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium"
+              transition={{ delay: 0.15, duration: 0.5 }}
+              className="flex items-center gap-3"
             >
-              Why Us
-            </motion.p>
+              <span
+                className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
+                style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}
+              >
+                <Award size={20} style={{ color: "hsl(var(--primary))" }} />
+              </span>
+              <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">
+                Why Us
+              </p>
+            </motion.div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
               <SplitTextReveal text="Experience the best in" delay={0.2} />{" "}
               <SplitTextReveal text="event production." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>
+            {/* Title divider */}
+            <div className="flex items-center gap-3">
+              <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
+              <span className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
+                <Award size={14} style={{ color: "hsl(var(--primary))" }} />
+              </span>
+              <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.45))" }} />
+            </div>
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
