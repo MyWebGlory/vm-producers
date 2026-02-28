@@ -1,5 +1,5 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
-import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
+import virtualEventsImg from "@/assets/virtual events.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import { Tv, Layout, Users, TrendingUp, Globe, Zap, BarChart2 } from "lucide-react";
 

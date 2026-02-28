@@ -371,6 +371,8 @@ const ServicePageLayout = ({
             fetchPriority="high"
             decoding="async"
           />
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
           {heroVideo && <DeferredHeroVideo src={heroVideo} />}
           <div className="absolute inset-0 hero-gradient" />
         </motion.div>
