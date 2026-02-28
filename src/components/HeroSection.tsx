@@ -164,19 +164,28 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
+        {/* Scroll indicator replaced by animated arrow */}
+        <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer bg-transparent border-none p-0"
+          aria-label="Scroll to next section"
+          style={{ background: 'none', boxShadow: 'none' }}
+          onClick={() => {
+            const next = document.getElementById('services');
+            if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
         >
-          <motion.div
-            animate={{ y: [0, 14, 0], opacity: [0.8, 0.2, 0.8] }}
-            transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-            className="w-0.5 h-8 rounded-full bg-white/60"
-          />
-        </motion.div>
+          <motion.svg
+            width="22" height="22" viewBox="0 0 22 22" fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
+          >
+            <path d="M6 10l5 5 5-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </motion.svg>
+        </motion.button>
       </div>
 
       {/* Review platform badges - standalone centered strip */}

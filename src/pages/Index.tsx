@@ -93,9 +93,9 @@ const Index = () => {
       <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
       <HeroSection />
-      <ServiceQuickNav />
       <Suspense fallback={<div className="h-96" />}>
         <ServicesSection />
+        <ServiceQuickNav />
         <ClientLogos />
         <TestimonialsSection />
         <FounderSection />
