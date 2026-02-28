@@ -96,8 +96,8 @@ const Index = () => {
       <Suspense fallback={<div className="h-96" />}>
         <ServicesSection />
         <ServiceQuickNav />
-        <ClientLogos />
         <TestimonialsSection />
+        <ClientLogos />
         <FounderSection />
         <ResultsSection />
         <ComparisonSection />
