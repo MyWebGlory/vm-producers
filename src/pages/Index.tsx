@@ -2,6 +2,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
+import ServiceQuickNav from "@/components/ServiceQuickNav";
 import { SEO } from "@/components/SEO";
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const ResultsSection = lazy(() => import("@/components/ResultsSection"));
@@ -91,6 +92,7 @@ const Index = () => {
       <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
       <HeroSection />
+      <ServiceQuickNav />
       <Suspense fallback={<div className="h-96" />}>
         <ServicesSection />
         <ClientLogos />

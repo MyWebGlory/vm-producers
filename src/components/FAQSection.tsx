@@ -1,6 +1,6 @@
 ﻿import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { Plus, Minus, HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { RevealLine } from "@/components/ScrollAnimations";
 
 const faqs = [
@@ -172,22 +172,39 @@ const FAQSection = () => {
           })}
         </div>
 
-        {/* Bottom nudge */}
+        {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-12 text-center"
+          className="mt-14 flex flex-col items-center gap-4"
         >
-          <p className="text-muted-foreground text-sm">
-            Still have questions?{" "}
-            <a
-              href="#contact"
-              className="font-semibold text-primary hover:underline underline-offset-4"
-            >
-              Talk to our team →
-            </a>
+          <p className="text-sm font-medium" style={{ color: "hsl(var(--foreground) / 0.45)" }}>
+            Still have questions?
           </p>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            style={{
+              background: "hsl(var(--primary) / 0.10)",
+              border: "1.5px solid hsl(var(--primary) / 0.30)",
+              color: "hsl(var(--primary))",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "hsl(var(--primary))";
+              (e.currentTarget as HTMLElement).style.borderColor = "hsl(var(--primary))";
+              (e.currentTarget as HTMLElement).style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "hsl(var(--primary) / 0.10)";
+              (e.currentTarget as HTMLElement).style.borderColor = "hsl(var(--primary) / 0.30)";
+              (e.currentTarget as HTMLElement).style.color = "hsl(var(--primary))";
+            }}
+          >
+            <MessageCircle size={16} className="shrink-0" />
+            Talk to our team
+            <ArrowRight size={14} className="shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </motion.div>
       </div>
     </section>

@@ -1,9 +1,18 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Rocket } from "lucide-react";
+import { Rocket, Mic, Monitor, Globe, Video, Users, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import { ConstellationBG } from "@/components/ConstellationBG";
 import heroBg from "@/assets/hero-bg.webp";
+
+const serviceLinks = [
+  { icon: Mic,     label: "Live Events",       href: "/live-events" },
+  { icon: Monitor, label: "Virtual Events",    href: "/virtual-events" },
+  { icon: Globe,   label: "Hybrid Events",     href: "/hybrid-events" },
+  { icon: Video,   label: "Video Production",  href: "/video-production" },
+  { icon: Users,   label: "Meeting Pros",      href: "/meeting-pros" },
+];
 
 const CTASection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -100,6 +109,49 @@ const CTASection = () => {
               Get in Touch
             </a>
           </MagneticHover>
+        </motion.div>
+
+        {/* Service quick links */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.62, duration: 0.6 }}
+          className="mt-12"
+        >
+          <p
+            className="text-[10px] uppercase tracking-[0.25em] font-semibold mb-4"
+            style={{ color: "hsl(0 0% 100% / 0.35)" }}
+          >
+            Or explore a specific service
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {serviceLinks.map(({ icon: Icon, label, href }) => (
+              <Link
+                key={href}
+                to={href}
+                className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold font-display transition-all duration-250 hover:scale-105"
+                style={{
+                  background: "hsl(0 0% 100% / 0.08)",
+                  border: "1px solid hsl(0 0% 100% / 0.16)",
+                  color: "hsl(0 0% 100% / 0.75)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = "hsl(43 80% 48% / 0.22)";
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "hsl(43 80% 48% / 0.45)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "hsl(43 80% 75%)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = "hsl(0 0% 100% / 0.08)";
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "hsl(0 0% 100% / 0.16)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "hsl(0 0% 100% / 0.75)";
+                }}
+              >
+                <Icon size={12} />
+                {label}
+                <ArrowRight size={10} className="transition-transform duration-250 group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

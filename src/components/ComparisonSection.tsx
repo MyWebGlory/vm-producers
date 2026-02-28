@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 
 const painPoints = [
   { Icon: UserX,       title: "You trusted the wrong person with too much." },
@@ -236,6 +237,64 @@ const ComparisonSection = () => {
             style={{ width: activeCol === 1 ? 16 : 6, height: 6, background: activeCol === 1 ? "hsl(152 45% 40%)" : "hsl(152 20% 80%)" }}
           />
         </div>
+
+        {/* Post-comparison CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={isSectionInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.55, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 lg:mt-16 relative rounded-3xl overflow-hidden px-8 py-10 text-center"
+          style={{
+            background: "linear-gradient(135deg, hsl(152 55% 42% / 0.07) 0%, hsl(152 50% 42% / 0.12) 100%)",
+            border: "1.5px solid hsl(152 50% 38% / 0.28)",
+          }}
+        >
+          {/* Soft glow */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse 70% 60% at 50% 100%, hsl(152 55% 42% / 0.10) 0%, transparent 70%)" }}
+          />
+          <div className="relative z-10 flex flex-col items-center gap-5">
+            <span
+              className="flex items-center justify-center w-12 h-12 rounded-2xl"
+              style={{ background: "hsl(152 55% 42% / 0.12)", border: "1.5px solid hsl(152 50% 38% / 0.28)" }}
+            >
+              <Sparkles size={20} style={{ color: "hsl(152 45% 38%)" }} />
+            </span>
+            <div>
+              <p className="font-display font-bold text-xl sm:text-2xl tracking-tight mb-2" style={{ color: "hsl(var(--foreground))" }}>
+                Ready to be on the right side of this list?
+              </p>
+              <p className="text-sm max-w-md mx-auto" style={{ color: "hsl(var(--foreground) / 0.55)" }}>
+                Join 2,000+ successful events. We handle every detail — you just show up.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <a
+                href="https://www.vmproducers.com/contact"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                style={{ background: "hsl(152 45% 38%)", color: "white" }}
+              >
+                Get started — it's free
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+              <Link
+                to="/live-events"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"
+                style={{
+                  background: "hsl(152 55% 42% / 0.08)",
+                  border: "1.5px solid hsl(152 50% 38% / 0.25)",
+                  color: "hsl(152 45% 35%)",
+                }}
+              >
+                Explore our services
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
