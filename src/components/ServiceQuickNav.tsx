@@ -2,6 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { Mic, Monitor, Globe, Video, Users, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const services = [
   {
@@ -46,56 +47,56 @@ const services = [
   },
 ];
 
-// Speed in px per frame (~60fps => ~22px/sec)
-const SPEED = 0.36;
-
 interface ServiceCardProps {
   s: (typeof services)[number];
   suffix: string;
+  className?: string;
 }
 
-const ServiceCard = ({ s, suffix }: ServiceCardProps) => {
+const ServiceCard = ({ s, suffix, className = "" }: ServiceCardProps) => {
   const Icon = s.icon;
   return (
-    <div key={s.href + suffix} className="min-w-[200px] sm:min-w-[230px] lg:min-w-0 flex-shrink-0 lg:flex-shrink">
+    <div key={s.href + suffix} className={`flex-shrink-0 ${className}`}>
       <Link
         to={s.href}
         draggable={false}
-        className="group relative flex flex-col gap-3 rounded-2xl p-4 lg:p-5 border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full select-none"
+        className="group relative flex flex-col gap-5 rounded-2xl p-6 lg:p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 h-full select-none"
         style={{
           background: `hsl(${s.accent} / 0.04)`,
           borderColor: `hsl(${s.accent} / 0.18)`,
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLElement).style.background = `hsl(${s.accent} / 0.09)`;
-          (e.currentTarget as HTMLElement).style.borderColor = `hsl(${s.accent} / 0.38)`;
+          (e.currentTarget as HTMLElement).style.borderColor = `hsl(${s.accent} / 0.40)`;
+          (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 32px hsl(${s.accent} / 0.15)`;
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLElement).style.background = `hsl(${s.accent} / 0.04)`;
           (e.currentTarget as HTMLElement).style.borderColor = `hsl(${s.accent} / 0.18)`;
+          (e.currentTarget as HTMLElement).style.boxShadow = "";
         }}
       >
         <span
-          className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
-          style={{ background: `hsl(${s.accent} / 0.12)`, border: `1.5px solid hsl(${s.accent} / 0.25)` }}
+          className="flex items-center justify-center w-14 h-14 rounded-2xl shrink-0"
+          style={{ background: `hsl(${s.accent} / 0.12)`, border: `1.5px solid hsl(${s.accent} / 0.28)` }}
         >
-          <Icon size={18} style={{ color: `hsl(${s.accent})` }} />
+          <Icon size={24} style={{ color: `hsl(${s.accent})` }} />
         </span>
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-1">
-            <p className="font-display font-bold text-sm leading-tight" style={{ color: "hsl(var(--foreground))" }}>
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <p className="font-display font-bold text-lg leading-tight" style={{ color: "hsl(var(--foreground))" }}>
               {s.title}
             </p>
             <ArrowRight
-              size={13}
-              className="shrink-0 mt-0.5 transition-transform duration-300 group-hover:translate-x-1"
+              size={16}
+              className="shrink-0 mt-1 transition-transform duration-300 group-hover:translate-x-1"
               style={{ color: `hsl(${s.accent})` }}
             />
           </div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.15em] mt-0.5 mb-1.5" style={{ color: `hsl(${s.accent} / 0.80)` }}>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] mb-3" style={{ color: `hsl(${s.accent} / 0.85)` }}>
             {s.subtitle}
           </p>
-          <p className="text-xs leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.58)" }}>
+          <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.60)" }}>
             {s.description}
           </p>
         </div>
@@ -106,63 +107,61 @@ const ServiceCard = ({ s, suffix }: ServiceCardProps) => {
 
 const ServiceQuickNav = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const isMobile = useIsMobile();
 
-  const pausedRef = useRef(false);
-  const rafRef = useRef<number>(0);
-  const manualPauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [current, setCurrent] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  // Touch state
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
+  const isDragging = useRef(false);
 
-  const updateArrows = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 8);
+  const maxIndex = Math.max(0, services.length - itemsPerView);
+
+  const updateItemsPerView = useCallback(() => {
+    const w = window.innerWidth;
+    if (w < 640) setItemsPerView(1);
+    else if (w < 1024) setItemsPerView(2);
+    else setItemsPerView(3);
   }, []);
 
-  // requestAnimationFrame infinite marquee — only on < lg
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    if (window.innerWidth >= 1024) return;
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, [updateItemsPerView]);
 
-    const tick = () => {
-      if (!pausedRef.current && el) {
-        const half = el.scrollWidth / 2;
-        el.scrollLeft += SPEED;
-        if (el.scrollLeft >= half) {
-          el.scrollLeft -= half;
-        }
-        updateArrows();
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
+  // Clamp current when itemsPerView changes
+  useEffect(() => {
+    setCurrent((c) => Math.min(c, Math.max(0, services.length - itemsPerView)));
+  }, [itemsPerView]);
 
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [updateArrows]);
+  const prev = useCallback(() => setCurrent((c) => Math.max(0, c - 2)), []);
+  const next = useCallback(() => setCurrent((c) => Math.min(maxIndex, c + 2)), [maxIndex]);
 
-  const pause = useCallback(() => {
-    pausedRef.current = true;
-    if (manualPauseTimerRef.current) clearTimeout(manualPauseTimerRef.current);
-  }, []);
-
-  const resume = useCallback(() => {
-    pausedRef.current = false;
-  }, []);
-
-  const scrollManual = (dir: "left" | "right") => {
-    const el = scrollRef.current;
-    if (!el) return;
-    pausedRef.current = true;
-    if (manualPauseTimerRef.current) clearTimeout(manualPauseTimerRef.current);
-    const amount = el.clientWidth * 0.65;
-    el.scrollBy({ left: dir === "right" ? amount : -amount, behavior: "smooth" });
-    manualPauseTimerRef.current = setTimeout(() => {
-      pausedRef.current = false;
-    }, 3000);
+  // Touch handlers
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+    isDragging.current = true;
   };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging.current) return;
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  };
+  const onTouchEnd = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    if (touchDeltaX.current < -50) next();
+    else if (touchDeltaX.current > 50) prev();
+    touchDeltaX.current = 0;
+  };
+
+  const cardWidthPercent = 100 / itemsPerView;
 
   return (
     <section
@@ -195,52 +194,85 @@ const ServiceQuickNav = () => {
           </h2>
         </motion.div>
 
-        {/* Mobile / Tablet: infinite auto-scroll marquee */}
+        {/* Carousel wrapper */}
         <div
-          className="relative lg:hidden"
-          onMouseEnter={pause}
-          onMouseLeave={resume}
-          onTouchStart={pause}
-          onTouchEnd={resume}
+          className="relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Left arrow — visible on sm+ when scrolled */}
-          <button
-            onClick={() => scrollManual("left")}
-            aria-label="Scroll left"
-            className={`hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 items-center justify-center w-9 h-9 rounded-full shadow-md transition-all duration-200 ${canScrollLeft ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-            style={{ background: "hsl(var(--background))", border: "1.5px solid hsl(43 80% 48% / 0.28)", color: "hsl(43 80% 48%)" }}
+          {/* Left arrow */}
+          <motion.button
+            onClick={prev}
+            aria-label="Précédent"
+            animate={{ opacity: current > 0 && isHovered && !isMobile ? 1 : 0, pointerEvents: current > 0 ? "auto" : "none" }}
+            transition={{ duration: 0.2 }}
+            className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
+            style={{
+              background: "hsl(var(--background))",
+              border: "1.5px solid hsl(43 80% 48% / 0.35)",
+              color: "hsl(43 80% 48%)",
+            }}
           >
-            <ChevronLeft size={16} strokeWidth={2.5} />
-          </button>
+            <ChevronLeft size={18} strokeWidth={2.5} />
+          </motion.button>
 
-          {/* Right arrow — always visible on sm+ */}
-          <button
-            onClick={() => scrollManual("right")}
-            aria-label="Scroll right"
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 items-center justify-center w-9 h-9 rounded-full shadow-md transition-all duration-200"
-            style={{ background: "hsl(var(--background))", border: "1.5px solid hsl(43 80% 48% / 0.28)", color: "hsl(43 80% 48%)" }}
+          {/* Right arrow */}
+          <motion.button
+            onClick={next}
+            aria-label="Suivant"
+            animate={{ opacity: current < maxIndex && isHovered && !isMobile ? 1 : 0, pointerEvents: current < maxIndex ? "auto" : "none" }}
+            transition={{ duration: 0.2 }}
+            className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
+            style={{
+              background: "hsl(var(--background))",
+              border: "1.5px solid hsl(43 80% 48% / 0.35)",
+              color: "hsl(43 80% 48%)",
+            }}
           >
-            <ChevronRight size={16} strokeWidth={2.5} />
-          </button>
+            <ChevronRight size={18} strokeWidth={2.5} />
+          </motion.button>
 
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 h-full w-12 pointer-events-none z-[1]" style={{ background: "linear-gradient(to right, hsl(var(--background)), transparent)" }} />
-          <div className="absolute right-0 top-0 h-full w-12 pointer-events-none z-[1]" style={{ background: "linear-gradient(to left, hsl(var(--background)), transparent)" }} />
-
-          {/* Strip with duplicated items for seamless loop */}
+          {/* Track */}
           <div
-            ref={scrollRef}
-            className="flex gap-3 overflow-x-auto -mx-6 px-6 pb-2 scrollbar-none"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="overflow-hidden"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
-            {services.map((s) => <ServiceCard key={s.href + "-a"} s={s} suffix="-a" />)}
-            {services.map((s) => <ServiceCard key={s.href + "-b"} s={s} suffix="-b" />)}
+            <motion.div
+              ref={trackRef}
+              className="flex"
+              animate={{ x: `-${current * cardWidthPercent}%` }}
+              transition={{ type: "spring", stiffness: 300, damping: 35, mass: 0.8 }}
+              style={{ gap: 0 }}
+            >
+              {services.map((s) => (
+                <div
+                  key={s.href}
+                  style={{ minWidth: `${cardWidthPercent}%`, paddingLeft: "0.625rem", paddingRight: "0.625rem" }}
+                >
+                  <ServiceCard s={s} suffix="-carousel" className="h-full" />
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
 
-        {/* Desktop: regular 5-col grid */}
-        <div className="hidden lg:grid lg:grid-cols-5 gap-4">
-          {services.map((s) => <ServiceCard key={s.href + "-grid"} s={s} suffix="-grid" />)}
+        {/* Dots */}
+        <div className="flex items-center justify-center gap-2 mt-6">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Aller à la slide ${i + 1}`}
+              className="transition-all duration-300 rounded-full"
+              style={{
+                width: current === i ? "1.5rem" : "0.5rem",
+                height: "0.5rem",
+                background: current === i ? "hsl(43 80% 48%)" : "hsl(43 80% 48% / 0.28)",
+              }}
+            />
+          ))}
         </div>
       </div>
 
