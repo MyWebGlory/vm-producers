@@ -6,11 +6,133 @@ import {
   useInView,
   AnimatePresence,
 } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, Mic, Monitor, Globe, Video, Users, ArrowRight, PhoneCall } from "lucide-react";
+import { Link } from "react-router-dom";
 import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+
+const ALL_SERVICES = [
+  { icon: Mic,     title: "Live Events",      subtitle: "50–50K attendees",    href: "/live-events",      accent: "215 60% 35%" },
+  { icon: Monitor, title: "Virtual Events",   subtitle: "Up to 100K attendees", href: "/virtual-events",   accent: "190 70% 35%" },
+  { icon: Globe,   title: "Hybrid Events",    subtitle: "In-person + virtual",  href: "/hybrid-events",    accent: "250 50% 40%" },
+  { icon: Video,   title: "Video Production", subtitle: "Teasers & brand films", href: "/video-production", accent: "340 60% 45%" },
+  { icon: Users,   title: "Meeting Pros",     subtitle: "70+ countries",        href: "/meeting-pros",     accent: "160 50% 35%" },
+];
+
+const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const others = ALL_SERVICES.filter((s) => s.href !== currentPath);
+
+  return (
+    <section ref={ref} className="relative py-16 md:py-20 overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, hsl(var(--primary) / 0.04) 0%, transparent 70%)" }}
+      />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] max-w-3xl h-px"
+        style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.2), transparent)" }}
+      />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55 }}
+          className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+        >
+          <div>
+            <p className="font-display text-[10px] uppercase tracking-[0.3em] font-semibold mb-1" style={{ color: "hsl(var(--primary) / 0.70)" }}>
+              Keep exploring
+            </p>
+            <h2 className="text-xl sm:text-2xl font-display font-bold tracking-tight" style={{ color: "hsl(var(--foreground))" }}>
+              Other services you might need
+            </h2>
+          </div>
+          <a
+            href="https://www.vmproducers.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group hidden sm:inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 shrink-0"
+            style={{ background: "hsl(var(--primary))", color: "white" }}
+          >
+            <PhoneCall size={13} />
+            Talk to us
+            <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {others.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.href}
+                initial={{ opacity: 0, y: 22 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Link
+                  to={s.href}
+                  className="group flex flex-col gap-3 rounded-2xl p-4 border h-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+                  style={{ background: `hsl(${s.accent} / 0.04)`, borderColor: `hsl(${s.accent} / 0.18)` }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = `hsl(${s.accent} / 0.09)`;
+                    (e.currentTarget as HTMLElement).style.borderColor = `hsl(${s.accent} / 0.35)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = `hsl(${s.accent} / 0.04)`;
+                    (e.currentTarget as HTMLElement).style.borderColor = `hsl(${s.accent} / 0.18)`;
+                  }}
+                >
+                  <span
+                    className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
+                    style={{ background: `hsl(${s.accent} / 0.12)`, border: `1.5px solid hsl(${s.accent} / 0.25)` }}
+                  >
+                    <Icon size={17} style={{ color: `hsl(${s.accent})` }} />
+                  </span>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between gap-1 mb-0.5">
+                      <p className="font-display font-bold text-sm" style={{ color: "hsl(var(--foreground))" }}>{s.title}</p>
+                      <ArrowRight size={12} className="shrink-0 transition-transform duration-300 group-hover:translate-x-1" style={{ color: `hsl(${s.accent})` }} />
+                    </div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: `hsl(${s.accent} / 0.75)` }}>{s.subtitle}</p>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Mobile contact button */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.38, duration: 0.5 }}
+          className="sm:hidden mt-6 flex justify-center"
+        >
+          <a
+            href="https://www.vmproducers.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"
+            style={{ background: "hsl(var(--primary))", color: "white" }}
+          >
+            <PhoneCall size={13} />
+            Talk to us
+            <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </motion.div>
+      </div>
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] max-w-3xl h-px"
+        style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.15), transparent)" }}
+      />
+    </section>
+  );
+};
 
 interface ServiceStat {
   value: number;
@@ -400,6 +522,9 @@ const ServicePageLayout = ({
 
       {/* Additional Content */}
       {additionalContent}
+
+      {/* ═══ Related Services Navigation ═══ */}
+      <RelatedServicesNav currentPath={seo?.canonical ?? ""} />
 
       {/* ═══ CTA with Parallax Background ═══ */}
       <section
