@@ -21,7 +21,10 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     target: "esnext",
+    sourcemap: false,
+    cssCodeSplit: true,
     reportCompressedSize: false,
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
         manualChunks: {

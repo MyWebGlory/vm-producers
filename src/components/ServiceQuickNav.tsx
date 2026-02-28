@@ -7,7 +7,7 @@ const services = [
   {
     icon: Mic,
     title: "Live Events",
-    subtitle: "50 – 50,000 attendees",
+    subtitle: "50 to 50,000 attendees",
     description: "In-person experiences run tight, on budget, on time.",
     href: "/live-events",
     accent: "215 60% 35%",

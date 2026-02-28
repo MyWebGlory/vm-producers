@@ -266,7 +266,7 @@ const ComparisonSection = () => {
                 Ready to be on the right side of this list?
               </p>
               <p className="text-sm max-w-md mx-auto" style={{ color: "hsl(var(--foreground) / 0.55)" }}>
-                Join 2,000+ successful events. We handle every detail — you just show up.
+                Join 2,000+ successful events. We handle every detail so you just show up.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3">
@@ -277,7 +277,7 @@ const ComparisonSection = () => {
                 className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 style={{ background: "hsl(152 45% 38%)", color: "white" }}
               >
-                Get started — it's free
+                Get started, it's free
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <Link

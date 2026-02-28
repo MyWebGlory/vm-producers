@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 
 const ALL_SERVICES = [
-  { icon: Mic,     title: "Live Events",      subtitle: "50–50K attendees",    href: "/live-events",      accent: "215 60% 35%" },
+  { icon: Mic,     title: "Live Events",      subtitle: "50 to 50K attendees",    href: "/live-events",      accent: "215 60% 35%" },
   { icon: Monitor, title: "Virtual Events",   subtitle: "Up to 100K attendees", href: "/virtual-events",   accent: "190 70% 35%" },
   { icon: Globe,   title: "Hybrid Events",    subtitle: "In-person + virtual",  href: "/hybrid-events",    accent: "250 50% 40%" },
   { icon: Video,   title: "Video Production", subtitle: "Teasers & brand films", href: "/video-production", accent: "340 60% 45%" },
@@ -41,27 +41,14 @@ const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+          className="mb-8 lg:mb-10 text-center"
         >
-          <div>
-            <p className="font-display text-[10px] uppercase tracking-[0.3em] font-semibold mb-1" style={{ color: "hsl(var(--primary) / 0.70)" }}>
-              Keep exploring
-            </p>
-            <h2 className="text-xl sm:text-2xl font-display font-bold tracking-tight" style={{ color: "hsl(var(--foreground))" }}>
-              Other services you might need
-            </h2>
-          </div>
-          <a
-            href="https://www.vmproducers.com/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group hidden sm:inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 shrink-0"
-            style={{ background: "hsl(var(--primary))", color: "white" }}
-          >
-            <PhoneCall size={13} />
-            Talk to us
-            <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          <p className="font-display text-[10px] uppercase tracking-[0.3em] font-semibold mb-1" style={{ color: "hsl(var(--primary) / 0.70)" }}>
+            Keep exploring
+          </p>
+          <h2 className="text-xl sm:text-2xl font-display font-bold tracking-tight" style={{ color: "hsl(var(--foreground))" }}>
+            Other services you might need
+          </h2>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
@@ -106,12 +93,12 @@ const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
           })}
         </div>
 
-        {/* Mobile contact button */}
+        {/* Contact button — centered below cards, all screen sizes */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.38, duration: 0.5 }}
-          className="sm:hidden mt-6 flex justify-center"
+          className="mt-8 flex justify-center"
         >
           <a
             href="https://www.vmproducers.com/contact"

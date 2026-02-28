@@ -5,6 +5,7 @@ import ClientLogos from "@/components/ClientLogos";
 import ServiceQuickNav from "@/components/ServiceQuickNav";
 import { SEO } from "@/components/SEO";
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const FounderSection = lazy(() => import("@/components/FounderSection"));
 const ResultsSection = lazy(() => import("@/components/ResultsSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const ComparisonSection = lazy(() => import("@/components/ComparisonSection"));
@@ -97,6 +98,7 @@ const Index = () => {
         <ServicesSection />
         <ClientLogos />
         <TestimonialsSection />
+        <FounderSection />
         <ResultsSection />
         <ComparisonSection />
         {/* FAQ before final CTA - answer objections */}
