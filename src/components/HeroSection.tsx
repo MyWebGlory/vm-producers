@@ -16,7 +16,7 @@ const stats = [
 // Ellipse formula: x = rx*sin(θ), y = ry*(1-cos(θ))  at 8 equal steps → smooth closed orbit
 const floatingCards = [
   {
-    // Top-left — above headline, safe on md+
+    // Top-left — clears navbar (~64px) + breathing room
     id: "live",
     icon: Radio,
     iconColor: "#f97316",
@@ -25,7 +25,7 @@ const floatingCards = [
     sub: "In-person production",
     description: "High-impact in-person events that run on time, look sharp, and hold together under pressure.",
     href: "/live-events",
-    position: "top-[7%] left-[2%] lg:left-[4%] xl:left-[7%]",
+    position: "top-[16%] left-[3%] lg:left-[5%] xl:left-[7%]",
     showClass: "hidden md:block",
     delay: 0.8,
     duration: 12,
@@ -33,7 +33,7 @@ const floatingCards = [
     ky: [0, 1.5, 5,  8.5, 10, 8.5,  5,   1.5,  0],
   },
   {
-    // Top-right — above headline, safe on md+
+    // Top-right — clears navbar + breathing room
     id: "virtual",
     icon: Monitor,
     iconColor: "#60a5fa",
@@ -42,7 +42,7 @@ const floatingCards = [
     sub: "Online at any scale",
     description: "Virtual events built for scale, from 100 to 100,000 live attendees worldwide.",
     href: "/virtual-events",
-    position: "top-[7%] right-[2%] lg:right-[4%] xl:right-[7%]",
+    position: "top-[16%] right-[3%] lg:right-[5%] xl:right-[7%]",
     showClass: "hidden md:block",
     delay: 1.0,
     duration: 13,
@@ -59,7 +59,7 @@ const floatingCards = [
     sub: "In-room + online",
     description: "Seamlessly connect your in-room audience with remote participants around the world.",
     href: "/hybrid-events",
-    position: "top-[50%] right-[4%] xl:right-[7%]",
+    position: "top-[50%] right-[3%] xl:right-[7%]",
     showClass: "hidden xl:block",
     delay: 1.1,
     duration: 11,
@@ -76,7 +76,7 @@ const floatingCards = [
     sub: "Broadcast-grade content",
     description: "From event capture to polished post-production, we handle every frame.",
     href: "/video-production",
-    position: "bottom-[3%] right-[2%] lg:right-[4%] xl:right-[7%]",
+    position: "bottom-[3%] right-[3%] lg:right-[5%] xl:right-[7%]",
     showClass: "hidden lg:block",
     delay: 1.3,
     duration: 10,
@@ -93,7 +93,7 @@ const floatingCards = [
     sub: "70+ countries",
     description: "Vetted local professionals deployed across 70+ countries, matched within 48 hours.",
     href: "/meeting-pros",
-    position: "bottom-[3%] left-[2%] lg:left-[4%] xl:left-[7%]",
+    position: "bottom-[3%] left-[3%] lg:left-[5%] xl:left-[7%]",
     showClass: "hidden lg:block",
     delay: 1.5,
     duration: 9,
