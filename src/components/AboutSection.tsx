@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Award } from "lucide-react";
-import { ScrollReveal, AnimatedCounter, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
+import { ScrollReveal, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import aboutEventImg from "@/assets/about-event.webp";
 
 // Dynamic imports - videos loaded only when section is visible
@@ -49,7 +49,7 @@ const AboutSection = () => {
     <section ref={sectionRef} className="py-32 lg:py-44 bg-card relative overflow-hidden">
       {/* Ambient floating light orbs */}
       <FloatingOrbs count={4} />
-      {/* About section content */}}
+      {/* About section content */}
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row gap-16 md:gap-20 items-center">
           {/* Video carousel */}
@@ -118,21 +118,16 @@ const AboutSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-muted-foreground text-lg leading-relaxed"
             >
-              You have a vision. We have the team, the tools, and the track record to bring it to life - exactly the way you imagined it. 10 attendees or 10,000, every detail handled, every moment accounted for.
+              VM Producers is a full-service event production agency serving organizations of all sizes, from Fortune 500 companies to emerging startups.
             </motion.p>
-
-            {/* Minimal stat */}
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex items-baseline gap-2"
+              className="text-muted-foreground text-base leading-relaxed"
             >
-              <span className="text-5xl font-display font-bold text-foreground">
-                <AnimatedCounter value={95} suffix="%" />
-              </span>
-              <span className="text-muted-foreground text-sm">client retention rate</span>
-            </motion.div>
+              We handle everything from venue sourcing and AV production to live streaming and post-event content. One dedicated producer owns every detail so you can focus on your audience.
+            </motion.p>
 
             <RevealLine delay={0.55} className="mb-2" />
             <motion.div

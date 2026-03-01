@@ -4,6 +4,11 @@ import heroBg from "@/assets/hero-bg.webp";
 import { AnimatedCounter, FloatingOrbs } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
 import { ArrowRight } from "lucide-react";
+import avatar1 from "@/assets/testimonials/jeanette-mccullough.jpeg";
+import avatar2 from "@/assets/testimonials/lesley-edwards.jpg";
+import avatar3 from "@/assets/testimonials/tony-susa.jpg";
+import avatar4 from "@/assets/testimonials/george-zisiadis.jpg";
+import avatar5 from "@/assets/testimonials/john-winter.jpeg";
 
 const stats = [
   { value: 2000, suffix: "+", label: "Events Produced" },
@@ -11,8 +16,8 @@ const stats = [
   { value: 350, suffix: "K+", label: "Participants Served" },
 ];
 
-const avatarColors = ["#4f86c6", "#6ab187", "#e07b54", "#9b6bb5", "#d4a843"];
-const avatarLetters = ["J", "K", "D", "L", "T"];
+const avatarPhotos = [avatar1, avatar2, avatar3, avatar4, avatar5];
+const avatarNames = ["Jeanette", "Lesley", "Tony", "George", "John"];
 
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -158,18 +163,17 @@ const HeroSection = () => {
             className="flex items-center gap-3 mt-1"
           >
             <div className="flex -space-x-2">
-              {avatarColors.map((color, i) => (
-                <div
+              {avatarPhotos.map((src, i) => (
+                <img
                   key={i}
-                  className="w-7 h-7 rounded-full border-2 flex items-center justify-center text-white text-[10px] font-bold"
+                  src={src}
+                  alt={avatarNames[i]}
+                  className="w-7 h-7 rounded-full object-cover border-2"
                   style={{
-                    background: color,
                     borderColor: "rgba(8,12,24,0.85)",
                     zIndex: 5 - i,
                   }}
-                >
-                  {avatarLetters[i]}
-                </div>
+                />
               ))}
             </div>
             <div className="flex items-center gap-2">
@@ -186,27 +190,26 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-        </div>
-      </motion.div>
+          {/* Stats row - inline, no separators */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.3, duration: 0.6 }}
+            className="grid grid-cols-3 gap-6 mt-2"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col items-center gap-0.5">
+                <p className="text-xl sm:text-2xl font-display font-bold text-white">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="text-[10px] uppercase tracking-wider font-medium" style={{ color: "hsl(0 0% 100% / 0.45)" }}>
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
 
-      {/* Stats bar - pinned to bottom */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.3, duration: 0.6 }}
-        className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-3 divide-x divide-white/[0.08]"
-        style={{}}
-      >
-        {stats.map((stat, i) => (
-          <div key={stat.label} className="flex flex-col items-center justify-center py-4 px-4 gap-0.5">
-            <p className="text-xl sm:text-2xl font-display font-bold text-white">
-              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-            </p>
-            <p className="text-[10px] uppercase tracking-wider font-medium" style={{ color: "hsl(0 0% 100% / 0.45)" }}>
-              {stat.label}
-            </p>
-          </div>
-        ))}
+        </div>
       </motion.div>
 
       {/* Scroll arrow - above stats bar */}
@@ -214,7 +217,7 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6 }}
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 cursor-pointer bg-transparent border-none p-0"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer bg-transparent border-none p-0"
         aria-label="Scroll down"
         onClick={() => {
           const next = document.getElementById("services");

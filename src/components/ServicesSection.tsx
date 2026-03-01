@@ -24,6 +24,7 @@ const services = [
     title: "Live Events",
     icon: Mic,
     description: "Your in-person event, from 50 to 50,000 - run tight, on budget, on time.",
+    features: ["Full A-to-Z event management", "Venue, hotel & logistics sourcing", "Staging, lighting & AV production", "On-site staff & guest experience"],
     image: liveEventsImg,
     videoKey: "liveEvents" as const,
     href: "/live-events",
@@ -35,6 +36,7 @@ const services = [
     title: "Virtual Events",
     icon: Monitor,
     description: "Your virtual event, fully produced - webinars to large-scale conferences for up to 100,000 attendees.",
+    features: ["Conferences, summits & livestreams", "TV-quality broadcast production", "Multi-language translation (5+ languages)", "Up to 100,000 attendees online"],
     image: virtualEventsImg,
     videoKey: "virtualEvents" as const,
     href: "/virtual-events",
@@ -46,6 +48,7 @@ const services = [
     title: "Hybrid Events",
     icon: Globe,
     description: "Your in-person and virtual audiences, brought together into one seamless, engaging experience.",
+    features: ["In-person + virtual simultaneously", "Multi-camera branded livestream", "Live polls, real-time Q&A & audience app", "Unified experience for every attendee"],
     image: hybridEventsImg,
     videoKey: "hybridEvents" as const,
     href: "/hybrid-events",
@@ -57,6 +60,7 @@ const services = [
     title: "Video Production",
     icon: Video,
     description: "Teasers, recaps, brand films - shot and delivered exactly the way you need them.",
+    features: ["Event highlight reels & recaps", "Promotional & marketing videos", "Whiteboard explainer videos", "Broadcast-ready, fast turnaround"],
     image: videoProductionImg,
     videoKey: "videoProduction" as const,
     href: "/video-production",
@@ -68,6 +72,7 @@ const services = [
     title: "Meeting Pros",
     icon: Users,
     description: "Your event professional, matched within 48 hours - anywhere in the world, verified and ready.",
+    features: ["55+ event specialties covered", "Matched & onboarded in 48 hours", "On-site & virtual producers available", "Active in 70+ countries worldwide"],
     image: meetingProsImg,
     videoKey: "meetingPros" as const,
     href: "/meeting-pros",
@@ -218,7 +223,10 @@ const BentoCard = ({
         >
           <span
             className="font-display text-2xl font-bold leading-none"
-            style={{ color: `hsl(${service.accent})` }}
+            style={{
+              color: "white",
+              textShadow: `0 0 20px hsl(${service.accent} / 0.8), 0 2px 6px rgba(0,0,0,0.6)`,
+            }}
           >
             {service.stat}
           </span>
@@ -231,13 +239,13 @@ const BentoCard = ({
         <motion.div
           className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm"
           style={{
-            background: `hsl(${service.accent} / 0.15)`,
-            border: `1px solid hsl(${service.accent} / 0.25)`,
+            background: `hsl(${service.accent.split(' ')[0]} ${service.accent.split(' ')[1]} 75% / 0.15)`,
+            border: `1px solid hsl(${service.accent.split(' ')[0]} ${service.accent.split(' ')[1]} 75% / 0.35)`,
           }}
           animate={{ scale: hovered ? 1.1 : 1 }}
           transition={{ duration: 0.3 }}
         >
-          <Icon size={18} style={{ color: `hsl(${service.accent})` }} />
+          <Icon size={18} style={{ color: `hsl(${service.accent.split(' ')[0]} ${service.accent.split(' ')[1]} 75%)` }} />
         </motion.div>
 
         {/* Title */}
@@ -257,6 +265,16 @@ const BentoCard = ({
         >
           {service.description}
         </p>
+
+        {/* Feature bullets */}
+        <ul className="hidden lg:flex flex-col gap-1 mb-3">
+          {service.features.map((f) => (
+            <li key={f} className="flex items-center gap-1.5">
+              <span className="shrink-0 w-1 h-1 rounded-full" style={{ background: `hsl(${service.accent.split(' ')[0]} ${service.accent.split(' ')[1]} 75%)` }} />
+              <span className="text-[10px] leading-snug" style={{ color: "hsl(0 0% 100% / 0.55)" }}>{f}</span>
+            </li>
+          ))}
+        </ul>
 
         {/* CTA arrow */}
         <motion.div
@@ -363,6 +381,15 @@ const ServicesSection = () => {
           <br />
           <SplitTextReveal text="into a standing ovation." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-5 text-sm md:text-base leading-relaxed max-w-2xl mx-auto"
+          style={{ color: "hsl(var(--foreground) / 0.55)" }}
+        >
+          From 50-person workshops to 100,000-attendee conferences, we handle every detail so you can focus on what matters: your audience.
+        </motion.p>
         {/* Title divider */}
         <div className="flex items-center justify-center gap-3 mt-6">
           <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />

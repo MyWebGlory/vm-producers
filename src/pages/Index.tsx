@@ -3,7 +3,9 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
 import ServiceQuickNav from "@/components/ServiceQuickNav";
+import ProcessSection from "@/components/ProcessSection";
 import { SEO } from "@/components/SEO";
+const AboutSection = lazy(() => import("@/components/AboutSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const FounderSection = lazy(() => import("@/components/FounderSection"));
 const ResultsSection = lazy(() => import("@/components/ResultsSection"));
@@ -95,8 +97,10 @@ const Index = () => {
       <HeroSection />
       <ClientLogos />
       <Suspense fallback={<div className="h-96" />}>
+        <AboutSection />
         <ServicesSection />
         <ServiceQuickNav />
+        <ProcessSection />
         <TestimonialsSection />
         <FounderSection />
         <ResultsSection />

@@ -2,43 +2,161 @@ import { useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
+import avatarJeanette from "@/assets/testimonials/jeanette-mccullough.jpeg";
+import avatarKimCoverco from "@/assets/testimonials/kim-ribich-coverco.png";
+import avatarDeanHart from "@/assets/testimonials/dean-hart.jpeg";
+import avatarLesley from "@/assets/testimonials/lesley-edwards.jpg";
+import avatarTony from "@/assets/testimonials/tony-susa.jpg";
+import avatarGeorge from "@/assets/testimonials/george-zisiadis.jpg";
+import avatarVicki from "@/assets/testimonials/vicki-annecca.jpeg";
+import avatarJohn from "@/assets/testimonials/john-winter.jpeg";
+import avatarDeidra from "@/assets/testimonials/deidra-freeman.jpg";
+import avatarKim2 from "@/assets/testimonials/kim-ribich-2.jpg";
+import avatarErik from "@/assets/testimonials/erik-pesner.jpeg";
+import avatarNatasha from "@/assets/testimonials/natasha-dolph.jpg";
+import avatarMelissa from "@/assets/testimonials/melissa-dawn-simkins.jpg";
 
-const testimonials = [
+interface Testimonial {
+  text: string;
+  author: string;
+  role: string;
+  company: string;
+  initials: string;
+  avatar?: string;
+  rating: number;
+  platform: string;
+}
+
+const testimonials: Testimonial[] = [
   {
-    text: "VM Producers was amazing. We needed last-minute support for a large webinar with 10+ high-level speakers, translation into 5 languages, and thousands of participants. They saved the day multiple times. Highly recommend.",
+    text: "Virtual Producers was amazing. We needed last-minute support for a large webinar including more than 10 high level speakers, translation into 5 languages, and thousands of participants. He was knowledgeable, supportive, and went above and beyond to ensure the project ran smoothly despite lots of variables. He saved the day multiple times. Highly recommend.",
     author: "Jeanette McCullough",
-    role: "Executive Director",
+    role: "",
     company: "BirthSwell",
     initials: "JM",
+    avatar: avatarJeanette,
     rating: 5,
     platform: "google",
   },
   {
-    text: "Their team ran our hybrid conference without a single hitch. The production held up under pressure, and attendees on both sides felt it. Best team we have ever worked with.",
-    author: "Sarah Chen",
-    role: "Events Director",
-    company: "Fortune 500 Company",
-    initials: "SC",
+    text: "We'd jump at the chance to work with VP again. They're incredibly skilled, knowledgeable, and easy to work with. He even went above and beyond to recruit additional support when it was needed at the 11th hour. The professionalism, expertise, and poise he brought to our virtual conference was exactly what we needed to make it a success. We could not have done it without them.",
+    author: "Kim Ribich",
+    role: "",
+    company: "CoverCo",
+    initials: "KR",
+    avatar: avatarKimCoverco,
     rating: 5,
     platform: "google",
   },
   {
-    text: "We have worked with many production agencies. VM Producers is in a league of their own - startup agility with enterprise-level quality. Zero missed deadlines across 4 events.",
-    author: "Diana Foster",
-    role: "Head of Marketing",
-    company: "Global Pharma Corp",
+    text: "Virtual Producers were simply outstanding in providing producer services for a series of Zoom training meetings. His contributions brought our trainings to a higher level of professionalism that were recognized by our client. I would highly recommend Austin and plan to contract their services again in the future.",
+    author: "Dean Hart",
+    role: "",
+    company: "Commex Consulting",
+    initials: "DH",
+    avatar: avatarDeanHart,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "With Austin's help, we ran six consecutive 90-minute sessions in a single day with hundreds of prospective partners across different global regions, and not a single thing went awry. What I remember most was not feeling stressed, knowing whatever came up, Austin and team would handle it. Professional, responsive, reliable, and easy to work with.",
+    author: "Lesley Edwards",
+    role: "Finance Strategy & Global Health Advocacy",
+    company: "",
+    initials: "LE",
+    avatar: avatarLesley,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "I would endorse Austin and Virtual Producers without hesitation. It is such a huge help as a facilitator to not have to worry about the technology, the breakouts and managing polls and Austin and his team have done it seamlessly every time. They play great music at the start and going into and out of breaks and have just been outstanding. If you are hosting a large event or a small workshop Virtual Producers are well worth the investment.",
+    author: "Tony Susa",
+    role: "Executive Board Member",
+    company: "Institute for Contemporary Leadership",
+    initials: "TS",
+    avatar: avatarTony,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "I highly recommend working with Virtual Producers. They made all the difference for our two month virtual engagement. They are organized, enthusiastic, and professional. We got thrown a few curveballs and they were excellent at being flexible and going above and beyond to meet a super tight deadline and make the event a success. Their calm demeanor and sense of humor make them a pleasure to work closely with.",
+    author: "George Zisiadis",
+    role: "Co-Director",
+    company: "OF BY FOR",
+    initials: "GZ",
+    avatar: avatarGeorge,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "I was fortunate enough to find Virtual Producers to produce my virtual celebration! I had people all over the country and overseas! It went off without a hitch! A great time was had by all! Working with him and his team seriously made the experience effortless. I would highly recommend him.",
+    author: "Vicki Annecca",
+    role: "Realtor",
+    company: "Coldwell Banker Las Olas",
+    initials: "VA",
+    avatar: avatarVicki,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "Virtual Producers are consummate professionals. I worked with Austin. He is highly customer-centric in his approach to his work being both conscientious and polished. Austin is someone I'd highly recommend and be delighted to work with at any time.",
+    author: "John Winter",
+    role: "VP of Learning Solutions",
+    company: "Corporate Education Group",
+    initials: "JW",
+    avatar: avatarJohn,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "Austin demonstrated impeccable customer service in his responsiveness to each stakeholder and their unique needs. He was very knowledgeable in the technology provided for our summit. He was extremely friendly, built an inviting rapport, and made great connections with all team-mates and speakers. It was an absolute pleasure working with him.",
+    author: "Deidra Freeman",
+    role: "Global Event Program Management",
+    company: "",
     initials: "DF",
+    avatar: avatarDeidra,
     rating: 5,
-    platform: "capterra",
+    platform: "google",
   },
   {
-    text: "We came back for our 5th event with VM Producers. That says it all. 100% success rate every time, zero stress, zero surprises. They are our permanent production partner.",
-    author: "Kelly Nguyen",
-    role: "Event Coordinator",
-    company: "Atlanta Business Council",
-    initials: "KN",
+    text: "I had the pleasure to work with Virtual Producers on a three-day virtual conference with multiple breakout sessions. They were incredibly skilled, knowledgeable, and easy to work with. The professionalism, expertise, and poise they brought to this event made it a flawless experience for the client and attendees. For virtual events that require complex coordination, my first call is to Austin and his team.",
+    author: "Kim Ribich, CCTC",
+    role: "Career Transition Coach",
+    company: "",
+    initials: "KR",
+    avatar: avatarKim2,
     rating: 5,
-    platform: "trustpilot",
+    platform: "google",
+  },
+  {
+    text: "We love working with Virtual Producers to produce our virtual events! They are pro's pros. He's got all the technical savvy required but just as important he's super easy to work with. Great presence on camera as well! If you need a virtual producer for one of your events, go with Austin.",
+    author: "Erik Pesner, Ph.D.",
+    role: "Principal",
+    company: "Contemporary Leadership Advisors",
+    initials: "EP",
+    avatar: avatarErik,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "They are highly experienced, organised and pleasure to work with. I would recommend Virtual Producers to anyone who wants to get work done professionally.",
+    author: "Natasha Dolph",
+    role: "Commercial Real Estate",
+    company: "",
+    initials: "ND",
+    avatar: avatarNatasha,
+    rating: 5,
+    platform: "google",
+  },
+  {
+    text: "These folks are top notch virtual producers. Patient, knowledgeable, professional and ready to jump in to make your event a success are a few words that describe my experience. I look forward to further partnerships. Definitely worth the investment!",
+    author: "Melissa Dawn Simkins",
+    role: "CEO",
+    company: "Velvet Suite",
+    initials: "MS",
+    avatar: avatarMelissa,
+    rating: 5,
+    platform: "google",
   },
 ];
 
@@ -182,6 +300,7 @@ const TestimonialsSection = () => {
           {/* Card + flanking arrows */}
           <div className="flex items-center gap-3 md:gap-5">
             {/* Left arrow */}
+            {testimonials.length > 1 && (
             <button
               onClick={() => go(-1)}
               className="shrink-0 w-10 h-10 rounded-full border border-border/70 bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
@@ -189,6 +308,7 @@ const TestimonialsSection = () => {
             >
               <ChevronLeft size={18} />
             </button>
+            )}
 
             {/* Card area */}
             <div
@@ -247,12 +367,24 @@ const TestimonialsSection = () => {
                   </div>
 
                   <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xs font-bold font-display bg-primary/10 text-primary">
-                      {t.initials}
+                    <div className="w-10 h-10 rounded-xl flex-shrink-0 overflow-hidden">
+                      {t.avatar ? (
+                        <img
+                          src={t.avatar}
+                          alt={t.author}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-xs font-bold font-display bg-primary/10 text-primary">
+                          {t.initials}
+                        </div>
+                      )}
                     </div>
                     <div>
                       <p className="text-sm font-bold font-display text-foreground">{t.author}</p>
-                      <p className="text-xs mt-0.5 text-muted-foreground">{t.role} · {t.company}</p>
+                      <p className="text-xs mt-0.5 text-muted-foreground">
+                        {t.role && t.company ? `${t.role} · ${t.company}` : t.role || t.company}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -260,6 +392,7 @@ const TestimonialsSection = () => {
             </div>
 
             {/* Right arrow */}
+            {testimonials.length > 1 && (
             <button
               onClick={() => go(1)}
               className="shrink-0 w-10 h-10 rounded-full border border-border/70 bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
@@ -267,9 +400,11 @@ const TestimonialsSection = () => {
             >
               <ChevronRight size={18} />
             </button>
+            )}
           </div>
 
           {/* Dots - centered */}
+          {testimonials.length > 1 && (
           <div className="flex items-center justify-center gap-2 mt-5">
             {testimonials.map((_, i) => (
               <button
@@ -285,6 +420,7 @@ const TestimonialsSection = () => {
               />
             ))}
           </div>
+          )}
         </motion.div>
 
         {/* Bottom CTA */}

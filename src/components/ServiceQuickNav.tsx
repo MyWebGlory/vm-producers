@@ -32,7 +32,7 @@ const services = [
   {
     icon: Video,
     title: "Video Production",
-    subtitle: "Teasers & brand films",
+    subtitle: "Before, during & after",
     description: "Shot and delivered fast. Broadcast-ready.",
     href: "/video-production",
     accent: "340 60% 45%",

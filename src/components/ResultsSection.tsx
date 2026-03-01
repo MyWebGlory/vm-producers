@@ -107,6 +107,15 @@ const ResultsSection = () => {
             </span>
             <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(216 90% 58% / 0.45))" }} />
           </div>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-6 text-sm md:text-base leading-relaxed max-w-2xl mx-auto text-center"
+            style={{ color: "hsl(var(--foreground) / 0.50)" }}
+          >
+            We make events effortless. Technical excellence, a personal touch, and a proven track record you can rely on.
+          </motion.p>
         </motion.div>
 
         {/* Stats grid */}

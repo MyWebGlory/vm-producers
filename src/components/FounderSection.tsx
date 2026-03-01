@@ -93,7 +93,7 @@ const FounderSection = () => {
               <em style={{ color: "hsl(216 90% 58%)", fontStyle: "italic" }}>any organization, anywhere.</em>"
             </motion.p>
             <motion.p {...fadeUp(0.26)} className="text-base leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.55)" }}>
-              From Fortune 500 conferences to startup launches, Austin personally oversees every match - so the right expertise is in your corner within 48 hours.
+              Austin personally oversees every client engagement, ensuring the right expertise is in your corner from day one. He's been on the ground for 2,000+ productions across 70+ countries, from startup launches to global Fortune 500 conferences.
             </motion.p>
           </div>
 
