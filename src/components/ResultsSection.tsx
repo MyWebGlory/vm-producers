@@ -1,4 +1,4 @@
-﻿import { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TrendingUp, Shield, Globe, Users } from "lucide-react";
 import { SplitTextReveal } from "@/components/ScrollAnimations";
@@ -31,7 +31,7 @@ const stats = [
 ];
 
 const statPalette = [
-  { bg: "hsl(43 90% 52% / 0.10)",  border: "hsl(43 80% 48% / 0.30)",  icon: "hsl(43 75% 45%)",  iconBg: "hsl(43 80% 52% / 0.16)",  iconBorder: "hsl(43 80% 52% / 0.34)",  deco: "hsl(43 80% 60% / 0.13)" },
+  { bg: "hsl(216 90% 55% / 0.10)",  border: "hsl(216 90% 58% / 0.30)",  icon: "hsl(216 90% 50%)",  iconBg: "hsl(216 90% 58% / 0.16)",  iconBorder: "hsl(216 90% 58% / 0.34)",  deco: "hsl(216 90% 65% / 0.13)" },
   { bg: "hsl(205 80% 72% / 0.09)", border: "hsl(205 70% 68% / 0.24)", icon: "hsl(205 60% 52%)", iconBg: "hsl(205 70% 72% / 0.14)", iconBorder: "hsl(205 70% 72% / 0.26)", deco: "hsl(205 68% 76% / 0.11)" },
   { bg: "hsl(32 85% 58% / 0.09)",  border: "hsl(32 78% 54% / 0.26)",  icon: "hsl(32 68% 44%)",  iconBg: "hsl(32 78% 58% / 0.15)",  iconBorder: "hsl(32 78% 58% / 0.30)",  deco: "hsl(32 80% 62% / 0.12)" },
   { bg: "hsl(340 70% 68% / 0.08)", border: "hsl(340 60% 64% / 0.22)", icon: "hsl(340 52% 54%)", iconBg: "hsl(340 62% 68% / 0.14)", iconBorder: "hsl(340 62% 68% / 0.26)", deco: "hsl(340 62% 72% / 0.11)" },
@@ -50,17 +50,17 @@ const ResultsSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, hsl(43 80% 48%) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, hsl(216 90% 58%) 0%, transparent 70%)" }}
         />
         <div
           className="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-15"
-          style={{ background: "radial-gradient(circle, hsl(43 80% 48%) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, hsl(216 90% 58%) 0%, transparent 70%)" }}
         />
         {/* Grid lines */}
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
-            backgroundImage: "linear-gradient(hsl(43 80% 30%) 1px, transparent 1px), linear-gradient(90deg, hsl(43 80% 30%) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(hsl(216 90% 30%) 1px, transparent 1px), linear-gradient(90deg, hsl(216 90% 30%) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
           }}
         />
@@ -77,35 +77,35 @@ const ResultsSection = () => {
           {/* Watermark icon */}
           <TrendingUp
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
-            style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(43 80% 48%)" }}
+            style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(216 90% 58%)" }}
           />
           {/* Section icon badge */}
           <div className="relative flex justify-center mb-4">
             <span
               className="flex items-center justify-center w-14 h-14 rounded-2xl"
-              style={{ background: "hsl(43 80% 48% / 0.10)", border: "1.5px solid hsl(43 80% 48% / 0.24)" }}
+              style={{ background: "hsl(216 90% 58% / 0.10)", border: "1.5px solid hsl(216 90% 58% / 0.24)" }}
             >
-              <TrendingUp size={26} style={{ color: "hsl(43 80% 48%)" }} />
+              <TrendingUp size={26} style={{ color: "hsl(216 90% 58%)" }} />
             </span>
           </div>
           <p
             className="font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
-            style={{ color: "hsl(43 80% 55%)" }}
+            style={{ color: "hsl(216 90% 65%)" }}
           >
-            Enterprise Track Record
+            Numbers you can trust
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-center">
-            <SplitTextReveal text="Results our clients" delay={0.1} className="justify-center" />
+            <SplitTextReveal text="Results you can" delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="can count on." delay={0.3} className="justify-center" />
+            <SplitTextReveal text="count on, every time." delay={0.3} className="justify-center" />
           </h2>
           {/* Title divider */}
           <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(43 80% 48% / 0.45))" }} />
-            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(43 80% 48% / 0.10)", border: "1px solid hsl(43 80% 48% / 0.28)" }}>
-              <TrendingUp size={14} style={{ color: "hsl(43 80% 48%)" }} />
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(216 90% 58% / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(216 90% 58% / 0.10)", border: "1px solid hsl(216 90% 58% / 0.28)" }}>
+              <TrendingUp size={14} style={{ color: "hsl(216 90% 58%)" }} />
             </span>
-            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(43 80% 48% / 0.45))" }} />
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(216 90% 58% / 0.45))" }} />
           </div>
         </motion.div>
 
@@ -161,7 +161,7 @@ const ResultsSection = () => {
             <div className="flex-1">
               <p
                 className="font-display text-xs uppercase tracking-[0.25em] font-medium mb-3"
-                style={{ color: "hsl(43 80% 55%)" }}
+                style={{ color: "hsl(216 90% 65%)" }}
               >
                 Featured Result
               </p>
@@ -174,7 +174,7 @@ const ResultsSection = () => {
             </div>
             <div className="flex-shrink-0 flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-3">
               <div className="text-center md:text-right">
-                <p className="text-2xl font-bold font-display" style={{ color: "hsl(43 90% 58%)" }}>5 / 5</p>
+                <p className="text-2xl font-bold font-display" style={{ color: "hsl(216 90% 58%)" }}>5 / 5</p>
                 <p className="text-muted-foreground text-xs mt-0.5">Client rating</p>
               </div>
               <div className="w-px md:w-auto md:h-px bg-border self-stretch md:self-auto" />

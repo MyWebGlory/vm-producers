@@ -87,13 +87,13 @@ export function ConstellationBG({
   const isLight = variant === "light";
 
   const lineStroke = isLight
-    ? "hsl(43 80% 48% / 0.35)"
+    ? "hsl(216 90% 58% / 0.35)"
     : "hsl(250 60% 70% / 0.18)";
   const dotFill = isLight
-    ? "hsl(43 80% 48% / 0.75)"
+    ? "hsl(216 90% 58% / 0.75)"
     : "hsl(250 60% 80% / 0.6)";
   const textFill = isLight
-    ? "hsl(43 65% 30% / 0.65)"
+    ? "hsl(216 90% 35% / 0.65)"
     : "hsl(250 40% 80% / 0.45)";
 
   return (

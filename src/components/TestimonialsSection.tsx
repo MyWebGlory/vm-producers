@@ -1,4 +1,4 @@
-﻿import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
@@ -129,12 +129,12 @@ const TestimonialsSection = () => {
             </span>
           </div>
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
-            Client Reviews
+            What people say about working with us
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 text-center">
-            <SplitTextReveal text="Trusted by 200+" delay={0.1} className="justify-center" />
+            <SplitTextReveal text="You'll be in great hands." delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="event teams worldwide." delay={0.25} className="justify-center glow-text" />
+            <SplitTextReveal text="200+ teams already trust us." delay={0.25} className="justify-center glow-text" />
           </h2>
           {/* Title divider */}
           <div className="flex items-center justify-center gap-3 mt-6 mb-8">
@@ -229,7 +229,7 @@ const TestimonialsSection = () => {
 
                   <Quote size={20} className="text-primary/25" style={{ transform: "scaleX(-1)" }} />
 
-                  {/* Text — clamped on mobile with read more */}
+                  {/* Text - clamped on mobile with read more */}
                   <div className="flex-1">
                     <p
                       className="text-base md:text-lg leading-relaxed text-foreground/80 font-medium"

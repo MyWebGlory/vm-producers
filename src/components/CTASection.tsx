@@ -70,8 +70,8 @@ const CTASection = () => {
         </motion.p>
         <RevealLine delay={0.05} className="mb-8 max-w-[120px] mx-auto" />
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 md:mb-8 leading-tight" style={{ color: "white" }}>
-          <SplitTextReveal text="Ready to create something" delay={0.1} stagger={0.04} className="justify-center" />{" "}
-          <SplitTextReveal text="extraordinary?" delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+          <SplitTextReveal text="Let's make your next event" delay={0.1} stagger={0.04} className="justify-center" />{" "}
+          <SplitTextReveal text="one they'll never forget." delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
         {/* Title divider */}
         <div className="flex items-center justify-center gap-3 mt-2 mb-6">
@@ -88,7 +88,7 @@ const CTASection = () => {
           className="text-lg max-w-xl mx-auto mb-12 leading-relaxed"
           style={{ color: "hsl(0 0% 100% / 0.7)" }}
         >
-          Your event deserves a team that's done it before. We're ready when you are.
+          You've got the dream. We've got the team, the gear, and the experience to pull it off. All you have to do is say the word.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -136,9 +136,9 @@ const CTASection = () => {
                   color: "hsl(0 0% 100% / 0.75)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "hsl(43 80% 48% / 0.22)";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "hsl(43 80% 48% / 0.45)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "hsl(43 80% 75%)";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "hsl(216 90% 58% / 0.22)";
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "hsl(216 90% 58% / 0.45)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "hsl(216 90% 80%)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.background = "hsl(0 0% 100% / 0.08)";

@@ -97,12 +97,12 @@ const AboutSection = () => {
                 <Award size={20} style={{ color: "hsl(var(--primary))" }} />
               </span>
               <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">
-                Why Us
+                Why teams pick us
               </p>
             </motion.div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
-              <SplitTextReveal text="Experience the best in" delay={0.2} />{" "}
-              <SplitTextReveal text="event production." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
+              <SplitTextReveal text="You've got the vision." delay={0.2} />{" "}
+              <SplitTextReveal text="We make it happen." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>
             {/* Title divider */}
             <div className="flex items-center gap-3">
@@ -118,9 +118,7 @@ const AboutSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-muted-foreground text-lg leading-relaxed"
             >
-              From global conferences to intimate webinars,
-              we blend technical excellence with a personal touch.
-              Whether for 10 or 10,000 attendees, we handle the complexity.
+              You have a vision. We have the team, the tools, and the track record to bring it to life - exactly the way you imagined it. 10 attendees or 10,000, every detail handled, every moment accounted for.
             </motion.p>
 
             {/* Minimal stat */}

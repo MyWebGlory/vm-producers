@@ -23,7 +23,7 @@ const services = [
   {
     title: "Live Events",
     icon: Mic,
-    description: "In-person events from 50 to 50,000. Run tight, on budget, on time.",
+    description: "Your in-person event, from 50 to 50,000 - run tight, on budget, on time.",
     image: liveEventsImg,
     videoKey: "liveEvents" as const,
     href: "/live-events",
@@ -34,7 +34,7 @@ const services = [
   {
     title: "Virtual Events",
     icon: Monitor,
-    description: "All-inclusive virtual production for webinars to conferences with up to 100,000 attendees.",
+    description: "Your virtual event, fully produced - webinars to large-scale conferences for up to 100,000 attendees.",
     image: virtualEventsImg,
     videoKey: "virtualEvents" as const,
     href: "/virtual-events",
@@ -45,7 +45,7 @@ const services = [
   {
     title: "Hybrid Events",
     icon: Globe,
-    description: "Bridging in-person and virtual audiences into one cohesive, engaging experience.",
+    description: "Your in-person and virtual audiences, brought together into one seamless, engaging experience.",
     image: hybridEventsImg,
     videoKey: "hybridEvents" as const,
     href: "/hybrid-events",
@@ -56,7 +56,7 @@ const services = [
   {
     title: "Video Production",
     icon: Video,
-    description: "Teasers, recaps, brand films. Shot and delivered fast.",
+    description: "Teasers, recaps, brand films - shot and delivered exactly the way you need them.",
     image: videoProductionImg,
     videoKey: "videoProduction" as const,
     href: "/video-production",
@@ -67,7 +67,7 @@ const services = [
   {
     title: "Meeting Pros",
     icon: Users,
-    description: "A worldwide network of verified event professionals, matched within 48 hours across 70+ countries.",
+    description: "Your event professional, matched within 48 hours - anywhere in the world, verified and ready.",
     image: meetingProsImg,
     videoKey: "meetingPros" as const,
     href: "/meeting-pros",
@@ -148,7 +148,7 @@ const BentoCard = ({
         delay: entryDelay,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className={`relative group rounded-2xl overflow-hidden cursor-pointer ${className}`}
+      className={`relative group rounded-2xl overflow-hidden cursor-pointer${className ? ` ${className}` : ""}`}
       style={{ willChange: "transform, opacity" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -209,15 +209,15 @@ const BentoCard = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 md:p-8">
+      <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-5">
         {/* Stat badge */}
         <motion.div
-          className="absolute top-3 right-3 sm:top-5 sm:right-5 flex flex-col items-end"
+          className="absolute top-3 right-3 flex flex-col items-end"
           animate={{ y: hovered ? -4 : 0 }}
           transition={{ duration: 0.4 }}
         >
           <span
-            className="font-display text-3xl md:text-4xl font-bold leading-none"
+            className="font-display text-2xl font-bold leading-none"
             style={{ color: `hsl(${service.accent})` }}
           >
             {service.stat}
@@ -242,7 +242,7 @@ const BentoCard = ({
 
         {/* Title */}
         <motion.h3
-          className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3"
+          className="font-display text-xl sm:text-2xl font-bold mb-1.5"
           style={{ color: "white" }}
           animate={{ x: hovered ? 4 : 0 }}
           transition={{ duration: 0.3 }}
@@ -252,7 +252,7 @@ const BentoCard = ({
 
         {/* Description */}
         <p
-          className="hidden sm:block text-sm md:text-base leading-relaxed mb-3 md:mb-4 max-w-md"
+          className="hidden sm:block text-xs leading-relaxed mb-3 max-w-xs"
           style={{ color: "hsl(0 0% 100% / 0.65)" }}
         >
           {service.description}
@@ -327,8 +327,8 @@ const ServicesSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 20% 0%, hsl(43 80% 48% / 0.05) 0%, transparent 60%)," +
-            "radial-gradient(ellipse 60% 40% at 80% 100%, hsl(43 80% 48% / 0.04) 0%, transparent 55%)," +
+            "radial-gradient(ellipse 80% 50% at 20% 0%, hsl(216 90% 58% / 0.05) 0%, transparent 60%)," +
+            "radial-gradient(ellipse 60% 40% at 80% 100%, hsl(216 90% 58% / 0.04) 0%, transparent 55%)," +
             "radial-gradient(ellipse 50% 60% at 50% 50%, hsl(215 60% 40% / 0.025) 0%, transparent 70%)",
         }}
       />
@@ -356,12 +356,12 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium"
         >
-          Our Services
+          What you get
         </motion.p>
         <h2 className="text-[2.6rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground">
-          <SplitTextReveal text="From concept" delay={0.1} stagger={0.06} className="justify-center" />
+          <SplitTextReveal text="Turn your vision" delay={0.1} stagger={0.06} className="justify-center" />
           <br />
-          <SplitTextReveal text="to standing ovation." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+          <SplitTextReveal text="into a standing ovation." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
         {/* Title divider */}
         <div className="flex items-center justify-center gap-3 mt-6">
@@ -382,14 +382,14 @@ const ServicesSection = () => {
         />
       </div>
 
-      {/* Bento Grid */}
+      {/* Services Grid - 5 equal portrait cards, all visible at once */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 lg:gap-8 auto-rows-[240px] sm:auto-rows-[280px] md:auto-rows-[420px] lg:auto-rows-[440px]">
-          <BentoCard service={services[0]} index={0} className="md:col-span-2 lg:col-span-3" isVideoActive={activeVideos.has(0)} onVideoEnded={() => handleVideoEnded(0)} />
-          <BentoCard service={services[2]} index={2} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />
-          <BentoCard service={services[1]} index={1} className="md:col-span-1 lg:col-span-1" isVideoActive={activeVideos.has(1)} onVideoEnded={() => handleVideoEnded(1)} />
-          <BentoCard service={services[3]} index={3} className="md:col-span-1 lg:col-span-1" isVideoActive={activeVideos.has(3)} onVideoEnded={() => handleVideoEnded(3)} />
-          <BentoCard service={services[4]} index={4} className="md:col-span-1 lg:col-span-2" isVideoActive={activeVideos.has(4)} onVideoEnded={() => handleVideoEnded(4)} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4 auto-rows-[340px] sm:auto-rows-[380px] lg:auto-rows-[420px]">
+          <BentoCard service={services[0]} index={0} isVideoActive={activeVideos.has(0)} onVideoEnded={() => handleVideoEnded(0)} />
+          <BentoCard service={services[2]} index={2} isVideoActive={activeVideos.has(2)} onVideoEnded={() => handleVideoEnded(2)} />
+          <BentoCard service={services[1]} index={1} isVideoActive={activeVideos.has(1)} onVideoEnded={() => handleVideoEnded(1)} />
+          <BentoCard service={services[3]} index={3} isVideoActive={activeVideos.has(3)} onVideoEnded={() => handleVideoEnded(3)} />
+          <BentoCard service={services[4]} index={4} isVideoActive={activeVideos.has(4)} onVideoEnded={() => handleVideoEnded(4)} />
         </div>
       </div>
     </section>

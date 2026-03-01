@@ -93,7 +93,7 @@ const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
           })}
         </div>
 
-        {/* Contact button — centered below cards, all screen sizes */}
+        {/* Contact button - centered below cards, all screen sizes */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -190,7 +190,7 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
 
 /* Feature Card */
 const cardPalette = [
-  { bg: "hsl(43 90% 52% / 0.09)",  border: "hsl(43 80% 48% / 0.30)",  glow: "hsl(43 80% 52% / 0.10)",  num: "hsl(43 80% 58% / 0.16)",  icon: "hsl(43 75% 45%)" },
+  { bg: "hsl(216 90% 55% / 0.09)",  border: "hsl(216 90% 58% / 0.30)",  glow: "hsl(216 90% 58% / 0.10)",  num: "hsl(216 90% 58% / 0.16)",  icon: "hsl(216 90% 50%)" },
   { bg: "hsl(205 80% 72% / 0.09)", border: "hsl(205 70% 68% / 0.28)", glow: "hsl(205 70% 72% / 0.09)", num: "hsl(205 70% 74% / 0.14)", icon: "hsl(205 60% 52%)" },
   { bg: "hsl(32 85% 58% / 0.09)",  border: "hsl(32 78% 54% / 0.28)",  glow: "hsl(32 78% 58% / 0.10)",  num: "hsl(32 80% 62% / 0.15)",  icon: "hsl(32 68% 46%)" },
   { bg: "hsl(340 70% 68% / 0.08)", border: "hsl(340 60% 64% / 0.26)", glow: "hsl(340 60% 68% / 0.09)", num: "hsl(340 62% 72% / 0.14)", icon: "hsl(340 52% 54%)" },

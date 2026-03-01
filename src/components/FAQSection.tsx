@@ -1,38 +1,38 @@
-﻿import { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { RevealLine } from "@/components/ScrollAnimations";
 
 const faqs = [
   {
-    question: "What types of events does VM Producers handle?",
+    question: "What kinds of events can you handle for me?",
     answer:
-      "We manage the full spectrum - live in-person conferences, virtual summits, hybrid events, product launches, corporate galas, and more. Whether you have 50 attendees or 50,000+, we scale to fit. Our team has executed events across entertainment, tech, healthcare, finance, and non-profit sectors.",
+      "Everything you can think of - live conferences, virtual summits, hybrid events, product launches, corporate galas, and more. Whether you have 50 attendees or 50,000+, we scale to fit what you need. We've worked in entertainment, tech, healthcare, finance, and non-profit.",
   },
   {
-    question: "Do you operate internationally?",
+    question: "Can you produce my event outside the US?",
     answer:
-      "Yes. Our network spans 70+ countries with verified, on-the-ground professionals in every major market. You get a dedicated producer who coordinates globally while you focus on the bigger picture.",
+      "Yes. Your event gets a verified professional on the ground, wherever it is. Our network spans 70+ countries, and your dedicated producer coordinates everything globally while you stay focused on the bigger picture.",
   },
   {
-    question: "How quickly can you get started?",
+    question: "How fast can you get started on my event?",
     answer:
-      "Most clients are matched with a producer within 48 hours of their first call. For urgent needs, we have an accelerated onboarding track. We've gone from first contact to live event execution in under 2 weeks.",
+      "Most clients are matched with a producer within 48 hours of their first call. For urgent needs, you get access to our accelerated onboarding track. We've gone from first contact to live event execution in under 2 weeks.",
   },
   {
-    question: "What does 'full-service' actually mean?",
+    question: "What exactly is included when you say \u2018full-service\u2019?",
     answer:
-      "It means we handle everything - concept design, venue sourcing, AV & technical production, speaker management, live streaming, registration & attendee experience, post-event video editing, and reporting. You make the key decisions; we execute every detail.",
+      "It means you don't lift a finger on execution. We take care of concept design, venue sourcing, AV & technical production, speaker management, live streaming, registration & attendee experience, post-event video editing, and full reporting. You make the key decisions - we execute every single detail.",
   },
   {
-    question: "What's your guarantee if something goes wrong?",
+    question: "What happens if something goes wrong on the day?",
     answer:
-      "We maintain a 100% success rate across 2,000+ events. Every production has redundancy built in - backup tech, backup crew, contingency plans. But if an issue arises, our on-site producer owns it and resolves it in real time. You'll never be left scrambling.",
+      "Short answer: you'll never be left scrambling. We hold a 100% success rate across 2,000+ events. Every production has redundancy built in - backup tech, backup crew, contingency plans. If an issue arises, your on-site producer owns it and resolves it in real time.",
   },
   {
-    question: "Do you work with virtual-only or hybrid formats?",
+    question: "Can you handle virtual-only or hybrid formats?",
     answer:
-      "Virtual and hybrid production is a core strength. We've run events with 100,000+ virtual attendees, multi-language translation into 5+ languages, broadcast-quality streaming, and interactive features. Remote attendees get the same premium experience as those on-site.",
+      "Virtual and hybrid is where we shine. Your remote attendees get the exact same premium experience as those in the room - broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
   },
 ];
 
@@ -48,7 +48,7 @@ const FAQSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 90% 60%, hsl(43 80% 55% / 0.05), transparent 55%)",
+            "radial-gradient(ellipse 60% 40% at 90% 60%, hsl(216 90% 65% / 0.05), transparent 55%)",
         }}
       />
 
@@ -76,7 +76,7 @@ const FAQSection = () => {
             className="font-display text-xs uppercase tracking-[0.3em] mb-4 font-medium"
             style={{ color: "hsl(var(--primary))" }}
           >
-            Got Questions
+            Before you say yes
           </motion.p>
           <RevealLine delay={0.05} className="mb-6 max-w-[80px] mx-auto" />
           <motion.h2
@@ -85,8 +85,8 @@ const FAQSection = () => {
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-3xl md:text-5xl font-display font-bold text-foreground leading-tight"
           >
-            Frequently asked{" "}
-            <span style={{ color: "hsl(var(--primary))" }}>questions</span>
+            Your questions,{" "}
+            <span style={{ color: "hsl(var(--primary))" }}>answered honestly.</span>
           </motion.h2>
           {/* Title divider */}
           <div className="flex items-center justify-center gap-3 mt-6">
@@ -102,7 +102,7 @@ const FAQSection = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mt-4 text-muted-foreground text-base max-w-xl mx-auto"
           >
-            Everything you need to know before we start working together.
+            Real answers to the questions you're probably already asking yourself.
           </motion.p>
         </div>
 

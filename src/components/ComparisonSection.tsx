@@ -109,15 +109,15 @@ const ComparisonSection = () => {
           {/* Watermark icon */}
           <Scale
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
-            style={{ width: 280, height: 280, opacity: 0.045, color: "hsl(43 80% 48%)" }}
+            style={{ width: 280, height: 280, opacity: 0.045, color: "hsl(216 90% 58%)" }}
           />
           {/* Section icon badge */}
           <div className="relative flex justify-center mb-5">
             <span
               className="flex items-center justify-center w-14 h-14 rounded-2xl"
-              style={{ background: "hsl(43 80% 48% / 0.10)", border: "1.5px solid hsl(43 80% 48% / 0.24)" }}
+              style={{ background: "hsl(216 90% 58% / 0.10)", border: "1.5px solid hsl(216 90% 58% / 0.24)" }}
             >
-              <Scale size={26} style={{ color: "hsl(43 80% 48%)" }} />
+              <Scale size={26} style={{ color: "hsl(216 90% 58%)" }} />
             </span>
           </div>
           <motion.p
@@ -125,14 +125,14 @@ const ComparisonSection = () => {
             animate={isHeaderInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5 }}
             className="font-display text-xs uppercase tracking-[0.28em] font-semibold mb-5"
-            style={{ color: "hsl(43 80% 48%)" }}
+            style={{ color: "hsl(216 90% 58%)" }}
           >
-            The difference
+            The honest difference
           </motion.p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
             {[
-              { text: "Two outcomes.", dark: true },
-              { text: "One choice.", gold: true },
+              { text: "Two very different outcomes.", dark: true },
+              { text: "Which one is yours?", gold: true },
             ].map((line, li) => (
               <span key={li} className="block overflow-hidden">
                 <motion.span
@@ -140,7 +140,7 @@ const ComparisonSection = () => {
                   initial={{ y: "110%" }}
                   animate={isHeaderInView ? { y: "0%" } : {}}
                   transition={{ duration: 0.9, delay: 0.08 + li * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ color: line.gold ? "hsl(43 80% 48%)" : "hsl(var(--foreground))" }}
+                  style={{ color: line.gold ? "hsl(216 90% 58%)" : "hsl(var(--foreground))" }}
                 >
                   {line.text}
                 </motion.span>
@@ -149,28 +149,28 @@ const ComparisonSection = () => {
           </h2>
           {/* Title divider */}
           <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(43 80% 48% / 0.45))" }} />
-            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(43 80% 48% / 0.10)", border: "1px solid hsl(43 80% 48% / 0.28)" }}>
-              <Scale size={14} style={{ color: "hsl(43 80% 48%)" }} />
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(216 90% 58% / 0.45))" }} />
+            <span className="flex items-center justify-center w-8 h-8 rounded-xl" style={{ background: "hsl(216 90% 58% / 0.10)", border: "1px solid hsl(216 90% 58% / 0.28)" }}>
+              <Scale size={14} style={{ color: "hsl(216 90% 58%)" }} />
             </span>
-            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(43 80% 48% / 0.45))" }} />
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(216 90% 58% / 0.45))" }} />
           </div>
         </div>
 
-        {/* Scroll hint — mobile + tablet only */}
+        {/* Scroll hint - mobile + tablet only */}
         <div className="flex lg:hidden items-center justify-center gap-3 mb-5">
           <motion.div
             animate={{ x: [-3, 0, -3] }}
             transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
             className="flex items-center gap-0.5"
-            style={{ color: "hsl(43 80% 48%)" }}
+            style={{ color: "hsl(216 90% 58%)" }}
           >
             <ChevronLeft size={14} strokeWidth={2.5} />
             <ChevronLeft size={14} strokeWidth={2.5} style={{ opacity: 0.5 }} />
           </motion.div>
           <span
             className="text-[10px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "hsl(43 80% 48% / 0.75)" }}
+            style={{ color: "hsl(216 90% 58% / 0.75)" }}
           >
             swipe to compare
           </span>
@@ -178,14 +178,14 @@ const ComparisonSection = () => {
             animate={{ x: [3, 0, 3] }}
             transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
             className="flex items-center gap-0.5"
-            style={{ color: "hsl(43 80% 48%)" }}
+            style={{ color: "hsl(216 90% 58%)" }}
           >
             <ChevronRight size={14} strokeWidth={2.5} style={{ opacity: 0.5 }} />
             <ChevronRight size={14} strokeWidth={2.5} />
           </motion.div>
         </div>
 
-        {/* Comparison columns — horizontal scroll on mobile+tablet, grid on desktop */}
+        {/* Comparison columns - horizontal scroll on mobile+tablet, grid on desktop */}
         <div
           ref={scrollRef}
           className="flex lg:grid lg:grid-cols-2 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-none"
@@ -224,7 +224,7 @@ const ComparisonSection = () => {
           </div>
         </div>
 
-        {/* Scroll hint dots — mobile + tablet */}
+        {/* Scroll hint dots - mobile + tablet */}
         <div className="flex lg:hidden justify-center gap-2 mt-4">
           <button
             onClick={() => scrollRef.current?.scrollTo({ left: 0, behavior: "smooth" })}

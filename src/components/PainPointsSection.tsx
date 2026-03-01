@@ -55,7 +55,7 @@ const PainPointsSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 10% 20%, hsl(43 80% 55% / 0.06), transparent 55%)," +
+            "radial-gradient(ellipse 80% 50% at 10% 20%, hsl(216 90% 65% / 0.06), transparent 55%)," +
             "radial-gradient(ellipse 60% 40% at 90% 80%, hsl(0 65% 60% / 0.05), transparent 55%)",
         }}
       />
@@ -92,7 +92,7 @@ const PainPointsSection = () => {
           className="w-full origin-top"
           style={{
             height: lineHeight,
-            background: "linear-gradient(to bottom, transparent 0%, hsl(43 80% 48% / 0.55) 30%, hsl(43 80% 48% / 0.25) 70%, transparent 100%)",
+            background: "linear-gradient(to bottom, transparent 0%, hsl(216 90% 58% / 0.55) 30%, hsl(216 90% 58% / 0.25) 70%, transparent 100%)",
           }}
         />
       </div>
@@ -109,11 +109,11 @@ const PainPointsSection = () => {
         >
           <div
             className="w-full h-full rounded-full"
-            style={{ background: "hsl(43 80% 48%)" }}
+            style={{ background: "hsl(216 90% 58%)" }}
           />
           <motion.div
             className="absolute inset-0 rounded-full"
-            style={{ background: "hsl(43 80% 48% / 0.3)" }}
+            style={{ background: "hsl(216 90% 58% / 0.3)" }}
             animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
             transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
           />
@@ -142,15 +142,15 @@ const PainPointsSection = () => {
             animate={isHeaderInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5 }}
             className="font-display text-xs uppercase tracking-[0.28em] font-semibold mb-6"
-            style={{ color: "hsl(43 80% 48%)" }}
+            style={{ color: "hsl(216 90% 58%)" }}
           >
-            What we hear every week
+            You've probably felt this.
           </motion.p>
 
           <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
             {[
-              { text: "We've seen what happens", dark: true },
-              { text: "when events go wrong.", dark: false },
+              { text: "Sound familiar?", dark: true },
+              { text: "You don't have to live it.", dark: false },
             ].map((line, li) => (
               <span key={li} className="block overflow-hidden">
                 <motion.span
@@ -159,7 +159,7 @@ const PainPointsSection = () => {
                   animate={isHeaderInView ? { y: "0%" } : {}}
                   transition={{ duration: 0.9, delay: 0.08 + li * 0.12, ease: [0.16, 1, 0.3, 1] }}
                   style={{
-                    color: line.dark ? "hsl(var(--foreground))" : "hsl(43 80% 48%)",
+                    color: line.dark ? "hsl(var(--foreground))" : "hsl(216 90% 58%)",
                   }}
                 >
                   {line.text}
@@ -259,11 +259,11 @@ const CalloutBox = () => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       className="mt-20 lg:mt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pt-12 border-t"
-      style={{ borderColor: "hsl(43 72% 80%)" }}
+      style={{ borderColor: "hsl(216 90% 82%)" }}
     >
       <p
         className="font-display font-bold text-2xl md:text-3xl leading-snug max-w-md"
-        style={{ color: "hsl(43 80% 36%)" }}
+        style={{ color: "hsl(216 90% 42%)" }}
       >
         None of this has to happen to you.
       </p>
@@ -271,12 +271,12 @@ const CalloutBox = () => {
       <a
         href="#what-you-get"
         className="shrink-0 inline-flex items-center gap-3 font-display font-semibold text-sm tracking-wide group transition-all duration-300"
-        style={{ color: "hsl(43 80% 48%)" }}
+        style={{ color: "hsl(216 90% 58%)" }}
       >
-        See how we prevent it
+        See how you'll avoid it
         <span
           className="inline-flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 group-hover:scale-110"
-          style={{ background: "hsl(43 80% 48%)", color: "white" }}
+          style={{ background: "hsl(216 90% 58%)", color: "white" }}
         >
           <ArrowRight className="w-4 h-4" />
         </span>

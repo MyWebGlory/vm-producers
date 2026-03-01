@@ -172,7 +172,7 @@ const ServiceQuickNav = () => {
       {/* Separator line top */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] max-w-4xl h-px"
-        style={{ background: "linear-gradient(to right, transparent, hsl(43 80% 48% / 0.25), transparent)" }}
+        style={{ background: "linear-gradient(to right, transparent, hsl(216 90% 58% / 0.25), transparent)" }}
       />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -185,7 +185,7 @@ const ServiceQuickNav = () => {
         >
           <p
             className="font-display text-[10px] uppercase tracking-[0.3em] font-semibold mb-2"
-            style={{ color: "hsl(43 80% 48% / 0.75)" }}
+            style={{ color: "hsl(216 90% 58% / 0.75)" }}
           >
             Find your service
           </p>
@@ -209,8 +209,8 @@ const ServiceQuickNav = () => {
             className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
             style={{
               background: "hsl(var(--background))",
-              border: "1.5px solid hsl(43 80% 48% / 0.35)",
-              color: "hsl(43 80% 48%)",
+              border: "1.5px solid hsl(216 90% 58% / 0.35)",
+              color: "hsl(216 90% 58%)",
             }}
           >
             <ChevronLeft size={18} strokeWidth={2.5} />
@@ -225,8 +225,8 @@ const ServiceQuickNav = () => {
             className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
             style={{
               background: "hsl(var(--background))",
-              border: "1.5px solid hsl(43 80% 48% / 0.35)",
-              color: "hsl(43 80% 48%)",
+              border: "1.5px solid hsl(216 90% 58% / 0.35)",
+              color: "hsl(216 90% 58%)",
             }}
           >
             <ChevronRight size={18} strokeWidth={2.5} />
@@ -269,7 +269,7 @@ const ServiceQuickNav = () => {
               style={{
                 width: current === i ? "1.5rem" : "0.5rem",
                 height: "0.5rem",
-                background: current === i ? "hsl(43 80% 48%)" : "hsl(43 80% 48% / 0.28)",
+                background: current === i ? "hsl(216 90% 58%)" : "hsl(216 90% 58% / 0.28)",
               }}
             />
           ))}
@@ -279,7 +279,7 @@ const ServiceQuickNav = () => {
       {/* Separator line bottom */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] max-w-4xl h-px"
-        style={{ background: "linear-gradient(to right, transparent, hsl(43 80% 48% / 0.2), transparent)" }}
+        style={{ background: "linear-gradient(to right, transparent, hsl(216 90% 58% / 0.2), transparent)" }}
       />
     </section>
   );
