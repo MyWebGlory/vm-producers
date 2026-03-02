@@ -1,4 +1,4 @@
-﻿import { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, UserX, WifiOff, MonitorOff, Flame, Archive, AlertTriangle } from "lucide-react";
 
@@ -177,10 +177,10 @@ const PainPointsSection = () => {
           </div>
         </div>
 
-        {/* Uniform card grid - all 5 visible at once */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+        {/* Pain points, editorial list, no cards */}
+        <div className="flex flex-col">
           {painPoints.map((point, i) => (
-            <PainCard key={i} point={point} index={i} />
+            <PainCard key={i} point={point} index={i} last={i === painPoints.length - 1} />
           ))}
         </div>
 
@@ -194,55 +194,49 @@ const PainPointsSection = () => {
 const PainCard = ({
   point,
   index,
+  last,
 }: {
   point: (typeof painPoints)[number];
   index: number;
+  last: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
   const { Icon } = point;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="col-span-1"
+      initial={{ opacity: 0, x: -24 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
+      className={`flex items-start gap-5 py-6 ${last ? "" : "border-b"}`}
+      style={{ borderColor: "hsl(0 60% 50% / 0.12)" }}
     >
-      <div
-        className="relative flex flex-col gap-3 rounded-2xl p-4 md:p-5 h-full overflow-hidden group"
-        style={{ background: painPalette[index].bg, border: `1.5px solid ${painPalette[index].border}` }}
+      {/* Number */}
+      <span
+        className="font-display text-4xl font-black leading-none shrink-0 w-10 text-right select-none"
+        style={{ color: `hsl(0 60% 58% / ${0.18 + index * 0.06})` }}
       >
-        {/* Subtle hover glow */}
-        <div
-          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse 80% 60% at 20% 10%, ${painPalette[index].glow}, transparent 70%)` }}
-        />
+        {String(index + 1).padStart(2, "0")}
+      </span>
 
-        {/* Icon */}
+      {/* Icon + content */}
+      <div className="flex items-start gap-4 flex-1">
         <div
-          className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0"
-          style={{ border: `1px solid ${painPalette[index].border}`, backgroundColor: "hsl(0 0% 100% / 0.65)" }}
+          className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0 mt-0.5"
+          style={{ background: painPalette[index].bg, border: `1.5px solid ${painPalette[index].border}` }}
         >
-          <Icon strokeWidth={1.5} style={{ width: "1rem", height: "1rem", color: painPalette[index].icon }} />
+          <Icon strokeWidth={1.5} style={{ width: "1.1rem", height: "1.1rem", color: painPalette[index].icon }} />
         </div>
-
-        {/* Title */}
-        <h3
-          className="font-display font-black leading-snug relative z-10 text-sm sm:text-base"
-          style={{ color: "hsl(var(--foreground))" }}
-        >
-          {point.title}
-        </h3>
-
-        {/* Aside tag */}
-        <span
-          className="text-[9px] uppercase tracking-[0.18em] font-semibold font-display px-2 py-0.5 rounded-full self-start"
-          style={{ background: "hsl(0 0% 100% / 0.7)", color: painPalette[index].icon, border: `1px solid ${painPalette[index].border}` }}
-        >
-          {point.aside}
-        </span>
+        <div className="flex flex-col gap-1">
+          <h3 className="font-display font-black leading-snug text-base sm:text-lg" style={{ color: "hsl(var(--foreground))" }}>
+            {point.title}
+          </h3>
+          <p className="text-sm" style={{ color: painPalette[index].icon, opacity: 0.85 }}>
+            {point.aside}
+          </p>
+        </div>
       </div>
     </motion.div>
   );

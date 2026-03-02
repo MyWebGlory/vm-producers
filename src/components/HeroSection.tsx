@@ -11,9 +11,9 @@ import avatar4 from "@/assets/testimonials/george-zisiadis.jpg";
 import avatar5 from "@/assets/testimonials/john-winter.jpeg";
 
 const stats = [
-  { value: 2000, suffix: "+", label: "Events Produced" },
+  { value: 2000, suffix: "+", label: "Events Delivered" },
   { value: 100, suffix: "%", label: "Success Rate" },
-  { value: 350, suffix: "K+", label: "Participants Served" },
+  { value: 350, suffix: "K+", label: "Attendees Reached" },
 ];
 
 const avatarPhotos = [avatar1, avatar2, avatar3, avatar4, avatar5];
@@ -143,13 +143,17 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-          {/* Scarcity - inline text, not a pill */}
+          {/* Scarcity - pill */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.05, duration: 0.5 }}
-            className="flex items-center gap-1.5 text-xs"
-            style={{ color: "hsl(25 90% 68%)" }}
+            className="flex items-center gap-1.5 text-sm px-4 py-1.5 rounded-full"
+            style={{
+              color: "hsl(25 90% 68%)",
+              border: "1px solid hsl(25 90% 58% / 0.45)",
+              background: "hsl(25 90% 58% / 0.08)",
+            }}
           >
             <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "hsl(25 90% 58%)" }} />
             Only 4 new clients per month - spots are filling fast.
@@ -185,7 +189,7 @@ const HeroSection = () => {
                 ))}
               </div>
               <p className="text-xs" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
-                <span className="font-semibold text-white">200+</span> event teams trust us
+                <span className="font-semibold text-white">200+</span> teams have already made the leap
               </p>
             </div>
           </motion.div>
@@ -199,10 +203,10 @@ const HeroSection = () => {
           >
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-0.5">
-                <p className="text-xl sm:text-2xl font-display font-bold text-white">
+                <p className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </p>
-                <p className="text-[10px] uppercase tracking-wider font-medium" style={{ color: "hsl(0 0% 100% / 0.45)" }}>
+                <p className="text-[10px] lg:text-[11px] uppercase tracking-wider font-medium" style={{ color: "hsl(0 0% 100% / 0.45)" }}>
                   {stat.label}
                 </p>
               </div>

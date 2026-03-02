@@ -266,7 +266,7 @@ const ComparisonSection = () => {
                 Ready to be on the right side of this list?
               </p>
               <p className="text-sm max-w-md mx-auto" style={{ color: "hsl(var(--foreground) / 0.55)" }}>
-                Join 2,000+ successful events. We handle every detail so you just show up.
+                Join 2,000+ successful events. You show up. We’ve got every detail covered.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3">

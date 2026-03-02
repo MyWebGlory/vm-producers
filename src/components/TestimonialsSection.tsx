@@ -247,12 +247,12 @@ const TestimonialsSection = () => {
             </span>
           </div>
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
-            What people say about working with us
+            What you’ll experience when you work with us
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 text-center">
             <SplitTextReveal text="You'll be in great hands." delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="200+ teams already trust us." delay={0.25} className="justify-center glow-text" />
+            <SplitTextReveal text="200+ teams made the leap." delay={0.25} className="justify-center glow-text" />
           </h2>
           {/* Title divider */}
           <div className="flex items-center justify-center gap-3 mt-6 mb-8">

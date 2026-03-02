@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+﻿import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Award } from "lucide-react";
 import { ScrollReveal, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
@@ -97,12 +97,12 @@ const AboutSection = () => {
                 <Award size={20} style={{ color: "hsl(var(--primary))" }} />
               </span>
               <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">
-                Why teams pick us
+                Why you'll never look back
               </p>
             </motion.div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
               <SplitTextReveal text="You've got the vision." delay={0.2} />{" "}
-              <SplitTextReveal text="We make it happen." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
+              <SplitTextReveal text="You're about to make it real." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>
             {/* Title divider */}
             <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ const AboutSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-muted-foreground text-lg leading-relaxed"
             >
-              VM Producers is a full-service event production agency serving organizations of all sizes, from Fortune 500 companies to emerging startups.
+              Whether you run a Fortune 500 or a fast-growing startup, you get the same world-class production team in your corner, fully dedicated to your event.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -126,7 +126,7 @@ const AboutSection = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-muted-foreground text-base leading-relaxed"
             >
-              We handle everything from venue sourcing and AV production to live streaming and post-event content. One dedicated producer owns every detail so you can focus on your audience.
+              From venue sourcing to post-event video, every detail is handled for you, with one dedicated producer owning your experience start to finish.
             </motion.p>
 
             <RevealLine delay={0.55} className="mb-2" />

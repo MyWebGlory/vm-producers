@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+﻿import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { RevealLine } from "@/components/ScrollAnimations";
@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "How fast can you get started on my event?",
     answer:
-      "Most clients are matched with a producer within 48 hours of their first call. For urgent needs, you get access to our accelerated onboarding track. We've gone from first contact to live event execution in under 2 weeks.",
+      "You’re matched with a producer within 48 hours of your first call. For urgent needs, you get access to our accelerated onboarding track. We’ve gone from first contact to live event execution in under 2 weeks.",
   },
   {
     question: "What exactly is included when you say \u2018full-service\u2019?",
@@ -32,7 +32,7 @@ const faqs = [
   {
     question: "Can you handle virtual-only or hybrid formats?",
     answer:
-      "Virtual and hybrid is where we shine. Your remote attendees get the exact same premium experience as those in the room - broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
+      "Virtual and hybrid is where you’ll get a truly premium experience. Your remote attendees get the exact same quality as those in the room, broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
   },
 ];
 

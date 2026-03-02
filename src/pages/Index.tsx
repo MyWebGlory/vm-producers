@@ -1,8 +1,7 @@
-﻿import { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
-import ServiceQuickNav from "@/components/ServiceQuickNav";
 import ProcessSection from "@/components/ProcessSection";
 import { SEO } from "@/components/SEO";
 const AboutSection = lazy(() => import("@/components/AboutSection"));
@@ -46,7 +45,7 @@ const homeSEO = {
           {
             "@type": "Question",
             "name": "What types of events does VM Producers manage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "VM Producers manages live in-person events, virtual events, hybrid events, corporate conferences, webinars, product launches, and more. We serve Fortune 500 companies to emerging businesses, from 50 to 50,000+ attendees." }
+            "acceptedAnswer": { "@type": "Answer", "text": "VM Producers handles live in-person events, virtual events, hybrid events, corporate conferences, webinars, product launches, and more. You get a dedicated production team whether you\'re a Fortune 500 or a growing business, from 50 to 50,000+ attendees." }
           },
           {
             "@type": "Question",
@@ -99,7 +98,6 @@ const Index = () => {
       <Suspense fallback={<div className="h-96" />}>
         <AboutSection />
         <ServicesSection />
-        <ServiceQuickNav />
         <ProcessSection />
         <TestimonialsSection />
         <FounderSection />

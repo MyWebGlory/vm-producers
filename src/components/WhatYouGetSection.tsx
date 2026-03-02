@@ -69,31 +69,27 @@ const ItemCard = ({ item, index }: { item: (typeof items)[number]; index: number
   const isInView = useInView(ref, { once: true, margin: "-40px" });
   const Icon = item.icon;
   const a = item.accent;
+  const isLastInColumn = index === items.length - 1 || index === items.length - 2;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
-      className="group flex flex-col gap-2 p-3 rounded-xl border bg-white/60 hover:bg-white transition-all duration-300 hover:shadow-sm cursor-default"
-      style={{ borderColor: a.border }}
+      transition={{ duration: 0.55, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
+      className={`flex items-start gap-4 py-5 ${isLastInColumn ? "" : "border-b"}`}
+      style={{ borderColor: "hsl(152 50% 38% / 0.12)" }}
     >
       <div
-        className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
         style={{ background: a.iconBg, border: `1px solid ${a.border}` }}
       >
-        <Icon size={13} style={{ color: a.icon }} />
+        <Icon size={18} style={{ color: a.icon }} />
       </div>
-      <p className="font-display font-bold text-xs leading-snug text-foreground">
-        {item.title}
-      </p>
-      <span
-        className="self-start text-[8px] uppercase tracking-[0.18em] font-semibold px-1.5 py-0.5 rounded-full"
-        style={{ background: a.iconBg, color: a.icon, border: `1px solid ${a.border}` }}
-      >
-        {item.tag}
-      </span>
+      <div className="flex flex-col gap-1">
+        <p className="font-display font-bold text-sm leading-snug text-foreground">{item.title}</p>
+        <p className="text-xs leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.55)" }}>{item.description}</p>
+      </div>
     </motion.div>
   );
 };
@@ -159,7 +155,7 @@ const WhatYouGetSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
           {items.map((item, i) => (
             <ItemCard key={item.title} item={item} index={i} />
           ))}

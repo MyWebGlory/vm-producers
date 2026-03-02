@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 import { Zap, ClipboardList, MapPin, Plane, Monitor, Grid2x2 } from "lucide-react";
@@ -58,22 +58,22 @@ const MeetingPros = () => (
       {
         icon: Zap,
         title: "48-Hour Talent Matching",
-        description: "Tell us what you need and we match you with the right professional within 48 hours or less - anywhere in the world, without compromise on quality.",
+        description: "Tell us what you need and you’re matched with the right professional within 48 hours or less, anywhere in the world, without compromise on quality.",
       },
       {
         icon: ClipboardList,
         title: "Project Management",
-        description: "Full-service event and project management from planning and logistics through to execution. Every detail handled, nothing left to chance.",
+        description: "Full-service event and project management from planning and logistics through to execution. Every detail handled for you, nothing left to chance.",
       },
       {
         icon: MapPin,
         title: "On-Site Implementation",
-        description: "Local meeting experts who know the venue, the market, and the logistics. They oversee and enhance your on-site operations from setup to strike.",
+        description: "Local meeting experts who know your venue, your market, and your logistics. They oversee and enhance your on-site operations from setup to strike.",
       },
       {
         icon: Plane,
         title: "Travel Management",
-        description: "Dedicated travel managers handle all attendee transportation, accommodations, and scheduling so arrivals and departures just work.",
+        description: "Dedicated travel managers handle all your attendee transportation, accommodations, and scheduling so every arrival and departure just works.",
       },
       {
         icon: Monitor,

@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
 import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
@@ -46,7 +46,7 @@ const HybridEvents = () => (
     seo={seo}
     title="Hybrid Events"
     subtitle="Best of Both Worlds"
-    description="We create hybrid events that effectively engage both in-person and online attendees - from the same stage, at the same time."
+    description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time."
     heroImage={hybridEventsImg}
     heroVideo={hybridEventsVideo}
     stats={[
@@ -58,12 +58,12 @@ const HybridEvents = () => (
       {
         icon: Layers,
         title: "Unified Experience Design",
-        description: "In-person and online audiences feel the same show. Same energy, same content, same moments - no second-class stream.",
+        description: "Your in-person and online audiences feel the same show. Same energy, same content, same moments, no second-class stream.",
       },
       {
         icon: Camera,
         title: "Multi-Camera Live Production",
-        description: "Award-winning technical producers run your event on-site and remotely. Branded streams, split-screen layouts, and seamless feed switching.",
+        description: "Award-winning technical producers run your event on-site and remotely. Branded streams, split-screen layouts, and seamless feed switching, your audience sees it all.",
       },
       {
         icon: Volume2,
@@ -73,7 +73,7 @@ const HybridEvents = () => (
       {
         icon: Monitor,
         title: "Platform Management",
-        description: "Complete virtual platform setup, customization, and live support. We handle all the technology so you can concentrate on your content.",
+        description: "Complete virtual platform setup, customization, and live support, all handled for you so you can concentrate fully on your content.",
       },
       {
         icon: MessageSquare,
@@ -88,7 +88,7 @@ const HybridEvents = () => (
       {
         icon: Archive,
         title: "Post-Event Content Hub",
-        description: "All sessions recorded, edited, and delivered as on-demand content. Your event keeps generating value long after the room empties.",
+        description: "All sessions recorded, edited, and delivered as on-demand content. Your event keeps generating value for you long after the room empties.",
       },
     ]}
   />

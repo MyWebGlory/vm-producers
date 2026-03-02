@@ -114,7 +114,7 @@ const ResultsSection = () => {
             className="mt-6 text-sm md:text-base leading-relaxed max-w-2xl mx-auto text-center"
             style={{ color: "hsl(var(--foreground) / 0.50)" }}
           >
-            We make events effortless. Technical excellence, a personal touch, and a proven track record you can rely on.
+            Your events run effortlessly. Technical excellence, a personal touch, and a proven track record you can count on.
           </motion.p>
         </motion.div>
 

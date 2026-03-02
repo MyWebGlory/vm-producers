@@ -1,4 +1,4 @@
-ï»¿import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mic, Monitor, Globe, Video, Users, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -203,7 +203,7 @@ const ServiceQuickNav = () => {
           {/* Left arrow */}
           <motion.button
             onClick={prev}
-            aria-label="PrÃ©cÃ©dent"
+            aria-label="Précédent"
             animate={{ opacity: current > 0 && isHovered && !isMobile ? 1 : 0, pointerEvents: current > 0 ? "auto" : "none" }}
             transition={{ duration: 0.2 }}
             className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
@@ -264,7 +264,7 @@ const ServiceQuickNav = () => {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              aria-label={`Aller Ã  la slide ${i + 1}`}
+              aria-label={`Aller à la slide ${i + 1}`}
               className="transition-all duration-300 rounded-full"
               style={{
                 width: current === i ? "1.5rem" : "0.5rem",

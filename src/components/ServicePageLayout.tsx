@@ -1,4 +1,4 @@
-import { useRef, ReactNode, useState, useEffect } from "react";
+﻿import { useRef, ReactNode, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -481,7 +481,7 @@ const ServicePageLayout = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              What We Offer
+              What You Get
             </motion.p>
             <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
             <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-7xl font-display font-bold text-foreground">
@@ -549,7 +549,7 @@ const ServicePageLayout = ({
             className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight"
             style={{ color: "white" }}
           >
-            Ready to create something{" "}
+            Ready to pull off something{" "}
             <span style={{ color: "hsl(var(--primary))" }}>extraordinary?</span>
           </motion.h2>
           <motion.p
@@ -559,7 +559,7 @@ const ServicePageLayout = ({
             className="text-lg max-w-xl mx-auto mb-12 leading-relaxed"
             style={{ color: "hsl(0 0% 100% / 0.7)" }}
           >
-            Your event deserves a team that's done it before. We're ready when you are.
+            Your event deserves a team that’s done it before, and done it flawlessly. You’re in the right place.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 15 }}

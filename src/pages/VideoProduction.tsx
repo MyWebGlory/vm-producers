@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import videoProductionImg from "@/assets/video-production.webp";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
 import { Play, Camera, Star, PenTool, Film, RefreshCw, Sliders } from "lucide-react";
@@ -58,7 +58,7 @@ const VideoProduction = () => (
       {
         icon: Play,
         title: "Event Promos & Teasers",
-        description: "Build pre-event excitement with sharp promotional videos. Promote your event, campaign, or organization to the right audience before the doors open.",
+        description: "Build pre-event excitement with sharp promotional videos. Your event, campaign, or organization gets promoted to the right audience before the doors open.",
       },
       {
         icon: Camera,
@@ -68,7 +68,7 @@ const VideoProduction = () => (
       {
         icon: Star,
         title: "Event Highlight Reels",
-        description: "Post-event videos that capture the energy and key moments. Built for social sharing, sponsor reports, and board decks.",
+        description: "Post-event videos that capture your energy and key moments. Built for social sharing, sponsor reports, and board decks, delivered fast.",
       },
       {
         icon: PenTool,
@@ -83,7 +83,7 @@ const VideoProduction = () => (
       {
         icon: RefreshCw,
         title: "Evergreen & On-Demand Content",
-        description: "Turn your event recordings into replay-ready content, gated assets, or a full content library that keeps generating value month after month.",
+        description: "Turn your event recordings into replay-ready content, gated assets, or a full content library that keeps generating value for you month after month.",
       },
       {
         icon: Sliders,

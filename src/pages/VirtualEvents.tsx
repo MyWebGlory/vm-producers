@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import virtualEventsImg from "@/assets/virtual events.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import { Tv, Layout, Users, TrendingUp, Globe, Zap, BarChart2 } from "lucide-react";
@@ -58,12 +58,12 @@ const VirtualEvents = () => (
       {
         icon: Tv,
         title: "TV-Quality Livestream Production",
-        description: "No screen-share webinars. Every production gets professional broadcast quality: graphics, switching, lower thirds, and a director on the call.",
+        description: "No screen-share webinars. Your production gets professional broadcast quality: graphics, switching, lower thirds, and a director on the call.",
       },
       {
         icon: Layout,
         title: "Custom Branded Platforms",
-        description: "Fully branded virtual environments with custom lobbies, breakout rooms, and networking lounges - built around your event, not a generic template.",
+        description: "Your event runs on a fully branded virtual environment built around you, custom lobbies, breakout rooms, and networking lounges, not a generic template.",
       },
       {
         icon: Users,
@@ -83,7 +83,7 @@ const VirtualEvents = () => (
       {
         icon: Zap,
         title: "Real-Time Engagement Tools",
-        description: "Live polls, Q&A moderation, chat, virtual networking, and gamification - all managed by our team so you never have to watch a chat scroll alone.",
+        description: "Live polls, Q&A moderation, chat, virtual networking, and gamification, all managed for you, so you never have to watch a chat scroll alone.",
       },
       {
         icon: BarChart2,
