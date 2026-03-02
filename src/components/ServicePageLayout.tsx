@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { LucideIcon, Mic, Monitor, Globe, Video, Users, ArrowRight, PhoneCall } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ScrollReveal, AnimatedCounter, MagneticHover, SplitTextReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
+import { AnimatedCounter, MagneticHover, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
@@ -132,6 +132,7 @@ interface ServiceFeature {
   icon?: LucideIcon;
   title: string;
   description: string;
+  image?: string;
 }
 
 interface ServiceSEO {
@@ -188,132 +189,70 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
   );
 };
 
-/* Feature Card */
-const cardPalette = [
-  { bg: "hsl(216 90% 55% / 0.09)",  border: "hsl(216 90% 58% / 0.30)",  glow: "hsl(216 90% 58% / 0.10)",  num: "hsl(216 90% 58% / 0.16)",  icon: "hsl(216 90% 50%)" },
-  { bg: "hsl(205 80% 72% / 0.09)", border: "hsl(205 70% 68% / 0.28)", glow: "hsl(205 70% 72% / 0.09)", num: "hsl(205 70% 74% / 0.14)", icon: "hsl(205 60% 52%)" },
-  { bg: "hsl(32 85% 58% / 0.09)",  border: "hsl(32 78% 54% / 0.28)",  glow: "hsl(32 78% 58% / 0.10)",  num: "hsl(32 80% 62% / 0.15)",  icon: "hsl(32 68% 46%)" },
-  { bg: "hsl(340 70% 68% / 0.08)", border: "hsl(340 60% 64% / 0.26)", glow: "hsl(340 60% 68% / 0.09)", num: "hsl(340 62% 72% / 0.14)", icon: "hsl(340 52% 54%)" },
-];
-
-const FeatureCard = ({
+/* Feature Row, alternating image + text */
+const FeatureRow = ({
   feature,
   index,
+  heroImage,
 }: {
   feature: ServiceFeature;
   index: number;
+  heroImage: string;
 }) => {
-  const [hovered, setHovered] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const Icon = feature.icon;
-  const pal = cardPalette[index % cardPalette.length];
+  const imageRight = index % 2 === 1;
+  const img = feature.image || heroImage;
 
-  const col = index % 2;
-  const xFrom = col === 0 ? -56 : 56;
-  const rowDelay = Math.floor(index / 2) * 0.1;
+  const imageCol = (
+    <motion.div
+      className="relative rounded-2xl overflow-hidden w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/10] max-h-56 sm:max-h-none"
+      initial={{ opacity: 0, x: imageRight ? 48 : -48 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <img src={img} alt={feature.title} loading="lazy" className="w-full h-full object-cover" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.10) 0%, transparent 60%)" }} />
+    </motion.div>
+  );
+
+  const textCol = (
+    <motion.div
+      className="flex flex-col justify-center gap-4 sm:gap-5"
+      initial={{ opacity: 0, x: imageRight ? -48 : 48 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {Icon && (
+        <span
+          className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl shrink-0"
+          style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.25)" }}
+        >
+          <Icon size={19} style={{ color: "hsl(var(--primary))" }} />
+        </span>
+      )}
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold leading-tight text-foreground">
+        {feature.title}
+      </h3>
+      <p className="text-sm sm:text-base leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.60)" }}>
+        {feature.description}
+      </p>
+    </motion.div>
+  );
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: xFrom, y: 48, filter: "blur(14px)", scale: 0.94 }}
-      whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)", scale: 1 }}
-      viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-      transition={{ delay: rowDelay, duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
-      style={{ transformPerspective: 1000 }}
-    >
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="group relative p-6 md:p-8 lg:p-10 rounded-3xl overflow-hidden transition-all duration-500 h-full"
-      style={{ background: pal.bg, border: `1.5px solid ${pal.border}`, boxShadow: hovered ? `0 16px 50px ${pal.glow}, 0 4px 20px hsl(0 0% 0% / 0.05)` : "0 2px 12px hsl(0 0% 0% / 0.03)" }}
+      ref={ref}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-16 lg:gap-20 items-center"
     >
-      {/* Decorative blobs */}
-      <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${pal.num} 0%, transparent 65%)` }} />
-      <div className="absolute -top-8 -left-8 w-24 h-24 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${pal.num} 0%, transparent 65%)` }} />
-
-      {/* Corner number */}
-      <span
-        className="absolute top-5 right-6 font-display font-black text-4xl md:text-5xl select-none pointer-events-none"
-        style={{ color: pal.num, letterSpacing: "-0.04em" }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      {/* Shimmer sweep on hover */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ x: "-100%", opacity: 0 }}
-        animate={hovered ? { x: "220%", opacity: 1 } : { x: "-100%", opacity: 0 }}
-        transition={{ duration: 0.75, ease: "easeInOut" }}
-        style={{ background: `linear-gradient(105deg, transparent 30%, ${pal.glow} 50%, transparent 70%)`, width: "60%" }}
-      />
-
-      {/* Accent glow on hover */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl pointer-events-none"
-        animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        style={{ background: `radial-gradient(ellipse at 20% 0%, ${pal.glow}, transparent 65%)` }}
-      />
-
-      <div className="relative z-10">
-        {/* Icon badge */}
-        {Icon && (
-        <motion.div
-            className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-            style={{ background: `${pal.bg}`, border: `1.5px solid ${pal.border}`, backgroundColor: "hsl(0 0% 100% / 0.7)" }}
-            initial={{ scale: 0, rotate: -20 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-            transition={{ delay: rowDelay + 0.3, duration: 0.65, type: "spring", stiffness: 240, damping: 17 }}
-          >
-            <motion.div
-              animate={{ scale: hovered ? 1.18 : 1, rotate: hovered ? 8 : 0 }}
-              transition={{ duration: 0.35 }}
-            >
-              <Icon strokeWidth={1.4} style={{ width: "1.35rem", height: "1.35rem", color: pal.icon }} />
-            </motion.div>
-          </motion.div>
-        )}
-
-        {/* Title */}
-        <div className="mb-3 mt-1">
-          <h3
-            className="text-lg md:text-xl lg:text-2xl font-display font-black leading-tight"
-            style={{ color: pal.icon }}
-          >
-            {feature.title}
-          </h3>
-        </div>
-
-        <motion.p
-          className="text-foreground/70 leading-relaxed text-sm lg:text-base"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-          transition={{
-            delay: rowDelay + 0.38,
-            duration: 0.75,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          {feature.description}
-        </motion.p>
-
-        {/* Animated reveal line */}
-        <motion.div
-          className="mt-6 h-px rounded-full"
-          style={{
-            background: "linear-gradient(90deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.1))",
-            transformOrigin: "left",
-          }}
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 0.35 }}
-          viewport={{ once: true, amount: 0.15, margin: "-60px" }}
-          animate={hovered ? { scaleX: 1 } : undefined}
-          transition={{ duration: hovered ? 0.4 : 1.0, delay: hovered ? 0 : rowDelay + 0.55, ease: [0.16, 1, 0.3, 1] }}
-        />
+      {/* On mobile always show image first, on sm+ respect alternating order */}
+      <div className="sm:hidden">{imageCol}</div>
+      <div className="sm:hidden">{textCol}</div>
+      <div className="hidden sm:contents">
+        {imageRight ? <>{textCol}{imageCol}</> : <>{imageCol}{textCol}</>}
       </div>
     </div>
-    </motion.div>
   );
 };
 
@@ -458,24 +397,11 @@ const ServicePageLayout = ({
       </div>
 
       {/* ═══ Features ═══ */}
-      <section className="py-16 md:py-28 lg:py-40 relative overflow-hidden">
-        {/* Ambient orbs */}
-        <FloatingOrbs count={4} className="opacity-60" />
-        {/* Vertical thread */}
-        <div className="absolute right-8 lg:right-16 top-0 bottom-0 w-px hidden lg:block overflow-hidden">
-          <motion.div
-            className="w-full"
-            style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary) / 0.35) 30%, hsl(var(--primary) / 0.12) 70%, transparent 100%)" }}
-            initial={{ height: "0%" }}
-            whileInView={{ height: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          />
-        </div>
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-10 md:mb-20 lg:mb-28">
+      <section className="py-16 md:py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12 md:mb-20">
             <motion.p
-              className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium"
+              className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -483,28 +409,22 @@ const ServicePageLayout = ({
             >
               What You Get
             </motion.p>
-            <RevealLine delay={0.05} className="max-w-[100px] mx-auto mb-6" />
-            <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-5xl lg:text-7xl font-display font-bold text-foreground">
-              <SplitTextReveal text="Built for" delay={0.1} />{" "}
-              <SplitTextReveal text="excellence." delay={0.3} style={{ color: "hsl(var(--primary))" }} />
-            </h2>
+            <motion.h2
+              className="text-3xl md:text-5xl font-display font-bold text-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              Built for{" "}
+              <span style={{ color: "hsl(var(--primary))" }}>excellence.</span>
+            </motion.h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
-            {features.map((feature, i) => {
-              const isOrphan = features.length % 2 !== 0 && i === features.length - 1;
-              return (
-                <div
-                  key={feature.title}
-                  className={isOrphan ? "col-span-2 md:col-span-2 md:max-w-[calc(50%-0.75rem)] md:mx-auto w-full" : "col-span-1"}
-                >
-                  <FeatureCard
-                    feature={feature}
-                    index={i}
-                  />
-                </div>
-              );
-            })}
+          <div className="flex flex-col gap-16 md:gap-24 lg:gap-32">
+            {features.map((feature, i) => (
+              <FeatureRow key={feature.title} feature={feature} index={i} heroImage={heroImage} />
+            ))}
           </div>
         </div>
       </section>

@@ -1,6 +1,12 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
+import hybridEventsHeroImg from "@/assets/hybrid-events.webp";
+import liveEventsImg from "@/assets/live-events.webp";
+import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
+import virtualEventsConferenceImg from "@/assets/virtual-events-conference.webp";
+import virtualEventsImg from "@/assets/virtual-events.webp";
+import videoProductionImg from "@/assets/video-production.webp";
 import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
 
 const seo = {
@@ -46,7 +52,7 @@ const HybridEvents = () => (
     seo={seo}
     title="Hybrid Events"
     subtitle="Best of Both Worlds"
-    description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time."
+    description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time. No second-class stream, both rooms get the full show."
     heroImage={hybridEventsImg}
     heroVideo={hybridEventsVideo}
     stats={[
@@ -58,37 +64,44 @@ const HybridEvents = () => (
       {
         icon: Layers,
         title: "Unified Experience Design",
-        description: "Your in-person and online audiences feel the same show. Same energy, same content, same moments, no second-class stream.",
+        description: "Your in-person and online audiences experience the same event, same energy, same content, same key moments. We design your production from the ground up to serve both rooms simultaneously, using branded webcasts, multi-screen layouts, and a single unified run-of-show that neither audience ever feels excluded from.",
+        image: hybridEventsHeroImg,
       },
       {
         icon: Camera,
         title: "Multi-Camera Live Production",
-        description: "Award-winning technical producers run your event on-site and remotely. Branded streams, split-screen layouts, and seamless feed switching, your audience sees it all.",
+        description: "Our Head of Hybrid is an award-winning technical producer who has led hundreds of complex productions. We deploy multiple cameras and experienced operators on-site, with a remote production team handling the broadcast feed, delivering branded streams, seamless split-screen layouts, and real-time feed switching that makes your show look and feel world-class.",
+        image: hybridEventsImg,
       },
       {
         icon: Volume2,
         title: "Full AV Production",
-        description: "Lighting, sound, staging, and dedicated crew for the in-person side. We assemble teams of any size, all delivering to the same standard.",
+        description: "Your in-person audience gets the full live production treatment: professional lighting rigs, broadcast-quality sound design, and sharp staging. We assemble dedicated AV crews of any size, all aligned to the same standard, all committed to delivering excellence from the first rehearsal through the closing session.",
+        image: liveEventsImg,
       },
       {
         icon: Monitor,
         title: "Platform Management",
-        description: "Complete virtual platform setup, customization, and live support, all handled for you so you can concentrate fully on your content.",
+        description: "We handle all the technology for you, full platform setup, branding customization, technical rehearsals, and live support throughout your event. Whether you're streaming to a branded webpage, Zoom, or a dedicated virtual event platform, your remote audience gets a polished, stable, and fully branded experience from login to close.",
+        image: virtualEventsControlRoomImg,
       },
       {
         icon: MessageSquare,
-        title: "Audience Engagement for Both Rooms",
-        description: "Live polls, speaker Q&A, shared social wall, virtual booths, and group messaging - keeping every attendee active regardless of where they are.",
+        title: "Engagement for Both Rooms",
+        description: "Keeping two audiences engaged simultaneously requires intentional design. We connect in-person and online attendees through a shared event app with a social wall, group and private messaging, virtual booths, live polls, and speaker Q&A, making every participant feel equally present, regardless of where in the world they're watching from.",
+        image: virtualEventsConferenceImg,
       },
       {
         icon: Laptop,
         title: "Online-Only Sessions",
-        description: "Extend beyond the physical venue with exclusive online-only sessions, breakouts, and networking for your remote audience.",
+        description: "Your virtual attendees get more than a window into the room. We produce exclusive online-only sessions, digital breakouts, and virtual networking opportunities designed specifically for your remote audience, extending your event's reach and giving your online community a compelling reason to show up and stay engaged.",
+        image: virtualEventsImg,
       },
       {
         icon: Archive,
         title: "Post-Event Content Hub",
-        description: "All sessions recorded, edited, and delivered as on-demand content. Your event keeps generating value for you long after the room empties.",
+        description: "Every session is recorded, edited, and packaged for on-demand access. Your event doesn't end when the room empties, it becomes a content library that continues generating value, training new team members, attracting new attendees, and giving sponsors lasting visibility well beyond the day of the event.",
+        image: videoProductionImg,
       },
     ]}
   />
