@@ -4,6 +4,7 @@ import heroBg from "@/assets/hero-bg.webp";
 import { AnimatedCounter, FloatingOrbs } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
 import { ArrowRight } from "lucide-react";
+import { useCalendly } from "@/components/CalendlyModal";
 import avatar1 from "@/assets/testimonials/jeanette-mccullough.jpeg";
 import avatar2 from "@/assets/testimonials/lesley-edwards.jpg";
 import avatar3 from "@/assets/testimonials/tony-susa.jpg";
@@ -20,6 +21,7 @@ const avatarPhotos = [avatar1, avatar2, avatar3, avatar4, avatar5];
 const avatarNames = ["Jeanette", "Lesley", "Tony", "George", "John"];
 
 const HeroSection = () => {
+  const { openCalendly } = useCalendly();
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -112,11 +114,10 @@ const HeroSection = () => {
             className="flex flex-col items-center gap-1.5 mt-1"
           >
             <MagneticHover>
-              <a
-                href="https://www.vmproducers.com/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden"
+              <button
+                type="button"
+                onClick={openCalendly}
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden cursor-pointer"
                 style={{
                   background: "hsl(216 90% 58%)",
                   color: "white",
@@ -134,7 +135,7 @@ const HeroSection = () => {
                   animate={{ x: ["-100%", "200%"] }}
                   transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
                 />
-              </a>
+              </button>
             </MagneticHover>
 
             {/* Sub-line */}

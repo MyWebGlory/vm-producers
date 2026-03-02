@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CalendlyProvider } from "@/components/CalendlyModal";
 import Index from "./pages/Index";
 import LiveEvents from "./pages/LiveEvents";
 import VirtualEvents from "./pages/VirtualEvents";
@@ -27,6 +28,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <CalendlyProvider>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/live-events" element={<LiveEvents />} />
@@ -36,6 +38,7 @@ const App = () => (
           <Route path="/meeting-pros" element={<MeetingPros />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </CalendlyProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

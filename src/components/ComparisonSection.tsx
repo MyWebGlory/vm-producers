@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const painPoints = [
   { Icon: UserX,       title: "You trusted the wrong person with too much." },
@@ -22,6 +23,7 @@ const benefits = [
 ];
 
 const ComparisonSection = () => {
+  const { openCalendly } = useCalendly();
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -270,16 +272,15 @@ const ComparisonSection = () => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3">
-              <a
-                href="https://www.vmproducers.com/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              <button
+                type="button"
+                onClick={openCalendly}
+                className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
                 style={{ background: "hsl(152 45% 38%)", color: "white" }}
               >
                 Get started, it's free
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              </button>
               <Link
                 to="/live-events"
                 className="group inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"

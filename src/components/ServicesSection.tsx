@@ -82,7 +82,7 @@ const ServiceCard = ({ service, index }: { service: (typeof services)[number]; i
       style={{ border: `1px solid hsl(${service.accent} / 0.22)`, background: "hsl(var(--background))" }}
     >
       {/* Image */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden">
+      <div className="relative w-full aspect-square overflow-hidden">
         <img
           src={service.image}
           alt={service.title}
@@ -94,26 +94,26 @@ const ServiceCard = ({ service, index }: { service: (typeof services)[number]; i
           style={{ background: `linear-gradient(160deg, hsl(${service.accent} / 0.25) 0%, transparent 60%)` }}
         />
         <div
-          className="absolute bottom-3 left-3 flex items-baseline gap-1 px-2.5 py-1 rounded-full"
+          className="absolute bottom-5 left-5 flex items-baseline gap-1.5 px-3.5 py-2 rounded-full"
           style={{ background: "hsl(0 0% 0% / 0.60)", border: "1px solid hsl(0 0% 100% / 0.12)" }}
         >
-          <span className="font-display text-base font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-[10px] uppercase tracking-widest" style={{ color: "hsl(0 0% 100% / 0.55)" }}>{service.statLabel}</span>
+          <span className="font-display text-2xl font-bold text-white leading-none">{service.stat}</span>
+          <span className="text-xs uppercase tracking-widest" style={{ color: "hsl(0 0% 100% / 0.55)" }}>{service.statLabel}</span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-2 p-4">
-        <div className="flex items-center gap-2.5">
+      <div className="flex flex-col gap-3 p-6">
+        <div className="flex items-center gap-3">
           <span
-            className="flex items-center justify-center w-8 h-8 rounded-lg shrink-0"
+            className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0"
             style={{ background: `hsl(${service.accent} / 0.12)`, border: `1px solid hsl(${service.accent} / 0.28)` }}
           >
-            <Icon size={15} style={{ color: `hsl(${service.accent})` }} />
+            <Icon size={22} style={{ color: `hsl(${service.accent})` }} />
           </span>
-          <h3 className="font-display text-base font-bold text-foreground leading-tight">{service.title}</h3>
+          <h3 className="font-display text-xl font-bold text-foreground leading-tight">{service.title}</h3>
         </div>
-        <p className="text-[11px] font-medium" style={{ color: `hsl(${service.accent})` }}>{service.tag}</p>
+        <p className="text-sm font-medium" style={{ color: `hsl(${service.accent})` }}>{service.tag}</p>
       </div>
     </motion.a>
   );
@@ -168,8 +168,8 @@ const ServicesSection = () => {
       </div>
 
       {/* 5 service cards */}
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
           {services.map((s, i) => (
             <ServiceCard key={s.title} service={s} index={i} />
           ))}

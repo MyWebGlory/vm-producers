@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import { ConstellationBG } from "@/components/ConstellationBG";
 import heroBg from "@/assets/hero-bg.webp";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const serviceLinks = [
   { icon: Mic,     label: "Live Events",       href: "/live-events" },
@@ -15,6 +16,7 @@ const serviceLinks = [
 ];
 
 const CTASection = () => {
+  const { openCalendly } = useCalendly();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -96,18 +98,17 @@ const CTASection = () => {
           transition={{ delay: 0.45, duration: 0.6 }}
         >
           <MagneticHover>
-            <a
-              href="https://www.vmproducers.com/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex px-10 py-4 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105"
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="inline-flex px-10 py-4 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer"
               style={{
                 background: "white",
                 color: "hsl(220 25% 10%)",
               }}
             >
               Get in Touch
-            </a>
+            </button>
           </MagneticHover>
         </motion.div>
 

@@ -12,6 +12,7 @@ import { AnimatedCounter, MagneticHover, RevealLine } from "@/components/ScrollA
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const ALL_SERVICES = [
   { icon: Mic,     title: "Live Events",      subtitle: "50 to 50K attendees",    href: "/live-events",      accent: "215 60% 35%" },
@@ -100,17 +101,16 @@ const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
           transition={{ delay: 0.38, duration: 0.5 }}
           className="mt-8 flex justify-center"
         >
-          <a
-            href="https://www.vmproducers.com/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"
+          <button
+            type="button"
+            onClick={openCalendly}
+            className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 cursor-pointer"
             style={{ background: "hsl(var(--primary))", color: "white" }}
           >
             <PhoneCall size={13} />
             Talk to us
             <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          </button>
         </motion.div>
       </div>
       <div
@@ -268,6 +268,7 @@ const ServicePageLayout = ({
   additionalContent,
   seo,
 }: ServicePageLayoutProps) => {
+  const { openCalendly } = useCalendly();
   const heroRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
@@ -487,18 +488,17 @@ const ServicePageLayout = ({
             transition={{ delay: 0.45, duration: 0.6 }}
           >
             <MagneticHover>
-              <a
-                href="https://www.vmproducers.com/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex px-10 py-4 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105"
+              <button
+                type="button"
+                onClick={openCalendly}
+                className="inline-flex px-10 py-4 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{
                   background: "white",
                   color: "hsl(220 25% 10%)",
                 }}
               >
                 Get in Touch
-              </a>
+              </button>
             </MagneticHover>
           </motion.div>
         </div>

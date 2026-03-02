@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MapPin, Mail, Phone, Linkedin, ArrowRight, Star } from "lucide-react";
 import founderPhoto from "@/assets/austin-talley-founder.png";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const stats = [
   { value: "2,000+", label: "Events produced" },
@@ -11,6 +12,7 @@ const stats = [
 ];
 
 const FounderSection = () => {
+  const { openCalendly } = useCalendly();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -151,12 +153,12 @@ const FounderSection = () => {
             <p className="text-sm" style={{ color: "hsl(var(--foreground) / 0.50)" }}>
               You'll be matched with your dedicated producer within 48 hours.
             </p>
-            <a href="https://www.vmproducers.com/contact" target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            <button type="button" onClick={openCalendly}
+              className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
               style={{ background: "hsl(216 90% 58%)", color: "white" }}>
               Get in touch
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </button>
           </motion.div>
         </div>
 

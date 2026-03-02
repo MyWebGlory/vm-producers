@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { Award } from "lucide-react";
 import { ScrollReveal, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import aboutEventImg from "@/assets/about-event.webp";
+import { useCalendly } from "@/components/CalendlyModal";
 
 // Dynamic imports - videos loaded only when section is visible
 const videoImports = [
@@ -13,6 +14,7 @@ const videoImports = [
 ];
 
 const AboutSection = () => {
+  const { openCalendly } = useCalendly();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [currentVideo, setCurrentVideo] = useState(0);
@@ -135,15 +137,14 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.6, duration: 0.5 }}
             >
-              <a
-                href="https://www.vmproducers.com/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300"
+              <button
+                type="button"
+                onClick={openCalendly}
+                className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300 cursor-pointer"
               >
                 Get in touch
                 <span className="text-lg">→</span>
-              </a>
+              </button>
             </motion.div>
           </ScrollReveal>
         </div>

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   Trophy,
@@ -11,6 +11,22 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { MagneticHover, RevealLine } from "@/components/ScrollAnimations";
+import { useCalendly } from "@/components/CalendlyModal";
+import liveEventsVideo from "@/assets/live-events-video.mp4";
+import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
+import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
+import videoProductionVideo from "@/assets/video-production-video.mp4";
+import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
+
+const VIDEOS = [
+  liveEventsVideo,
+  virtualEventsVideo,
+  hybridEventsVideo,
+  videoProductionVideo,
+  meetingProsVideo,
+  liveEventsVideo,
+  virtualEventsVideo,
+];
 
 const items = [
   {
@@ -57,11 +73,33 @@ const items = [
   },
 ];
 
-const ItemCard = ({ item, index }: { item: (typeof items)[number]; index: number }) => {
+const TOTAL = items.length; // 7
+
+interface ItemCardProps {
+  item: (typeof items)[number];
+  index: number;
+  isPlaying: boolean;
+  onEnded: (index: number) => void;
+}
+
+const ItemCard = ({ item, index, isPlaying, onEnded }: ItemCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
   const Icon = item.icon;
   const a = item.accent;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isPlaying) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [isPlaying]);
 
   return (
     <motion.div
@@ -69,32 +107,93 @@ const ItemCard = ({ item, index }: { item: (typeof items)[number]; index: number
       initial={{ opacity: 0, y: 12 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col items-center gap-1.5 p-2.5 rounded-lg text-center"
-      style={{ background: "hsl(220 20% 96%)", border: `1px solid ${a.border}` }}
+      className="flex flex-col rounded-xl overflow-hidden"
+      style={{ border: `1px solid ${isPlaying ? a.icon : a.border}`, background: "hsl(220 20% 96%)", transition: "border-color 0.4s" }}
     >
-      <div
-        className="w-6 h-6 rounded-md flex items-center justify-center shrink-0"
-        style={{ background: a.iconBg, border: `1px solid ${a.border}` }}
-      >
-        <Icon size={11} style={{ color: a.icon }} />
+      {/* Video area */}
+      <div className="relative w-full aspect-video overflow-hidden bg-black/10">
+        <video
+          ref={videoRef}
+          src={VIDEOS[index]}
+          muted
+          playsInline
+          preload="metadata"
+          onEnded={() => onEnded(index)}
+          className="w-full h-full object-cover"
+          style={{ opacity: isPlaying ? 1 : 0, transition: "opacity 0.4s" }}
+        />
+        {/* Icon shown when not playing */}
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ opacity: isPlaying ? 0 : 1, transition: "opacity 0.4s" }}
+        >
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center"
+            style={{ background: a.iconBg, border: `1px solid ${a.border}` }}
+          >
+            <Icon size={14} style={{ color: a.icon }} />
+          </div>
+        </div>
+        {/* Playing indicator */}
+        {isPlaying && (
+          <div className="absolute top-1.5 right-1.5 flex gap-0.5 items-end h-3">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="w-0.5 rounded-full"
+                style={{
+                  background: a.icon,
+                  height: "100%",
+                  animation: `barBounce 0.8s ease-in-out ${i * 0.15}s infinite alternate`,
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
-      <p className="font-display font-bold text-[10px] leading-tight text-foreground">{item.title}</p>
-      <span
-        className="text-[9px] font-semibold px-1.5 py-px rounded-full"
-        style={{ background: a.iconBg, color: a.icon, border: `1px solid ${a.border}` }}
-      >
-        {item.tag}
-      </span>
+
+      {/* Text */}
+      <div className="flex flex-col items-center gap-1.5 p-3 text-center">
+        <p className="font-display font-bold text-[11px] leading-tight text-foreground">{item.title}</p>
+        <span
+          className="text-[9px] font-semibold px-2 py-px rounded-full"
+          style={{ background: a.iconBg, color: a.icon, border: `1px solid ${a.border}` }}
+        >
+          {item.tag}
+        </span>
+      </div>
     </motion.div>
   );
 };
 
 const WhatYouGetSection = () => {
+  const { openCalendly } = useCalendly();
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-60px" });
 
+  // Maintain exactly 2 playing slots; cycle through all cards
+  const [playing, setPlaying] = useState<Set<number>>(new Set([0, 1]));
+  const nextRef = useRef<number>(2);
+
+  const handleEnded = (index: number) => {
+    setPlaying((prev) => {
+      const next = new Set(prev);
+      next.delete(index);
+      const nextIndex = nextRef.current % TOTAL;
+      nextRef.current++;
+      next.add(nextIndex);
+      return next;
+    });
+  };
+
   return (
     <section className="relative overflow-hidden" style={{ background: "hsl(220 20% 98%)" }}>
+      <style>{`
+        @keyframes barBounce {
+          from { transform: scaleY(0.3); }
+          to   { transform: scaleY(1); }
+        }
+      `}</style>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -141,7 +240,13 @@ const WhatYouGetSection = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
           {items.map((item, i) => (
-            <ItemCard key={item.title} item={item} index={i} />
+            <ItemCard
+              key={item.title}
+              item={item}
+              index={i}
+              isPlaying={playing.has(i)}
+              onEnded={handleEnded}
+            />
           ))}
         </div>
 
@@ -153,16 +258,15 @@ const WhatYouGetSection = () => {
           className="flex justify-center mt-8"
         >
           <MagneticHover>
-            <a
-              href="https://www.vmproducers.com/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 cursor-pointer"
               style={{ background: "hsl(var(--primary))", color: "white", boxShadow: "0 0 30px hsl(var(--primary) / 0.25)" }}
             >
               Get started today
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </MagneticHover>
         </motion.div>
       </div>
@@ -171,3 +275,4 @@ const WhatYouGetSection = () => {
 };
 
 export default WhatYouGetSection;
+

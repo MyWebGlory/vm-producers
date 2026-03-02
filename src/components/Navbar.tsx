@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import vpLogo from "@/assets/vp-logo-white.png";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const navLinks = [
   { label: "Live", href: "/live-events" },
@@ -13,6 +14,7 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const { openCalendly } = useCalendly();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -73,14 +75,13 @@ const Navbar = () => {
           ))}
         </div>
 
-        <a
-          href="https://www.vmproducers.com/contact"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow"
+        <button
+          type="button"
+          onClick={openCalendly}
+          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow cursor-pointer"
         >
           Free Consultation
-        </a>
+        </button>
 
         <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -109,14 +110,13 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="https://www.vmproducers.com/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm"
+              <button
+                type="button"
+                onClick={() => { openCalendly(); setIsOpen(false); }}
+                className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm cursor-pointer"
               >
                 Free Consultation
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

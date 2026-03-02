@@ -26,6 +26,17 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://www.vmproducers.com/" />
 
+    <!-- Calendly — preconnect to ALL domains it uses, preload the script, then execute it -->
+    <link rel="preconnect" href="https://assets.calendly.com" crossorigin />
+    <link rel="preconnect" href="https://calendly.com" crossorigin />
+    <link rel="preconnect" href="https://api.calendly.com" crossorigin />
+    <link rel="preconnect" href="https://auth.calendly.com" crossorigin />
+    <link rel="dns-prefetch" href="https://assets.calendly.com" />
+    <link rel="dns-prefetch" href="https://api.calendly.com" />
+    <link rel="dns-prefetch" href="https://auth.calendly.com" />
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" />
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
     <!-- Favicon -->
     <link rel="icon" href="%BASE_URL%favicon.png" type="image/png" />
 

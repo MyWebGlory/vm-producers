@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
+import { useCalendly } from "@/components/CalendlyModal";
 import avatarJeanette from "@/assets/testimonials/jeanette-mccullough.jpeg";
 import avatarKimCoverco from "@/assets/testimonials/kim-ribich-coverco.png";
 import avatarDeanHart from "@/assets/testimonials/dean-hart.jpeg";
@@ -196,6 +197,7 @@ const PlatformBadge = ({ platform }: { platform: string }) => {
 };
 
 const TestimonialsSection = () => {
+  const { openCalendly } = useCalendly();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
   const [index, setIndex] = useState(0);
@@ -430,14 +432,15 @@ const TestimonialsSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.9 }}
         >
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          <button
+            type="button"
+            onClick={openCalendly}
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm text-white transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
             style={{ background: "hsl(var(--primary))", boxShadow: "0 0 24px hsl(var(--primary) / 0.25)" }}
           >
             Get your free consultation
             <span aria-hidden>→</span>
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

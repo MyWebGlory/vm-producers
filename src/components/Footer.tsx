@@ -3,8 +3,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { RevealLine } from "@/components/ScrollAnimations";
 import vpLogo from "@/assets/vp-logo-white.png";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const Footer = () => {
+  const { openCalendly } = useCalendly();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -59,14 +61,13 @@ const Footer = () => {
               </li>
               <li>New York, NY, USA</li>
             </ul>
-            <a
-              href="https://www.vmproducers.com/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex px-8 py-3 rounded-full bg-foreground text-background font-display font-semibold text-sm hover:opacity-90 transition-all duration-300 mt-2"
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="inline-flex px-8 py-3 rounded-full bg-foreground text-background font-display font-semibold text-sm hover:opacity-90 transition-all duration-300 mt-2 cursor-pointer"
             >
               Schedule a Call
-            </a>
+            </button>
           </motion.div>
 
           {/* Navigation */}
@@ -97,14 +98,13 @@ const Footer = () => {
                 <Link to="/meeting-pros" className="hover:text-foreground transition-colors">Meeting Pros</Link>
               </li>
               <li>
-                <a
-                  href="https://www.vmproducers.com/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors"
+                <button
+                  type="button"
+                  onClick={openCalendly}
+                  className="hover:text-foreground transition-colors cursor-pointer text-left"
                 >
                   Contact
-                </a>
+                </button>
               </li>
             </ul>
           </motion.div>
