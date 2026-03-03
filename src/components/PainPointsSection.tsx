@@ -114,8 +114,8 @@ const PainPointsSection = () => {
           <motion.div
             className="absolute inset-0 rounded-full"
             style={{ background: "hsl(216 90% 58% / 0.3)" }}
-            animate={{ scale: [1, 2.5, 1], opacity: [0.6, 0, 0.6] }}
-            transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
+            animate={{ scale: [1, 2.0, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.4 }}
           />
         </motion.div>
       ))}

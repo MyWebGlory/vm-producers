@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth deliberately omitted — JS calls use explicit behavior:"smooth" where needed */
   }
 
 
@@ -128,6 +128,17 @@
   .elevated {
     background: hsl(var(--surface-elevated));
     box-shadow: 0 1px 3px hsl(220 25% 10% / 0.04), 0 6px 24px hsl(220 25% 10% / 0.06);
+  }
+
+  /* Performance: GPU-promote elements that animate transform/opacity */
+  .will-animate {
+    will-change: transform, opacity;
+  }
+
+  /* content-visibility for below-fold sections — tells the browser it can skip
+     rendering offscreen content until the user scrolls near it. */
+  .cv-auto {
+    content-visibility: auto;
   }
 }
 

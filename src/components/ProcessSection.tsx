@@ -66,8 +66,7 @@ const StepRow = ({
   const lo = index * 0.25 + 0.03;
   const hi = lo + 0.18;
   const stepOpacity = useTransform(scrollProgress, [lo, hi], [0.45, 1]);
-  const stepScale  = useTransform(scrollProgress, [lo, hi], [0.96, 1]);
-  const stepBlur   = useTransform(scrollProgress, [lo, hi], [4, 0]);
+  const stepScale  = useTransform(scrollProgress, [lo, hi], [0.97, 1]);
 
   const cardVariants = {
     hidden: { x: isLeft ? -40 : 40 },
@@ -89,7 +88,7 @@ const StepRow = ({
     <motion.div
       ref={ref}
       className="grid grid-cols-[1fr_56px_1fr] items-center gap-0 w-full"
-      style={{ opacity: stepOpacity, scale: stepScale, filter: useTransform(stepBlur, v => `blur(${v}px)`) }}
+      style={{ opacity: stepOpacity, scale: stepScale }}
     >
       {/* LEFT SLOT */}
       {isLeft ? (
@@ -132,7 +131,7 @@ const StepRow = ({
             className="absolute inset-0 rounded-full"
             style={{ border: `2px solid hsl(${step.accent} / 0.5)` }}
             animate={{ scale: [1, 1.8, 1], opacity: [0.6, 0, 0.6] }}
-            transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.4 }}
+            transition={{ duration: 1.8, repeat: Infinity, delay: index * 0.4 }}
           />
           <Icon size={20} style={{ color: `hsl(${step.accent})` }} />
         </motion.div>

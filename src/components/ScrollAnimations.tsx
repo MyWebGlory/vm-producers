@@ -16,8 +16,8 @@ export const ScrollReveal = ({
   className = "",
   direction = "up",
   delay = 0,
-  distance = 60,
-  duration = 0.8,
+  distance = 40,
+  duration = 0.5,
   once = true,
 }: ScrollRevealProps) => {
   const ref = useRef(null);
@@ -84,13 +84,13 @@ export const StaggerChildren = ({
 };
 
 export const staggerItem = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 20, scale: 0.97 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.42,
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   },
@@ -147,7 +147,7 @@ const CountUpSpan = ({ end, prefix, suffix }: { end: number; prefix: string; suf
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const duration = 2200;
+    const duration = 1400;
     const startTime = performance.now();
 
     const step = (currentTime: number) => {
@@ -230,8 +230,8 @@ export const SplitTextReveal = ({
         <span key={i} className="inline-block overflow-hidden">
           <motion.span
             className="inline-block"
-            initial={{ y: "115%", opacity: 0 }}
-            animate={isInView ? { y: "0%", opacity: 1 } : { y: "115%", opacity: 0 }}
+            initial={{ y: "105%", opacity: 0 }}
+            animate={isInView ? { y: "0%", opacity: 1 } : { y: "105%", opacity: 0 }}
             transition={{
               duration,
               delay: delay + i * stagger,
@@ -285,10 +285,10 @@ export const FloatingOrbs = ({
   count?: number;
 }) => {
   const configs = [
-    { w: 420, h: 420, left: "10%", top: "5%", dx: 18, dy: -25, dur: 9 },
-    { w: 320, h: 320, left: "65%", top: "15%", dx: -20, dy: 22, dur: 11 },
-    { w: 260, h: 260, left: "35%", top: "60%", dx: 14, dy: -18, dur: 8 },
-    { w: 200, h: 200, left: "80%", top: "55%", dx: -12, dy: 14, dur: 13 },
+    { w: 380, h: 380, left: "10%", top: "5%",  dx: 12, dy: -16, dur: 9  },
+    { w: 280, h: 280, left: "65%", top: "15%", dx: -14, dy: 16, dur: 11 },
+    { w: 220, h: 220, left: "35%", top: "60%", dx: 10,  dy: -12, dur: 8  },
+    { w: 180, h: 180, left: "80%", top: "55%", dx: -9,  dy: 11,  dur: 13 },
   ].slice(0, count);
 
   return (
@@ -329,7 +329,7 @@ export const BlurReveal = ({
   children,
   className = "",
   delay = 0,
-  duration = 0.85,
+  duration = 0.5,
   once = true,
 }: {
   children: React.ReactNode;
@@ -343,8 +343,8 @@ export const BlurReveal = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, filter: "blur(16px)", y: 24 }}
-      animate={isInView ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >

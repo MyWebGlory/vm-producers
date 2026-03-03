@@ -77,7 +77,7 @@ const AboutSection = () => {
                   onEnded={playNext}
                   className="absolute inset-0 w-full h-full object-cover"
                   animate={{ opacity: i === currentVideo ? 1 : 0 }}
-                  transition={{ duration: 1.2 }}
+                  transition={{ duration: 0.5 }}
                 />
               ))}
             </div>

@@ -163,7 +163,7 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setShow(true), 2000);
+    const t = setTimeout(() => setShow(true), 800);
     return () => clearTimeout(t);
   }, []);
 
@@ -174,7 +174,7 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
           className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 0.6 }}
         >
           <video
             src={src}
@@ -185,7 +185,7 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
             preload="none"
             className="w-full h-full object-cover scale-110 blur-[2px]"
           />
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </motion.div>
       )}
@@ -214,7 +214,7 @@ const FeatureRow = ({
       className="relative rounded-2xl overflow-hidden w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/10] max-h-56 sm:max-h-none"
       initial={{ opacity: 0, x: imageRight ? 48 : -48 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <img src={img} alt={feature.title} loading="lazy" className="w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.10) 0%, transparent 60%)" }} />
@@ -226,7 +226,7 @@ const FeatureRow = ({
       className="flex flex-col justify-center gap-4 sm:gap-5"
       initial={{ opacity: 0, x: imageRight ? -48 : 48 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
       {Icon && (
         <span
@@ -281,10 +281,9 @@ const ServicePageLayout = ({
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -60]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.55], [0, -50]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -301,7 +300,7 @@ const ServicePageLayout = ({
 
       {/* --- Hero --- */}
       <section ref={heroRef} aria-label={`${title} hero`} className="relative h-screen min-h-[600px] overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
+        <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <img
             src={heroImage}
             alt={`${title} production by VM Producers - professional event management`}
@@ -352,16 +351,16 @@ const ServicePageLayout = ({
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.7 }}
+              transition={{ delay: 0.15, duration: 0.5 }}
               className="font-display font-medium text-sm uppercase tracking-[0.3em] mb-6"
               style={{ color: "hsl(0, 0%, 100%, 0.7)" }}
             >
               {subtitle}
             </motion.p>
             <motion.h1
-              initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 0.5, duration: 0.9 }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.6 }}
               className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.05] md:leading-[0.95] mb-4 md:mb-8"
               style={{ color: "white" }}
             >
@@ -370,7 +369,7 @@ const ServicePageLayout = ({
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
               className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-2"
               style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
             >
@@ -383,7 +382,7 @@ const ServicePageLayout = ({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 0.7 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         >
           <motion.div
@@ -402,10 +401,10 @@ const ServicePageLayout = ({
               <motion.div
                 key={stat.label}
                 className="text-center px-4"
-                initial={{ opacity: 0, y: 28, filter: "blur(12px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.18, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: i * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               >
                   <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
                     <AnimatedCounter

@@ -41,7 +41,7 @@ const FounderSection = () => {
 
           {/* Photo */}
           <motion.div {...fadeUp(0)} className="relative shrink-0">
-            <div className="absolute -inset-3 rounded-3xl blur-2xl pointer-events-none" style={{ background: "hsl(216 90% 58% / 0.12)" }} />
+            <div className="absolute -inset-3 rounded-3xl pointer-events-none" style={{ boxShadow: "0 0 40px hsl(216 90% 58% / 0.18)" }} />
             <div
               className="relative w-36 h-44 sm:w-44 sm:h-56 lg:w-56 lg:h-72 rounded-2xl overflow-hidden"
               style={{ border: "2px solid hsl(216 90% 58% / 0.28)" }}

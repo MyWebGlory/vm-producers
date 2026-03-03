@@ -37,8 +37,8 @@ const ClientLogos = () => {
     <section ref={sectionRef} className="relative py-24 lg:py-32 bg-background overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 bg-accent/3 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.05) 0%, transparent 70%)" }} />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--accent) / 0.05) 0%, transparent 70%)" }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">

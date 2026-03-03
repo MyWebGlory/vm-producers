@@ -222,8 +222,8 @@ const TestimonialsSection = () => {
   return (
     <section ref={sectionRef} aria-labelledby="testimonials-heading" className="py-28 lg:py-40 overflow-hidden relative">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/4 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.06) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.05) 0%, transparent 70%)" }} />
       </div>
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">

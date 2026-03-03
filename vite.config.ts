@@ -19,12 +19,22 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    include: [
+      "react",
+      "react-dom",
+      "react-router-dom",
+      "framer-motion",
+      "@tanstack/react-query",
+    ],
+  },
   build: {
     target: "esnext",
     sourcemap: false,
     cssCodeSplit: true,
+    cssMinify: true,
     reportCompressedSize: false,
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 700,
     rollupOptions: {
       output: {
         manualChunks: {

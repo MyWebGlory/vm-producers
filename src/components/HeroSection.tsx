@@ -28,15 +28,14 @@ const HeroSection = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.45], [0, -50]);
 
   return (
     <section ref={ref} className="relative overflow-hidden h-screen">
       {/* Parallax background */}
-      <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
+      <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
           src={heroBg}
           alt="Event production"
@@ -66,7 +65,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.5 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
           >
             <span
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border"
@@ -83,9 +82,9 @@ const HeroSection = () => {
 
           {/* H1 - the star of the show */}
           <motion.h1
-            initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.07] text-white"
             style={{ textShadow: "0 2px 24px rgba(0,0,0,0.7)" }}
           >
@@ -98,7 +97,7 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.65, duration: 0.6 }}
+            transition={{ delay: 0.35, duration: 0.5 }}
             className="text-sm sm:text-base md:text-lg max-w-xl leading-relaxed"
             style={{ color: "hsl(0 0% 100% / 0.68)" }}
           >
@@ -110,7 +109,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 14, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.85, duration: 0.5, ease: "backOut" }}
+            transition={{ delay: 0.48, duration: 0.45, ease: "backOut" }}
             className="flex flex-col items-center gap-1.5 mt-1"
           >
             <MagneticHover>
@@ -148,7 +147,7 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.05, duration: 0.5 }}
+            transition={{ delay: 0.58, duration: 0.4 }}
             className="flex items-center gap-1.5 text-sm px-4 py-1.5 rounded-full"
             style={{
               color: "hsl(25 90% 68%)",
@@ -164,7 +163,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.15, duration: 0.5 }}
+            transition={{ delay: 0.64, duration: 0.4 }}
             className="flex items-center gap-3 mt-1"
           >
             <div className="flex -space-x-2">
@@ -199,7 +198,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.6 }}
+            transition={{ delay: 0.72, duration: 0.45 }}
             className="grid grid-cols-3 gap-3 sm:gap-6 mt-2 w-full max-w-xs sm:max-w-sm"
           >
             {stats.map((stat) => (
@@ -221,7 +220,7 @@ const HeroSection = () => {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
+        transition={{ delay: 0.85 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer bg-transparent border-none p-0"
         aria-label="Scroll down"
         onClick={() => {
