@@ -37,7 +37,7 @@ const services: Service[] = [
     video: liveEventsVid,
     stat: "500+",
     statLabel: "Events produced",
-    accentH: 215, accentS: 85, accentL: 55,
+    accentH: 216, accentS: 90, accentL: 58,
   },
   {
     title: "Virtual Events",
@@ -48,7 +48,7 @@ const services: Service[] = [
     video: virtualEventsVid,
     stat: "100K",
     statLabel: "Attendees online",
-    accentH: 188, accentS: 85, accentL: 48,
+    accentH: 207, accentS: 82, accentL: 52,
   },
   {
     title: "Hybrid Events",
@@ -59,7 +59,7 @@ const services: Service[] = [
     video: hybridEventsVid,
     stat: "95%",
     statLabel: "Audience retention",
-    accentH: 252, accentS: 68, accentL: 58,
+    accentH: 222, accentS: 78, accentL: 62,
   },
   {
     title: "Video Production",
@@ -70,7 +70,7 @@ const services: Service[] = [
     video: videoProductionVid,
     stat: "2000+",
     statLabel: "Videos delivered",
-    accentH: 338, accentS: 78, accentL: 58,
+    accentH: 213, accentS: 88, accentL: 55,
   },
   {
     title: "Meeting Pros",
@@ -81,7 +81,7 @@ const services: Service[] = [
     video: meetingProsVid,
     stat: "70+",
     statLabel: "Countries covered",
-    accentH: 158, accentS: 65, accentL: 48,
+    accentH: 205, accentS: 75, accentL: 50,
   },
 ];
 

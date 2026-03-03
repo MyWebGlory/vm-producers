@@ -11,7 +11,7 @@ const services = [
     subtitle: "50 to 50,000 attendees",
     description: "In-person experiences run tight, on budget, on time.",
     href: "/live-events",
-    accent: "215 60% 35%",
+    accent: "216 85% 42%",
   },
   {
     icon: Monitor,
@@ -19,7 +19,7 @@ const services = [
     subtitle: "Up to 100K attendees",
     description: "Broadcast-quality virtual production for any scale.",
     href: "/virtual-events",
-    accent: "190 70% 35%",
+    accent: "207 80% 40%",
   },
   {
     icon: Globe,
@@ -27,7 +27,7 @@ const services = [
     subtitle: "In-person + virtual",
     description: "One seamless experience for every audience.",
     href: "/hybrid-events",
-    accent: "250 50% 40%",
+    accent: "220 75% 45%",
   },
   {
     icon: Video,
@@ -35,7 +35,7 @@ const services = [
     subtitle: "Before, during & after",
     description: "Shot and delivered fast. Broadcast-ready.",
     href: "/video-production",
-    accent: "340 60% 45%",
+    accent: "213 85% 48%",
   },
   {
     icon: Users,
@@ -43,7 +43,7 @@ const services = [
     subtitle: "70+ countries",
     description: "Verified professionals matched within 48 hours.",
     href: "/meeting-pros",
-    accent: "160 50% 35%",
+    accent: "205 72% 40%",
   },
 ];
 
@@ -203,7 +203,7 @@ const ServiceQuickNav = () => {
           {/* Left arrow */}
           <motion.button
             onClick={prev}
-            aria-label="Précédent"
+            aria-label="Prï¿½cï¿½dent"
             animate={{ opacity: current > 0 && isHovered && !isMobile ? 1 : 0, pointerEvents: current > 0 ? "auto" : "none" }}
             transition={{ duration: 0.2 }}
             className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
@@ -264,7 +264,7 @@ const ServiceQuickNav = () => {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              aria-label={`Aller à la slide ${i + 1}`}
+              aria-label={`Aller ï¿½ la slide ${i + 1}`}
               className="transition-all duration-300 rounded-full"
               style={{
                 width: current === i ? "1.5rem" : "0.5rem",

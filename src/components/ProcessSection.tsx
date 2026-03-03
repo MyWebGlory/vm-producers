@@ -1,5 +1,5 @@
 ﻿import { useRef } from "react";
-import { motion, useInView, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { PhoneCall, ClipboardList, Zap, Film } from "lucide-react";
 
 const steps = [
@@ -277,9 +277,8 @@ const CenterThread = ({ containerRef }: { containerRef: React.RefObject<HTMLDivE
     target: containerRef,
     offset: ["start 80%", "end 40%"],
   });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 60, damping: 25 });
-  const scaleY = useTransform(smoothProgress, [0, 1], [0, 1]);
-  const glowOpacity = useTransform(smoothProgress, [0, 0.05, 1], [0, 1, 1]);
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.05, 1], [0, 1, 1]);
 
   return (
     <div
@@ -337,7 +336,6 @@ const ProcessSection = () => {
     target: stepsRef,
     offset: ["start 80%", "end 40%"],
   });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 60, damping: 25 });
 
   return (
     <section
@@ -358,7 +356,7 @@ const ProcessSection = () => {
         style={{
           background:
             "radial-gradient(ellipse 60% 40% at 10% 50%, hsl(216 90% 65% / 0.06) 0%, transparent 60%)," +
-            "radial-gradient(ellipse 50% 40% at 90% 50%, hsl(250 55% 65% / 0.05) 0%, transparent 60%)",
+            "radial-gradient(ellipse 50% 40% at 90% 50%, hsl(216 80% 65% / 0.05) 0%, transparent 60%)",
         }}
       />
 
@@ -431,7 +429,7 @@ const ProcessSection = () => {
           <CenterThread containerRef={stepsRef as React.RefObject<HTMLDivElement>} />
           <div className="flex flex-col gap-16 relative" style={{ zIndex: 1 }}>
             {steps.map((step, i) => (
-              <StepRow key={step.number} step={step} index={i} total={steps.length} scrollProgress={smoothProgress} />
+              <StepRow key={step.number} step={step} index={i} total={steps.length} scrollProgress={scrollYProgress} />
             ))}
           </div>
         </div>

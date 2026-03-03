@@ -1,4 +1,4 @@
-﻿import { useRef, ReactNode, useState, useEffect } from "react";
+import { useRef, ReactNode, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -8,9 +8,10 @@ import {
 } from "framer-motion";
 import { LucideIcon, Mic, Monitor, Globe, Video, Users, ArrowRight, PhoneCall } from "lucide-react";
 import { Link } from "react-router-dom";
-import { AnimatedCounter, MagneticHover, RevealLine } from "@/components/ScrollAnimations";
+import { AnimatedCounter, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CTASection from "@/components/CTASection";
 import { SEO } from "@/components/SEO";
 import { useCalendly } from "@/components/CalendlyModal";
 
@@ -23,6 +24,7 @@ const ALL_SERVICES = [
 ];
 
 const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
+  const { openCalendly } = useCalendly();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const others = ALL_SERVICES.filter((s) => s.href !== currentPath);
@@ -270,8 +272,6 @@ const ServicePageLayout = ({
 }: ServicePageLayoutProps) => {
   const { openCalendly } = useCalendly();
   const heroRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -281,13 +281,6 @@ const ServicePageLayout = ({
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -60]);
-
-  // CTA parallax
-  const { scrollYProgress: ctaProgress } = useScroll({
-    target: ctaRef,
-    offset: ["start end", "end start"],
-  });
-  const ctaBgY = useTransform(ctaProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -301,8 +294,8 @@ const ServicePageLayout = ({
       )}
       <Navbar />
 
-      {/* ═══ Hero ═══ */}
-      <section ref={heroRef} className="relative h-[85vh] min-h-[600px] overflow-hidden">
+      {/* --- Hero --- */}
+      <section ref={heroRef} className="relative h-screen min-h-[600px] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
           <img
             src={heroImage}
@@ -367,7 +360,7 @@ const ServicePageLayout = ({
         </motion.div>
       </section>
 
-      {/* ═══ Stats ═══ */}
+      {/* --- Stats --- */}
       <div className="relative z-20 bg-card border-t border-border/40">
         <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14">
           <div className="grid grid-cols-3 divide-x divide-border/60">
@@ -397,7 +390,7 @@ const ServicePageLayout = ({
         <RevealLine delay={0.2} />
       </div>
 
-      {/* ═══ Features ═══ */}
+      {/* --- Features --- */}
       <section className="py-16 md:py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 md:mb-20">
@@ -433,76 +426,11 @@ const ServicePageLayout = ({
       {/* Additional Content */}
       {additionalContent}
 
-      {/* ═══ Related Services Navigation ═══ */}
+      {/* --- Related Services Navigation --- */}
       <RelatedServicesNav currentPath={seo?.canonical ?? ""} />
 
-      {/* ═══ CTA with Parallax Background ═══ */}
-      <section
-        ref={ctaRef}
-        className="relative py-36 lg:py-52 overflow-hidden"
-      >
-        {/* Parallax background */}
-        <motion.div className="absolute inset-0" style={{ y: ctaBgY }}>
-          <img
-            src={heroImage}
-            alt=""
-            loading="lazy"
-            className="w-full h-[130%] object-cover"
-          />
-          <div className="absolute inset-0 bg-black/65" />
-        </motion.div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={ctaInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6 }}
-            className="font-display text-xs uppercase tracking-[0.3em] mb-6 font-medium"
-            style={{ color: "hsl(var(--primary))" }}
-          >
-            Let's Talk
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-            animate={ctaInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-            transition={{ delay: 0.15, duration: 0.9 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight"
-            style={{ color: "white" }}
-          >
-            Ready to pull off something{" "}
-            <span style={{ color: "hsl(var(--primary))" }}>extraordinary?</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg max-w-xl mx-auto mb-12 leading-relaxed"
-            style={{ color: "hsl(0 0% 100% / 0.7)" }}
-          >
-            Your event deserves a team that’s done it before, and done it flawlessly. You’re in the right place.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.45, duration: 0.6 }}
-          >
-            <MagneticHover>
-              <button
-                type="button"
-                onClick={openCalendly}
-                className="inline-flex px-10 py-4 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer"
-                style={{
-                  background: "white",
-                  color: "hsl(220 25% 10%)",
-                }}
-              >
-                Get in Touch
-              </button>
-            </MagneticHover>
-          </motion.div>
-        </div>
-      </section>
+      {/* --- Shared CTA Section --- */}
+      <CTASection />
 
       <Footer />
     </div>
