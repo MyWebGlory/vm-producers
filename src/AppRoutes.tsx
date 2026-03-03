@@ -1,7 +1,7 @@
 /**
- * AppRoutes — shared route definitions used by both the client entry (App.tsx)
+ * AppRoutes - shared route definitions used by both the client entry (App.tsx)
  * and the server-side prerender entry (entry-ssr.tsx).
- * ⚠️  No BrowserRouter / StaticRouter here — the parent provides the router.
+ * No BrowserRouter / StaticRouter here - the parent provides the router.
  */
 import { Routes, Route } from "react-router-dom";
 import { CalendlyProvider } from "@/components/CalendlyModal";

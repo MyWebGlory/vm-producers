@@ -362,7 +362,7 @@ export const ScrollBand = ({
   className = "",
   speed = 28,
   direction = "left",
-  separator = "✦",
+  separator = "|",
 }: {
   items: string[];
   className?: string;
@@ -441,7 +441,7 @@ export const VelocityScrollBand = ({
   items,
   className = "",
   baseSpeed = 60,
-  separator = "✦",
+  separator = "|",
 }: {
   items: string[];
   className?: string;

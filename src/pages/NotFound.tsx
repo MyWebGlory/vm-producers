@@ -12,7 +12,7 @@ const NotFound = () => {
   return (
     <>
       <SEO
-        title="404 — Page Not Found | VM Producers"
+        title="404 - Page Not Found | VM Producers"
         description="The page you're looking for doesn't exist. Return to VM Producers for full-service event production."
         canonical="/404"
         noIndex={true}

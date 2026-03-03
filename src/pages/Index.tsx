@@ -1,4 +1,4 @@
-// All sections are eagerly imported — required for SSR prerendering and react-snap
+// All sections are eagerly imported - required for SSR prerendering and react-snap
 // to capture the full page HTML for every section in the homepage.
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -23,7 +23,7 @@ const homeSEO = {
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      // WebPage schema — provides page-level E-E-A-T signals for the homepage
+      // WebPage schema - provides page-level E-E-A-T signals for the homepage
       buildWebPageSchema({
         path: "/",
         name: "VM Producers | Full-Service Event Production - Live, Virtual & Hybrid Events",
@@ -60,7 +60,7 @@ const homeSEO = {
           {
             "@type": "Question",
             "name": "Can VM Producers handle virtual-only or hybrid event formats?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Virtual and hybrid events are a core specialty. Remote attendees get broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000 participants — the exact same quality as those in the room." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Virtual and hybrid events are a core specialty. Remote attendees get broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000 participants - the exact same quality as those in the room." }
           }
         ]
       }

@@ -364,7 +364,7 @@ const TestimonialsSection = () => {
                       className="md:hidden mt-2 text-xs font-semibold font-display"
                       style={{ color: "hsl(var(--primary))" }}
                     >
-                      {expanded ? "Show less ↑" : "Read more ↓"}
+                      {expanded ? "Show less" : "Read more"}
                     </button>
                   </div>
 
@@ -439,7 +439,7 @@ const TestimonialsSection = () => {
             style={{ background: "hsl(var(--primary))", boxShadow: "0 0 24px hsl(var(--primary) / 0.25)" }}
           >
             Get your free consultation
-            <span aria-hidden>→</span>
+            <ChevronRight size={16} aria-hidden />
           </button>
         </motion.div>
       </div>

@@ -62,7 +62,7 @@ const StepRow = ({
   const Icon = step.icon;
 
   // Each step lights up as the thread passes through it
-  // step 0→0.05–0.22, step 1→0.28–0.48, step 2→0.52–0.72, step 3→0.76–0.96
+  // step 0: 0.05-0.22, step 1: 0.28-0.48, step 2: 0.52-0.72, step 3: 0.76-0.96
   const lo = index * 0.25 + 0.03;
   const hi = lo + 0.18;
   const stepOpacity = useTransform(scrollProgress, [lo, hi], [0.45, 1]);

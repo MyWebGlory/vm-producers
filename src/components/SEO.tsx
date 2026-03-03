@@ -1,5 +1,5 @@
 /**
- * SEO.tsx — Helmet-based head management with E-E-A-T schema helpers
+ * SEO.tsx - Helmet-based head management with E-E-A-T schema helpers
  *
  * Export helpers buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema,
  * buildFAQSchema to keep page-level JSON-LD DRY and consistent.
@@ -29,7 +29,7 @@ const DEFAULT_OG_IMAGE = `${BASE_URL}/hero-bg.webp`;
 export const TODAY = new Date().toISOString().split("T")[0];
 
 // ---------------------------------------------------------------------------
-// JSON-LD Schema Helpers — import these in page files
+// JSON-LD Schema Helpers - import these in page files
 // ---------------------------------------------------------------------------
 
 export const orgRef = { "@id": `${BASE_URL}/#organization` } as const;
@@ -70,7 +70,7 @@ export function buildWebPageSchema({
   };
 }
 
-/** BreadcrumbList for a 2-level page (Home → PageName). */
+/** BreadcrumbList for a 2-level page (Home - PageName). */
 export function buildBreadcrumbSchema(pagePath: string, pageLabel: string) {
   return {
     "@type": "BreadcrumbList",
@@ -83,7 +83,7 @@ export function buildBreadcrumbSchema(pagePath: string, pageLabel: string) {
 }
 
 /**
- * ProfessionalService schema — more specific than generic Service,
+ * ProfessionalService schema - more specific than generic Service,
  * reinforces topical authority and E-E-A-T.
  */
 export function buildServiceSchema({
@@ -187,7 +187,7 @@ export const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {/* JSON-LD — one <script> per schema for clean separation */}
+      {/* JSON-LD - one <script> per schema for clean separation */}
       {schemas.map((schema, i) => (
         <script key={i} type="application/ld+json">
           {JSON.stringify(schema)}

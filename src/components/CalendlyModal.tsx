@@ -56,11 +56,11 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
         ALWAYS at center-screen with real pixel dimensions so the browser
         gives the iframe full rendering priority (it's in the viewport).
 
-        Hidden state : z-index -1  → sits behind ALL page content (covered by
+        Hidden state : z-index -1  - sits behind ALL page content (covered by
                        the page's own background/elements), pointer-events none.
-        Open state   : z-index 9999 → floats above everything.
+        Open state   : z-index 9999 - floats above everything.
 
-        NO left:-9999px / visibility:hidden / opacity:0 → browser never
+        NO left:-9999px / visibility:hidden / opacity:0 - browser never
         throttles or deprioritises the iframe. Calendly loads at full speed.
       */}
       <div

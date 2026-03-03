@@ -23,7 +23,7 @@ const Footer = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <Link to="/" className="flex items-center">
-              <img src={vpLogo} alt="VM Producers — Full-Service Event Production" className="h-10 w-auto invert" />
+              <img src={vpLogo} alt="VM Producers - Full-Service Event Production" className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               VM Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.

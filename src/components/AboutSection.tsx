@@ -143,7 +143,6 @@ const AboutSection = () => {
                 className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300 cursor-pointer"
               >
                 Get in touch
-                <span className="text-lg">→</span>
               </button>
             </motion.div>
           </ScrollReveal>

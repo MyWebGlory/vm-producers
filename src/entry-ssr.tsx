@@ -1,5 +1,5 @@
 /**
- * entry-ssr.tsx — Server-side rendering entry point.
+ * entry-ssr.tsx - Server-side rendering entry point.
  *
  * Used exclusively by the Vite SSR build (`vite build --config vite.ssr.config.ts`)
  * to produce a Node-compatible bundle that the prerender script can call.

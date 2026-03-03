@@ -53,21 +53,21 @@ const EDGES: EdgeDef[] = [
   // Services band
   { a: 0, b: 2  }, { a: 0, b: 4  }, { a: 2, b: 1  }, { a: 2, b: 3  },
   { a: 1, b: 3  }, { a: 3, b: 5  }, { a: 4, b: 5  }, { a: 2, b: 4  },
-  // Services → About
+  // Services - About
   { a: 4, b: 6  }, { a: 5, b: 7  }, { a: 5, b: 8  },
   // About band
   { a: 6, b: 7  }, { a: 7, b: 8  }, { a: 7, b: 10 }, { a: 6, b: 9  },
   { a: 9, b: 10 }, { a: 8, b: 10 },
-  // About → PainPoints
+  // About - PainPoints
   { a: 9, b: 11 }, { a: 10, b: 13 }, { a: 8, b: 12 },
   // PainPoints band
   { a: 11, b: 13 }, { a: 13, b: 12 }, { a: 13, b: 14 }, { a: 12, b: 14 },
-  // PainPoints → WhatYouGet
+  // PainPoints - WhatYouGet
   { a: 11, b: 15 }, { a: 14, b: 16 }, { a: 13, b: 17 },
   // WhatYouGet band
   { a: 15, b: 17 }, { a: 16, b: 17 }, { a: 17, b: 18 }, { a: 17, b: 19 },
   { a: 18, b: 20 }, { a: 19, b: 20 }, { a: 15, b: 18 }, { a: 16, b: 19 },
-  // WhatYouGet → Testimonials
+  // WhatYouGet - Testimonials
   { a: 20, b: 21 }, { a: 20, b: 22 }, { a: 19, b: 22 },
   // Testimonials band
   { a: 21, b: 23 }, { a: 22, b: 23 }, { a: 23, b: 24 }, { a: 23, b: 25 },

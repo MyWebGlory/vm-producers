@@ -38,7 +38,7 @@ const HeroSection = () => {
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
           src={heroBg}
-          alt="VM Producers — professional live event production setup with staging and lighting"
+          alt="VM Producers - professional live event production setup with staging and lighting"
           className="w-full h-full object-cover"
           fetchPriority="high"
           decoding="async"
@@ -80,7 +80,7 @@ const HeroSection = () => {
             </span>
           </motion.div>
 
-          {/* H1 - the star of the show — starts visible for LCP/prerender */}
+          {/* H1 - the star of the show - starts visible for LCP/prerender */}
           <motion.h1
             initial={{ opacity: 1, y: 24 }}
             animate={{ opacity: 1, y: 0 }}

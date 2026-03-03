@@ -415,7 +415,7 @@ const ServicePageLayout = ({
       >
         <div className="max-w-4xl mx-auto">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            <strong className="text-foreground font-semibold">{title}</strong>{" — "}{description}
+            <strong className="text-foreground font-semibold">{title}</strong>{" - "}{description}
           </p>
         </div>
       </div>

@@ -274,7 +274,7 @@ const ServicesSection = () => {
         <VelocityScrollBand
           items={["Live Events", "Virtual Events", "Hybrid", "Video Production", "Meeting Pros", "Fortune 500", "10K+ Attendees", "70+ Countries", "2000+ Events", "95% Retention"]}
           baseSpeed={55}
-          separator="◆"
+          separator="|"
         />
       </div>
 

@@ -120,7 +120,7 @@ const ClientLogos = () => {
         <VelocityScrollBand
           items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Fortune 500", "2000+ Events", "70+ Countries"]}
           baseSpeed={60}
-          separator="◆"
+          separator="|"
         />
       </div>
     </section>
