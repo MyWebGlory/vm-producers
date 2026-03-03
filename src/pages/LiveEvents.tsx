@@ -47,6 +47,8 @@ const LiveEvents = () => (
     seo={seo}
     title="Live Events"
     subtitle="In-Person Excellence"
+    featuresBefore="Live event production, "
+    featuresAccent="start to finish."
     description="In-person events that run on time, look sharp, and hold together under pressure. We handle the full production, so you show up as the host."
     heroImage={liveEventsImg}
     heroVideo={liveEventsVideo}

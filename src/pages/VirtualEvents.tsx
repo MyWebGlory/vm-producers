@@ -48,6 +48,8 @@ const VirtualEvents = () => (
     seo={seo}
     title="Virtual Events"
     subtitle="Global Reach, Zero Limits"
+    featuresBefore="Virtual events that "
+    featuresAccent="actually work."
     description="From single-session webinars to global conferences with 100,000 participants, we handle every technical and production detail so you deliver flawlessly, every time."
     heroImage={virtualEventsImg}
     heroVideo={virtualEventsVideo}

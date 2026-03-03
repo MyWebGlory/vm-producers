@@ -48,6 +48,8 @@ const VideoProduction = () => (
     seo={seo}
     title="Video Production"
     subtitle="Visual Storytelling"
+    featuresBefore="Video that "
+    featuresAccent="tells your story."
     description="Video that looks like it cost three times what it did. We craft content that works before your event, during the show, and long after it ends."
     heroImage={videoProductionImg}
     heroVideo={videoProductionVideo}

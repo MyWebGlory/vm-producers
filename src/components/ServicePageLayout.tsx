@@ -16,11 +16,11 @@ import { SEO } from "@/components/SEO";
 import { useCalendly } from "@/components/CalendlyModal";
 
 const ALL_SERVICES = [
-  { icon: Mic,     title: "Live Events",      subtitle: "50 to 50K attendees",    href: "/live-events",      accent: "215 60% 35%" },
-  { icon: Monitor, title: "Virtual Events",   subtitle: "Up to 100K attendees", href: "/virtual-events",   accent: "190 70% 35%" },
-  { icon: Globe,   title: "Hybrid Events",    subtitle: "In-person + virtual",  href: "/hybrid-events",    accent: "250 50% 40%" },
-  { icon: Video,   title: "Video Production", subtitle: "Teasers & brand films", href: "/video-production", accent: "340 60% 45%" },
-  { icon: Users,   title: "Meeting Pros",     subtitle: "70+ countries",        href: "/meeting-pros",     accent: "160 50% 35%" },
+  { icon: Mic,     title: "Live Events",      subtitle: "50 to 50K attendees",   href: "/live-events",      accent: "216 85% 42%" },
+  { icon: Monitor, title: "Virtual Events",   subtitle: "Up to 100K attendees",  href: "/virtual-events",   accent: "216 85% 42%" },
+  { icon: Globe,   title: "Hybrid Events",    subtitle: "In-person + virtual",   href: "/hybrid-events",    accent: "216 85% 42%" },
+  { icon: Video,   title: "Video Production", subtitle: "Teasers & brand films", href: "/video-production", accent: "216 85% 42%" },
+  { icon: Users,   title: "Meeting Pros",     subtitle: "70+ countries",         href: "/meeting-pros",     accent: "216 85% 42%" },
 ];
 
 const RelatedServicesNav = ({ currentPath }: { currentPath: string }) => {
@@ -154,6 +154,8 @@ interface ServicePageLayoutProps {
   features: ServiceFeature[];
   additionalContent?: ReactNode;
   seo?: ServiceSEO;
+  featuresBefore?: string;
+  featuresAccent?: string;
 }
 
 /* Deferred Hero Video */
@@ -269,6 +271,8 @@ const ServicePageLayout = ({
   features,
   additionalContent,
   seo,
+  featuresBefore = "Built for ",
+  featuresAccent = "excellence.",
 }: ServicePageLayoutProps) => {
   const { openCalendly } = useCalendly();
   const heroRef = useRef<HTMLDivElement>(null);
@@ -410,8 +414,8 @@ const ServicePageLayout = ({
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              Built for{" "}
-              <span style={{ color: "hsl(var(--primary))" }}>excellence.</span>
+              {featuresBefore}
+              <span style={{ color: "hsl(var(--primary))" }}>{featuresAccent}</span>
             </motion.h2>
           </div>
 

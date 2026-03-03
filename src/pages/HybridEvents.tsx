@@ -52,6 +52,8 @@ const HybridEvents = () => (
     seo={seo}
     title="Hybrid Events"
     subtitle="Best of Both Worlds"
+    featuresBefore="Hybrid events, "
+    featuresAccent="done right."
     description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time. No second-class stream, both rooms get the full show."
     heroImage={hybridEventsImg}
     heroVideo={hybridEventsVideo}

@@ -48,6 +48,8 @@ const MeetingPros = () => (
     seo={seo}
     title="Meeting Pros"
     subtitle="Your Global Talent Network"
+    featuresBefore="The right talent, "
+    featuresAccent="for every meeting."
     description="The go-to partner for businesses that need verified event professionals fast. Connected within 48 hours, active across 70+ countries, covering more than 55 specialties."
     heroImage={meetingProsImg}
     heroVideo={meetingProsVideo}
