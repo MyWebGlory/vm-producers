@@ -23,10 +23,10 @@ const Footer = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <Link to="/" className="flex items-center">
-              <img src={vpLogo} alt="Virtual Producers" className="h-10 w-auto invert" />
+              <img src={vpLogo} alt="VM Producers — Full-Service Event Production" className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Virtual Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.
+              VM Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.
             </p>
           </motion.div>
 
@@ -77,26 +77,26 @@ const Footer = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <h3 className="font-display font-bold text-foreground text-lg">About</h3>
+            <h3 className="font-display font-bold text-foreground text-lg">Services</h3>
             <nav aria-label="Site pages">
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
               </li>
               <li>
-                <Link to="/live-events" className="hover:text-foreground transition-colors">Live</Link>
+                <Link to="/live-events" className="hover:text-foreground transition-colors">Live Event Production</Link>
               </li>
               <li>
-                <Link to="/virtual-events" className="hover:text-foreground transition-colors">Virtual Events</Link>
+                <Link to="/virtual-events" className="hover:text-foreground transition-colors">Virtual Event Production</Link>
               </li>
               <li>
-                <Link to="/hybrid-events" className="hover:text-foreground transition-colors">Hybrid Events</Link>
+                <Link to="/hybrid-events" className="hover:text-foreground transition-colors">Hybrid Event Production</Link>
               </li>
               <li>
-                <Link to="/video-production" className="hover:text-foreground transition-colors">Video Production</Link>
+                <Link to="/video-production" className="hover:text-foreground transition-colors">Corporate Video Production</Link>
               </li>
               <li>
-                <Link to="/meeting-pros" className="hover:text-foreground transition-colors">Meeting Pros</Link>
+                <Link to="/meeting-pros" className="hover:text-foreground transition-colors">Meeting Pros Network</Link>
               </li>
               <li>
                 <button
@@ -104,7 +104,7 @@ const Footer = () => {
                   onClick={openCalendly}
                   className="hover:text-foreground transition-colors cursor-pointer text-left"
                 >
-                  Contact
+                  Free Consultation
                 </button>
               </li>
             </ul>
@@ -117,7 +117,7 @@ const Footer = () => {
       <div className="border-t border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <p className="text-center text-sm text-muted-foreground">
-            © 2026 Virtual Producers. All rights reserved.
+            © 2026 VM Producers. All rights reserved.
           </p>
         </div>
       </div>

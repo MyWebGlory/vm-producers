@@ -1,6 +1,9 @@
 ﻿import React, { useRef, useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, Sparkles, ArrowUpRight } from "lucide-react";
+
+const MotionLink = motion.create(Link);
 import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import videoProductionImg from "@/assets/video-production.webp";
@@ -113,9 +116,9 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
   }, [isPlaying]);
 
   return (
-    <motion.a
+    <MotionLink
       ref={ref}
-      href={`/${service.title.toLowerCase().replace(/\s+/g, "-")}`}
+      to={`/${service.title.toLowerCase().replace(/\s+/g, "-")}`}
       initial={{ opacity: 0, y: 32, scale: 0.97 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
@@ -210,7 +213,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
           {service.description}
         </p>
       </div>
-    </motion.a>
+    </MotionLink>
   );
 };
 

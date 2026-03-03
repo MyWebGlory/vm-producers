@@ -61,7 +61,7 @@ const AboutSection = () => {
               {/* Static image shown immediately as placeholder */}
               <img
                 src={aboutEventImg}
-                alt="Event production"
+                alt="VM Producers team managing a full-service corporate event production"
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"

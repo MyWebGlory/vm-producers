@@ -38,7 +38,7 @@ const HeroSection = () => {
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
           src={heroBg}
-          alt="Event production"
+          alt="VM Producers — professional live event production setup with staging and lighting"
           className="w-full h-full object-cover"
           fetchPriority="high"
           decoding="async"
@@ -80,13 +80,14 @@ const HeroSection = () => {
             </span>
           </motion.div>
 
-          {/* H1 - the star of the show */}
+          {/* H1 - the star of the show — starts visible for LCP/prerender */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 1, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.07] text-white"
             style={{ textShadow: "0 2px 24px rgba(0,0,0,0.7)" }}
+            data-speakable
           >
             Make your next event{" "}
             <br className="hidden sm:block" />
@@ -95,11 +96,12 @@ const HeroSection = () => {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 1, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.5 }}
-            className="text-sm sm:text-base md:text-lg max-w-xl leading-relaxed"
+            className="text-sm sm:text-base md:text-lg max-w-xl leading-relaxed service-summary"
             style={{ color: "hsl(0 0% 100% / 0.68)" }}
+            data-speakable
           >
             Your event runs on time, looks incredible, and leaves your audience
             talking. We handle every detail - so you can actually enjoy the day.

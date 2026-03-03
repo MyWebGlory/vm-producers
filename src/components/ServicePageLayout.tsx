@@ -142,6 +142,8 @@ interface ServiceSEO {
   description: string;
   canonical: string;
   jsonLd?: object;
+  dateModified?: string;
+  ogImage?: string;
 }
 
 interface ServicePageLayoutProps {
@@ -293,6 +295,8 @@ const ServicePageLayout = ({
           description={seo.description}
           canonical={seo.canonical}
           jsonLd={seo.jsonLd}
+          dateModified={seo.dateModified}
+          ogImage={seo.ogImage}
         />
       )}
       <Navbar />
@@ -357,21 +361,28 @@ const ServicePageLayout = ({
             >
               {subtitle}
             </motion.p>
+            {/*
+              LCP FIX: opacity starts at 1 so pre-rendered text is indexable.
+              The y-axis slide still provides visual entrance animation.
+              data-speakable marks this for SGE speakable spec.
+            */}
             <motion.h1
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 1, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
               className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.05] md:leading-[0.95] mb-4 md:mb-8"
               style={{ color: "white" }}
+              data-speakable
             >
               {title}
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-2"
+              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-2 service-summary"
               style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
+              data-speakable
             >
               {description}
             </motion.p>
@@ -392,6 +403,22 @@ const ServicePageLayout = ({
           />
         </motion.div>
       </section>
+
+      {/* --- Direct Answer Block (SGE / AI snippet extraction target) ---
+           A concise, plain-text summary visible to users and crawlers.
+           Positioned directly after the hero for max indexing priority.
+           Marked with data-speakable for the speakable spec in JSON-LD. */}
+      <div
+        className="relative z-20 bg-card border-b border-border/40 px-6 py-6"
+        data-speakable
+        aria-label={`About ${title}`}
+      >
+        <div className="max-w-4xl mx-auto">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            <strong className="text-foreground font-semibold">{title}</strong>{" — "}{description}
+          </p>
+        </div>
+      </div>
 
       {/* --- Stats --- */}
       <div className="relative z-20 bg-card border-t border-border/40">

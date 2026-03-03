@@ -4,54 +4,31 @@ import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import virtualEventsConferenceImg from "@/assets/virtual-events-conference.webp";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
 import { Tv, Layout, Users, TrendingUp, Globe, Zap, BarChart2 } from "lucide-react";
+import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
   title: "Virtual Event Production Services | Webinars & Conferences | VM Producers",
   description: "Full-service virtual event production for webinars, conferences, and global summits with up to 100,000 attendees. TV-quality livestreaming, multi-language support in 5+ languages, custom branded platforms, and 99.9% uptime.",
   canonical: "/virtual-events",
+  dateModified: TODAY,
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.vmproducers.com/virtual-events#webpage",
-        "url": "https://www.vmproducers.com/virtual-events",
-        "name": "Virtual Event Production Services | Webinars & Conferences | VM Producers",
-        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
-        "about": { "@id": "https://www.vmproducers.com/#organization" },
-        "description": "Full-service virtual event production for webinars, conferences, and global summits with up to 100,000 attendees. TV-quality livestreaming, multi-language support, custom branded platforms.",
-        "breadcrumb": { "@id": "https://www.vmproducers.com/virtual-events#breadcrumb" }
-      },
-      {
-        "@type": "Service",
-        "serviceType": "Virtual Event Production",
-        "name": "Virtual Events",
-        "description": "Full-service virtual event production for webinars and conferences with up to 100,000 attendees. TV-quality livestreaming, multi-language support, custom branded platforms.",
-        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
-        "url": "https://www.vmproducers.com/virtual-events",
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Virtual Event Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TV-Quality Livestream Production" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Branded Platforms" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Multi-Language Support" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Real-Time Engagement Tools" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analytics & Post-Event Reporting" } }
-          ]
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.vmproducers.com/virtual-events#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Virtual Events", "item": "https://www.vmproducers.com/virtual-events" }
-        ]
-      }
-    ]
-  }
+      buildWebPageSchema({
+        path: "/virtual-events",
+        name: "Virtual Event Production Services | Webinars & Conferences | VM Producers",
+        description: "Full-service virtual event production for webinars, conferences, and global summits with up to 100,000 attendees. TV-quality livestreaming, multi-language support, custom branded platforms.",
+      }),
+      buildServiceSchema({
+        path: "/virtual-events",
+        serviceType: "Virtual Event Production",
+        name: "Virtual Events",
+        description: "Full-service virtual event production for webinars and conferences with up to 100,000 attendees. TV-quality livestreaming, multi-language support, custom branded platforms.",
+        offerNames: ["TV-Quality Livestream Production", "Custom Branded Platforms", "Multi-Language Support", "Real-Time Engagement Tools", "Analytics & Post-Event Reporting"],
+      }),
+      buildBreadcrumbSchema("/virtual-events", "Virtual Events"),
+    ],
+  },
 };
 
 const VirtualEvents = () => (

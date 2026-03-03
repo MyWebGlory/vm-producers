@@ -4,54 +4,31 @@ import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 import aboutEventImg from "@/assets/about-event.webp";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
 import { Zap, ClipboardList, MapPin, Plane, Monitor, Grid2x2 } from "lucide-react";
+import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
   title: "Meeting Professionals Network | Global Event Staffing | VM Producers",
   description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, on-site coordinators, and more. 12,000+ meetings supported.",
   canonical: "/meeting-pros",
+  dateModified: TODAY,
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.vmproducers.com/meeting-pros#webpage",
-        "url": "https://www.vmproducers.com/meeting-pros",
-        "name": "Meeting Professionals Network | Global Event Staffing | VM Producers",
-        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
-        "about": { "@id": "https://www.vmproducers.com/#organization" },
-        "description": "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, and more.",
-        "breadcrumb": { "@id": "https://www.vmproducers.com/meeting-pros#breadcrumb" }
-      },
-      {
-        "@type": "Service",
-        "serviceType": "Event Staffing & Talent Matching",
-        "name": "Meeting Pros",
-        "description": "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties.",
-        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
-        "url": "https://www.vmproducers.com/meeting-pros",
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Meeting Pros Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "48-Hour Talent Matching" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Project Management" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "On-Site Implementation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Travel Management" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "55+ Event Specialties" } }
-          ]
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.vmproducers.com/meeting-pros#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Meeting Pros", "item": "https://www.vmproducers.com/meeting-pros" }
-        ]
-      }
-    ]
-  }
+      buildWebPageSchema({
+        path: "/meeting-pros",
+        name: "Meeting Professionals Network | Global Event Staffing | VM Producers",
+        description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, and more.",
+      }),
+      buildServiceSchema({
+        path: "/meeting-pros",
+        serviceType: "Event Staffing & Talent Matching",
+        name: "Meeting Pros",
+        description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties.",
+        offerNames: ["48-Hour Talent Matching", "Project Management", "On-Site Implementation", "Travel Management", "55+ Event Specialties"],
+      }),
+      buildBreadcrumbSchema("/meeting-pros", "Meeting Pros"),
+    ],
+  },
 };
 
 const MeetingPros = () => (

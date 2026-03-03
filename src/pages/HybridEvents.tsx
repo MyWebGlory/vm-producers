@@ -8,54 +8,31 @@ import virtualEventsConferenceImg from "@/assets/virtual-events-conference.webp"
 import virtualEventsImg from "@/assets/virtual-events.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
+import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
   title: "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
   description: "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, and post-event content hub. 95% audience retention rate.",
   canonical: "/hybrid-events",
+  dateModified: TODAY,
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.vmproducers.com/hybrid-events#webpage",
-        "url": "https://www.vmproducers.com/hybrid-events",
-        "name": "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
-        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
-        "about": { "@id": "https://www.vmproducers.com/#organization" },
-        "description": "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, 95% retention rate.",
-        "breadcrumb": { "@id": "https://www.vmproducers.com/hybrid-events#breadcrumb" }
-      },
-      {
-        "@type": "Service",
-        "serviceType": "Hybrid Event Production",
-        "name": "Hybrid Events",
-        "description": "Expert hybrid event production bridging in-person and virtual audiences. Full AV production, multi-camera streaming, and unified audience experience.",
-        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
-        "url": "https://www.vmproducers.com/hybrid-events",
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Hybrid Event Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unified Experience Design" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Multi-Camera Live Production" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full AV Production" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audience Engagement for Both Rooms" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Event Content Hub" } }
-          ]
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.vmproducers.com/hybrid-events#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Hybrid Events", "item": "https://www.vmproducers.com/hybrid-events" }
-        ]
-      }
-    ]
-  }
+      buildWebPageSchema({
+        path: "/hybrid-events",
+        name: "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
+        description: "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, 95% retention rate.",
+      }),
+      buildServiceSchema({
+        path: "/hybrid-events",
+        serviceType: "Hybrid Event Production",
+        name: "Hybrid Events",
+        description: "Expert hybrid event production bridging in-person and virtual audiences. Full AV production, multi-camera streaming, and unified audience experience.",
+        offerNames: ["Unified Experience Design", "Multi-Camera Live Production", "Full AV Production", "Audience Engagement for Both Rooms", "Post-Event Content Hub"],
+      }),
+      buildBreadcrumbSchema("/hybrid-events", "Hybrid Events"),
+    ],
+  },
 };
 
 const HybridEvents = () => (

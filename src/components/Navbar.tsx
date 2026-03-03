@@ -6,9 +6,9 @@ import vpLogo from "@/assets/vp-logo-white.png";
 import { useCalendly } from "@/components/CalendlyModal";
 
 const navLinks = [
-  { label: "Live", href: "/live-events" },
-  { label: "Virtual", href: "/virtual-events" },
-  { label: "Hybrid", href: "/hybrid-events" },
+  { label: "Live Events", href: "/live-events" },
+  { label: "Virtual Events", href: "/virtual-events" },
+  { label: "Hybrid Events", href: "/hybrid-events" },
   { label: "Video Production", href: "/video-production" },
   { label: "Meeting Pros", href: "/meeting-pros" },
 ];
@@ -47,7 +47,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img
             src={vpLogo}
-            alt="Virtual Producers"
+            alt="VM Producers"
             className={`h-10 w-auto transition-all duration-500 ${
               scrolled ? "invert" : ""
             }`}

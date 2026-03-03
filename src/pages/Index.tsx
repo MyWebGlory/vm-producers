@@ -1,51 +1,41 @@
-import { lazy, Suspense } from "react";
+// All sections are eagerly imported — required for SSR prerendering and react-snap
+// to capture the full page HTML for every section in the homepage.
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientLogos from "@/components/ClientLogos";
 import ProcessSection from "@/components/ProcessSection";
-import { SEO } from "@/components/SEO";
-const AboutSection = lazy(() => import("@/components/AboutSection"));
-const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
-const FounderSection = lazy(() => import("@/components/FounderSection"));
-const ResultsSection = lazy(() => import("@/components/ResultsSection"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
-const ComparisonSection = lazy(() => import("@/components/ComparisonSection"));
-const FAQSection = lazy(() => import("@/components/FAQSection"));
-const CTASection = lazy(() => import("@/components/CTASection"));
-const Footer = lazy(() => import("@/components/Footer"));
+import { SEO, buildWebPageSchema, TODAY } from "@/components/SEO";
+import AboutSection from "@/components/AboutSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import FounderSection from "@/components/FounderSection";
+import ResultsSection from "@/components/ResultsSection";
+import ServicesSection from "@/components/ServicesSection";
+import ComparisonSection from "@/components/ComparisonSection";
+import FAQSection from "@/components/FAQSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 const homeSEO = {
   title: "VM Producers | Full-Service Event Production - Live, Virtual & Hybrid Events",
   description: "VM Producers is a global full-service event production company. 2000+ successful events, 350K+ attendees worldwide, 95% client retention. Live events, virtual events, hybrid events, video production, and global talent matching across 70+ countries.",
   canonical: "/",
+  dateModified: TODAY,
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://www.vmproducers.com/#organization",
-        "name": "VM Producers",
-        "url": "https://www.vmproducers.com",
-        "logo": { "@type": "ImageObject", "url": "https://www.vmproducers.com/favicon.png" },
-        "description": "Full-service event production company specializing in live, virtual, and hybrid events. 2000+ successful events, 350K+ global attendees across 70+ countries.",
-        "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "url": "https://www.vmproducers.com/contact" },
-        "areaServed": "Worldwide",
-        "knowsAbout": ["Live Event Production", "Virtual Event Production", "Hybrid Event Production", "Video Production", "Corporate Event Management"]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.vmproducers.com/#website",
-        "url": "https://www.vmproducers.com",
-        "name": "VM Producers",
-        "publisher": { "@id": "https://www.vmproducers.com/#organization" }
-      },
+      // WebPage schema — provides page-level E-E-A-T signals for the homepage
+      buildWebPageSchema({
+        path: "/",
+        name: "VM Producers | Full-Service Event Production - Live, Virtual & Hybrid Events",
+        description: "VM Producers is a global full-service event production company. 2000+ successful events, 350K+ attendees worldwide, 95% client retention. Live events, virtual events, hybrid events, video production, and global talent matching across 70+ countries.",
+      }),
       {
         "@type": "FAQPage",
         "mainEntity": [
           {
             "@type": "Question",
             "name": "What types of events does VM Producers manage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "VM Producers handles live in-person events, virtual events, hybrid events, corporate conferences, webinars, product launches, and more. You get a dedicated production team whether you\'re a Fortune 500 or a growing business, from 50 to 50,000+ attendees." }
+            "acceptedAnswer": { "@type": "Answer", "text": "VM Producers handles live in-person events, virtual events, hybrid events, corporate conferences, webinars, product launches, and more. You get a dedicated production team whether you're a Fortune 500 or a growing business, from 50 to 50,000+ attendees." }
           },
           {
             "@type": "Question",
@@ -66,15 +56,13 @@ const homeSEO = {
             "@type": "Question",
             "name": "How quickly can VM Producers match event professionals?",
             "acceptedAnswer": { "@type": "Answer", "text": "Through the Meeting Pros service, VM Producers matches clients with verified professionals within 48 hours, across 70+ countries." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can VM Producers handle virtual-only or hybrid event formats?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Virtual and hybrid events are a core specialty. Remote attendees get broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000 participants — the exact same quality as those in the room." }
           }
         ]
-      },
-      {
-        "@type": "AggregateRating",
-        "itemReviewed": { "@id": "https://www.vmproducers.com/#organization" },
-        "ratingValue": "5",
-        "bestRating": "5",
-        "ratingCount": "3"
       }
     ]
   }
@@ -96,20 +84,18 @@ const Index = () => {
       <main id="main-content">
       <HeroSection />
       <ClientLogos />
-      <Suspense fallback={<div className="h-96" />}>
-        <ServicesSection />
-        <AboutSection />
-        <ProcessSection />
-        <TestimonialsSection />
-        <FounderSection />
-        <ResultsSection />
-        <ComparisonSection />
-        {/* FAQ before final CTA - answer objections */}
-        <FAQSection />
-        <CTASection />
-      </Suspense>
+      <ServicesSection />
+      <AboutSection />
+      <ProcessSection />
+      <TestimonialsSection />
+      <FounderSection />
+      <ResultsSection />
+      <ComparisonSection />
+      {/* FAQ before final CTA - answer objections */}
+      <FAQSection />
+      <CTASection />
       </main>
-      <Suspense fallback={null}><Footer /></Suspense>
+      <Footer />
       </div>
     </div>
   );

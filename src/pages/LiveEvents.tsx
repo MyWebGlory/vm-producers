@@ -4,53 +4,31 @@ import liveEventsVideo from "@/assets/live-events-video.mp4";
 import hybridSummitImg from "@/assets/hybrid-summit-stage.webp";
 import aboutEventImg from "@/assets/about-event.webp";
 import { Layers, MapPin, Users, Cpu } from "lucide-react";
+import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
   title: "Live Event Production Services | In-Person Events | VM Producers",
   description: "Professional live event production for in-person events from 50 to 50,000 attendees. End-to-end management including staging, AV, lighting, venue sourcing, and on-site technical support. 500+ events delivered worldwide.",
   canonical: "/live-events",
+  dateModified: TODAY,
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.vmproducers.com/live-events#webpage",
-        "url": "https://www.vmproducers.com/live-events",
-        "name": "Live Event Production Services | In-Person Events | VM Producers",
-        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
-        "about": { "@id": "https://www.vmproducers.com/#organization" },
-        "description": "Professional live event production for in-person events from 50 to 50,000 attendees. End-to-end management including staging, AV, lighting, venue sourcing, and on-site technical support.",
-        "breadcrumb": { "@id": "https://www.vmproducers.com/live-events#breadcrumb" }
-      },
-      {
-        "@type": "Service",
-        "serviceType": "Live Event Production",
-        "name": "Live Events",
-        "description": "Professional live event production for in-person events from 50 to 50,000 attendees. End-to-end management including staging, AV, lighting, and technical support.",
-        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
-        "url": "https://www.vmproducers.com/live-events",
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Live Event Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "End-to-End Production" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Venue Sourcing & Management" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Live Streaming Integration" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "On-Site Technical Support" } }
-          ]
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.vmproducers.com/live-events#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Live Events", "item": "https://www.vmproducers.com/live-events" }
-        ]
-      }
-    ]
-  }
+      buildWebPageSchema({
+        path: "/live-events",
+        name: "Live Event Production Services | In-Person Events | VM Producers",
+        description: "Professional live event production for in-person events from 50 to 50,000 attendees. End-to-end management including staging, AV, lighting, venue sourcing, and on-site technical support.",
+      }),
+      buildServiceSchema({
+        path: "/live-events",
+        serviceType: "Live Event Production",
+        name: "Live Events",
+        description: "Professional live event production for in-person events from 50 to 50,000 attendees. End-to-end management including staging, AV, lighting, and technical support.",
+        offerNames: ["End-to-End Production", "Venue Sourcing & Management", "Live Streaming Integration", "On-Site Technical Support"],
+      }),
+      buildBreadcrumbSchema("/live-events", "Live Events"),
+    ],
+  },
 };
 
 const LiveEvents = () => (

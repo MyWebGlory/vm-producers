@@ -1,0 +1,19 @@
+{
+  "name": "VM Producers",
+  "short_name": "VM Producers",
+  "description": "Full-service event production for live, virtual, and hybrid events worldwide.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c18",
+  "theme_color": "#080c18",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"]
+}

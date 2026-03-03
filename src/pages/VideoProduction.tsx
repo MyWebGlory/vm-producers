@@ -4,54 +4,31 @@ import videoProductionVideo from "@/assets/video-production-video.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
 import aboutEventImg from "@/assets/about-event.webp";
 import { Play, Camera, Star, PenTool, Film, RefreshCw, Sliders } from "lucide-react";
+import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
   title: "Corporate Video Production Services | Event Films & Recaps | VM Producers",
   description: "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, explainer videos, and post-production. 2000+ videos delivered, 48h turnaround.",
   canonical: "/video-production",
+  dateModified: TODAY,
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.vmproducers.com/video-production#webpage",
-        "url": "https://www.vmproducers.com/video-production",
-        "name": "Corporate Video Production Services | Event Films & Recaps | VM Producers",
-        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
-        "about": { "@id": "https://www.vmproducers.com/#organization" },
-        "description": "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround. 2000+ videos delivered.",
-        "breadcrumb": { "@id": "https://www.vmproducers.com/video-production#breadcrumb" }
-      },
-      {
-        "@type": "Service",
-        "serviceType": "Video Production",
-        "name": "Video Production",
-        "description": "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround.",
-        "provider": { "@type": "Organization", "name": "VM Producers", "url": "https://www.vmproducers.com" },
-        "url": "https://www.vmproducers.com/video-production",
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Video Production Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Promos & Teasers" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Live Multi-Camera Production" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Highlight Reels" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Films & Brand Stories" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Production Excellence" } }
-          ]
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.vmproducers.com/video-production#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Video Production", "item": "https://www.vmproducers.com/video-production" }
-        ]
-      }
-    ]
-  }
+      buildWebPageSchema({
+        path: "/video-production",
+        name: "Corporate Video Production Services | Event Films & Recaps | VM Producers",
+        description: "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround. 2000+ videos delivered.",
+      }),
+      buildServiceSchema({
+        path: "/video-production",
+        serviceType: "Video Production",
+        name: "Video Production",
+        description: "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround.",
+        offerNames: ["Event Promos & Teasers", "Live Multi-Camera Production", "Event Highlight Reels", "Corporate Films & Brand Stories", "Post-Production Excellence"],
+      }),
+      buildBreadcrumbSchema("/video-production", "Video Production"),
+    ],
+  },
 };
 
 const VideoProduction = () => (
