@@ -98,7 +98,7 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
               Book a Free Consultation
             </p>
             <p style={{ fontSize: "0.75rem", color: "#6b7280", margin: "2px 0 0" }}>
-              Choose a time that works for you — no commitment
+              Choose a time that works for you, no commitment needed
             </p>
           </div>
           <button

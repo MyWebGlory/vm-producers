@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+﻿import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, Sparkles, ArrowUpRight } from "lucide-react";
 import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
@@ -32,7 +32,7 @@ const services: Service[] = [
     title: "Live Events",
     tag: "50 to 50,000 attendees",
     icon: Mic,
-    description: "Your in-person event, from 50 to 50,000 — run tight, on budget, on brand.",
+    description: "Your in-person event, from 50 to 50,000. Run tight, on budget, on brand.",
     image: liveEventsImg,
     video: liveEventsVid,
     stat: "500+",
@@ -133,7 +133,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
         style={{ boxShadow: `inset 0 0 60px hsl(${h} ${s}% ${l}% / 0.10)` }}
       />
 
-      {/* Media area — image + video crossfade */}
+      {/* Media area - image + video crossfade */}
       <div className="relative w-full h-52 overflow-hidden shrink-0">
         {/* Static image (always present as base layer) */}
         <img
@@ -143,7 +143,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
           className="absolute inset-0 w-full h-full object-cover brightness-75"
         />
 
-        {/* Video layer — crossfades in when playing */}
+        {/* Video layer - crossfades in when playing */}
         <video
           ref={videoRef}
           src={service.video}

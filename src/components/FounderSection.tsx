@@ -89,7 +89,7 @@ const FounderSection = () => {
             {/* Bio */}
             <motion.p {...fadeUp(0.28)} className="text-sm leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.52)" }}>
               Austin personally oversees every client engagement, ensuring the right expertise is in your corner from day one.
-              He's been on the ground for 2,000+ productions — from startup launches to global Fortune 500 conferences across 70+ countries.
+              He's been on the ground for 2,000+ productions, from startup launches to global Fortune 500 conferences across 70+ countries.
               Every project benefits from his direct involvement and a network of 500+ vetted event professionals.
             </motion.p>
 
@@ -106,7 +106,7 @@ const FounderSection = () => {
               </div>
               <p className="text-xs leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.50)" }}>
                 <span className="italic">"His contributions brought our trainings to a higher level of professionalism. I would highly recommend Austin."</span>
-                {" "}—{" "}
+                {" · "}
                 <span className="font-semibold not-italic" style={{ color: "hsl(var(--foreground) / 0.70)" }}>Dean Hart, Commex Consulting</span>
               </p>
             </motion.div>

@@ -45,7 +45,7 @@ const steps = [
   },
 ];
 
-/* Individual step row — alternates left/right */
+/* Individual step row - alternates left/right */
 const StepRow = ({
   step,
   index,
@@ -186,7 +186,7 @@ const StepMeta = ({
   </div>
 );
 
-/* The card itself — solid opaque background so nothing can show through */
+/* The card itself - solid opaque background so nothing can show through */
 const Card = ({
   step,
   index,
@@ -285,7 +285,7 @@ const CenterThread = ({ containerRef }: { containerRef: React.RefObject<HTMLDivE
       className="absolute inset-0 flex justify-center pointer-events-none"
       style={{ zIndex: 0 }}
     >
-      {/* Dashed guide rail — always visible */}
+      {/* Dashed guide rail - always visible */}
       <div
         className="absolute inset-y-0 w-px"
         style={{
@@ -293,7 +293,7 @@ const CenterThread = ({ containerRef }: { containerRef: React.RefObject<HTMLDivE
         }}
       />
 
-      {/* Colored fill — grows with scroll */}
+      {/* Colored fill - grows with scroll */}
       <div className="absolute inset-y-0 w-full flex justify-center">
         <motion.div
           className="w-[3px] h-full rounded-full origin-top"
@@ -311,7 +311,7 @@ const CenterThread = ({ containerRef }: { containerRef: React.RefObject<HTMLDivE
   );
 };
 
-/* Mobile card wrapper — hooks-safe */
+/* Mobile card wrapper - hooks-safe */
 const MobileCard = ({ step, index }: { step: (typeof steps)[number]; index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
@@ -424,7 +424,7 @@ const ProcessSection = () => {
           </motion.div>
         </div>
 
-        {/* Steps — vertical timeline centered */}
+        {/* Steps - vertical timeline centered */}
         <div ref={stepsRef} className="relative hidden md:block">
           <CenterThread containerRef={stepsRef as React.RefObject<HTMLDivElement>} />
           <div className="flex flex-col gap-16 relative" style={{ zIndex: 1 }}>
@@ -434,7 +434,7 @@ const ProcessSection = () => {
           </div>
         </div>
 
-        {/* Mobile fallback — simple stacked cards */}
+        {/* Mobile fallback - simple stacked cards */}
         <div className="flex flex-col gap-6 md:hidden">
           {steps.map((step, i) => (
             <MobileCard key={step.number} step={step} index={i} />

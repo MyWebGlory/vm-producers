@@ -1,4 +1,4 @@
-import { useRef } from "react";
+﻿import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import useCountUp from "@/hooks/useCountUp";
 import { SplitTextReveal } from "@/components/ScrollAnimations";
@@ -17,7 +17,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
 
   return (
     <div ref={rowRef} className="relative">
-      {/* Top divider — animated width */}
+      {/* Top divider - animated width */}
       <motion.div
         className="w-full h-px mb-0"
         style={{ background: "hsl(216 90% 58% / 0.15)" }}
@@ -139,7 +139,7 @@ const ResultsSection = () => {
           />
         </div>
 
-        {/* Bottom callout — inline, no card */}
+        {/* Bottom callout - inline, no card */}
         <motion.div
           className="mt-16 flex flex-col md:flex-row md:items-end gap-4 md:gap-10"
           initial={{ opacity: 0, y: 20 }}
@@ -165,7 +165,7 @@ const ResultsSection = () => {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.85 }}
         >
-          BirthSwell — Non-profit organization &nbsp;·&nbsp; 5/5 client rating
+          BirthSwell · Non-profit organization &nbsp;·&nbsp; 5/5 client rating
         </motion.p>
       </div>
     </section>
