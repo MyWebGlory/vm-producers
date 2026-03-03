@@ -1,119 +1,214 @@
-import { useRef } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { Globe, Monitor, Video, Users, Mic, Sparkles } from "lucide-react";
+import { Globe, Monitor, Video, Users, Mic, Sparkles, ArrowUpRight } from "lucide-react";
 import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import liveEventsImg from "@/assets/live-events.webp";
+import liveEventsVid from "@/assets/live-events-video.mp4";
+import virtualEventsVid from "@/assets/virtual-events-video.mp4";
+import hybridEventsVid from "@/assets/hybrid-events-video.mp4";
+import videoProductionVid from "@/assets/video-production-video.mp4";
+import meetingProsVid from "@/assets/meeting-pros-video.mp4";
 
-const services = [
+interface Service {
+  title: string;
+  tag: string;
+  icon: React.ElementType;
+  description: string;
+  image: string;
+  video: string;
+  stat: string;
+  statLabel: string;
+  accentH: number;
+  accentS: number;
+  accentL: number;
+}
+
+const services: Service[] = [
   {
     title: "Live Events",
     tag: "50 to 50,000 attendees",
     icon: Mic,
-    description: "Your in-person event, from 50 to 50,000, run tight, on budget, on time.",
-    features: ["Full A-to-Z event management", "Venue, hotel & logistics sourcing", "Staging, lighting & AV production", "On-site staff & guest experience"],
+    description: "Your in-person event, from 50 to 50,000 — run tight, on budget, on brand.",
     image: liveEventsImg,
+    video: liveEventsVid,
     stat: "500+",
-    statLabel: "Events",
-    accent: "215 60% 35%",
+    statLabel: "Events produced",
+    accentH: 215, accentS: 85, accentL: 55,
   },
   {
     title: "Virtual Events",
     tag: "Up to 100,000 online",
     icon: Monitor,
-    description: "Your virtual event, fully produced, webinars to large-scale conferences for up to 100,000 attendees.",
-    features: ["Conferences, summits & livestreams", "TV-quality broadcast production", "Multi-language translation (5+ languages)", "Up to 100,000 attendees online"],
+    description: "TV-quality broadcast for up to 100K attendees worldwide.",
     image: virtualEventsImg,
+    video: virtualEventsVid,
     stat: "100K",
-    statLabel: "Attendees",
-    accent: "190 70% 35%",
+    statLabel: "Attendees online",
+    accentH: 188, accentS: 85, accentL: 48,
   },
   {
     title: "Hybrid Events",
     tag: "One stage. Two audiences.",
     icon: Globe,
-    description: "Your in-person and virtual audiences, brought together into one seamless experience.",
-    features: ["In-person + virtual simultaneously", "Multi-camera branded livestream", "Live polls, real-time Q&A & audience app", "Unified experience for every attendee"],
+    description: "In-person and virtual, united into one seamless experience.",
     image: hybridEventsImg,
+    video: hybridEventsVid,
     stat: "95%",
-    statLabel: "Retention",
-    accent: "250 50% 40%",
+    statLabel: "Audience retention",
+    accentH: 252, accentS: 68, accentL: 58,
   },
   {
     title: "Video Production",
     tag: "Teasers, recaps & brand films",
     icon: Video,
-    description: "Shot and delivered exactly the way you need them, fast turnaround, broadcast quality.",
-    features: ["Event highlight reels & recaps", "Promotional & marketing videos", "Whiteboard explainer videos", "Broadcast-ready, fast turnaround"],
+    description: "Broadcast-quality video, fast turnaround, story-first.",
     image: videoProductionImg,
+    video: videoProductionVid,
     stat: "2000+",
-    statLabel: "Videos",
-    accent: "340 60% 45%",
+    statLabel: "Videos delivered",
+    accentH: 338, accentS: 78, accentL: 58,
   },
   {
     title: "Meeting Pros",
     tag: "Matched worldwide in 48 h",
     icon: Users,
-    description: "Your event professional, matched within 48 hours, anywhere in the world, verified and ready.",
-    features: ["55+ event specialties covered", "Matched & onboarded in 48 hours", "On-site & virtual producers available", "Active in 70+ countries worldwide"],
+    description: "Your event professional, matched in 48 hours, anywhere in the world.",
     image: meetingProsImg,
+    video: meetingProsVid,
     stat: "70+",
-    statLabel: "Countries",
-    accent: "160 50% 35%",
+    statLabel: "Countries covered",
+    accentH: 158, accentS: 65, accentL: 48,
   },
 ];
 
-const ServiceCard = ({ service, index }: { service: (typeof services)[number]; index: number }) => {
+interface ServiceCardProps {
+  service: Service;
+  index: number;
+  isPlaying: boolean;
+  onVideoEnded: (index: number) => void;
+}
+
+const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardProps) => {
   const ref = useRef<HTMLAnchorElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
   const Icon = service.icon;
+  const { accentH: h, accentS: s, accentL: l } = service;
+
+  // Play / pause video based on isPlaying prop
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (isPlaying) {
+      v.currentTime = 0;
+      v.play().catch(() => {/* autoplay blocked, silently ignore */});
+    } else {
+      v.pause();
+      v.currentTime = 0;
+    }
+  }, [isPlaying]);
 
   return (
     <motion.a
       ref={ref}
       href={`/${service.title.toLowerCase().replace(/\s+/g, "-")}`}
-      initial={{ opacity: 0, y: 18 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:-translate-y-1"
-      style={{ border: `1px solid hsl(${service.accent} / 0.22)`, background: "hsl(var(--background))" }}
+      initial={{ opacity: 0, y: 32, scale: 0.97 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -6, transition: { duration: 0.28, ease: "easeOut" } }}
+      className="group relative flex flex-col rounded-3xl overflow-hidden cursor-pointer"
+      style={{
+        background: `linear-gradient(145deg, hsl(${h} ${s}% 8%) 0%, hsl(${h} ${s - 15}% 12%) 100%)`,
+        border: `1px solid hsl(${h} ${s}% ${l}% / 0.20)`,
+        boxShadow: `0 0 0 1px hsl(${h} ${s}% ${l}% / 0.06), 0 8px 32px hsl(${h} ${s}% 10% / 0.4)`,
+      }}
     >
-      {/* Image */}
-      <div className="relative w-full aspect-square overflow-hidden">
+      {/* Ambient glow */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"
+        style={{ boxShadow: `inset 0 0 60px hsl(${h} ${s}% ${l}% / 0.10)` }}
+      />
+
+      {/* Media area — image + video crossfade */}
+      <div className="relative w-full h-52 overflow-hidden shrink-0">
+        {/* Static image (always present as base layer) */}
         <img
           src={service.image}
           alt={service.title}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover brightness-75"
         />
-        <div
-          className="absolute inset-0"
-          style={{ background: `linear-gradient(160deg, hsl(${service.accent} / 0.25) 0%, transparent 60%)` }}
+
+        {/* Video layer — crossfades in when playing */}
+        <video
+          ref={videoRef}
+          src={service.video}
+          muted
+          playsInline
+          preload="none"
+          onEnded={() => onVideoEnded(index)}
+          className="absolute inset-0 w-full h-full object-cover brightness-90 transition-opacity duration-700"
+          style={{ opacity: isPlaying ? 1 : 0 }}
         />
+
+        {/* Gradient overlay */}
         <div
-          className="absolute bottom-5 left-5 flex items-baseline gap-1.5 px-3.5 py-2 rounded-full"
-          style={{ background: "hsl(0 0% 0% / 0.60)", border: "1px solid hsl(0 0% 100% / 0.12)" }}
+          className="absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(to bottom, transparent 40%, hsl(${h} ${s - 10}% 8% / 0.70) 100%)`,
+          }}
+        />
+
+        {/* Stat badge */}
+        <div
+          className="absolute top-4 left-4 z-20 flex items-baseline gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-sm"
+          style={{
+            background: "hsl(0 0% 0% / 0.50)",
+            border: "1px solid hsl(0 0% 100% / 0.14)",
+          }}
         >
-          <span className="font-display text-2xl font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-xs uppercase tracking-widest" style={{ color: "hsl(0 0% 100% / 0.55)" }}>{service.statLabel}</span>
+          <span className="font-display text-xl font-bold text-white leading-none">{service.stat}</span>
+          <span className="text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
+        </div>
+
+        {/* Hover arrow */}
+        <div
+          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0"
+          style={{ background: `hsl(${h} ${s}% ${l}% / 0.90)` }}
+        >
+          <ArrowUpRight size={14} className="text-white" />
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-3 p-6">
+      <div className="flex flex-col gap-2 p-5 lg:p-6">
+        {/* Icon + Title */}
         <div className="flex items-center gap-3">
           <span
-            className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0"
-            style={{ background: `hsl(${service.accent} / 0.12)`, border: `1px solid hsl(${service.accent} / 0.28)` }}
+            className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0"
+            style={{
+              background: `hsl(${h} ${s}% ${l}% / 0.15)`,
+              border: `1px solid hsl(${h} ${s}% ${l}% / 0.30)`,
+            }}
           >
-            <Icon size={22} style={{ color: `hsl(${service.accent})` }} />
+            <Icon size={16} style={{ color: `hsl(${h} ${s}% ${l + 15}%)` }} />
           </span>
-          <h3 className="font-display text-xl font-bold text-foreground leading-tight">{service.title}</h3>
+          <h3 className="font-display text-lg lg:text-xl font-bold text-white leading-tight">{service.title}</h3>
         </div>
-        <p className="text-sm font-medium" style={{ color: `hsl(${service.accent})` }}>{service.tag}</p>
+
+        {/* Tag */}
+        <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}>
+          {service.tag}
+        </p>
+
+        {/* Description */}
+        <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
+          {service.description}
+        </p>
       </div>
     </motion.a>
   );
@@ -123,8 +218,22 @@ const ServicesSection = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
+  // Always keep exactly 2 cards playing. Start with indices 0 and 2.
+  const [playing, setPlaying] = useState<number[]>([0, 2]);
+
+  const handleVideoEnded = useCallback((endedIndex: number) => {
+    setPlaying((prev) => {
+      const remaining = prev.filter((i) => i !== endedIndex);
+      // Pick a random card that isn't currently playing
+      const idle = services.map((_, i) => i).filter((i) => !prev.includes(i));
+      if (idle.length === 0) return prev;
+      const next = idle[Math.floor(Math.random() * idle.length)];
+      return [...remaining, next];
+    });
+  }, []);
+
   return (
-    <section id="services" className="pb-12 lg:pb-16 pt-8 lg:pt-10 relative overflow-hidden">
+    <section id="services" className="pb-16 lg:pb-24 pt-8 lg:pt-10 relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -136,7 +245,7 @@ const ServicesSection = () => {
       <FloatingOrbs count={3} className="opacity-70" />
 
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-6 lg:mb-8 text-center relative z-10 overflow-hidden">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-hidden">
         <Sparkles
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
           style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(var(--primary))" }}
@@ -155,23 +264,28 @@ const ServicesSection = () => {
           <br />
           <SplitTextReveal text="into a standing ovation." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
-
       </div>
 
       {/* Velocity scroll band */}
-      <div className="border-t border-b border-border/25 mb-6 lg:mb-8 relative z-10">
+      <div className="border-t border-b border-border/25 mb-8 lg:mb-12 relative z-10">
         <VelocityScrollBand
           items={["Live Events", "Virtual Events", "Hybrid", "Video Production", "Meeting Pros", "Fortune 500", "10K+ Attendees", "70+ Countries", "2000+ Events", "95% Retention"]}
           baseSpeed={55}
-          separator="?"
+          separator="◆"
         />
       </div>
 
-      {/* 5 service cards */}
+      {/* 5 equal cards */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
           {services.map((s, i) => (
-            <ServiceCard key={s.title} service={s} index={i} />
+            <ServiceCard
+              key={s.title}
+              service={s}
+              index={i}
+              isPlaying={playing.includes(i)}
+              onVideoEnded={handleVideoEnded}
+            />
           ))}
         </div>
       </div>
