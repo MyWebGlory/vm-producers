@@ -13,6 +13,16 @@ const seo = {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://www.vmproducers.com/meeting-pros#webpage",
+        "url": "https://www.vmproducers.com/meeting-pros",
+        "name": "Meeting Professionals Network | Global Event Staffing | VM Producers",
+        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
+        "about": { "@id": "https://www.vmproducers.com/#organization" },
+        "description": "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, and more.",
+        "breadcrumb": { "@id": "https://www.vmproducers.com/meeting-pros#breadcrumb" }
+      },
+      {
         "@type": "Service",
         "serviceType": "Event Staffing & Talent Matching",
         "name": "Meeting Pros",
@@ -34,6 +44,7 @@ const seo = {
       },
       {
         "@type": "BreadcrumbList",
+        "@id": "https://www.vmproducers.com/meeting-pros#breadcrumb",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
           { "@type": "ListItem", "position": 2, "name": "Meeting Pros", "item": "https://www.vmproducers.com/meeting-pros" }

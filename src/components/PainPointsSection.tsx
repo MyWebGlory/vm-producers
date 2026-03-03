@@ -49,7 +49,7 @@ const PainPointsSection = () => {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={sectionRef} className="relative bg-white overflow-hidden">
+    <section ref={sectionRef} aria-labelledby="pain-heading" className="relative bg-white overflow-hidden">
       {/* Atmospheric warm ambient gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -147,7 +147,7 @@ const PainPointsSection = () => {
             You've probably felt this.
           </motion.p>
 
-          <h2 className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
+          <h2 id="pain-heading" className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
             {[
               { text: "Sound familiar?", dark: true },
               { text: "You don't have to live it.", dark: false },

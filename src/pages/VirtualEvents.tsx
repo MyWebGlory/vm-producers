@@ -13,6 +13,16 @@ const seo = {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://www.vmproducers.com/virtual-events#webpage",
+        "url": "https://www.vmproducers.com/virtual-events",
+        "name": "Virtual Event Production Services | Webinars & Conferences | VM Producers",
+        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
+        "about": { "@id": "https://www.vmproducers.com/#organization" },
+        "description": "Full-service virtual event production for webinars, conferences, and global summits with up to 100,000 attendees. TV-quality livestreaming, multi-language support, custom branded platforms.",
+        "breadcrumb": { "@id": "https://www.vmproducers.com/virtual-events#breadcrumb" }
+      },
+      {
         "@type": "Service",
         "serviceType": "Virtual Event Production",
         "name": "Virtual Events",
@@ -34,6 +44,7 @@ const seo = {
       },
       {
         "@type": "BreadcrumbList",
+        "@id": "https://www.vmproducers.com/virtual-events#breadcrumb",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
           { "@type": "ListItem", "position": 2, "name": "Virtual Events", "item": "https://www.vmproducers.com/virtual-events" }

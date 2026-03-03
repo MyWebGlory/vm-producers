@@ -78,6 +78,7 @@ const Footer = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <h3 className="font-display font-bold text-foreground text-lg">About</h3>
+            <nav aria-label="Site pages">
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
@@ -107,6 +108,7 @@ const Footer = () => {
                 </button>
               </li>
             </ul>
+            </nav>
           </motion.div>
         </div>
       </div>

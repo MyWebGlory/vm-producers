@@ -48,7 +48,7 @@ const AboutSection = () => {
   }, [currentVideo, videoSrcs]);
 
   return (
-    <section ref={sectionRef} className="py-32 lg:py-44 bg-card relative overflow-hidden">
+    <section ref={sectionRef} aria-labelledby="about-heading" className="py-32 lg:py-44 bg-card relative overflow-hidden">
       {/* Ambient floating light orbs */}
       <FloatingOrbs count={4} />
       {/* About section content */}
@@ -102,7 +102,7 @@ const AboutSection = () => {
                 Why you'll never look back
               </p>
             </motion.div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
+            <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
               <SplitTextReveal text="You've got the vision." delay={0.2} />{" "}
               <SplitTextReveal text="You're about to make it real." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>

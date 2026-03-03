@@ -297,13 +297,14 @@ const ServicePageLayout = ({
         />
       )}
       <Navbar />
+      <main id="main-content">
 
       {/* --- Hero --- */}
-      <section ref={heroRef} className="relative h-screen min-h-[600px] overflow-hidden">
+      <section ref={heroRef} aria-label={`${title} hero`} className="relative h-screen min-h-[600px] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
           <img
             src={heroImage}
-            alt={title}
+            alt={`${title} production by VM Producers - professional event management`}
             className="w-full h-full object-cover"
             fetchPriority="high"
             decoding="async"
@@ -313,6 +314,35 @@ const ServicePageLayout = ({
           {heroVideo && <DeferredHeroVideo src={heroVideo} />}
           <div className="absolute inset-0 hero-gradient" />
         </motion.div>
+
+        {/* Breadcrumb navigation - visible to users and search engines */}
+        <nav
+          aria-label="Breadcrumb"
+          className="absolute top-20 left-6 z-20"
+        >
+          <ol
+            className="flex items-center gap-1.5 text-xs font-medium"
+            itemScope
+            itemType="https://schema.org/BreadcrumbList"
+          >
+            <li itemScope itemType="https://schema.org/ListItem" itemProp="itemListElement">
+              <Link
+                to="/"
+                itemProp="item"
+                className="transition-colors duration-200 hover:text-white"
+                style={{ color: "hsl(0 0% 100% / 0.60)" }}
+              >
+                <span itemProp="name">Home</span>
+              </Link>
+              <meta itemProp="position" content="1" />
+            </li>
+            <li aria-hidden="true" style={{ color: "hsl(0 0% 100% / 0.40)" }}>›</li>
+            <li itemScope itemType="https://schema.org/ListItem" itemProp="itemListElement">
+              <span itemProp="name" style={{ color: "hsl(0 0% 100% / 0.90)" }}>{title}</span>
+              <meta itemProp="position" content="2" />
+            </li>
+          </ol>
+        </nav>
 
         <motion.div
           style={{ opacity: contentOpacity, y: contentY }}
@@ -332,7 +362,7 @@ const ServicePageLayout = ({
               initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.5, duration: 0.9 }}
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.05] md:leading-[0.95] mb-6 md:mb-8"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.05] md:leading-[0.95] mb-4 md:mb-8"
               style={{ color: "white" }}
             >
               {title}
@@ -341,7 +371,7 @@ const ServicePageLayout = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-2"
               style={{ color: "hsl(0, 0%, 100%, 0.75)" }}
             >
               {description}
@@ -395,7 +425,10 @@ const ServicePageLayout = ({
       </div>
 
       {/* --- Features --- */}
-      <section className="py-16 md:py-24 lg:py-32">
+      <section
+        aria-labelledby="features-heading"
+        className="py-16 md:py-24 lg:py-32"
+      >
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 md:mb-20">
             <motion.p
@@ -408,7 +441,8 @@ const ServicePageLayout = ({
               What You Get
             </motion.p>
             <motion.h2
-              className="text-3xl md:text-5xl font-display font-bold text-foreground"
+              id="features-heading"
+              className="text-2xl sm:text-3xl md:text-5xl font-display font-bold text-foreground"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -436,6 +470,7 @@ const ServicePageLayout = ({
       {/* --- Shared CTA Section --- */}
       <CTASection />
 
+      </main>
       <Footer />
     </div>
   );

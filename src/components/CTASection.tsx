@@ -29,6 +29,7 @@ const CTASection = () => {
   return (
     <section
       id="contact"
+      aria-labelledby="cta-heading"
       ref={ref}
       className="relative py-20 md:py-36 lg:py-52 overflow-hidden"
     >
@@ -71,7 +72,7 @@ const CTASection = () => {
           Let's Talk
         </motion.p>
         <RevealLine delay={0.05} className="mb-8 max-w-[120px] mx-auto" />
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 md:mb-8 leading-tight" style={{ color: "white" }}>
+        <h2 id="cta-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-4 md:mb-8 leading-tight" style={{ color: "white" }}>
           <SplitTextReveal text="Let's make your next event" delay={0.1} stagger={0.04} className="justify-center" />{" "}
           <SplitTextReveal text="one they'll never forget." delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
@@ -87,7 +88,7 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-lg max-w-xl mx-auto mb-12 leading-relaxed"
+          className="text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-10 md:mb-12 leading-relaxed"
           style={{ color: "hsl(0 0% 100% / 0.7)" }}
         >
           You've got the dream. We've got the team, the gear, and the experience to pull it off. All you have to do is say the word.

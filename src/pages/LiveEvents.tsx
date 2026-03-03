@@ -13,6 +13,16 @@ const seo = {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://www.vmproducers.com/live-events#webpage",
+        "url": "https://www.vmproducers.com/live-events",
+        "name": "Live Event Production Services | In-Person Events | VM Producers",
+        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
+        "about": { "@id": "https://www.vmproducers.com/#organization" },
+        "description": "Professional live event production for in-person events from 50 to 50,000 attendees. End-to-end management including staging, AV, lighting, venue sourcing, and on-site technical support.",
+        "breadcrumb": { "@id": "https://www.vmproducers.com/live-events#breadcrumb" }
+      },
+      {
         "@type": "Service",
         "serviceType": "Live Event Production",
         "name": "Live Events",
@@ -33,6 +43,7 @@ const seo = {
       },
       {
         "@type": "BreadcrumbList",
+        "@id": "https://www.vmproducers.com/live-events#breadcrumb",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
           { "@type": "ListItem", "position": 2, "name": "Live Events", "item": "https://www.vmproducers.com/live-events" }

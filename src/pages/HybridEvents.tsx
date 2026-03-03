@@ -17,6 +17,16 @@ const seo = {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://www.vmproducers.com/hybrid-events#webpage",
+        "url": "https://www.vmproducers.com/hybrid-events",
+        "name": "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
+        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
+        "about": { "@id": "https://www.vmproducers.com/#organization" },
+        "description": "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, 95% retention rate.",
+        "breadcrumb": { "@id": "https://www.vmproducers.com/hybrid-events#breadcrumb" }
+      },
+      {
         "@type": "Service",
         "serviceType": "Hybrid Event Production",
         "name": "Hybrid Events",
@@ -38,6 +48,7 @@ const seo = {
       },
       {
         "@type": "BreadcrumbList",
+        "@id": "https://www.vmproducers.com/hybrid-events#breadcrumb",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
           { "@type": "ListItem", "position": 2, "name": "Hybrid Events", "item": "https://www.vmproducers.com/hybrid-events" }

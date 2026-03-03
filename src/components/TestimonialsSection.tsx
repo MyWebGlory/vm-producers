@@ -220,7 +220,7 @@ const TestimonialsSection = () => {
   const t = testimonials[index];
 
   return (
-    <section ref={sectionRef} className="py-28 lg:py-40 overflow-hidden relative">
+    <section ref={sectionRef} aria-labelledby="testimonials-heading" className="py-28 lg:py-40 overflow-hidden relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/4 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
@@ -251,7 +251,7 @@ const TestimonialsSection = () => {
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
             What you’ll experience when you work with us
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 text-center">
+          <h2 id="testimonials-heading" className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 text-center">
             <SplitTextReveal text="You'll be in great hands." delay={0.1} className="justify-center" />
             <br />
             <SplitTextReveal text="200+ teams made the leap." delay={0.25} className="justify-center glow-text" />

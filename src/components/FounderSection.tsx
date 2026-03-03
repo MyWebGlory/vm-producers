@@ -37,13 +37,13 @@ const FounderSection = () => {
       />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 lg:gap-16">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-10 lg:gap-16">
 
           {/* Photo */}
           <motion.div {...fadeUp(0)} className="relative shrink-0">
             <div className="absolute -inset-3 rounded-3xl blur-2xl pointer-events-none" style={{ background: "hsl(216 90% 58% / 0.12)" }} />
             <div
-              className="relative w-44 h-56 lg:w-56 lg:h-72 rounded-2xl overflow-hidden"
+              className="relative w-36 h-44 sm:w-44 sm:h-56 lg:w-56 lg:h-72 rounded-2xl overflow-hidden"
               style={{ border: "2px solid hsl(216 90% 58% / 0.28)" }}
             >
               <img src={founderPhoto} alt="Austin Talley, Founder & CEO" className="w-full h-full object-cover object-top" />

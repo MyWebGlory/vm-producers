@@ -26,7 +26,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
         transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
       />
 
-      <div className="flex items-center py-8 md:py-10 gap-6 md:gap-12">
+      <div className="flex items-center py-5 md:py-10 gap-4 md:gap-12">
         {/* Index number */}
         <motion.span
           className="hidden md:block text-xs font-mono tabular-nums select-none flex-shrink-0 w-6 text-right"
@@ -40,7 +40,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
 
         {/* Big stat number */}
         <motion.p
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-none flex-shrink-0 w-44 md:w-56 lg:w-64 tabular-nums"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-none flex-shrink-0 w-auto md:w-56 lg:w-64 tabular-nums"
           style={{ color: "hsl(216 90% 58%)" }}
           initial={{ opacity: 0, x: -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -60,15 +60,15 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
 
         {/* Label + sub */}
         <motion.div
-          className="flex flex-col gap-1"
+          className="flex flex-col gap-1 min-w-0"
           initial={{ opacity: 0, x: 20 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="text-lg md:text-2xl lg:text-3xl font-display font-semibold text-foreground leading-tight">
+          <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-display font-semibold text-foreground leading-tight">
             {stat.label}
           </p>
-          <p className="text-sm md:text-base" style={{ color: "hsl(var(--foreground) / 0.45)" }}>
+          <p className="text-xs sm:text-sm md:text-base" style={{ color: "hsl(var(--foreground) / 0.45)" }}>
             {stat.sub}
           </p>
         </motion.div>
@@ -84,6 +84,7 @@ const ResultsSection = () => {
   return (
     <section
       ref={sectionRef}
+      aria-labelledby="results-heading"
       className="relative overflow-hidden bg-background py-28 lg:py-40"
     >
       {/* Subtle ambient glow */}
@@ -108,7 +109,7 @@ const ResultsSection = () => {
           >
             Numbers you can trust
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
+          <h2 id="results-heading" className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
             <SplitTextReveal text="Results you can" delay={0.1} className="justify-start" />
             <br />
             <SplitTextReveal text="count on, every time." delay={0.3} className="justify-start" />
@@ -117,7 +118,7 @@ const ResultsSection = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-5 text-sm md:text-base leading-relaxed max-w-xl"
+            className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl"
             style={{ color: "hsl(var(--foreground) / 0.50)" }}
           >
             Technical excellence, a personal touch, and a proven track record you can count on.

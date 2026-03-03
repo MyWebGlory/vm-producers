@@ -13,6 +13,16 @@ const seo = {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": "https://www.vmproducers.com/video-production#webpage",
+        "url": "https://www.vmproducers.com/video-production",
+        "name": "Corporate Video Production Services | Event Films & Recaps | VM Producers",
+        "isPartOf": { "@id": "https://www.vmproducers.com/#website" },
+        "about": { "@id": "https://www.vmproducers.com/#organization" },
+        "description": "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround. 2000+ videos delivered.",
+        "breadcrumb": { "@id": "https://www.vmproducers.com/video-production#breadcrumb" }
+      },
+      {
         "@type": "Service",
         "serviceType": "Video Production",
         "name": "Video Production",
@@ -34,6 +44,7 @@ const seo = {
       },
       {
         "@type": "BreadcrumbList",
+        "@id": "https://www.vmproducers.com/video-production#breadcrumb",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vmproducers.com/" },
           { "@type": "ListItem", "position": 2, "name": "Video Production", "item": "https://www.vmproducers.com/video-production" }

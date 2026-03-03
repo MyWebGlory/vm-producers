@@ -200,11 +200,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.3, duration: 0.6 }}
-            className="grid grid-cols-3 gap-6 mt-2"
+            className="grid grid-cols-3 gap-3 sm:gap-6 mt-2 w-full max-w-xs sm:max-w-sm"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-0.5">
-                <p className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white">
+                <p className="text-lg sm:text-2xl lg:text-3xl font-display font-bold text-white">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className="text-[10px] lg:text-[11px] uppercase tracking-wider font-medium" style={{ color: "hsl(0 0% 100% / 0.45)" }}>

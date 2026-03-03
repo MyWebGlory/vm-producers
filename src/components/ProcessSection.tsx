@@ -339,6 +339,7 @@ const ProcessSection = () => {
 
   return (
     <section
+      aria-labelledby="process-heading"
       className="relative py-24 lg:py-40 overflow-hidden"
       style={{ background: "hsl(220 20% 98%)" }}
     >
@@ -375,6 +376,7 @@ const ProcessSection = () => {
 
           <div className="overflow-hidden mb-5">
             <motion.h2
+              id="process-heading"
               initial={{ y: "110%" }}
               animate={headerInView ? { y: "0%" } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}

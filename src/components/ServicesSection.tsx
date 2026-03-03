@@ -134,7 +134,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
       />
 
       {/* Media area - image + video crossfade */}
-      <div className="relative w-full h-52 overflow-hidden shrink-0">
+      <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-52 overflow-hidden shrink-0">
         {/* Static image (always present as base layer) */}
         <img
           src={service.image}
@@ -165,14 +165,14 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
 
         {/* Stat badge */}
         <div
-          className="absolute top-4 left-4 z-20 flex items-baseline gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-sm"
+          className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
           style={{
             background: "hsl(0 0% 0% / 0.50)",
             border: "1px solid hsl(0 0% 100% / 0.14)",
           }}
         >
-          <span className="font-display text-xl font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
+          <span className="font-display text-sm sm:text-lg lg:text-xl font-bold text-white leading-none">{service.stat}</span>
+          <span className="text-[8px] sm:text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
         {/* Hover arrow */}
@@ -185,28 +185,28 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-2 p-5 lg:p-6">
+      <div className="flex flex-col gap-1 sm:gap-1.5 md:gap-2 p-3 sm:p-4 lg:p-6">
         {/* Icon + Title */}
         <div className="flex items-center gap-3">
           <span
-            className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0"
+            className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-lg sm:rounded-xl shrink-0"
             style={{
               background: `hsl(${h} ${s}% ${l}% / 0.15)`,
               border: `1px solid hsl(${h} ${s}% ${l}% / 0.30)`,
             }}
           >
-            <Icon size={16} style={{ color: `hsl(${h} ${s}% ${l + 15}%)` }} />
+            <Icon className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: `hsl(${h} ${s}% ${l + 15}%)` }} />
           </span>
-          <h3 className="font-display text-lg lg:text-xl font-bold text-white leading-tight">{service.title}</h3>
+          <h3 className="font-display text-xs sm:text-sm md:text-base lg:text-xl font-bold text-white leading-tight">{service.title}</h3>
         </div>
 
         {/* Tag */}
-        <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}>
+        <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider" style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}>
           {service.tag}
         </p>
 
         {/* Description */}
-        <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
+        <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed hidden sm:block" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
           {service.description}
         </p>
       </div>
@@ -233,7 +233,7 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section id="services" className="pb-16 lg:pb-24 pt-8 lg:pt-10 relative overflow-hidden">
+    <section id="services" aria-labelledby="services-heading" className="pb-16 lg:pb-24 pt-8 lg:pt-10 relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -257,12 +257,12 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium"
         >
-          What you get
+          Our Services
         </motion.p>
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground">
-          <SplitTextReveal text="Turn your vision" delay={0.1} stagger={0.06} className="justify-center" />
+        <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground">
+          <SplitTextReveal text="Your event," delay={0.1} stagger={0.06} className="justify-center" />
           <br />
-          <SplitTextReveal text="into a standing ovation." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+          <SplitTextReveal text="handled end to end." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
       </div>
 
@@ -277,7 +277,7 @@ const ServicesSection = () => {
 
       {/* 5 equal cards */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-5">
           {services.map((s, i) => (
             <ServiceCard
               key={s.title}

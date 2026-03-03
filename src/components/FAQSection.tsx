@@ -42,7 +42,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section ref={ref} className="relative py-24 md:py-36 bg-background overflow-hidden">
+    <section ref={ref} aria-labelledby="faq-heading" className="relative py-24 md:py-36 bg-background overflow-hidden">
       {/* Subtle ambient */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -80,6 +80,7 @@ const FAQSection = () => {
           </motion.p>
           <RevealLine delay={0.05} className="mb-6 max-w-[80px] mx-auto" />
           <motion.h2
+            id="faq-heading"
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.7 }}

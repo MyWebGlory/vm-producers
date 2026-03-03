@@ -93,6 +93,7 @@ const Index = () => {
       </div>
       <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
+      <main id="main-content">
       <HeroSection />
       <ClientLogos />
       <Suspense fallback={<div className="h-96" />}>
@@ -106,8 +107,9 @@ const Index = () => {
         {/* FAQ before final CTA - answer objections */}
         <FAQSection />
         <CTASection />
-        <Footer />
       </Suspense>
+      </main>
+      <Suspense fallback={null}><Footer /></Suspense>
       </div>
     </div>
   );
