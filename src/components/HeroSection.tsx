@@ -8,6 +8,8 @@ import { useCalendly } from "@/components/CalendlyModal";
 import avatar1 from "@/assets/testimonials/jeanette-mccullough.jpeg";
 import avatar2 from "@/assets/testimonials/lesley-edwards.jpg";
 import avatar3 from "@/assets/testimonials/tony-susa.jpg";
+import logoCapterra from "@/assets/logo-capterra.png";
+import logoTrustpilot from "@/assets/logo-trustpilot.png";
 import avatar4 from "@/assets/testimonials/george-zisiadis.jpg";
 import avatar5 from "@/assets/testimonials/john-winter.jpeg";
 
@@ -216,6 +218,41 @@ const HeroSection = () => {
                 </p>
               </div>
             ))}
+          </motion.div>
+
+          {/* Trust platform logos */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.82, duration: 0.4 }}
+            className="flex items-center justify-center gap-6 sm:gap-10 mt-1"
+            aria-label="Reviewed on"
+          >
+            {/* Capterra */}
+            <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+              <img src={logoCapterra} alt="" className="h-5 sm:h-6 w-auto" />
+              <span className="text-white font-semibold text-sm tracking-wide">Capterra</span>
+            </div>
+
+            <div className="w-px h-5 bg-white/20" />
+
+            {/* Trustpilot */}
+            <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+              <img src={logoTrustpilot} alt="" className="h-5 sm:h-6 w-auto" />
+              <span className="text-white font-semibold text-sm tracking-wide">Trustpilot</span>
+            </div>
+
+            <div className="w-px h-5 bg-white/20" />
+
+            {/* Google */}
+            <div className="flex items-center gap-0 opacity-80 hover:opacity-100 transition-opacity">
+              <span className="font-semibold text-xl" style={{color:"#4285F4"}}>G</span>
+              <span className="font-semibold text-xl" style={{color:"#EA4335"}}>o</span>
+              <span className="font-semibold text-xl" style={{color:"#FBBC05"}}>o</span>
+              <span className="font-semibold text-xl" style={{color:"#4285F4"}}>g</span>
+              <span className="font-semibold text-xl" style={{color:"#34A853"}}>l</span>
+              <span className="font-semibold text-xl" style={{color:"#EA4335"}}>e</span>
+            </div>
           </motion.div>
 
         </div>
