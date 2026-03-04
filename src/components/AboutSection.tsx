@@ -120,7 +120,7 @@ const AboutSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-muted-foreground text-lg leading-relaxed"
             >
-              Whether you run a Fortune 500 or a fast-growing startup, you get the same world-class production team in your corner, fully dedicated to your event.
+              VM Producers is a full-service event production agency specialising in live, virtual, and hybrid events, as well as video production and global talent placement. From Fortune 500s to fast-growing startups, every client gets the same dedicated production team.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -128,7 +128,7 @@ const AboutSection = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-muted-foreground text-base leading-relaxed"
             >
-              From venue sourcing to post-event video, every detail is handled for you, with one dedicated producer owning your experience start to finish.
+              We handle staging, AV, venue sourcing, and on-site logistics for live events; branded platforms and TV-quality livestreams for virtual and hybrid; promotional and recap videos; and verified event professionals matched anywhere in the world within 48 hours. One conversation covers it all.
             </motion.p>
 
             <RevealLine delay={0.55} className="mb-2" />

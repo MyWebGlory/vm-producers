@@ -76,7 +76,7 @@ const HeroSection = () => {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-              #1 Producer for Successful Corporate Events
+              Full-Service Event Production Agency · Est. 2018
             </span>
           </motion.div>
 
@@ -89,9 +89,9 @@ const HeroSection = () => {
             style={{ textShadow: "0 2px 24px rgba(0,0,0,0.7)" }}
             data-speakable
           >
-            Make your next event{" "}
+            Your event: live,{" "}
             <br className="hidden sm:block" />
-            <span style={{ color: "hsl(216 90% 65%)" }}>unforgettable.</span>
+            <span style={{ color: "hsl(216 90% 65%)" }}>virtual, or hybrid.</span>
           </motion.h1>
 
           {/* Description */}
@@ -103,9 +103,41 @@ const HeroSection = () => {
             style={{ color: "hsl(0 0% 100% / 0.68)" }}
             data-speakable
           >
-            Your event runs on time, looks incredible, and leaves your audience
-            talking. We handle every detail - so you can actually enjoy the day.
+            VM Producers is a full-service event production company. We produce
+            in-person, virtual &amp; hybrid events, from intimate 50-person
+            workshops to global broadcasts reaching 100,000, managing every
+            detail from first brief to final breakdown.
           </motion.p>
+
+          {/* Service pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.44, duration: 0.45 }}
+            className="flex flex-wrap justify-center gap-2"
+            aria-label="Our services"
+          >
+            {[
+              { label: "Live Events",       emoji: "🎤" },
+              { label: "Virtual Events",    emoji: "💻" },
+              { label: "Hybrid Events",     emoji: "🔀" },
+              { label: "Video Production",  emoji: "🎬" },
+              { label: "Meeting Pros",      emoji: "🤝" },
+            ].map(({ label, emoji }) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium"
+                style={{
+                  background: "hsl(0 0% 100% / 0.07)",
+                  border: "1px solid hsl(0 0% 100% / 0.15)",
+                  color: "hsl(0 0% 100% / 0.75)",
+                }}
+              >
+                <span aria-hidden="true">{emoji}</span>
+                {label}
+              </span>
+            ))}
+          </motion.div>
 
           {/* CTA */}
           <motion.div

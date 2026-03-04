@@ -16,8 +16,8 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const homeSEO = {
-  title: "VM Producers | Full-Service Event Production - Live, Virtual & Hybrid Events",
-  description: "VM Producers is a global full-service event production company. 2000+ successful events, 350K+ attendees worldwide, 95% client retention. Live events, virtual events, hybrid events, video production, and global talent matching across 70+ countries.",
+  title: "VM Producers | Full-Service Event Production - Live, Virtual & Hybrid",
+  description: "VM Producers is a full-service event production agency. We produce live, virtual & hybrid events, corporate video, and match global event talent worldwide. 2000+ events, 350K+ attendees, 95% client retention.",
   canonical: "/",
   dateModified: TODAY,
   jsonLd: {

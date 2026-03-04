@@ -35,7 +35,7 @@ const services: Service[] = [
     title: "Live Events",
     tag: "50 to 50,000 attendees",
     icon: Mic,
-    description: "Your in-person event, from 50 to 50,000. Run tight, on budget, on brand.",
+    description: "Full A-to-Z in-person production: staging, lighting, AV, venue sourcing, logistics, catering, and on-site staff. You show up as the host.",
     image: liveEventsImg,
     video: liveEventsVid,
     stat: "500+",
@@ -44,20 +44,20 @@ const services: Service[] = [
   },
   {
     title: "Virtual Events",
-    tag: "Up to 100,000 online",
+    tag: "Webinars · Conferences · Summits",
     icon: Monitor,
-    description: "TV-quality broadcast for up to 100K attendees worldwide.",
+    description: "TV-quality livestreams with branded platforms, multi-language support, and interactive engagement. Up to 100,000 attendees, zero technical stress.",
     image: virtualEventsImg,
     video: virtualEventsVid,
     stat: "100K",
-    statLabel: "Attendees online",
+    statLabel: "Max attendees",
     accentH: 207, accentS: 82, accentL: 52,
   },
   {
     title: "Hybrid Events",
     tag: "One stage. Two audiences.",
     icon: Globe,
-    description: "In-person and virtual, united into one seamless experience.",
+    description: "Your in-room and remote audiences get the same show: multi-camera production, live platform management, and unified engagement tools for both.",
     image: hybridEventsImg,
     video: hybridEventsVid,
     stat: "95%",
@@ -66,9 +66,9 @@ const services: Service[] = [
   },
   {
     title: "Video Production",
-    tag: "Teasers, recaps & brand films",
+    tag: "Promos · Recaps · Explainers",
     icon: Video,
-    description: "Broadcast-quality video, fast turnaround, story-first.",
+    description: "Marketing promos, event highlight reels, and whiteboard explainers. Broadcast quality, fast turnaround, crafted to maximise reach and replay value.",
     image: videoProductionImg,
     video: videoProductionVid,
     stat: "2000+",
@@ -77,9 +77,9 @@ const services: Service[] = [
   },
   {
     title: "Meeting Pros",
-    tag: "Matched worldwide in 48 h",
+    tag: "Verified talent in 48 h",
     icon: Users,
-    description: "Your event professional, matched in 48 hours, anywhere in the world.",
+    description: "Need specialist event talent fast? We match you with a verified professional (AV, logistics, moderation, and 50+ other specialisms) anywhere in the world within 48 hours.",
     image: meetingProsImg,
     video: meetingProsVid,
     stat: "70+",
@@ -263,16 +263,25 @@ const ServicesSection = () => {
           Our Services
         </motion.p>
         <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground">
-          <SplitTextReveal text="Your event," delay={0.1} stagger={0.06} className="justify-center" />
+          <SplitTextReveal text="Five ways we" delay={0.1} stagger={0.06} className="justify-center" />
           <br />
-          <SplitTextReveal text="handled end to end." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+          <SplitTextReveal text="produce your event." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.55 }}
+          className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
+          style={{ color: "hsl(0 0% 100% / 0.52)" }}
+        >
+          Whether your audience is in a room, on a screen, or both, we handle the full production so you can focus on the content.
+        </motion.p>
       </div>
 
       {/* Velocity scroll band */}
       <div className="border-t border-b border-border/25 mb-8 lg:mb-12 relative z-10">
         <VelocityScrollBand
-          items={["Live Events", "Virtual Events", "Hybrid", "Video Production", "Meeting Pros", "Fortune 500", "10K+ Attendees", "70+ Countries", "2000+ Events", "95% Retention"]}
+          items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Full A-to-Z Production", "Up to 100K Attendees", "70+ Countries", "2000+ Events", "95% Retention Rate", "Fortune 500 Clients", "48h Talent Match"]}
           baseSpeed={55}
           separator="|"
         />
