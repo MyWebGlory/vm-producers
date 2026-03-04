@@ -35,7 +35,7 @@ const services: Service[] = [
     title: "Live Events",
     tag: "50 to 50,000 attendees",
     icon: Mic,
-    description: "Full A-to-Z in-person production: staging, lighting, AV, venue sourcing, logistics, catering, and on-site staff. You show up as the host.",
+    description: "End-to-end in-person production. You show up as the host.",
     image: liveEventsImg,
     video: liveEventsVid,
     stat: "500+",
@@ -46,7 +46,7 @@ const services: Service[] = [
     title: "Virtual Events",
     tag: "Webinars · Conferences · Summits",
     icon: Monitor,
-    description: "TV-quality livestreams with branded platforms, multi-language support, and interactive engagement. Up to 100,000 attendees, zero technical stress.",
+    description: "TV-quality broadcasts, up to 100K attendees, zero tech stress.",
     image: virtualEventsImg,
     video: virtualEventsVid,
     stat: "100K",
@@ -57,7 +57,7 @@ const services: Service[] = [
     title: "Hybrid Events",
     tag: "One stage. Two audiences.",
     icon: Globe,
-    description: "Your in-room and remote audiences get the same show: multi-camera production, live platform management, and unified engagement tools for both.",
+    description: "One stage, two audiences. Both rooms get the full show.",
     image: hybridEventsImg,
     video: hybridEventsVid,
     stat: "95%",
@@ -68,7 +68,7 @@ const services: Service[] = [
     title: "Video Production",
     tag: "Promos · Recaps · Explainers",
     icon: Video,
-    description: "Marketing promos, event highlight reels, and whiteboard explainers. Broadcast quality, fast turnaround, crafted to maximise reach and replay value.",
+    description: "Promos, highlight reels & explainers. Broadcast quality, fast turnaround.",
     image: videoProductionImg,
     video: videoProductionVid,
     stat: "2000+",
@@ -79,7 +79,7 @@ const services: Service[] = [
     title: "Meeting Pros",
     tag: "Verified talent in 48 h",
     icon: Users,
-    description: "Need specialist event talent fast? We match you with a verified professional (AV, logistics, moderation, and 50+ other specialisms) anywhere in the world within 48 hours.",
+    description: "Verified event professionals matched worldwide in 48 hours.",
     image: meetingProsImg,
     video: meetingProsVid,
     stat: "70+",
@@ -212,6 +212,12 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
         <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed hidden sm:block" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
           {service.description}
         </p>
+
+        {/* Learn more */}
+        <div className="hidden sm:flex items-center gap-1 mt-1 text-[11px] sm:text-xs font-semibold" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>
+          Learn more
+          <ArrowUpRight size={12} />
+        </div>
       </div>
     </MotionLink>
   );
