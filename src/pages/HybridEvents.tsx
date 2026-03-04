@@ -1,11 +1,9 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
-import hybridEventsHeroImg from "@/assets/hybrid-events.webp";
 import liveEventsImg from "@/assets/live-events.webp";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
 import virtualEventsConferenceImg from "@/assets/virtual-events-conference.webp";
-import virtualEventsImg from "@/assets/virtual-events.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
@@ -55,7 +53,7 @@ const HybridEvents = () => (
         icon: Layers,
         title: "Unified Experience Design",
         description: "Your in-person and online audiences experience the same event, same energy, same content, same key moments. We design your production from the ground up to serve both rooms simultaneously, using branded webcasts, multi-screen layouts, and a single unified run-of-show that neither audience ever feels excluded from.",
-        image: hybridEventsHeroImg,
+        image: hybridEventsImg,
       },
       {
         icon: Camera,
@@ -85,7 +83,7 @@ const HybridEvents = () => (
         icon: Laptop,
         title: "Online-Only Sessions",
         description: "Your virtual attendees get more than a window into the room. We produce exclusive online-only sessions, digital breakouts, and virtual networking opportunities designed specifically for your remote audience, extending your event's reach and giving your online community a compelling reason to show up and stay engaged.",
-        image: virtualEventsImg,
+        image: virtualEventsConferenceImg,
       },
       {
         icon: Archive,

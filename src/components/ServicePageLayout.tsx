@@ -12,7 +12,7 @@ import { AnimatedCounter, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import ExploreServicesSection from "@/components/ExploreServicesSection";
+import ServiceCardsNav from "@/components/ServiceCardsNav";
 import { SEO } from "@/components/SEO";
 import { useCalendly } from "@/components/CalendlyModal";
 
@@ -370,7 +370,7 @@ const ServicePageLayout = ({
       {additionalContent}
 
       {/* --- Related Services Navigation --- */}
-      <ExploreServicesSection currentPath={seo?.canonical ?? ""} />
+      <ServiceCardsNav currentPath={seo?.canonical ?? ""} />
 
       {/* --- Shared CTA Section --- */}
       <CTASection />

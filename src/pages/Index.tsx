@@ -13,7 +13,7 @@ import ServicesSection from "@/components/ServicesSection";
 import ComparisonSection from "@/components/ComparisonSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import ExploreServicesSection from "@/components/ExploreServicesSection";
+import ServiceCardsNav from "@/components/ServiceCardsNav";
 import Footer from "@/components/Footer";
 
 const homeSEO = {
@@ -94,7 +94,7 @@ const Index = () => {
       <ComparisonSection />
       {/* FAQ before final CTA - answer objections */}
       <FAQSection />
-      <ExploreServicesSection />
+      <ServiceCardsNav />
       <CTASection />
       </main>
       <Footer />

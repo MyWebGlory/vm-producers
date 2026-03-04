@@ -1,8 +1,7 @@
-﻿import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import { Globe, Monitor, Video, Users, Mic, Sparkles, ArrowUpRight } from "lucide-react";
-import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
+import { Globe, Monitor, Video, Users, Mic, ArrowUpRight } from "lucide-react";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import videoProductionImg from "@/assets/video-production.webp";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
@@ -16,7 +15,7 @@ import meetingProsVid from "@/assets/meeting-pros-video.mp4";
 
 const MotionLink = motion.create(Link);
 
-interface Service {
+interface ServiceNavItem {
   title: string;
   tag: string;
   icon: React.ElementType;
@@ -25,12 +24,13 @@ interface Service {
   video: string;
   stat: string;
   statLabel: string;
+  href: string;
   accentH: number;
   accentS: number;
   accentL: number;
 }
 
-const services: Service[] = [
+export const ALL_NAV_SERVICES: ServiceNavItem[] = [
   {
     title: "Live Events",
     tag: "50 to 50,000 attendees",
@@ -40,6 +40,7 @@ const services: Service[] = [
     video: liveEventsVid,
     stat: "500+",
     statLabel: "Events produced",
+    href: "/live-events",
     accentH: 216, accentS: 90, accentL: 58,
   },
   {
@@ -51,6 +52,7 @@ const services: Service[] = [
     video: virtualEventsVid,
     stat: "100K",
     statLabel: "Max attendees",
+    href: "/virtual-events",
     accentH: 207, accentS: 82, accentL: 52,
   },
   {
@@ -62,6 +64,7 @@ const services: Service[] = [
     video: hybridEventsVid,
     stat: "95%",
     statLabel: "Audience retention",
+    href: "/hybrid-events",
     accentH: 222, accentS: 78, accentL: 62,
   },
   {
@@ -73,6 +76,7 @@ const services: Service[] = [
     video: videoProductionVid,
     stat: "2000+",
     statLabel: "Videos delivered",
+    href: "/video-production",
     accentH: 213, accentS: 88, accentL: 55,
   },
   {
@@ -84,18 +88,21 @@ const services: Service[] = [
     video: meetingProsVid,
     stat: "70+",
     statLabel: "Countries covered",
+    href: "/meeting-pros",
     accentH: 205, accentS: 75, accentL: 50,
   },
 ];
 
-interface ServiceCardProps {
-  service: Service;
+// ─── Single Card ─────────────────────────────────────────────────────────────
+
+interface ServiceNavCardProps {
+  service: ServiceNavItem;
   index: number;
   isPlaying: boolean;
   onVideoEnded: (index: number) => void;
 }
 
-const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardProps) => {
+const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavCardProps) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -117,11 +124,11 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
   return (
     <MotionLink
       ref={ref}
-      to={`/${service.title.toLowerCase().replace(/\s+/g, "-")}`}
-      initial={{ opacity: 0, y: 32, scale: 0.97 }}
+      to={service.href}
+      initial={{ opacity: 0, y: 28, scale: 0.97 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -6, transition: { duration: 0.28, ease: "easeOut" } }}
+      transition={{ duration: 0.55, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -5, transition: { duration: 0.25, ease: "easeOut" } }}
       className="group relative rounded-3xl overflow-hidden cursor-pointer flex flex-col lg:[display:grid] lg:[grid-template-rows:subgrid] lg:[grid-row:span_4]"
       style={{
         background: `linear-gradient(145deg, hsl(${h} ${s}% 8%) 0%, hsl(${h} ${s - 15}% 12%) 100%)`,
@@ -136,7 +143,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
       />
 
       {/* Row 1 — Media */}
-      <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-52 overflow-hidden shrink-0">
+      <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-48 overflow-hidden shrink-0">
         <img
           src={service.image}
           alt={service.title}
@@ -160,26 +167,26 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
 
         {/* Stat badge */}
         <div
-          className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
+          className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
-          <span className="font-display text-sm sm:text-lg lg:text-xl font-bold text-white leading-none">{service.stat}</span>
+          <span className="font-display text-sm sm:text-base lg:text-lg font-bold text-white leading-none">{service.stat}</span>
           <span className="text-[8px] sm:text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
         {/* Hover arrow */}
         <div
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0"
+          className="absolute top-3 right-3 z-20 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0"
           style={{ background: `hsl(${h} ${s}% ${l}% / 0.90)` }}
         >
-          <ArrowUpRight size={14} className="text-white" />
+          <ArrowUpRight size={13} className="text-white" />
         </div>
       </div>
 
       {/* Row 2 — Icon + Title */}
-      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-5 pt-3 sm:pt-4 lg:pt-5 self-start w-full">
+      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-5 pt-3 sm:pt-4 self-start w-full">
         <span
-          className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-lg sm:rounded-xl shrink-0"
+          className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl shrink-0"
           style={{ background: `hsl(${h} ${s}% ${l}% / 0.15)`, border: `1px solid hsl(${h} ${s}% ${l}% / 0.30)` }}
         >
           <Icon className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: `hsl(${h} ${s}% ${l + 15}%)` }} />
@@ -206,75 +213,69 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
   );
 };
 
-const ServicesSection = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+// ─── Nav Section ─────────────────────────────────────────────────────────────
+
+interface ServiceCardsNavProps {
+  /**
+   * Pass the current page href (e.g. "/live-events") to exclude it from the list.
+   * Omit or leave empty to show all 5 cards (homepage).
+   */
+  currentPath?: string;
+}
+
+const ServiceCardsNav = ({ currentPath = "" }: ServiceCardsNavProps) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-60px" });
+
+  const cards = currentPath
+    ? ALL_NAV_SERVICES.filter((s) => s.href !== currentPath)
+    : ALL_NAV_SERVICES;
+
+  const gridCols = cards.length >= 5
+    ? "grid-cols-2 lg:grid-cols-5"
+    : "grid-cols-2 lg:grid-cols-4";
 
   const [playing, setPlaying] = useState<number[]>([0, 2]);
 
   const handleVideoEnded = useCallback((endedIndex: number) => {
     setPlaying((prev) => {
       const remaining = prev.filter((i) => i !== endedIndex);
-      const idle = services.map((_, i) => i).filter((i) => !prev.includes(i));
+      const idle = cards.map((_, i) => i).filter((i) => !prev.includes(i));
       if (idle.length === 0) return prev;
       const next = idle[Math.floor(Math.random() * idle.length)];
       return [...remaining, next];
     });
-  }, []);
+  }, [cards]);
 
   return (
-    <section id="services" aria-labelledby="services-heading" className="pb-16 lg:pb-24 pt-8 lg:pt-10 relative overflow-hidden">
+    <section ref={sectionRef} className="relative py-14 md:py-20 overflow-hidden">
+      {/* Top divider */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] max-w-4xl h-px"
+        style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.18), transparent)" }}
+      />
+
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 20% 0%, hsl(216 90% 58% / 0.05) 0%, transparent 60%)," +
-            "radial-gradient(ellipse 60% 40% at 80% 100%, hsl(216 90% 58% / 0.04) 0%, transparent 55%)",
-        }}
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, hsl(var(--primary) / 0.04) 0%, transparent 70%)" }}
       />
-      <FloatingOrbs count={3} className="opacity-70" />
 
-      {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-hidden">
-        <Sparkles
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
-          style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(var(--primary))" }}
-        />
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium"
-        >
-          Our Services
-        </motion.p>
-        <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground">
-          <SplitTextReveal text="Five ways we" delay={0.1} stagger={0.06} className="justify-center" />
-          <br />
-          <SplitTextReveal text="produce your event." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
-        </h2>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.55 }}
-          className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
-          style={{ color: "hsl(0 0% 100% / 0.52)" }}
-        >
-          Whether your audience is in a room, on a screen, or both, we handle the full production so you can focus on the content.
-        </motion.p>
-      </div>
-
-      {/* Velocity scroll band */}
-      <div className="border-t border-b border-border/25 mb-8 lg:mb-12 relative z-10">
-        <VelocityScrollBand
-          items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Full A-to-Z Production", "Up to 100K Attendees", "70+ Countries", "2000+ Events", "95% Retention Rate", "Fortune 500 Clients", "48h Talent Match"]}
-          baseSpeed={55}
-          separator="|"
-        />
-      </div>
-
-      {/* 5 equal cards */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-8 lg:mb-10 text-center"
+        >
+          <p className="font-display text-sm uppercase tracking-[0.3em] font-medium mb-3 text-primary">
+            Keep exploring
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-foreground">
+            {currentPath ? "Other services you might need" : "Explore our services"}
+          </h2>
+        </motion.div>
+
         {/* Clickable hint */}
         <div className="flex items-center justify-end gap-1.5 mb-3 lg:mb-4">
           <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "hsl(var(--primary))" }} />
@@ -283,10 +284,11 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-x-5 lg:gap-y-0">
-          {services.map((s, i) => (
-            <ServiceCard
-              key={s.title}
+        {/* Cards grid */}
+        <div className={`grid ${gridCols} gap-3 lg:gap-x-5 lg:gap-y-0`}>
+          {cards.map((s, i) => (
+            <ServiceNavCard
+              key={s.href}
               service={s}
               index={i}
               isPlaying={playing.includes(i)}
@@ -295,8 +297,14 @@ const ServicesSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Bottom divider */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] max-w-4xl h-px"
+        style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.12), transparent)" }}
+      />
     </section>
   );
 };
 
-export default ServicesSection;
+export default ServiceCardsNav;
