@@ -4,9 +4,9 @@ import { X } from "lucide-react";
 const CALENDLY_URL =
   "https://calendly.com/austin-vmproducers/virtual-producer-consultation?embed_domain=vmproducers.com&embed_type=Inline&hide_gdpr_banner=1&background_color=ffffff&text_color=111827&primary_color=16a34a";
 
-const MODAL_W = 672;
+const MODAL_W = 1020;
 const HEADER_H = 72;
-const CONTENT_H = 620;
+const CONTENT_H = 660;
 const TOTAL_H = HEADER_H + CONTENT_H;
 
 interface CalendlyContextValue {
@@ -78,7 +78,7 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
           transition: "transform 0.15s cubic-bezier(0.16,1,0.3,1)",
           zIndex: isOpen ? 9999 : -1,
           width: MODAL_W,
-          maxWidth: "calc(100vw - 2rem)",
+          maxWidth: "calc(100vw - 3rem)",
           height: TOTAL_H,
           background: "#fff",
           borderRadius: "1rem",

@@ -7,6 +7,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { LucideIcon, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { AnimatedCounter, RevealLine } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
