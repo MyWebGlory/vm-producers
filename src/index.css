@@ -1,10 +1,10 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    /* scroll-behavior: smooth deliberately omitted — JS calls use explicit behavior:"smooth" where needed */
+    /* scroll-behavior: smooth deliberately omitted - JS calls use explicit behavior:"smooth" where needed */
   }
 
 
@@ -135,7 +135,7 @@
     will-change: transform, opacity;
   }
 
-  /* content-visibility for below-fold sections — tells the browser it can skip
+  /* content-visibility for below-fold sections - tells the browser it can skip
      rendering offscreen content until the user scrolls near it. */
   .cv-auto {
     content-visibility: auto;

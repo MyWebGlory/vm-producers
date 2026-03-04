@@ -54,7 +54,7 @@ const ClientLogos = () => {
             <SplitTextReveal text="the world's best." delay={0.3} className="justify-center glow-text" />
           </h2>
           <p className="text-muted-foreground text-lg mt-4 max-w-xl mx-auto">
-            From Fortune 500 giants to iconic brands, they chose us for their biggest moments.
+            From Fortune 500 giants to fast-growing startups: when the stakes are high, this is who they call.
           </p>
         </ScrollReveal>
       </div>

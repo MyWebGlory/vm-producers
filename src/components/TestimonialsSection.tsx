@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
+import { SplitTextReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import { useCalendly } from "@/components/CalendlyModal";
 import avatarJeanette from "@/assets/testimonials/jeanette-mccullough.jpeg";
 import avatarKimCoverco from "@/assets/testimonials/kim-ribich-coverco.png";
@@ -221,10 +221,19 @@ const TestimonialsSection = () => {
 
   return (
     <section ref={sectionRef} aria-labelledby="testimonials-heading" className="py-28 lg:py-40 overflow-hidden relative">
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.06) 0%, transparent 70%)" }} />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.05) 0%, transparent 70%)" }} />
       </div>
+      <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         {/* Header */}
@@ -249,7 +258,7 @@ const TestimonialsSection = () => {
             </span>
           </div>
           <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
-            What you’ll experience when you work with us
+            Straight from the people who've been there
           </p>
           <h2 id="testimonials-heading" className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 text-center">
             <SplitTextReveal text="You'll be in great hands." delay={0.1} className="justify-center" />

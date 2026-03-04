@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+﻿import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowUpRight } from "lucide-react";
@@ -142,7 +142,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
         style={{ boxShadow: `inset 0 0 60px hsl(${h} ${s}% ${l}% / 0.10)` }}
       />
 
-      {/* Row 1 — Media */}
+      {/* Row 1 - Media */}
       <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-48 overflow-hidden shrink-0">
         <img
           src={service.image}
@@ -183,7 +183,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
         </div>
       </div>
 
-      {/* Row 2 — Icon + Title */}
+      {/* Row 2 - Icon + Title */}
       <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-5 pt-3 sm:pt-4 self-start w-full">
         <span
           className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl shrink-0"
@@ -194,7 +194,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
         <h3 className="font-display text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">{service.title}</h3>
       </div>
 
-      {/* Row 3 — Tag */}
+      {/* Row 3 - Tag */}
       <p
         className="px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider self-start"
         style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}
@@ -202,7 +202,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
         {service.tag}
       </p>
 
-      {/* Row 4 — Description */}
+      {/* Row 4 - Description */}
       <p
         className="px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 pb-3 sm:pb-4 lg:pb-5 text-[11px] sm:text-xs md:text-sm leading-relaxed hidden sm:block self-start"
         style={{ color: "hsl(0 0% 100% / 0.55)" }}

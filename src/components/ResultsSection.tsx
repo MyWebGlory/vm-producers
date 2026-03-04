@@ -1,7 +1,7 @@
 ﻿import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import useCountUp from "@/hooks/useCountUp";
-import { SplitTextReveal } from "@/components/ScrollAnimations";
+import { SplitTextReveal, FloatingOrbs } from "@/components/ScrollAnimations";
 
 const stats = [
   { end: 2000, prefix: "", suffix: "+", label: "Events Delivered", sub: "Across 70+ countries worldwide" },
@@ -87,6 +87,14 @@ const ResultsSection = () => {
       aria-labelledby="results-heading"
       className="relative overflow-hidden bg-background py-28 lg:py-40"
     >
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
       {/* Subtle ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -94,6 +102,7 @@ const ResultsSection = () => {
           style={{ background: "radial-gradient(ellipse, hsl(216 90% 58%) 0%, transparent 70%)" }}
         />
       </div>
+      <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         {/* Header */}
@@ -121,7 +130,7 @@ const ResultsSection = () => {
             className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl"
             style={{ color: "hsl(var(--foreground) / 0.50)" }}
           >
-            Solid execution, a personal touch, and a proven track record you can count on.
+            These aren't vanity metrics. They're what happens when you show up flawlessly, every single time.
           </motion.p>
         </motion.div>
 

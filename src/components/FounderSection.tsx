@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import founderPhoto from "@/assets/austin-talley-founder.png";
 import { useCalendly } from "@/components/CalendlyModal";
+import { FloatingOrbs } from "@/components/ScrollAnimations";
 
 const credentials = [
   { value: "2,000+", label: "Events produced" },
@@ -27,7 +28,7 @@ const FounderSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(220 15% 82% / 0.38) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -35,6 +36,7 @@ const FounderSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(216 90% 65% / 0.06) 0%, transparent 65%)" }}
       />
+      <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-10 lg:gap-16">
@@ -88,9 +90,7 @@ const FounderSection = () => {
 
             {/* Bio */}
             <motion.p {...fadeUp(0.28)} className="text-sm leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.52)" }}>
-              Austin personally oversees every client engagement, so the right expertise is in your corner from day one.
-              He's been on the ground for 2,000+ productions, from startup launches to global Fortune 500 conferences across 70+ countries.
-              Every project benefits from his direct involvement and a network of 500+ vetted event professionals.
+              Austin shows up for every client personally. No handoffs to a junior team. Over 2,000 productions. 70+ countries. From scrappy startup launches to global Fortune 500 conferences, every project gets his direct attention and a hand-picked team of 500+ vetted professionals.
             </motion.p>
 
             {/* Testimonial line */}

@@ -49,6 +49,19 @@ const AboutSection = () => {
 
   return (
     <section ref={sectionRef} aria-labelledby="about-heading" className="py-32 lg:py-44 bg-card relative overflow-hidden">
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Blue ambient blobs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[45vw] h-[45vw] rounded-full" style={{ background: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 0%, transparent 65%)", transform: "translate(20%, -20%)" }} />
+        <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] rounded-full" style={{ background: "radial-gradient(circle, hsl(216 90% 58% / 0.05) 0%, transparent 65%)", transform: "translate(-20%, 20%)" }} />
+      </div>
       {/* Ambient floating light orbs */}
       <FloatingOrbs count={4} />
       {/* About section content */}
@@ -120,7 +133,7 @@ const AboutSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-muted-foreground text-lg leading-relaxed"
             >
-              VM Producers is a full-service event production agency specialising in live, virtual, and hybrid events, as well as video production and global talent placement. From Fortune 500s to fast-growing startups, every client gets the same dedicated production team.
+              Think of us as the production team you always wished you had. We handle everything behind the scenes (staging, tech, logistics, people) so you can walk out on stage, breathe, and actually enjoy the moment. Fortune 500 or fast-growing startup, every client gets the same dedicated team.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -128,7 +141,7 @@ const AboutSection = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-muted-foreground text-base leading-relaxed"
             >
-              We handle staging, AV, venue sourcing, and on-site logistics for live events; branded platforms and TV-quality livestreams for virtual and hybrid; promotional and recap videos; and verified event professionals matched anywhere in the world within 48 hours. One conversation covers it all.
+              In-person show? We handle the stage, AV, venue, and every logistical detail. Virtual or hybrid? Your audience gets a broadcast-quality experience. Need a promo or recap video? Done. A verified professional anywhere in the world within 48 hours? Also us. One call, and it's all sorted.
             </motion.p>
 
             <RevealLine delay={0.55} className="mb-2" />

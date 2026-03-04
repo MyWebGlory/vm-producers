@@ -1,6 +1,7 @@
 ﻿import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { PhoneCall, ClipboardList, Zap, Film } from "lucide-react";
+import { FloatingOrbs } from "@/components/ScrollAnimations";
 
 const steps = [
   {
@@ -346,7 +347,7 @@ const ProcessSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.08) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -359,6 +360,7 @@ const ProcessSection = () => {
             "radial-gradient(ellipse 50% 40% at 90% 50%, hsl(216 80% 65% / 0.05) 0%, transparent 60%)",
         }}
       />
+      <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
@@ -393,7 +395,7 @@ const ProcessSection = () => {
             className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto"
             style={{ color: "hsl(var(--foreground) / 0.55)" }}
           >
-            A simple, proven process. You make the decisions. We execute every detail.
+            No complicated onboarding. No endless back-and-forth. Just a clear plan, a dedicated team, and complete peace of mind from day one.
           </motion.p>
 
           {/* Step pills */}
@@ -440,6 +442,23 @@ const ProcessSection = () => {
           {steps.map((step, i) => (
             <MobileCard key={step.number} step={step} index={i} />
           ))}
+        </div>
+
+        {/* Scarcity nudge */}
+        <div className="flex justify-center mt-10">
+          <div
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium"
+            style={{
+              border: "1px solid hsl(216 90% 58% / 0.35)",
+              background: "hsl(216 90% 58% / 0.06)",
+              color: "hsl(220 15% 35%)",
+            }}
+          >
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+            We only take on{" "}
+            <strong className="font-bold text-amber-600 mx-1">4 new clients per month</strong>
+            {" "}Spots are filling fast.
+          </div>
         </div>
       </div>
     </section>

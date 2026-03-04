@@ -135,7 +135,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
         style={{ boxShadow: `inset 0 0 60px hsl(${h} ${s}% ${l}% / 0.10)` }}
       />
 
-      {/* Row 1 — Media */}
+      {/* Row 1 - Media */}
       <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-52 overflow-hidden shrink-0">
         <img
           src={service.image}
@@ -176,7 +176,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
         </div>
       </div>
 
-      {/* Row 2 — Icon + Title */}
+      {/* Row 2 - Icon + Title */}
       <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-5 pt-3 sm:pt-4 lg:pt-5 self-start w-full">
         <span
           className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-lg sm:rounded-xl shrink-0"
@@ -187,7 +187,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
         <h3 className="font-display text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">{service.title}</h3>
       </div>
 
-      {/* Row 3 — Tag */}
+      {/* Row 3 - Tag */}
       <p
         className="px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider self-start"
         style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}
@@ -195,7 +195,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
         {service.tag}
       </p>
 
-      {/* Row 4 — Description */}
+      {/* Row 4 - Description */}
       <p
         className="px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 pb-3 sm:pb-4 lg:pb-5 text-[11px] sm:text-xs md:text-sm leading-relaxed hidden sm:block self-start"
         style={{ color: "hsl(0 0% 100% / 0.55)" }}
@@ -224,6 +224,13 @@ const ServicesSection = () => {
 
   return (
     <section id="services" aria-labelledby="services-heading" className="pb-16 lg:pb-24 pt-8 lg:pt-10 relative overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -260,7 +267,7 @@ const ServicesSection = () => {
           className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
           style={{ color: "hsl(0 0% 100% / 0.52)" }}
         >
-          Whether your audience is in a room, on a screen, or both, we handle the full production so you can focus on the content.
+          Whatever you're building (in a room, online, or both), we handle production end to end. You just focus on showing up.
         </motion.p>
       </div>
 

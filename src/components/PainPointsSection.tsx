@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, UserX, WifiOff, MonitorOff, Flame, Archive, AlertTriangle } from "lucide-react";
+import { FloatingOrbs } from "@/components/ScrollAnimations";
 
 const painPalette = [
   { bg: "hsl(0 72% 54% / 0.05)",   border: "hsl(0 68% 50% / 0.18)",   glow: "hsl(0 68% 54% / 0.06)",   deco: "hsl(0 68% 64% / 0.09)",   icon: "hsl(0 55% 50%)" },
@@ -63,10 +64,11 @@ const PainPointsSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(0 60% 48% / 0.18) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
         }}
       />
+      <FloatingOrbs count={4} className="opacity-80" />
       {/* Large arc ring - top-right corner */}
       <svg className="absolute -top-24 -right-24 w-[520px] h-[520px] pointer-events-none opacity-[0.055]" viewBox="0 0 520 520" fill="none">
         <circle cx="520" cy="0" r="420" stroke="hsl(0 60% 48%)" strokeWidth="90" />

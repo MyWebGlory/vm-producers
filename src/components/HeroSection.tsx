@@ -78,7 +78,7 @@ const HeroSection = () => {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-              Full-Service Event Production Agency · Est. 2018
+              #1 Event Production Agency · Est. 2018
             </span>
           </motion.div>
 

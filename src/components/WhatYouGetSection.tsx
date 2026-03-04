@@ -10,7 +10,7 @@ import {
   Heart,
   ArrowRight,
 } from "lucide-react";
-import { MagneticHover, RevealLine } from "@/components/ScrollAnimations";
+import { MagneticHover, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import { useCalendly } from "@/components/CalendlyModal";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
@@ -197,10 +197,15 @@ const WhatYouGetSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(152 50% 38% / 0.12) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full" style={{ background: "radial-gradient(circle, hsl(216 90% 58% / 0.05) 0%, transparent 70%)" }} />
+      </div>
+      <FloatingOrbs count={4} className="opacity-80" />
       <div className="max-w-5xl mx-auto px-6 py-12 lg:py-16">
         <div ref={headerRef} className="text-center max-w-xl mx-auto mb-8 space-y-3">
           <motion.p

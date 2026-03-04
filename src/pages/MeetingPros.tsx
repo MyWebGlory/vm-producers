@@ -50,7 +50,7 @@ const MeetingPros = () => (
       {
         icon: Zap,
         title: "48-Hour Talent Matching",
-        description: "Tell us what you need and you’re matched with the right professional within 48 hours or less, anywhere in the world, without compromise on quality.",
+        description: "Tell us what you need and you're matched with the right professional within 48 hours or less, anywhere in the world, without compromise on quality.",
         image: meetingProsImg,
       },
       {

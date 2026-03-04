@@ -1,8 +1,9 @@
-import { useRef, useEffect, useState } from "react";
+﻿import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useCalendly } from "@/components/CalendlyModal";
+import { FloatingOrbs } from "@/components/ScrollAnimations";
 
 const painPoints = [
   { Icon: UserX,       title: "You trusted the wrong person with too much." },
@@ -95,15 +96,17 @@ const ComparisonSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(220 15% 85% / 0.55) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
       {/* Ambient blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-[50vw] h-[50vw]" style={{ background: "radial-gradient(circle, hsl(0 65% 60% / 0.05) 0%, transparent 65%)", transform: "translate(-20%, -20%)" }} />
-        <div className="absolute bottom-0 right-0 w-[50vw] h-[50vw]" style={{ background: "radial-gradient(circle, hsl(152 55% 45% / 0.06) 0%, transparent 65%)", transform: "translate(20%, 20%)" }} />
+        <div className="absolute bottom-0 right-0 w-[50vw] h-[50vw]" style={{ background: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 0%, transparent 65%)", transform: "translate(20%, 20%)" }} />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70vw] h-[40vh]" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, hsl(216 90% 65% / 0.07) 0%, transparent 70%)" }} />
       </div>
+      <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
@@ -245,38 +248,36 @@ const ComparisonSection = () => {
           initial={{ opacity: 0, y: 28 }}
           animate={isSectionInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.55, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 lg:mt-16 relative rounded-3xl overflow-hidden px-8 py-10 text-center"
-          style={{
-            background: "linear-gradient(135deg, hsl(152 55% 42% / 0.07) 0%, hsl(152 50% 42% / 0.12) 100%)",
-            border: "1.5px solid hsl(152 50% 38% / 0.28)",
-          }}
+          className="mt-12 lg:mt-16 text-center relative"
         >
-          {/* Soft glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 70% 60% at 50% 100%, hsl(152 55% 42% / 0.10) 0%, transparent 70%)" }}
-          />
-          <div className="relative z-10 flex flex-col items-center gap-5">
+          {/* Blue glow backdrop */}
+          <div className="absolute inset-0 pointer-events-none -z-10" style={{ filter: "blur(90px)" }}>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] rounded-full" style={{ background: "radial-gradient(ellipse, hsl(216 90% 58% / 0.28) 0%, hsl(216 90% 65% / 0.10) 55%, transparent 75%)" }} />
+          </div>
+          <div className="flex flex-col items-center gap-5">
             <span
               className="flex items-center justify-center w-12 h-12 rounded-2xl"
-              style={{ background: "hsl(152 55% 42% / 0.12)", border: "1.5px solid hsl(152 50% 38% / 0.28)" }}
+              style={{ background: "hsl(var(--primary) / 0.12)", border: "1.5px solid hsl(var(--primary) / 0.30)" }}
             >
-              <Sparkles size={20} style={{ color: "hsl(152 45% 38%)" }} />
+              <Sparkles size={20} style={{ color: "hsl(var(--primary))" }} />
             </span>
             <div>
               <p className="font-display font-bold text-xl sm:text-2xl tracking-tight mb-2" style={{ color: "hsl(var(--foreground))" }}>
                 Ready to be on the right side of this list?
               </p>
               <p className="text-sm max-w-md mx-auto" style={{ color: "hsl(var(--foreground) / 0.55)" }}>
-                Join 2,000+ successful events. You show up. We’ve got every detail covered.
+                Join 2,000+ successful events. You show up. We've got every detail covered.
               </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-3">
+            </div>            {/* Scarcity nudge */}
+            <div className="flex items-center justify-center gap-2 text-sm font-medium" style={{ color: "hsl(var(--foreground) / 0.65)" }}>
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+              We only take on <strong className="font-bold text-amber-600 mx-1">4 new clients per month</strong>. Spots are filling fast.
+            </div>            <div className="flex flex-col sm:flex-row items-center gap-3">
               <button
                 type="button"
                 onClick={openCalendly}
                 className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                style={{ background: "hsl(152 45% 38%)", color: "white" }}
+                style={{ background: "hsl(var(--primary))", color: "white" }}
               >
                 Get started, it's free
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -285,9 +286,9 @@ const ComparisonSection = () => {
                 to="/live-events"
                 className="group inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"
                 style={{
-                  background: "hsl(152 55% 42% / 0.08)",
-                  border: "1.5px solid hsl(152 50% 38% / 0.25)",
-                  color: "hsl(152 45% 35%)",
+                  background: "hsl(var(--primary) / 0.08)",
+                  border: "1.5px solid hsl(var(--primary) / 0.30)",
+                  color: "hsl(var(--primary))",
                 }}
               >
                 Explore our services

@@ -1,7 +1,7 @@
 ﻿import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
-import { RevealLine } from "@/components/ScrollAnimations";
+import { RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 
 const faqs = [
   {
@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "How fast can you get started on my event?",
     answer:
-      "You’re matched with a producer within 48 hours of your first call. For urgent needs, you get access to our accelerated onboarding track. We’ve gone from first contact to live event execution in under 2 weeks.",
+      "You're matched with a producer within 48 hours of your first call. For urgent needs, you get access to our accelerated onboarding track. We've gone from first contact to live event execution in under 2 weeks.",
   },
   {
     question: "What exactly is included when you say \u2018full-service\u2019?",
@@ -32,7 +32,7 @@ const faqs = [
   {
     question: "Can you handle virtual-only or hybrid formats?",
     answer:
-      "Virtual and hybrid is where you’ll get a truly premium experience. Your remote attendees get the exact same quality as those in the room, broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
+      "Virtual and hybrid is where you'll get a truly premium experience. Your remote attendees get the exact same quality as those in the room, broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
   },
 ];
 
@@ -43,6 +43,14 @@ const FAQSection = () => {
 
   return (
     <section ref={ref} aria-labelledby="faq-heading" className="relative py-24 md:py-36 bg-background overflow-hidden">
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
       {/* Subtle ambient */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -51,6 +59,7 @@ const FAQSection = () => {
             "radial-gradient(ellipse 60% 40% at 90% 60%, hsl(216 90% 65% / 0.05), transparent 55%)",
         }}
       />
+      <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
