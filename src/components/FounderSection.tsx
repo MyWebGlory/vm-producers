@@ -55,11 +55,11 @@ const FounderSection = () => {
 
             {/* Name + title */}
             <motion.div {...fadeUp(0.1)}>
-              <p className="text-[10px] uppercase tracking-[0.35em] font-semibold mb-3" style={{ color: "hsl(216 90% 58% / 0.75)" }}>
+              <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-3" style={{ color: "hsl(216 90% 58% / 0.75)" }}>
                 Meet the founder
               </p>
-              <p className="font-display font-bold text-2xl lg:text-3xl" style={{ color: "hsl(var(--foreground))" }}>Austin Talley</p>
-              <p className="text-sm font-semibold mt-1" style={{ color: "hsl(216 90% 58%)" }}>Founder & CEO, VM Producers</p>
+              <p className="font-display font-bold text-3xl lg:text-4xl" style={{ color: "hsl(var(--foreground))" }}>Austin Talley</p>
+              <p className="text-base font-semibold mt-1" style={{ color: "hsl(216 90% 58%)" }}>Founder & CEO, VM Producers</p>
             </motion.div>
 
             {/* Credential pills */}
@@ -82,13 +82,13 @@ const FounderSection = () => {
 
             {/* Quote */}
             <motion.p {...fadeUp(0.22)} className="text-xl lg:text-2xl font-display font-semibold leading-snug" style={{ color: "hsl(var(--foreground) / 0.85)" }}>
-              "Make world-class event production accessible to{" "}
+              "Make serious event production accessible to{" "}
               <em style={{ color: "hsl(216 90% 58%)", fontStyle: "italic" }}>any organization, anywhere.</em>"
             </motion.p>
 
             {/* Bio */}
             <motion.p {...fadeUp(0.28)} className="text-sm leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.52)" }}>
-              Austin personally oversees every client engagement, ensuring the right expertise is in your corner from day one.
+              Austin personally oversees every client engagement, so the right expertise is in your corner from day one.
               He's been on the ground for 2,000+ productions, from startup launches to global Fortune 500 conferences across 70+ countries.
               Every project benefits from his direct involvement and a network of 500+ vetted event professionals.
             </motion.p>

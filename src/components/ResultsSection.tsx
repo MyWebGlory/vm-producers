@@ -121,7 +121,7 @@ const ResultsSection = () => {
             className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl"
             style={{ color: "hsl(var(--foreground) / 0.50)" }}
           >
-            Technical excellence, a personal touch, and a proven track record you can count on.
+            Solid execution, a personal touch, and a proven track record you can count on.
           </motion.p>
         </motion.div>
 

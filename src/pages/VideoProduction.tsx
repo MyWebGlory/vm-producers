@@ -24,7 +24,7 @@ const seo = {
         serviceType: "Video Production",
         name: "Video Production",
         description: "Professional video production for events, brands, and corporate storytelling. 4K multi-camera production, event highlight reels, brand films, and fast 48h turnaround.",
-        offerNames: ["Event Promos & Teasers", "Live Multi-Camera Production", "Event Highlight Reels", "Corporate Films & Brand Stories", "Post-Production Excellence"],
+        offerNames: ["Event Promos & Teasers", "Live Multi-Camera Production", "Event Highlight Reels", "Corporate Films & Brand Stories", "Post-Production & Delivery"],
       }),
       buildBreadcrumbSchema("/video-production", "Video Production"),
     ],
@@ -85,7 +85,7 @@ const VideoProduction = () => (
       },
       {
         icon: Sliders,
-        title: "Post-Production Excellence",
+        title: "Post-Production & Delivery",
         description: "Raw footage is just the starting point. Our post-production team handles color grading, motion graphics, sound design, subtitle tracks, and platform-specific exports, delivering broadcast-ready files on your deadline, every time, with the polish your brand demands.",
         image: videoProductionImg,
       },

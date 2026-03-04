@@ -12,7 +12,7 @@ import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } 
 
 const seo = {
   title: "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
-  description: "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, and post-event content hub. 95% audience retention rate.",
+  description: "Expert hybrid event production connecting in-person and virtual audiences. Full AV production, multi-camera live streaming, audience engagement tools, and post-event content hub. 95% audience retention rate.",
   canonical: "/hybrid-events",
   dateModified: TODAY,
   jsonLd: {
@@ -21,7 +21,7 @@ const seo = {
       buildWebPageSchema({
         path: "/hybrid-events",
         name: "Hybrid Event Production Services | In-Person & Virtual | VM Producers",
-        description: "Expert hybrid event production bridging in-person and virtual audiences seamlessly. Full AV production, multi-camera live streaming, audience engagement tools, 95% retention rate.",
+        description: "Expert hybrid event production connecting in-person and virtual audiences. Full AV production, multi-camera live streaming, audience engagement tools, 95% retention rate.",
       }),
       buildServiceSchema({
         path: "/hybrid-events",
@@ -60,19 +60,19 @@ const HybridEvents = () => (
       {
         icon: Camera,
         title: "Multi-Camera Live Production",
-        description: "Our Head of Hybrid is an award-winning technical producer who has led hundreds of complex productions. We deploy multiple cameras and experienced operators on-site, with a remote production team handling the broadcast feed, delivering branded streams, seamless split-screen layouts, and real-time feed switching that makes your show look and feel world-class.",
+        description: "Our Head of Hybrid is an award-winning technical producer who has led hundreds of complex productions. We deploy multiple cameras and experienced operators on-site, with a remote production team handling the broadcast feed, delivering branded streams, sharp split-screen layouts, and real-time feed switching that makes your show look and feel broadcast-quality.",
         image: hybridEventsImg,
       },
       {
         icon: Volume2,
         title: "Full AV Production",
-        description: "Your in-person audience gets the full live production treatment: professional lighting rigs, broadcast-quality sound design, and sharp staging. We assemble dedicated AV crews of any size, all aligned to the same standard, all committed to delivering excellence from the first rehearsal through the closing session.",
+        description: "Your in-person audience gets the full live production treatment: professional lighting rigs, broadcast-quality sound design, and sharp staging. We assemble AV crews of any size, all aligned to the same standard, all committed to delivering from the first rehearsal through the closing session.",
         image: liveEventsImg,
       },
       {
         icon: Monitor,
         title: "Platform Management",
-        description: "We handle all the technology for you, full platform setup, branding customization, technical rehearsals, and live support throughout your event. Whether you're streaming to a branded webpage, Zoom, or a dedicated virtual event platform, your remote audience gets a polished, stable, and fully branded experience from login to close.",
+        description: "We handle all the technology for you, full platform setup, branding customization, technical rehearsals, and live support throughout your event. Whether you're streaming to a branded webpage, Zoom, or a virtual event platform, your remote audience gets a polished, stable, and fully branded experience from login to close.",
         image: virtualEventsControlRoomImg,
       },
       {

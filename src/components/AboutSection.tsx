@@ -104,7 +104,7 @@ const AboutSection = () => {
             </motion.div>
             <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
               <SplitTextReveal text="You've got the vision." delay={0.2} />{" "}
-              <SplitTextReveal text="You're about to make it real." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
+              <SplitTextReveal text="We're about to make it real." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>
             {/* Title divider */}
             <div className="flex items-center gap-3">

@@ -74,7 +74,7 @@ const MeetingPros = () => (
       {
         icon: Monitor,
         title: "Virtual Producers & AV Specialists",
-        description: "Experienced virtual producers on the technical side, local AV specialists on the ground. State-of-the-art equipment, skilled operators.",
+        description: "Experienced virtual producers on the technical side, local AV specialists on the ground. Professional-grade equipment, skilled operators.",
         image: virtualEventsControlRoomImg,
       },
       {

@@ -35,7 +35,7 @@ const LiveEvents = () => (
   <ServicePageLayout
     seo={seo}
     title="Live Events"
-    subtitle="In-Person Excellence"
+    subtitle="In-Person Production"
     featuresBefore="Live event production, "
     featuresAccent="start to finish."
     description="In-person events that run on time, look sharp, and hold together under pressure. We handle the full production, so you show up as the host."
@@ -50,19 +50,19 @@ const LiveEvents = () => (
       {
         icon: Layers,
         title: "End-to-End Production",
-        description: "Your event is handled from first brief to final breakdown. We manage program development, A-to-Z event logistics, staging, lighting, AV production, branding, signage, catering, and dedicated on-site staff, so you walk in as the host, not the fixer. Every detail is documented, rehearsed, and executed to plan.",
+        description: "Your event is handled from first brief to final breakdown. We manage program development, A-to-Z event logistics, staging, lighting, AV production, branding, signage, catering, and on-site staff, so you walk in as the host, not the fixer. Every detail is documented, rehearsed, and executed to plan.",
         image: liveEventsImg,
       },
       {
         icon: MapPin,
         title: "Venue & Logistics",
-        description: "Finding the right venue is only the beginning. We handle venue selection, hotel room block negotiations, attendee transportation, and on-site logistics coordination, ensuring your guests arrive on time, settled comfortably, and focused entirely on your content rather than the chaos of getting there.",
+        description: "Finding the right venue is only the beginning. We handle venue selection, hotel room block negotiations, attendee transportation, and on-site logistics coordination, so your guests arrive on time, settled comfortably, and focused entirely on your content rather than the chaos of getting there.",
         image: hybridSummitImg,
       },
       {
         icon: Users,
         title: "Guest Experience Management",
-        description: "From the moment your attendees register to the final farewell, every touchpoint is managed. Our on-site staff handles check-in, catering coordination, and guest services, creating a seamless, premium experience that reflects your brand and keeps your audience engaged throughout.",
+        description: "From the moment your attendees register to the final farewell, every touchpoint is managed. Our on-site staff handles check-in, catering coordination, and guest services, creating a polished experience that reflects your brand and keeps your audience engaged throughout.",
         image: aboutEventImg,
       },
       {
