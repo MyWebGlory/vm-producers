@@ -292,7 +292,8 @@ export const FloatingOrbs = ({
   ].slice(0, count);
 
   return (
-    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+    // Hidden on mobile to prevent 40+ simultaneous animated layers causing scroll jank
+    <div className={`hidden sm:block absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       {configs.map((c, i) => (
         <motion.div
           key={i}
@@ -452,6 +453,11 @@ export const VelocityScrollBand = ({
   const all = [...items, ...items, ...items, ...items];
   const innerRef = useRef<HTMLDivElement>(null);
   const [wrapWidth, setWrapWidth] = useState(1600);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
 
   const x = useMotionValue(0);
   const scrollYMotion = useMotionValue(0);
@@ -459,12 +465,13 @@ export const VelocityScrollBand = ({
   const smoothV = useSpring(scrollVelocity, { damping: 50, stiffness: 400 });
   const velocityFactor = useTransform(smoothV, [-3000, 0, 3000], [0.3, 1, 3.5], { clamp: true });
 
-  // Sync scroll position
+  // Sync scroll position (desktop only)
   useEffect(() => {
+    if (isMobile) return;
     const update = () => scrollYMotion.set(window.scrollY);
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
-  }, [scrollYMotion]);
+  }, [scrollYMotion, isMobile]);
 
   // Measure the half-width of all items for a seamless wrap point
   useEffect(() => {
@@ -478,6 +485,13 @@ export const VelocityScrollBand = ({
   }, []);
 
   useAnimationFrame((_, delta) => {
+    if (isMobile) {
+      // Simple constant speed on mobile - no scroll velocity computation
+      let newX = x.get() - baseSpeed * 0.6 * (delta / 1000);
+      if (newX < -wrapWidth) newX += wrapWidth;
+      x.set(newX);
+      return;
+    }
     const speed = baseSpeed * velocityFactor.get();
     let newX = x.get() - speed * (delta / 1000);
     if (newX < -wrapWidth) newX += wrapWidth;

@@ -193,8 +193,8 @@ const ComparisonSection = () => {
         {/* Comparison columns - horizontal scroll on mobile+tablet, grid on desktop */}
         <div
           ref={scrollRef}
-          className="flex lg:grid lg:grid-cols-2 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0 -mx-2 sm:-mx-6 px-2 sm:px-6 lg:mx-0 lg:px-0 scrollbar-none"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex items-start lg:grid lg:grid-cols-2 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0 -mx-2 sm:-mx-6 px-2 sm:px-6 lg:mx-0 lg:px-0 scrollbar-none"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
         >
           {/* LEFT - Without */}
           <div className="min-w-[calc(100vw-2.5rem)] sm:min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
@@ -251,7 +251,7 @@ const ComparisonSection = () => {
           className="mt-12 lg:mt-16 text-center relative"
         >
           {/* Blue glow backdrop */}
-          <div className="absolute inset-0 pointer-events-none -z-10" style={{ filter: "blur(90px)" }}>
+          <div className="absolute inset-0 pointer-events-none -z-10 hidden sm:block" style={{ filter: "blur(90px)" }}>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] rounded-full" style={{ background: "radial-gradient(ellipse, hsl(216 90% 58% / 0.28) 0%, hsl(216 90% 65% / 0.10) 55%, transparent 75%)" }} />
           </div>
           <div className="flex flex-col items-center gap-5">
