@@ -65,7 +65,7 @@ const AboutSection = () => {
       {/* Ambient floating light orbs */}
       <FloatingOrbs count={4} />
       {/* About section content */}
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-2 sm:px-6 relative z-10">
         <div className="flex flex-col md:flex-row gap-16 md:gap-20 items-center">
           {/* Video carousel */}
           <div className="w-full md:w-1/2">
@@ -103,7 +103,7 @@ const AboutSection = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.15, duration: 0.5 }}
-              className="flex items-center gap-3"
+              className="flex items-center justify-center gap-3"
             >
               <span
                 className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
@@ -115,12 +115,12 @@ const AboutSection = () => {
                 Why you'll never look back
               </p>
             </motion.div>
-            <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
+            <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground text-center">
               <SplitTextReveal text="You've got the vision." delay={0.2} />{" "}
               <SplitTextReveal text="We're about to make it real." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
             </h2>
             {/* Title divider */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
               <span className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
                 <Award size={14} style={{ color: "hsl(var(--primary))" }} />
@@ -131,7 +131,7 @@ const AboutSection = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-muted-foreground text-lg leading-relaxed"
+              className="text-muted-foreground text-lg leading-relaxed text-center"
             >
               Think of us as the production team you always wished you had. We handle everything behind the scenes (staging, tech, logistics, people) so you can walk out on stage, breathe, and actually enjoy the moment. Fortune 500 or fast-growing startup, every client gets the same dedicated team.
             </motion.p>
@@ -139,7 +139,7 @@ const AboutSection = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-muted-foreground text-base leading-relaxed"
+              className="text-muted-foreground text-base leading-relaxed text-center"
             >
               In-person show? We handle the stage, AV, venue, and every logistical detail. Virtual or hybrid? Your audience gets a broadcast-quality experience. Need a promo or recap video? Done. A verified professional anywhere in the world within 48 hours? Also us. One call, and it's all sorted.
             </motion.p>
@@ -149,6 +149,7 @@ const AboutSection = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.6, duration: 0.5 }}
+              className="flex justify-center"
             >
               <button
                 type="button"

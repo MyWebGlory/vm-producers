@@ -206,7 +206,7 @@ const WhatYouGetSection = () => {
         <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full" style={{ background: "radial-gradient(circle, hsl(216 90% 58% / 0.05) 0%, transparent 70%)" }} />
       </div>
       <FloatingOrbs count={4} className="opacity-80" />
-      <div className="max-w-5xl mx-auto px-6 py-12 lg:py-16">
+      <div className="max-w-5xl mx-auto px-2 sm:px-6 py-12 lg:py-16">
         <div ref={headerRef} className="text-center max-w-xl mx-auto mb-8 space-y-3">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -219,7 +219,7 @@ const WhatYouGetSection = () => {
           </motion.p>
           <RevealLine delay={0.1} color="from-transparent via-primary/30 to-transparent" className="max-w-[60px] mx-auto" />
           <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight"
             style={{ color: "hsl(var(--foreground))" }}
           >
             <span className="block overflow-hidden">

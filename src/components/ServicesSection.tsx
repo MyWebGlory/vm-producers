@@ -136,7 +136,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
       />
 
       {/* Row 1 - Media */}
-      <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-52 overflow-hidden shrink-0">
+      <div className="relative w-full h-40 sm:h-32 md:h-40 lg:h-52 overflow-hidden shrink-0">
         <img
           src={service.image}
           alt={service.title}
@@ -163,7 +163,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
           className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
-          <span className="font-display text-sm sm:text-lg lg:text-xl font-bold text-white leading-none">{service.stat}</span>
+          <span className="font-display text-xs sm:text-lg lg:text-xl font-bold text-white leading-none">{service.stat}</span>
           <span className="text-[8px] sm:text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
@@ -189,7 +189,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
 
       {/* Row 3 - Tag */}
       <p
-        className="px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider self-start"
+        className="hidden sm:block px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider self-start"
         style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}
       >
         {service.tag}
@@ -202,6 +202,8 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
       >
         {service.description}
       </p>
+      {/* Mobile-only bottom spacer (description hidden on xs) */}
+      <div className="pb-2.5 sm:hidden shrink-0" />
     </MotionLink>
   );
 };
@@ -242,7 +244,7 @@ const ServicesSection = () => {
       <FloatingOrbs count={3} className="opacity-70" />
 
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-hidden">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-2 sm:px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-hidden">
         <Sparkles
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
           style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(var(--primary))" }}
@@ -255,7 +257,7 @@ const ServicesSection = () => {
         >
           Our Services
         </motion.p>
-        <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground">
+        <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground">
           <SplitTextReveal text="Five ways we" delay={0.1} stagger={0.06} className="justify-center" />
           <br />
           <SplitTextReveal text="produce your event." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
@@ -264,8 +266,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.55 }}
-          className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
-          style={{ color: "hsl(0 0% 100% / 0.52)" }}
+          className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed text-muted-foreground"
         >
           Whatever you're building (in a room, online, or both), we handle production end to end. You just focus on showing up.
         </motion.p>
@@ -281,16 +282,16 @@ const ServicesSection = () => {
       </div>
 
       {/* 5 equal cards */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 relative z-10">
         {/* Clickable hint */}
-        <div className="flex items-center justify-end gap-1.5 mb-3 lg:mb-4">
+        <div className="flex items-center justify-center gap-1.5 mb-3 lg:mb-4">
           <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "hsl(var(--primary))" }} />
-          <p className="text-[11px] sm:text-xs font-medium" style={{ color: "hsl(0 0% 100% / 0.38)" }}>
+          <p className="text-[11px] sm:text-xs font-medium text-muted-foreground">
             Click any card to explore that service
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-x-5 lg:gap-y-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-x-5 lg:gap-y-0">
           {services.map((s, i) => (
             <ServiceCard
               key={s.title}

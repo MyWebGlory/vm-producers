@@ -199,7 +199,7 @@ const Card = ({
   const Icon = step.icon;
   return (
     <div
-      className="relative rounded-2xl p-6 overflow-hidden"
+      className="relative rounded-xl sm:rounded-2xl p-4 sm:p-6 overflow-hidden"
       style={{
         background: "hsl(220 22% 97%)",
         border: `1.5px solid hsl(${step.accent} / 0.25)`,
@@ -231,7 +231,7 @@ const Card = ({
       )}
 
       {/* Icon */}
-      <div className="relative w-fit mb-4">
+      <div className="relative w-fit mb-3 sm:mb-4">
         <motion.span
           className="absolute inset-0 rounded-xl"
           style={{ background: `hsl(${step.accent} / 0.2)` }}
@@ -239,31 +239,32 @@ const Card = ({
           transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
         />
         <span
-          className="relative flex items-center justify-center w-11 h-11 rounded-xl"
+          className="relative flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-xl"
           style={{
             background: `hsl(${step.accent} / 0.12)`,
             border: `1.5px solid hsl(${step.accent} / 0.40)`,
           }}
         >
-          <Icon size={20} style={{ color: `hsl(${step.accent})` }} />
+          <Icon size={16} className="sm:hidden" style={{ color: `hsl(${step.accent})` }} />
+          <Icon size={20} className="hidden sm:block" style={{ color: `hsl(${step.accent})` }} />
         </span>
       </div>
 
       {/* Text */}
-      <div className="flex flex-col gap-1.5 relative z-10">
+      <div className="flex flex-col gap-1 sm:gap-1.5 relative z-10">
         <p
-          className="text-[10px] uppercase tracking-[0.22em] font-semibold"
+          className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] font-semibold"
           style={{ color: `hsl(${step.accent})` }}
         >
           {step.subtitle}
         </p>
         <h3
-          className="font-display font-bold text-xl lg:text-2xl leading-tight"
+          className="font-display font-bold text-base sm:text-xl lg:text-2xl leading-tight"
           style={{ color: "hsl(var(--foreground))" }}
         >
           {step.title}
         </h3>
-        <p className="text-sm leading-relaxed mt-1" style={{ color: "hsl(var(--foreground) / 0.58)" }}>
+        <p className="text-xs sm:text-sm leading-relaxed mt-0.5 sm:mt-1" style={{ color: "hsl(var(--foreground) / 0.58)" }}>
           {step.description}
         </p>
       </div>
@@ -340,7 +341,7 @@ const ProcessSection = () => {
   return (
     <section
       aria-labelledby="process-heading"
-      className="relative py-24 lg:py-40 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-40 overflow-hidden"
       style={{ background: "hsl(220 20% 98%)" }}
     >
       {/* Dot grid */}
@@ -362,9 +363,9 @@ const ProcessSection = () => {
       />
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-20 lg:mb-28">
+        <div ref={headerRef} className="text-center mb-10 sm:mb-20 lg:mb-28">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -438,16 +439,24 @@ const ProcessSection = () => {
         </div>
 
         {/* Mobile fallback - simple stacked cards */}
-        <div className="flex flex-col gap-6 md:hidden">
+        <div className="flex flex-col gap-3 sm:gap-6 md:hidden">
           {steps.map((step, i) => (
             <MobileCard key={step.number} step={step} index={i} />
           ))}
         </div>
 
         {/* Scarcity nudge */}
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-8 sm:mt-10">
+          {/* Mobile: plain text, no pill */}
+          <p className="flex items-center gap-2 text-sm font-medium sm:hidden" style={{ color: "hsl(220 15% 45%)" }}>
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+            Only{" "}
+            <strong className="font-bold text-amber-600">4 new clients / month.</strong>
+            {" "}Spots filling fast.
+          </p>
+          {/* Desktop: pill */}
           <div
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium"
+            className="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium"
             style={{
               border: "1px solid hsl(216 90% 58% / 0.35)",
               background: "hsl(216 90% 58% / 0.06)",

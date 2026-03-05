@@ -38,7 +38,7 @@ const FounderSection = () => {
       />
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-10 lg:gap-16">
 
           {/* Photo */}

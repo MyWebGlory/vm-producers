@@ -41,7 +41,7 @@ const ClientLogos = () => {
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--accent) / 0.05) 0%, transparent 70%)" }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-6">
         {/* Bold header */}
         <ScrollReveal className="text-center mb-24 lg:mb-32">
           <motion.p
@@ -49,7 +49,7 @@ const ClientLogos = () => {
           >
             They Trust Us
           </motion.p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
             <SplitTextReveal text="You'll be working with" delay={0.1} className="justify-center" />{" "}
             <SplitTextReveal text="the world's best." delay={0.3} className="justify-center glow-text" />
           </h2>

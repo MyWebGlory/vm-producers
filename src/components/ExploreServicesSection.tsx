@@ -37,7 +37,7 @@ const ExploreServicesSection = ({ currentPath = "" }: ExploreServicesSectionProp
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] max-w-3xl h-px"
         style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.2), transparent)" }}
       />
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

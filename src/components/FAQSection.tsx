@@ -61,7 +61,7 @@ const FAQSection = () => {
       />
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-2 sm:px-6">
         {/* Header */}
         <div className="relative overflow-hidden text-center mb-16">
           {/* Watermark icon */}
@@ -93,7 +93,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-3xl md:text-5xl font-display font-bold text-foreground leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight"
           >
             Your questions,{" "}
             <span style={{ color: "hsl(var(--primary))" }}>answered honestly.</span>

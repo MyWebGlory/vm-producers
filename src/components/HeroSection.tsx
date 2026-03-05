@@ -5,22 +5,14 @@ import { AnimatedCounter, FloatingOrbs } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
 import { ArrowRight } from "lucide-react";
 import { useCalendly } from "@/components/CalendlyModal";
-import avatar1 from "@/assets/testimonials/jeanette-mccullough.jpeg";
-import avatar2 from "@/assets/testimonials/lesley-edwards.jpg";
-import avatar3 from "@/assets/testimonials/tony-susa.jpg";
 import logoCapterra from "@/assets/logo-capterra.png";
 import logoTrustpilot from "@/assets/logo-trustpilot.png";
-import avatar4 from "@/assets/testimonials/george-zisiadis.jpg";
-import avatar5 from "@/assets/testimonials/john-winter.jpeg";
 
 const stats = [
   { value: 2000, suffix: "+", label: "Events Delivered" },
   { value: 100, suffix: "%", label: "Success Rate" },
   { value: 350, suffix: "K+", label: "Attendees Reached" },
 ];
-
-const avatarPhotos = [avatar1, avatar2, avatar3, avatar4, avatar5];
-const avatarNames = ["Jeanette", "Lesley", "Tony", "George", "John"];
 
 const HeroSection = () => {
   const { openCalendly } = useCalendly();
@@ -59,7 +51,7 @@ const HeroSection = () => {
       {/* Main content - centred, full height */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center"
+        className="relative z-10 h-full flex flex-col items-center justify-center px-2 sm:px-6 text-center"
       >
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center gap-5">
 
@@ -70,7 +62,7 @@ const HeroSection = () => {
             transition={{ delay: 0.1, duration: 0.4 }}
           >
             <span
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border"
+              className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium border"
               style={{
                 background: "hsl(216 90% 58% / 0.10)",
                 borderColor: "hsl(216 90% 58% / 0.28)",
@@ -87,12 +79,12 @@ const HeroSection = () => {
             initial={{ opacity: 1, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.07] text-white"
+            className="text-[2.4rem] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.07] text-white"
             style={{ textShadow: "0 2px 24px rgba(0,0,0,0.7)" }}
             data-speakable
           >
             Make your next event{" "}
-            <br className="hidden sm:block" />
+            <br />
             <span style={{ color: "hsl(216 90% 65%)" }}>unforgettable.</span>
           </motion.h1>
 
@@ -101,7 +93,7 @@ const HeroSection = () => {
             initial={{ opacity: 1, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.5 }}
-            className="text-sm sm:text-base md:text-lg max-w-xl leading-relaxed service-summary"
+            className="text-xs sm:text-sm md:text-base max-w-xl leading-relaxed service-summary"
             style={{ color: "hsl(0 0% 100% / 0.68)" }}
             data-speakable
           >
@@ -123,7 +115,7 @@ const HeroSection = () => {
               <button
                 type="button"
                 onClick={openCalendly}
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-display font-semibold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden cursor-pointer"
+                className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-display font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 relative overflow-hidden cursor-pointer"
                 style={{
                   background: "hsl(216 90% 58%)",
                   color: "white",
@@ -155,7 +147,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.58, duration: 0.4 }}
-            className="flex items-center gap-1.5 text-sm px-4 py-1.5 rounded-full"
+            className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-sm px-3 sm:px-4 py-1 sm:py-1.5 rounded-full"
             style={{
               color: "hsl(25 90% 68%)",
               border: "1px solid hsl(25 90% 58% / 0.45)",
@@ -165,41 +157,6 @@ const HeroSection = () => {
             <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "hsl(25 90% 58%)" }} />
             Only 4 new clients per month - spots are filling fast.
           </motion.p>
-
-          {/* Social proof */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.64, duration: 0.4 }}
-            className="flex items-center gap-3 mt-1"
-          >
-            <div className="flex -space-x-2">
-              {avatarPhotos.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={avatarNames[i]}
-                  className="w-7 h-7 rounded-full object-cover border-2"
-                  style={{
-                    borderColor: "rgba(8,12,24,0.85)",
-                    zIndex: 5 - i,
-                  }}
-                />
-              ))}
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-3.5 h-3.5 fill-current text-yellow-400" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-xs" style={{ color: "hsl(0 0% 100% / 0.55)" }}>
-                <span className="font-semibold text-white">200+</span> teams have already made the leap
-              </p>
-            </div>
-          </motion.div>
 
           {/* Stats row - inline, no separators */}
           <motion.div
@@ -225,7 +182,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.82, duration: 0.4 }}
-            className="flex items-center justify-center gap-6 sm:gap-10 mt-1"
+            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-8 mt-1"
             aria-label="Reviewed on"
           >
             {/* Capterra */}

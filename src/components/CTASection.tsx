@@ -38,7 +38,7 @@ const CTASection = () => {
       <ConstellationBG variant="dark" className="z-[1] opacity-70" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
         {/* Section icon badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

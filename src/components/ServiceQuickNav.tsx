@@ -175,7 +175,7 @@ const ServiceQuickNav = () => {
         style={{ background: "linear-gradient(to right, transparent, hsl(216 90% 58% / 0.25), transparent)" }}
       />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}

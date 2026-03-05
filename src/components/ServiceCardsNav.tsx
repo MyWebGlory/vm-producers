@@ -143,7 +143,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
       />
 
       {/* Row 1 - Media */}
-      <div className="relative w-full h-28 sm:h-36 md:h-44 lg:h-48 overflow-hidden shrink-0">
+      <div className="relative w-full h-20 sm:h-32 md:h-40 lg:h-48 overflow-hidden shrink-0">
         <img
           src={service.image}
           alt={service.title}
@@ -170,7 +170,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
           className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
-          <span className="font-display text-sm sm:text-base lg:text-lg font-bold text-white leading-none">{service.stat}</span>
+          <span className="font-display text-xs sm:text-base lg:text-lg font-bold text-white leading-none">{service.stat}</span>
           <span className="text-[8px] sm:text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
@@ -196,7 +196,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
 
       {/* Row 3 - Tag */}
       <p
-        className="px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider self-start"
+        className="hidden sm:block px-3 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider self-start"
         style={{ color: `hsl(${h} ${s}% ${l + 18}%)` }}
       >
         {service.tag}
@@ -209,6 +209,8 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
       >
         {service.description}
       </p>
+      {/* Mobile-only bottom spacer (description hidden on xs) */}
+      <div className="pb-2.5 sm:hidden shrink-0" />
     </MotionLink>
   );
 };
@@ -260,7 +262,7 @@ const ServiceCardsNav = ({ currentPath = "" }: ServiceCardsNavProps) => {
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, hsl(var(--primary) / 0.04) 0%, transparent 70%)" }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -271,15 +273,15 @@ const ServiceCardsNav = ({ currentPath = "" }: ServiceCardsNavProps) => {
           <p className="font-display text-sm uppercase tracking-[0.3em] font-medium mb-3 text-primary">
             Keep exploring
           </p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight text-foreground">
             {currentPath ? "Other services you might need" : "Explore our services"}
           </h2>
         </motion.div>
 
         {/* Clickable hint */}
-        <div className="flex items-center justify-end gap-1.5 mb-3 lg:mb-4">
+        <div className="flex items-center justify-center gap-1.5 mb-3 lg:mb-4">
           <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "hsl(var(--primary))" }} />
-          <p className="text-[11px] sm:text-xs font-medium" style={{ color: "hsl(0 0% 100% / 0.38)" }}>
+          <p className="text-[11px] sm:text-xs font-medium text-muted-foreground">
             Click any card to explore that service
           </p>
         </div>

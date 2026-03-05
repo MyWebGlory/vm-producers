@@ -244,7 +244,7 @@ const ServicePageLayout = ({
 
         <motion.div
           style={{ opacity: contentOpacity, y: contentY }}
-          className="relative z-10 h-full flex flex-col items-center justify-center px-6"
+          className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6"
         >
           <div className="max-w-4xl mx-auto text-center">
             <motion.p
@@ -334,7 +334,7 @@ const ServicePageLayout = ({
         aria-labelledby="features-heading"
         className="py-16 md:py-24 lg:py-32"
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-20">
             <motion.p
               className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"

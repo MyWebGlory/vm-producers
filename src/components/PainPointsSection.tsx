@@ -121,7 +121,7 @@ const PainPointsSection = () => {
           />
         </motion.div>
       ))}
-<div className="max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-28 lg:py-44">
+<div className="max-w-5xl mx-auto px-2 md:px-6 py-16 md:py-28 lg:py-44">
 
         {/* Header */}
         <div ref={headerRef} className="mb-10 md:mb-24 lg:mb-36 text-center relative overflow-hidden">
@@ -149,7 +149,7 @@ const PainPointsSection = () => {
             You've probably felt this.
           </motion.p>
 
-          <h2 id="pain-heading" className="text-[2.4rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
+          <h2 id="pain-heading" className="text-3xl leading-[1.1] sm:text-4xl lg:text-5xl font-display font-bold tracking-tight">
             {[
               { text: "Sound familiar?", dark: true },
               { text: "You don't have to live it.", dark: false },
@@ -254,11 +254,11 @@ const CalloutBox = () => {
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      className="mt-20 lg:mt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pt-12 border-t"
+      className="mt-20 lg:mt-28 flex flex-col items-center md:flex-row md:items-center justify-between gap-8 pt-12 border-t"
       style={{ borderColor: "hsl(216 90% 82%)" }}
     >
       <p
-        className="font-display font-bold text-2xl md:text-3xl leading-snug max-w-md"
+        className="font-display font-bold text-2xl md:text-3xl leading-snug max-w-md text-center md:text-left"
         style={{ color: "hsl(216 90% 42%)" }}
       >
         None of this has to happen to you.

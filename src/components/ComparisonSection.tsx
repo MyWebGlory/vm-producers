@@ -108,7 +108,7 @@ const ComparisonSection = () => {
       </div>
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-2 sm:px-6 relative z-10">
         {/* Header */}
         <div ref={headerRef} className="relative overflow-hidden text-center mb-16 lg:mb-20">
           {/* Watermark icon */}
@@ -134,7 +134,7 @@ const ComparisonSection = () => {
           >
             The honest difference
           </motion.p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight leading-[1.1]">
             {[
               { text: "Two very different outcomes.", dark: true },
               { text: "Which one is yours?", gold: true },
@@ -193,11 +193,11 @@ const ComparisonSection = () => {
         {/* Comparison columns - horizontal scroll on mobile+tablet, grid on desktop */}
         <div
           ref={scrollRef}
-          className="flex lg:grid lg:grid-cols-2 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-none"
+          className="flex lg:grid lg:grid-cols-2 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0 -mx-2 sm:-mx-6 px-2 sm:px-6 lg:mx-0 lg:px-0 scrollbar-none"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {/* LEFT - Without */}
-          <div className="min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
+          <div className="min-w-[calc(100vw-2.5rem)] sm:min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
             <Column
               side="pain"
               label="Without VM Producers"
@@ -213,7 +213,7 @@ const ComparisonSection = () => {
           </div>
 
           {/* RIGHT - With */}
-          <div className="min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
+          <div className="min-w-[calc(100vw-2.5rem)] sm:min-w-[calc(100vw-3.5rem)] md:min-w-[calc(100vw-4rem)] lg:min-w-0 snap-center">
             <Column
               side="benefit"
               label="With VM Producers"
@@ -269,9 +269,9 @@ const ComparisonSection = () => {
                 Join 2,000+ successful events. You show up. We've got every detail covered.
               </p>
             </div>            {/* Scarcity nudge */}
-            <div className="flex items-center justify-center gap-2 text-sm font-medium" style={{ color: "hsl(var(--foreground) / 0.65)" }}>
+            <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-sm font-medium text-center" style={{ color: "hsl(var(--foreground) / 0.65)" }}>
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
-              We only take on <strong className="font-bold text-amber-600 mx-1">4 new clients per month</strong>. Spots are filling fast.
+              <span>We only take on <strong className="font-bold text-amber-600">4 new clients per month</strong>. Spots are filling fast.</span>
             </div>            <div className="flex flex-col sm:flex-row items-center gap-3">
               <button
                 type="button"

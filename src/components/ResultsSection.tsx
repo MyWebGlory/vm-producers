@@ -85,7 +85,7 @@ const ResultsSection = () => {
     <section
       ref={sectionRef}
       aria-labelledby="results-heading"
-      className="relative overflow-hidden bg-background py-28 lg:py-40"
+      className="relative overflow-hidden bg-background py-16 sm:py-28 lg:py-40"
     >
       {/* Dot grid */}
       <div
@@ -104,10 +104,10 @@ const ResultsSection = () => {
       </div>
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="max-w-5xl mx-auto px-2 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="mb-16 lg:mb-20"
+          className="mb-16 lg:mb-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -118,16 +118,16 @@ const ResultsSection = () => {
           >
             Numbers you can trust
           </p>
-          <h2 id="results-heading" className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
-            <SplitTextReveal text="Results you can" delay={0.1} className="justify-start" />
+          <h2 id="results-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
+            <SplitTextReveal text="Results you can" delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="count on, every time." delay={0.3} className="justify-start" />
+            <SplitTextReveal text="count on, every time." delay={0.3} className="justify-center" />
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl"
+            className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto text-center"
             style={{ color: "hsl(var(--foreground) / 0.50)" }}
           >
             These aren't vanity metrics. They're what happens when you show up flawlessly, every single time.
@@ -151,25 +151,25 @@ const ResultsSection = () => {
 
         {/* Bottom callout - inline, no card */}
         <motion.div
-          className="mt-16 flex flex-col md:flex-row md:items-end gap-4 md:gap-10"
+          className="mt-16 flex flex-col items-center md:flex-row md:items-end gap-4 md:gap-10"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.7 }}
         >
           <p
-            className="font-display text-xs uppercase tracking-[0.25em] font-medium flex-shrink-0 md:mb-1"
+            className="font-display text-xs uppercase tracking-[0.25em] font-medium flex-shrink-0 md:mb-1 text-center md:text-left"
             style={{ color: "hsl(216 90% 65%)" }}
           >
             Featured Result
           </p>
           <div className="hidden md:block h-px flex-1 self-center" style={{ background: "hsl(216 90% 58% / 0.15)" }} />
-          <p className="text-foreground text-lg md:text-xl font-display font-semibold leading-snug md:text-right max-w-lg">
+          <p className="text-foreground text-lg md:text-xl font-display font-semibold leading-snug text-center md:text-right max-w-lg">
             "10 speakers. 5 languages. Thousands of attendees.{" "}
             <span style={{ color: "hsl(216 90% 65%)" }}>Zero issues.</span>"
           </p>
         </motion.div>
         <motion.p
-          className="mt-3 text-sm md:text-right"
+          className="mt-3 text-sm text-center md:text-right"
           style={{ color: "hsl(var(--foreground) / 0.40)" }}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer ref={ref} className="bg-card border-t border-border">
       <RevealLine delay={0} className="" />
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           {/* Brand & Description */}
           <motion.div
@@ -115,7 +115,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="border-t border-border/50">
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
           <p className="text-center text-sm text-muted-foreground">
             © 2026 VM Producers. All rights reserved.
           </p>
