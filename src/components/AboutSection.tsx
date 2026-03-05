@@ -1,7 +1,7 @@
 ﻿import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Award } from "lucide-react";
-import { ScrollReveal, SplitTextReveal, ImageReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
+import { SplitTextReveal, RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
 import aboutEventImg from "@/assets/about-event.webp";
 import { useCalendly } from "@/components/CalendlyModal";
 
@@ -65,105 +65,112 @@ const AboutSection = () => {
       {/* Ambient floating light orbs */}
       <FloatingOrbs count={4} />
       {/* About section content */}
-      <div className="max-w-3xl mx-auto px-2 sm:px-6 relative z-10">
-        <div className="flex flex-col items-center gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
-          {/* 1. Badge */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.15, duration: 0.5 }}
-            className="flex items-center justify-center gap-3"
-          >
-            <span
-              className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
-              style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}
-            >
-              <Award size={20} style={{ color: "hsl(var(--primary))" }} />
-            </span>
-            <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">
-              Why you'll never look back
-            </p>
-          </motion.div>
+        {/* flex-col on mobile → flex-row on sm+ */}
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-16 lg:gap-20 sm:items-center">
 
-          {/* 2. Title */}
-          <ScrollReveal direction="up" className="w-full text-center space-y-4">
-            <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
-              <SplitTextReveal text="You've got the vision." delay={0.2} />{" "}
-              <SplitTextReveal text="We're about to make it real." delay={0.45} style={{ color: "hsl(var(--primary))" }} />
+          {/* ── [MOBILE ONLY] Header block: badge + title + divider — order-1, hidden on sm+ ── */}
+          <div className="flex flex-col gap-5 items-center text-center sm:hidden order-1">
+            <div className="flex flex-col items-center gap-2">
+              <span className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}>
+                <Award size={20} style={{ color: "hsl(var(--primary))" }} />
+              </span>
+              <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">Why you'll never look back</p>
+            </div>
+            <h2 className="text-3xl font-display font-bold leading-tight text-foreground">
+              <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-center" />{" "}
+              <SplitTextReveal text="We're about to make it real." delay={0.45} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
             </h2>
-            {/* Title divider */}
-            <div className="flex items-center justify-center gap-3">
+            {/* Divider — mobile only */}
+            <div className="flex items-center justify-center gap-3 w-full">
               <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
               <span className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
                 <Award size={14} style={{ color: "hsl(var(--primary))" }} />
               </span>
               <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.45))" }} />
             </div>
-          </ScrollReveal>
-
-          {/* 3. Video – same size as service cards */}
-          <ImageReveal className="rounded-3xl w-full" delay={0.1}>
-            <div className="rounded-3xl overflow-hidden relative w-full h-40 sm:h-32 md:h-40 lg:h-52 bg-muted">
-              <img
-                src={aboutEventImg}
-                alt="VM Producers team managing a full-service corporate event production"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              {videoSrcs.map((src, i) => (
-                <motion.video
-                  key={i}
-                  ref={(el) => { videoRefs.current[i] = el; }}
-                  src={src}
-                  muted
-                  playsInline
-                  preload="none"
-                  onEnded={playNext}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  animate={{ opacity: i === currentVideo ? 1 : 0 }}
-                  transition={{ duration: 0.5 }}
-                />
-              ))}
-            </div>
-          </ImageReveal>
-
-          {/* 4. Text paragraphs + CTA */}
-          <div className="w-full space-y-5 text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-muted-foreground text-lg leading-relaxed"
-            >
-              Think of us as the production team you always wished you had. We handle everything behind the scenes (staging, tech, logistics, people) so you can walk out on stage, breathe, and actually enjoy the moment. Fortune 500 or fast-growing startup, every client gets the same dedicated team.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-muted-foreground text-base leading-relaxed"
-            >
-              In-person show? We handle the stage, AV, venue, and every logistical detail. Virtual or hybrid? Your audience gets a broadcast-quality experience. Need a promo or recap video? Done. A verified professional anywhere in the world within 48 hours? Also us. One call, and it's all sorted.
-            </motion.p>
-
-            <RevealLine delay={0.55} className="mb-2" />
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="flex justify-center"
-            >
-              <button
-                type="button"
-                onClick={openCalendly}
-                className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300 cursor-pointer"
-              >
-                Get in touch
-              </button>
-            </motion.div>
           </div>
+
+          {/* ── Image / Video col — order-2 on mobile (after title), order-1 on sm+ (left) ── */}
+          <motion.div
+            className="relative rounded-3xl overflow-hidden w-full sm:w-1/2 shrink-0 aspect-[16/9] sm:aspect-[4/3] bg-muted order-2 sm:order-2"
+            initial={{ opacity: 0, x: 48 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img
+              src={aboutEventImg}
+              alt="VM Producers team managing a full-service corporate event production"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {videoSrcs.map((src, i) => (
+              <motion.video
+                key={i}
+                ref={(el) => { videoRefs.current[i] = el; }}
+                src={src}
+                muted
+                playsInline
+                preload="none"
+                onEnded={playNext}
+                className="absolute inset-0 w-full h-full object-cover"
+                animate={{ opacity: i === currentVideo ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+              />
+            ))}
+          </motion.div>
+
+          {/* ── Right col: full text on sm+, only body+CTA on mobile ── */}
+          <motion.div
+            className="flex flex-col gap-6 w-full sm:w-1/2 min-w-0 order-3 sm:order-1 items-center sm:items-start text-center sm:text-left"
+            initial={{ opacity: 0, x: -48 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Badge + Title — desktop only (mobile version is in block above) */}
+            <div className="hidden sm:flex flex-col gap-5 items-start text-left w-full">
+              <div className="flex items-center gap-3">
+                <span className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}>
+                  <Award size={20} style={{ color: "hsl(var(--primary))" }} />
+                </span>
+                <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">Why you'll never look back</p>
+              </div>
+              <h2 id="about-heading" className="text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
+                <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-start" />{" "}
+                <SplitTextReveal text="We're about to make it real." delay={0.45} className="justify-start" style={{ color: "hsl(var(--primary))" }} />
+              </h2>
+            </div>
+
+            {/* Divider — desktop only */}
+            <div className="hidden sm:flex items-center justify-start gap-3 w-full">
+              <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
+              <span className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
+                <Award size={14} style={{ color: "hsl(var(--primary))" }} />
+              </span>
+              <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, hsl(var(--primary) / 0.45))" }} />
+            </div>
+
+            {/* Body text */}
+            <p className="text-muted-foreground text-base leading-relaxed">
+              Think of us as the production team you always wished you had. We handle everything behind the scenes (staging, tech, logistics, people) so you can walk out on stage, breathe, and actually enjoy the moment. Fortune 500 or fast-growing startup, every client gets the same dedicated team.
+            </p>
+            <p className="text-muted-foreground text-base leading-relaxed">
+              In-person show? We handle the stage, AV, venue, and every logistical detail. Virtual or hybrid? Your audience gets a broadcast-quality experience. Need a promo or recap video? Done. A verified professional anywhere in the world within 48 hours? Also us. One call, and it's all sorted.
+            </p>
+
+            <RevealLine delay={0.55} className="mb-2 w-full" />
+
+            {/* CTA */}
+            <button
+              type="button"
+              onClick={openCalendly}
+              className="inline-flex items-center gap-2 text-primary font-display font-semibold text-sm hover:gap-3 transition-all duration-300 cursor-pointer"
+            >
+              Get in touch
+            </button>
+          </motion.div>
 
         </div>
       </div>

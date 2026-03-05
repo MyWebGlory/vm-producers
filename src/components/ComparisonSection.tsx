@@ -272,7 +272,7 @@ const ComparisonSection = () => {
             <div className="flex justify-center">
               {/* Mobile: pill with red outline */}
               <p
-                className="flex items-center gap-2 text-sm font-medium sm:hidden px-4 py-1.5 rounded-full whitespace-nowrap"
+                className="flex items-center gap-1.5 text-[11px] font-medium sm:hidden px-3 py-1 rounded-full whitespace-nowrap"
                 style={{
                   color: "hsl(25 90% 58%)",
                   border: "1px solid hsl(25 90% 58% / 0.45)",

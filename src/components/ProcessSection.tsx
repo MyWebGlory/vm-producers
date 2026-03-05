@@ -399,33 +399,6 @@ const ProcessSection = () => {
             No complicated onboarding. No endless back-and-forth. Just a clear plan, a dedicated team, and complete peace of mind from day one.
           </motion.p>
 
-          {/* Step pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex items-center justify-center gap-2 mt-8 flex-wrap"
-          >
-            {steps.map((s, i) => (
-              <span
-                key={s.number}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold"
-                style={{
-                  background: `hsl(${s.accent} / 0.10)`,
-                  color: `hsl(${s.accent})`,
-                  border: `1px solid hsl(${s.accent} / 0.25)`,
-                }}
-              >
-                <span
-                  className="w-4 h-4 flex items-center justify-center rounded-full text-[9px] font-black"
-                  style={{ background: `hsl(${s.accent})`, color: "white" }}
-                >
-                  {i + 1}
-                </span>
-                {s.title}
-              </span>
-            ))}
-          </motion.div>
         </div>
 
         {/* Steps - vertical timeline centered */}
@@ -449,7 +422,7 @@ const ProcessSection = () => {
         <div className="flex justify-center mt-8 sm:mt-10">
           {/* Mobile: pill with red outline */}
           <p
-            className="flex items-center gap-2 text-sm font-medium sm:hidden px-4 py-1.5 rounded-full whitespace-nowrap"
+            className="flex items-center gap-1.5 text-[11px] font-medium sm:hidden px-3 py-1 rounded-full whitespace-nowrap"
             style={{
               color: "hsl(25 90% 58%)",
               border: "1px solid hsl(25 90% 58% / 0.45)",
