@@ -108,7 +108,7 @@ const FeatureRow = ({
 
   const imageCol = (
     <motion.div
-      className="relative rounded-2xl overflow-hidden w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/10] max-h-56 sm:max-h-none"
+      className="relative rounded-2xl overflow-hidden w-full h-40 sm:h-32 md:h-40 lg:h-52"
       initial={{ opacity: 0, x: imageRight ? 48 : -48 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

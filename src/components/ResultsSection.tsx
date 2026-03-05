@@ -40,7 +40,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
 
         {/* Big stat number */}
         <motion.p
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-none flex-shrink-0 w-auto md:w-56 lg:w-64 tabular-nums"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-none flex-shrink-0 w-32 sm:w-44 md:w-56 lg:w-64 tabular-nums text-center"
           style={{ color: "hsl(216 90% 58%)" }}
           initial={{ opacity: 0, x: -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
