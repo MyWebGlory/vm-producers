@@ -1,6 +1,5 @@
 ﻿import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Link } from "react-router-dom";
 import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useCalendly } from "@/components/CalendlyModal";
 import { FloatingOrbs } from "@/components/ScrollAnimations";
@@ -308,9 +307,13 @@ const ComparisonSection = () => {
                 Get started, it's free
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-              <Link
-                to="/live-events"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105"
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("services");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{
                   background: "hsl(var(--primary) / 0.08)",
                   border: "1.5px solid hsl(var(--primary) / 0.30)",
@@ -319,7 +322,7 @@ const ComparisonSection = () => {
               >
                 Explore our services
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              </button>
             </div>
           </div>
         </motion.div>

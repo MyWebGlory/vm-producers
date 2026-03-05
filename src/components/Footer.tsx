@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import { RevealLine } from "@/components/ScrollAnimations";
 import vpLogo from "@/assets/vp-logo-white.png";
 import { useCalendly } from "@/components/CalendlyModal";
+import { Check } from "lucide-react";
 
 const Footer = () => {
   const { openCalendly } = useCalendly();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [toast, setToast] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setToast(label);
+      setTimeout(() => setToast(null), 2500);
+    });
+  };
 
   return (
     <footer ref={ref} className="bg-card border-t border-border">
@@ -50,14 +59,22 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:4043371539" className="hover:text-foreground transition-colors">
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard("4043371539", "Phone number copied!")}
+                  className="hover:text-foreground transition-colors cursor-pointer text-left"
+                >
                   404.337.1539
-                </a>
+                </button>
               </li>
               <li>
-                <a href="mailto:austin@vmproducers.com" className="hover:text-foreground transition-colors">
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard("austin@vmproducers.com", "Email address copied!")}
+                  className="hover:text-foreground transition-colors cursor-pointer text-left"
+                >
                   austin@vmproducers.com
-                </a>
+                </button>
               </li>
               <li>New York, NY, USA</li>
             </ul>
@@ -125,6 +142,24 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      {/* Copy toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            key="copy-toast"
+            initial={{ opacity: 0, y: 16, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.95 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-xl text-sm font-medium"
+            style={{ background: "hsl(var(--foreground))", color: "hsl(var(--background))" }}
+          >
+            <Check size={15} strokeWidth={2.5} />
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };

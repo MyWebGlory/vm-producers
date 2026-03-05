@@ -2,6 +2,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { RevealLine, FloatingOrbs } from "@/components/ScrollAnimations";
+import { useCalendly } from "@/components/CalendlyModal";
 
 const faqs = [
   {
@@ -37,6 +38,7 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+  const { openCalendly } = useCalendly();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -192,9 +194,10 @@ const FAQSection = () => {
           <p className="text-sm font-medium" style={{ color: "hsl(var(--foreground) / 0.45)" }}>
             Still have questions?
           </p>
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          <button
+            type="button"
+            onClick={openCalendly}
+            className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
             style={{
               background: "hsl(var(--primary) / 0.10)",
               border: "1.5px solid hsl(var(--primary) / 0.30)",
@@ -214,7 +217,7 @@ const FAQSection = () => {
             <MessageCircle size={16} className="shrink-0" />
             Talk to our team
             <ArrowRight size={14} className="shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

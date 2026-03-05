@@ -5,12 +5,6 @@ import founderPhoto from "@/assets/austin-talley-founder.png";
 import { useCalendly } from "@/components/CalendlyModal";
 import { FloatingOrbs } from "@/components/ScrollAnimations";
 
-const credentials = [
-  { value: "2,000+", label: "Events produced" },
-  { value: "70+",    label: "Countries" },
-  { value: "95%",    label: "Client retention" },
-];
-
 const FounderSection = () => {
   const { openCalendly } = useCalendly();
   const ref = useRef<HTMLDivElement>(null);
@@ -62,24 +56,6 @@ const FounderSection = () => {
               </p>
               <p className="font-display font-bold text-3xl lg:text-4xl" style={{ color: "hsl(var(--foreground))" }}>Austin Talley</p>
               <p className="text-base font-semibold mt-1" style={{ color: "hsl(var(--primary))" }}>Founder & CEO, VM Producers</p>
-            </motion.div>
-
-            {/* Credential pills */}
-            <motion.div {...fadeUp(0.16)} className="flex flex-wrap gap-2 justify-center sm:justify-start">
-              {credentials.map(({ value, label }) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
-                  style={{
-                    background: "hsl(var(--primary) / 0.08)",
-                    border: "1px solid hsl(var(--primary) / 0.20)",
-                    color: "hsl(var(--foreground) / 0.70)",
-                  }}
-                >
-                  <span className="font-bold" style={{ color: "hsl(var(--primary))" }}>{value}</span>
-                  {label}
-                </span>
-              ))}
             </motion.div>
 
             {/* Quote */}
