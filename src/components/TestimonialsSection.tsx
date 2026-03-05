@@ -222,7 +222,7 @@ const TestimonialsSection = () => {
   const t = testimonials[index];
 
   return (
-    <section ref={sectionRef} aria-labelledby="testimonials-heading" className="py-28 lg:py-40 overflow-hidden relative">
+    <section ref={sectionRef} aria-labelledby="testimonials-heading" className="py-24 md:py-32 lg:py-40 overflow-hidden relative">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -237,10 +237,10 @@ const TestimonialsSection = () => {
       </div>
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-4xl mx-auto px-2 sm:px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="relative overflow-hidden text-center mb-14 lg:mb-18"
+          className="relative overflow-hidden text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9 }}
@@ -296,13 +296,13 @@ const TestimonialsSection = () => {
 
             {/* Trustpilot */}
             <div className="flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-2 shadow-sm">
-              <img src={logoTrustpilot} alt="Trustpilot" className="h-4 w-auto shrink-0" />
+              <img src={logoTrustpilot} alt="Trustpilot" width={64} height={16} className="h-4 w-auto shrink-0" />
               <span className="text-sm font-semibold text-foreground">Trustpilot</span>
             </div>
 
             {/* Capterra */}
             <div className="flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-2 shadow-sm">
-              <img src={logoCapterra} alt="Capterra" className="h-4 w-auto shrink-0" />
+              <img src={logoCapterra} alt="Capterra" width={64} height={16} className="h-4 w-auto shrink-0" />
               <span className="text-sm font-semibold text-foreground">Capterra</span>
             </div>
           </motion.div>
@@ -320,7 +320,7 @@ const TestimonialsSection = () => {
             {testimonials.length > 1 && (
             <button
               onClick={() => go(-1)}
-              className="hidden sm:flex shrink-0 w-10 h-10 rounded-full border border-border/70 bg-card items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
+              className="hidden sm:flex shrink-0 w-11 h-11 rounded-full border border-border/70 bg-card items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
               aria-label="Previous review"
             >
               <ChevronLeft size={18} />
@@ -376,7 +376,7 @@ const TestimonialsSection = () => {
                     </p>
                     <button
                       onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); }}
-                      className="md:hidden mt-2 text-xs font-semibold font-display"
+                      className="md:hidden mt-2 py-2 -my-2 px-1 text-xs font-semibold font-display"
                       style={{ color: "hsl(var(--primary))" }}
                     >
                       {expanded ? "Show less" : "Read more"}
@@ -389,6 +389,8 @@ const TestimonialsSection = () => {
                         <img
                           src={t.avatar}
                           alt={t.author}
+                          width={40}
+                          height={40}
                           className="w-full h-full object-cover"
                         />
                       ) : (
@@ -412,7 +414,7 @@ const TestimonialsSection = () => {
             {testimonials.length > 1 && (
             <button
               onClick={() => go(1)}
-              className="hidden sm:flex shrink-0 w-10 h-10 rounded-full border border-border/70 bg-card items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
+              className="hidden sm:flex shrink-0 w-11 h-11 rounded-full border border-border/70 bg-card items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
               aria-label="Next review"
             >
               <ChevronRight size={18} />
@@ -422,19 +424,23 @@ const TestimonialsSection = () => {
 
           {/* Dots - centered */}
           {testimonials.length > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-5">
+          <div className="flex items-center justify-center gap-1 mt-5">
             {testimonials.map((_, i) => (
               <button
                 key={i}
-                onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
-                className="transition-all duration-300 rounded-full"
-                style={{
-                  width: i === index ? "24px" : "8px",
-                  height: "8px",
-                  background: i === index ? "hsl(var(--primary))" : "hsl(var(--border))",
-                }}
+                onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); setExpanded(false); }}
+                className="flex items-center justify-center h-11 flex-shrink-0"
                 aria-label={`Go to review ${i + 1}`}
-              />
+              >
+                <span
+                  className="block rounded-full transition-all duration-300"
+                  style={{
+                    width: i === index ? "24px" : "8px",
+                    height: "8px",
+                    background: i === index ? "hsl(var(--primary))" : "hsl(var(--border))",
+                  }}
+                />
+              </button>
             ))}
           </div>
           )}

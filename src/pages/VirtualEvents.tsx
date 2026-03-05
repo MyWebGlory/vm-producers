@@ -1,5 +1,5 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
-import virtualEventsImg from "@/assets/virtual events.webp";
+import virtualEventsImg from "@/assets/virtual-events.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import virtualEventsConferenceImg from "@/assets/virtual-events-conference.webp";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";

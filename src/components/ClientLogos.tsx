@@ -34,16 +34,16 @@ const ClientLogos = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
 
   return (
-    <section ref={sectionRef} className="relative py-24 lg:py-32 bg-background overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.05) 0%, transparent 70%)" }} />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--accent) / 0.05) 0%, transparent 70%)" }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Bold header */}
-        <ScrollReveal className="text-center mb-24 lg:mb-32">
+        <ScrollReveal className="text-center mb-12 md:mb-16">
           <motion.p
             className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
           >
@@ -79,6 +79,8 @@ const ClientLogos = () => {
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
+                height={40}
+                width="auto"
                 loading="lazy"
                 decoding="async"
                 className="h-8 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
@@ -107,6 +109,8 @@ const ClientLogos = () => {
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
+                height={40}
+                width="auto"
                 loading="lazy"
                 decoding="async"
                 className="h-8 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"

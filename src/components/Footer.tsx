@@ -23,7 +23,7 @@ const Footer = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <Link to="/" className="flex items-center">
-              <img src={vpLogo} alt="VM Producers - Full-Service Event Production" className="h-10 w-auto invert" />
+              <img src={vpLogo} alt="VM Producers - Full-Service Event Production" width={120} height={40} className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               VM Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.
@@ -55,8 +55,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:austin@vproducers.com" className="hover:text-foreground transition-colors">
-                  austin@vproducers.com
+                <a href="mailto:austin@vmproducers.com" className="hover:text-foreground transition-colors">
+                  austin@vmproducers.com
                 </a>
               </li>
               <li>New York, NY, USA</li>
@@ -118,6 +118,10 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
           <p className="text-center text-sm text-muted-foreground">
             © 2026 VM Producers. All rights reserved.
+            {" · "}
+            <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            {" · "}
+            <Link to="/legal-notice" className="hover:text-foreground transition-colors">Legal Notice</Link>
           </p>
         </div>
       </div>

@@ -11,17 +11,12 @@ import VirtualEvents from "@/pages/VirtualEvents";
 import HybridEvents from "@/pages/HybridEvents";
 import VideoProduction from "@/pages/VideoProduction";
 import MeetingPros from "@/pages/MeetingPros";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import LegalNotice from "@/pages/LegalNotice";
 import NotFound from "@/pages/NotFound";
+import { ROUTES } from "@/routes";
 
-/** Ordered list of routes for prerendering / sitemap generation */
-export const ROUTES = [
-  { path: "/", priority: "1.0", changefreq: "weekly" },
-  { path: "/live-events", priority: "0.9", changefreq: "monthly" },
-  { path: "/virtual-events", priority: "0.9", changefreq: "monthly" },
-  { path: "/hybrid-events", priority: "0.9", changefreq: "monthly" },
-  { path: "/video-production", priority: "0.9", changefreq: "monthly" },
-  { path: "/meeting-pros", priority: "0.9", changefreq: "monthly" },
-] as const;
+export { ROUTES };
 
 const AppRoutes = () => (
   <CalendlyProvider>
@@ -32,6 +27,8 @@ const AppRoutes = () => (
       <Route path="/hybrid-events" element={<HybridEvents />} />
       <Route path="/video-production" element={<VideoProduction />} />
       <Route path="/meeting-pros" element={<MeetingPros />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </CalendlyProvider>

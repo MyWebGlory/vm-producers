@@ -91,7 +91,7 @@ const ComparisonSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 lg:py-36 overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-background">
       {/* Background texture */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -108,9 +108,9 @@ const ComparisonSection = () => {
       </div>
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-6xl mx-auto px-2 sm:px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div ref={headerRef} className="relative overflow-hidden text-center mb-16 lg:mb-20">
+          <div ref={headerRef} className="relative overflow-hidden text-center mb-12 md:mb-16">
           {/* Watermark icon */}
           <Scale
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"

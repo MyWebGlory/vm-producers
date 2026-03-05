@@ -164,7 +164,7 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
           <span className="font-display text-xs sm:text-lg lg:text-xl font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-[8px] sm:text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
         {/* Hover arrow */}

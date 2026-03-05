@@ -1,8 +1,8 @@
-﻿import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
+﻿import { createContext, useContext, useEffect, useRef, useState, useCallback, ReactNode } from "react";
 import { X } from "lucide-react";
 
 const CALENDLY_URL =
-  "https://calendly.com/austin-vmproducers/virtual-producer-consultation?embed_domain=vmproducers.com&embed_type=Inline&hide_gdpr_banner=1&background_color=ffffff&text_color=111827&primary_color=16a34a";
+  "https://calendly.com/austin-vmproducers/virtual-producer-consultation?embed_domain=vmproducers.com&embed_type=Inline&background_color=ffffff&text_color=111827&primary_color=1d6eea";
 
 const MODAL_W = 1020;
 const HEADER_H = 72;
@@ -18,6 +18,7 @@ export const useCalendly = () => useContext(CalendlyContext);
 
 export function CalendlyProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const openCalendly = useCallback(() => {
     setIsOpen(true);
@@ -29,11 +30,43 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
     document.body.style.overflow = "";
   }, []);
 
+  // Move focus into the dialog when it opens (WCAG 2.1 §2.4.3)
+  useEffect(() => {
+    if (isOpen && dialogRef.current) {
+      dialogRef.current.focus();
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeCalendly(); };
     window.addEventListener("keydown", onKey);
     return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
   }, [closeCalendly]);
+
+  // Focus trap: keep Tab navigation inside the dialog when it is open (WCAG 2.1 §2.4.3)
+  useEffect(() => {
+    if (!isOpen) return;
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener("keydown", onTab);
+    return () => window.removeEventListener("keydown", onTab);
+  }, [isOpen]);
 
   return (
     <CalendlyContext.Provider value={{ openCalendly }}>
@@ -64,10 +97,12 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
         throttles or deprioritises the iframe. Calendly loads at full speed.
       */}
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label="Book a Free Consultation"
         aria-hidden={!isOpen}
+        tabIndex={-1}
         style={{
           position: "fixed",
           top: "50%",
@@ -82,7 +117,9 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
           height: TOTAL_H,
           background: "#fff",
           borderRadius: "1rem",
-          overflow: "hidden",
+          overflowX: "hidden",
+          overflowY: "auto",
+          maxHeight: "calc(100dvh - 2rem)",
           boxShadow: "0 25px 60px rgba(0,0,0,0.35)",
           pointerEvents: isOpen ? "auto" : "none",
           willChange: "transform",

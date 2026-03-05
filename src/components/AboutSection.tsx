@@ -48,7 +48,7 @@ const AboutSection = () => {
   }, [currentVideo, videoSrcs]);
 
   return (
-    <section ref={sectionRef} aria-labelledby="about-heading" className="py-32 lg:py-44 bg-card relative overflow-hidden">
+    <section ref={sectionRef} aria-labelledby="about-heading" className="py-24 md:py-32 lg:py-40 bg-card relative overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"

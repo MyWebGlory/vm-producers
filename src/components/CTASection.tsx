@@ -22,7 +22,7 @@ const CTASection = () => {
       id="contact"
       aria-labelledby="cta-heading"
       ref={ref}
-      className="relative py-20 md:py-36 lg:py-52 overflow-hidden"
+      className="relative py-24 md:py-36 lg:py-48 overflow-hidden"
     >
       {/* Parallax background image */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>

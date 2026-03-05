@@ -1,4 +1,4 @@
-import { useRef } from "react";
+﻿import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import founderPhoto from "@/assets/austin-talley-founder.png";
@@ -23,12 +23,12 @@ const FounderSection = () => {
   });
 
   return (
-    <section ref={ref} className="relative py-24 lg:py-36 overflow-hidden bg-card">
+    <section ref={ref} className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-card">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, hsl(var(--primary) / 0.06) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -43,12 +43,12 @@ const FounderSection = () => {
 
           {/* Photo */}
           <motion.div {...fadeUp(0)} className="relative shrink-0">
-            <div className="absolute -inset-3 rounded-3xl pointer-events-none" style={{ boxShadow: "0 0 40px hsl(216 90% 58% / 0.18)" }} />
+            <div className="absolute -inset-3 rounded-3xl pointer-events-none" style={{ boxShadow: "0 0 40px hsl(var(--primary) / 0.18)" }} />
             <div
               className="relative w-36 h-44 sm:w-44 sm:h-56 lg:w-56 lg:h-72 rounded-2xl overflow-hidden"
-              style={{ border: "2px solid hsl(216 90% 58% / 0.28)" }}
+              style={{ border: "2px solid hsl(var(--primary) / 0.28)" }}
             >
-              <img src={founderPhoto} alt="Austin Talley, Founder & CEO" className="w-full h-full object-cover object-top" />
+              <img src={founderPhoto} alt="Austin Talley, Founder &amp; CEO" width={224} height={288} className="w-full h-full object-cover object-top" />
             </div>
           </motion.div>
 
@@ -57,11 +57,11 @@ const FounderSection = () => {
 
             {/* Name + title */}
             <motion.div {...fadeUp(0.1)}>
-              <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-3" style={{ color: "hsl(216 90% 58% / 0.75)" }}>
+              <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-3" style={{ color: "hsl(var(--primary) / 0.75)" }}>
                 Meet the founder
               </p>
               <p className="font-display font-bold text-3xl lg:text-4xl" style={{ color: "hsl(var(--foreground))" }}>Austin Talley</p>
-              <p className="text-base font-semibold mt-1" style={{ color: "hsl(216 90% 58%)" }}>Founder & CEO, VM Producers</p>
+              <p className="text-base font-semibold mt-1" style={{ color: "hsl(var(--primary))" }}>Founder & CEO, VM Producers</p>
             </motion.div>
 
             {/* Credential pills */}
@@ -71,12 +71,12 @@ const FounderSection = () => {
                   key={label}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
                   style={{
-                    background: "hsl(216 90% 58% / 0.08)",
-                    border: "1px solid hsl(216 90% 58% / 0.20)",
+                    background: "hsl(var(--primary) / 0.08)",
+                    border: "1px solid hsl(var(--primary) / 0.20)",
                     color: "hsl(var(--foreground) / 0.70)",
                   }}
                 >
-                  <span className="font-bold" style={{ color: "hsl(216 90% 58%)" }}>{value}</span>
+                  <span className="font-bold" style={{ color: "hsl(var(--primary))" }}>{value}</span>
                   {label}
                 </span>
               ))}
@@ -85,7 +85,7 @@ const FounderSection = () => {
             {/* Quote */}
             <motion.p {...fadeUp(0.22)} className="text-xl lg:text-2xl font-display font-semibold leading-snug" style={{ color: "hsl(var(--foreground) / 0.85)" }}>
               "Make serious event production accessible to{" "}
-              <em style={{ color: "hsl(216 90% 58%)", fontStyle: "italic" }}>any organization, anywhere.</em>"
+              <em style={{ color: "hsl(var(--primary))", fontStyle: "italic" }}>any organization, anywhere.</em>"
             </motion.p>
 
             {/* Bio */}
@@ -97,11 +97,11 @@ const FounderSection = () => {
             <motion.div
               {...fadeUp(0.34)}
               className="flex items-start gap-3 pt-4"
-              style={{ borderTop: "1px solid hsl(216 90% 58% / 0.12)" }}
+              style={{ borderTop: "1px solid hsl(var(--primary) / 0.12)" }}
             >
               <div className="flex gap-0.5 mt-0.5 shrink-0">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={11} fill="hsl(216 90% 58%)" style={{ color: "hsl(216 90% 58%)" }} />
+                  <Star key={i} size={11} fill="hsl(var(--primary))" style={{ color: "hsl(var(--primary))" }} />
                 ))}
               </div>
               <p className="text-xs leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.50)" }}>
@@ -117,7 +117,7 @@ const FounderSection = () => {
                 type="button"
                 onClick={openCalendly}
                 className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                style={{ background: "hsl(216 90% 58%)", color: "white" }}
+                style={{ background: "hsl(var(--primary))", color: "white" }}
               >
                 Work with Austin's team
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />

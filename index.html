@@ -76,6 +76,7 @@
       are injected by react-helmet-async in each page component and written
       into per-route index.html files by the prerender script.
     -->
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -95,7 +96,7 @@
           "image": "https://www.vmproducers.com/hero-bg.webp",
           "description": "VM Producers is a full-service event production company specializing in live, virtual, and hybrid events. 2000+ successful events, 350,000+ global attendees across 70+ countries.",
           "telephone": "+14043371539",
-          "email": "austin@vproducers.com",
+          "email": "austin@vmproducers.com",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "New York",
@@ -106,7 +107,7 @@
             "@type": "ContactPoint",
             "telephone": "+14043371539",
             "contactType": "sales",
-            "email": "austin@vproducers.com",
+            "email": "austin@vmproducers.com",
             "areaServed": "Worldwide",
             "availableLanguage": ["English"]
           }],
@@ -183,7 +184,7 @@
       "name": "Austin Talley",
       "jobTitle": "Founder and CEO",
       "worksFor": { "@id": "https://www.vmproducers.com/#organization" },
-      "email": "austin@vproducers.com",
+      "email": "austin@vmproducers.com",
       "telephone": "+14043371539",
       "address": {
         "@type": "PostalAddress",
@@ -198,6 +199,14 @@
   </head>
 
   <body>
+    <a
+      href="#main-content"
+      style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"
+      onfocus="this.style.cssText='position:fixed;top:1rem;left:1rem;z-index:9999;padding:0.75rem 1.25rem;background:#fff;color:#000;font-weight:600;border-radius:6px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.2);'"
+      onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'"
+    >
+      Passer au contenu principal
+    </a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <!--

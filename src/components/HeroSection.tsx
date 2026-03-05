@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+﻿import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.webp";
 import { AnimatedCounter, FloatingOrbs } from "@/components/ScrollAnimations";
@@ -34,6 +34,8 @@ const HeroSection = () => {
           src={heroBg}
           alt="VM Producers - professional live event production setup with staging and lighting"
           className="w-full h-full object-cover"
+          width={1920}
+          height={1080}
           fetchPriority="high"
           decoding="async"
         />
@@ -51,7 +53,7 @@ const HeroSection = () => {
       {/* Main content - centred, full height */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 h-full flex flex-col items-center justify-center px-2 sm:px-6 text-center"
+        className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 text-center"
       >
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center gap-5">
 
@@ -64,8 +66,8 @@ const HeroSection = () => {
             <span
               className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium border"
               style={{
-                background: "hsl(216 90% 58% / 0.10)",
-                borderColor: "hsl(216 90% 58% / 0.28)",
+                background: "hsl(var(--primary) / 0.10)",
+                borderColor: "hsl(var(--primary) / 0.28)",
                 color: "hsl(216 90% 78%)",
               }}
             >
@@ -115,11 +117,11 @@ const HeroSection = () => {
               <button
                 type="button"
                 onClick={openCalendly}
-                className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-display font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 relative overflow-hidden cursor-pointer"
+                className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-3 sm:py-4 rounded-full font-display font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 relative overflow-hidden cursor-pointer"
                 style={{
-                  background: "hsl(216 90% 58%)",
+                  background: "hsl(var(--primary))",
                   color: "white",
-                  boxShadow: "0 0 36px hsl(216 90% 58% / 0.4), 0 6px 24px rgba(0,0,0,0.28)",
+                  boxShadow: "0 0 36px hsl(var(--primary) / 0.4), 0 6px 24px rgba(0,0,0,0.28)",
                 }}
               >
                 Get a Dedicated Producer
@@ -187,7 +189,7 @@ const HeroSection = () => {
           >
             {/* Capterra */}
             <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-              <img src={logoCapterra} alt="" className="h-5 sm:h-6 w-auto" />
+              <img src={logoCapterra} alt="Logo Capterra" className="h-5 sm:h-6 w-auto" width={80} height={24} />
               <span className="text-white font-semibold text-sm tracking-wide">Capterra</span>
             </div>
 
@@ -195,14 +197,14 @@ const HeroSection = () => {
 
             {/* Trustpilot */}
             <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-              <img src={logoTrustpilot} alt="" className="h-5 sm:h-6 w-auto" />
+              <img src={logoTrustpilot} alt="Logo Trustpilot" className="h-5 sm:h-6 w-auto" width={80} height={24} />
               <span className="text-white font-semibold text-sm tracking-wide">Trustpilot</span>
             </div>
 
             <div className="w-px h-5 bg-white/20" />
 
             {/* Google */}
-            <div className="flex items-center gap-0 opacity-80 hover:opacity-100 transition-opacity">
+            <div className="flex items-center gap-0 opacity-80 hover:opacity-100 transition-opacity" aria-label="Google">
               <span className="font-semibold text-xl" style={{color:"#4285F4"}}>G</span>
               <span className="font-semibold text-xl" style={{color:"#EA4335"}}>o</span>
               <span className="font-semibold text-xl" style={{color:"#FBBC05"}}>o</span>

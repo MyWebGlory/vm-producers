@@ -20,7 +20,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
       {/* Top divider - animated width */}
       <motion.div
         className="w-full h-px mb-0"
-        style={{ background: "hsl(216 90% 58% / 0.15)" }}
+        style={{ background: "hsl(var(--primary) / 0.15)" }}
         initial={{ scaleX: 0, originX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -41,7 +41,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
         {/* Big stat number */}
         <motion.p
           className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-none flex-shrink-0 w-32 sm:w-44 md:w-56 lg:w-64 tabular-nums text-center"
-          style={{ color: "hsl(216 90% 58%)" }}
+          style={{ color: "hsl(var(--primary))" }}
           initial={{ opacity: 0, x: -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -52,7 +52,7 @@ function StatRow({ stat, index }: { stat: typeof stats[number]; index: number })
         {/* Thin vertical separator */}
         <motion.div
           className="hidden md:block self-stretch w-px flex-shrink-0"
-          style={{ background: "hsl(216 90% 58% / 0.18)" }}
+          style={{ background: "hsl(var(--primary) / 0.18)" }}
           initial={{ scaleY: 0 }}
           animate={isInView ? { scaleY: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.25 + index * 0.08 }}
@@ -85,13 +85,13 @@ const ResultsSection = () => {
     <section
       ref={sectionRef}
       aria-labelledby="results-heading"
-      className="relative overflow-hidden bg-background py-16 sm:py-28 lg:py-40"
+      className="relative overflow-hidden bg-background py-24 md:py-32 lg:py-40"
     >
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.06) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, hsl(var(--primary) / 0.06) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -99,15 +99,15 @@ const ResultsSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full opacity-[0.06]"
-          style={{ background: "radial-gradient(ellipse, hsl(216 90% 58%) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--primary)) 0%, transparent 70%)" }}
         />
       </div>
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-5xl mx-auto px-2 sm:px-6 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="mb-16 lg:mb-20 text-center"
+          className="mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -142,7 +142,7 @@ const ResultsSection = () => {
           {/* Bottom divider */}
           <motion.div
             className="w-full h-px"
-            style={{ background: "hsl(216 90% 58% / 0.15)" }}
+            style={{ background: "hsl(var(--primary) / 0.15)" }}
             initial={{ scaleX: 0, originX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.7, delay: stats.length * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -162,7 +162,7 @@ const ResultsSection = () => {
           >
             Featured Result
           </p>
-          <div className="hidden md:block h-px flex-1 self-center" style={{ background: "hsl(216 90% 58% / 0.15)" }} />
+          <div className="hidden md:block h-px flex-1 self-center" style={{ background: "hsl(var(--primary) / 0.15)" }} />
           <p className="text-foreground text-lg md:text-xl font-display font-semibold leading-snug text-center md:text-right max-w-lg">
             "10 speakers. 5 languages. Thousands of attendees.{" "}
             <span style={{ color: "hsl(216 90% 65%)" }}>Zero issues.</span>"

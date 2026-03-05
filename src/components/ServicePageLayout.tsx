@@ -113,7 +113,7 @@ const FeatureRow = ({
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <img src={img} alt={feature.title} loading="lazy" className="w-full h-full object-cover" />
+      <img src={img} alt={feature.title} width={600} height={400} loading="lazy" className="w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.10) 0%, transparent 60%)" }} />
     </motion.div>
   );
@@ -204,6 +204,8 @@ const ServicePageLayout = ({
             src={heroImage}
             alt={`${title} production by VM Producers - professional event management`}
             className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
             fetchPriority="high"
             decoding="async"
           />
@@ -332,10 +334,10 @@ const ServicePageLayout = ({
       {/* --- Features --- */}
       <section
         aria-labelledby="features-heading"
-        className="py-16 md:py-24 lg:py-32"
+        className="py-24 md:py-32 lg:py-40"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-20">
+            <div className="text-center mb-12 md:mb-16">
             <motion.p
               className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
               initial={{ opacity: 0, y: 12 }}

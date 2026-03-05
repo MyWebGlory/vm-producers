@@ -42,7 +42,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section ref={ref} aria-labelledby="faq-heading" className="relative py-24 md:py-36 bg-background overflow-hidden">
+    <section ref={ref} aria-labelledby="faq-heading" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -61,9 +61,9 @@ const FAQSection = () => {
       />
       <FloatingOrbs count={4} className="opacity-80" />
 
-      <div className="max-w-4xl mx-auto px-2 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="relative overflow-hidden text-center mb-16">
+          <div className="relative overflow-hidden text-center mb-12 md:mb-16">
           {/* Watermark icon */}
           <HelpCircle
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
@@ -171,7 +171,7 @@ const FAQSection = () => {
                       transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-6 text-muted-foreground text-sm md:text-base leading-relaxed">
+                      <p className="px-6 pb-6 text-muted-foreground text-base md:text-lg leading-relaxed">
                         {faq.answer}
                       </p>
                     </motion.div>

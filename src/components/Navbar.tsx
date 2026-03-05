@@ -48,6 +48,8 @@ const Navbar = () => {
           <img
             src={vpLogo}
             alt="VM Producers"
+            width={120}
+            height={40}
             className={`h-10 w-auto transition-all duration-500 ${
               scrolled ? "invert" : ""
             }`}
@@ -79,12 +81,12 @@ const Navbar = () => {
         <button
           type="button"
           onClick={openCalendly}
-          className="hidden lg:inline-flex px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow cursor-pointer"
+          className="hidden lg:inline-flex px-6 py-3 rounded-full bg-primary text-primary-foreground font-display font-semibold text-sm hover:bg-primary/90 transition-all duration-300 glow-shadow cursor-pointer"
         >
           Free Consultation
         </button>
 
-        <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} className={`lg:hidden p-2 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
+        <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} className={`lg:hidden p-3 transition-colors duration-500 ${scrolled ? "text-foreground" : "text-white"}`}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -102,7 +104,7 @@ const Navbar = () => {
                 <Link
                   key={link.label}
                   to={link.href}
-                  className={`py-2 font-medium transition-colors ${
+                  className={`py-3 font-medium transition-colors ${
                     isActive(link.href)
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -114,7 +116,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => { openCalendly(); setIsOpen(false); }}
-                className="mt-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-center text-sm cursor-pointer"
+                className="mt-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-display font-semibold text-center text-sm cursor-pointer"
               >
                 Free Consultation
               </button>

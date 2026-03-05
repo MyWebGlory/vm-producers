@@ -341,7 +341,7 @@ const ProcessSection = () => {
   return (
     <section
       aria-labelledby="process-heading"
-      className="relative py-16 sm:py-24 lg:py-40 overflow-hidden"
+      className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
       style={{ background: "hsl(220 20% 98%)" }}
     >
       {/* Dot grid */}

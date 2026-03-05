@@ -3,19 +3,12 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import fs from "node:fs";
+import { ROUTES } from "./src/routes";
 
 // ---------------------------------------------------------------------------
 // Sitemap generation — runs once after every production build
 // ---------------------------------------------------------------------------
 const BASE_URL = "https://www.vmproducers.com";
-const ROUTES = [
-  { path: "/", priority: "1.0", changefreq: "weekly" },
-  { path: "/live-events", priority: "0.9", changefreq: "monthly" },
-  { path: "/virtual-events", priority: "0.9", changefreq: "monthly" },
-  { path: "/hybrid-events", priority: "0.9", changefreq: "monthly" },
-  { path: "/video-production", priority: "0.9", changefreq: "monthly" },
-  { path: "/meeting-pros", priority: "0.9", changefreq: "monthly" },
-];
 
 function sitemapPlugin(): Plugin {
   return {

@@ -33,6 +33,8 @@ const ROUTES = [
   "/hybrid-events",
   "/video-production",
   "/meeting-pros",
+  "/privacy-policy",
+  "/legal-notice",
 ];
 
 // ---------------------------------------------------------------------------

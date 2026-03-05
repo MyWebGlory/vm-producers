@@ -171,7 +171,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
           <span className="font-display text-xs sm:text-base lg:text-lg font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-[8px] sm:text-[10px] uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
         {/* Hover arrow */}
@@ -191,7 +191,7 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
         >
           <Icon className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: `hsl(${h} ${s}% ${l + 15}%)` }} />
         </span>
-        <h3 className="font-display text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">{service.title}</h3>
+        <h3 className="font-display text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight">{service.title}</h3>
       </div>
 
       {/* Row 3 - Tag */}
