@@ -10,6 +10,7 @@ import productLaunchesImg from "@/assets/Product-Launches_1.webp";
 import awardsGalasImg from "@/assets/Awards-_-Galas_1.webp";
 import { Layers, MapPin, Users, Cpu } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
+import melissaAvatar from "@/assets/testimonials/melissa-dawn-simkins.jpg";
 
 const seo = {
   title: "Live Event Production Services | In-Person Events | VM Producers",
@@ -100,6 +101,104 @@ const LiveEvents = () => (
         image: productionStageImg,
       },
     ]}
+    additionalContent={
+      <section className="py-20 md:py-28 bg-card relative overflow-hidden" aria-labelledby="elevate-team-heading">
+        {/* Dot grid background */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle, hsl(216 90% 58% / 0.045) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-3 font-medium">
+              Our Talent Network
+            </p>
+            <h2 id="elevate-team-heading" className="text-3xl md:text-4xl font-display font-bold text-foreground mb-5">
+              Elevate Your Event Team
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Create a strong and reliable network of independent meeting professionals that you can connect with swiftly and strategically. The Virtual Producer's Network specializes in more than 55 areas of meetings and events.
+            </p>
+          </div>
+
+          {/* Specialties grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 mb-14">
+            {[
+              "Brand Representatives",
+              "Audio Visual Experts",
+              "Logistics Managers",
+              "Conference Coordinators",
+              "Food & Beverage Planners",
+              "Event Producers",
+              "Travel Agents",
+              "Project Coordinators",
+              "Booth Supervisors",
+              "Event Technology Specialists",
+              "Procurement Experts",
+              "Venue Planners",
+              "Transportation Coordinators",
+              "Strategic Meeting Facilitators",
+              "Trade Show Supervisors",
+              "On-Demand Virtual Moderators",
+              "VIP Coordinators",
+              "Virtual Event Strategists",
+              "Registration Managers",
+            ].map((specialty) => (
+              <div
+                key={specialty}
+                className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm"
+                style={{
+                  background: "hsl(var(--primary) / 0.06)",
+                  border: "1px solid hsl(var(--primary) / 0.15)",
+                  color: "hsl(var(--foreground) / 0.80)",
+                }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                  style={{ background: "hsl(var(--primary))" }}
+                />
+                {specialty}
+              </div>
+            ))}
+          </div>
+
+          {/* Melissa testimonial */}
+          <div
+            className="flex flex-col sm:flex-row items-center sm:items-start gap-5 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto"
+            style={{
+              background: "hsl(var(--primary) / 0.06)",
+              border: "1px solid hsl(var(--primary) / 0.18)",
+            }}
+          >
+            <img
+              src={melissaAvatar}
+              alt="Melissa Dawn Simkins"
+              width={64}
+              height={64}
+              className="w-16 h-16 rounded-full object-cover shrink-0"
+              style={{ border: "2px solid hsl(var(--primary) / 0.30)" }}
+            />
+            <div className="flex flex-col gap-2 text-center sm:text-left">
+              <div className="flex justify-center sm:justify-start gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="hsl(var(--primary))" aria-hidden="true">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm leading-relaxed italic" style={{ color: "hsl(var(--foreground) / 0.75)" }}>
+                "Austin Talley is a top notch virtual producer. Patient, knowledgeable, professional and ready to jump in to make your event a success are a few words that describe my experience. I look forward to further partnerships. Definitely worth the investment!"
+              </p>
+              <p className="text-sm font-semibold text-foreground">Melissa Dawn Simkins <span className="font-normal text-muted-foreground">· CEO, Velvet Suite</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    }
   />
 );
 

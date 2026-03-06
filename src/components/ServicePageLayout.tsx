@@ -414,7 +414,7 @@ const ServicePageLayout = ({
       {/* --- Stats --- */}
       <div className="relative z-20 bg-card border-t border-border/40">
         <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14">
-          <div className="grid grid-cols-3 divide-x divide-border/60">
+          <div className={`grid divide-x divide-border/60 ${stats.length === 4 ? "grid-cols-4" : "grid-cols-3"}`}>
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}

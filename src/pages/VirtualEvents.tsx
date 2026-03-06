@@ -7,7 +7,7 @@ import webinarsTrainingImg from "@/assets/webinars-training.webp";
 import globalTownHallsImg from "@/assets/global-town-halls.webp";
 import virtualTradeShowsImg from "@/assets/virtual-trade-shows.webp";
 import extendYourReachImg from "@/assets/extend-your-reach.webp";
-import { Tv, Layout, Users, Globe, Zap, BarChart2 } from "lucide-react";
+import { Tv, Layout, Users, Globe, Zap, BarChart2, Target } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
@@ -42,7 +42,7 @@ const VirtualEvents = () => (
     subtitle="Global Reach, Zero Limits"
     featuresBefore="Virtual events that "
     featuresAccent="actually work."
-    featuresDescription="From the platform setup to the post-event report, we handle every technical and production detail so you can focus on your audience, not your screen."
+    featuresDescription="Every platform, tool, and technical layer your event needs, built around your audience and owned entirely by our team. Here's what's included."
     description="From single-session webinars to global conferences with 100,000 participants, we handle every technical and production detail so you deliver flawlessly, every time."
     heroImage={virtualEventsImg}
     heroVideo={virtualEventsVideo}
@@ -75,6 +75,12 @@ const VirtualEvents = () => (
     ]}
     features={[
       {
+        icon: Target,
+        title: "Strategic Consulting",
+        description: "Our experienced event planning and marketing consultants work with you to craft your event strategy, define your objectives, and build a production plan that delivers on your mission. From format decisions to content architecture and platform selection, we consult on every dimension of your event before a single technical detail is finalized.",
+        image: virtualEventsControlRoomImg,
+      },
+      {
         icon: Tv,
         title: "TV-Quality Livestream Production",
         description: "No more screen-share webinars that lose your audience within minutes. Your production gets the full broadcast treatment: professional graphics, real-time switching between feeds, lower thirds, and a dedicated director managing your show live. Your attendees won't know the difference between your stream and cable television.",
@@ -89,7 +95,7 @@ const VirtualEvents = () => (
       {
         icon: Users,
         title: "Conferences, Summits & Series",
-...description: "Running multiple tracks, breakout sessions, and expo booths simultaneously is complex, but you won't feel that complexity. We manage the full conference architecture: session scheduling, virtual expo booths, attendee networking spaces, live contests, and real-time polls. And if your strategy requires building an audience over time, we produce recurring webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures, turning your content into a long-term revenue and authority asset.",
+        description: "Running multiple tracks, breakout sessions, and expo booths simultaneously is complex, but you won't feel that complexity. We manage the full conference architecture: session scheduling, virtual expo booths, attendee networking spaces, live contests, and real-time polls. And if your strategy requires building an audience over time, we produce recurring webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures, turning your content into a long-term revenue and authority asset.",
         image: conferencesSummitsSeriesImg,
       },
       {

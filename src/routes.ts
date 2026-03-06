@@ -1,5 +1,5 @@
 /**
- * Canonical route list — single source of truth for:
+ * Canonical route list - single source of truth for:
  *  - React Router (AppRoutes.tsx)
  *  - Sitemap generation (vite.config.ts)
  *

@@ -70,7 +70,7 @@ const AboutSection = () => {
         {/* flex-col on mobile → flex-row on sm+ */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-16 lg:gap-20 sm:items-center">
 
-          {/* ── [MOBILE ONLY] Header block: badge + title + divider — order-1, hidden on sm+ ── */}
+          {/* ── [MOBILE ONLY] Header block: badge + title + divider - order-1, hidden on sm+ ── */}
           <div className="flex flex-col gap-5 items-center text-center sm:hidden order-1">
             <div className="flex flex-col items-center gap-2">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}>
@@ -82,7 +82,7 @@ const AboutSection = () => {
               <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-center" />{" "}
               <SplitTextReveal text="We're about to make it real." delay={0.45} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
             </h2>
-            {/* Divider — mobile only */}
+            {/* Divider - mobile only */}
             <div className="flex items-center justify-center gap-3 w-full">
               <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
               <span className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>
@@ -92,7 +92,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* ── Image / Video col — order-2 on mobile (after title), order-1 on sm+ (left) ── */}
+          {/* ── Image / Video col - order-2 on mobile (after title), order-1 on sm+ (left) ── */}
           <motion.div
             className="relative rounded-3xl overflow-hidden w-full sm:w-1/2 shrink-0 aspect-[16/9] sm:aspect-[4/3] bg-muted order-2 sm:order-2"
             initial={{ opacity: 0, x: 48 }}
@@ -129,7 +129,7 @@ const AboutSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Badge + Title — desktop only (mobile version is in block above) */}
+            {/* Badge + Title - desktop only (mobile version is in block above) */}
             <div className="hidden sm:flex flex-col gap-5 items-start text-left w-full">
               <div className="flex items-center gap-3">
                 <span className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}>
@@ -143,7 +143,7 @@ const AboutSection = () => {
               </h2>
             </div>
 
-            {/* Divider — desktop only */}
+            {/* Divider - desktop only */}
             <div className="hidden sm:flex items-center justify-start gap-3 w-full">
               <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.45))" }} />
               <span className="flex items-center justify-center w-8 h-8 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1px solid hsl(var(--primary) / 0.28)" }}>

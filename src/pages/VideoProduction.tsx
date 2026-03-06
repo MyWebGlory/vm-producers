@@ -43,7 +43,7 @@ const VideoProduction = () => (
     subtitle="Visual Storytelling"
     featuresBefore="Video that "
     featuresAccent="tells your story."
-    featuresDescription="We produce content for every stage of your event lifecycle: before, during, and long after the cameras stop rolling."
+    featuresDescription="From shareable pre-event teasers to broadcast-quality live coverage and polished post-event recaps, here's everything we produce for you."
     description="Video that looks like it cost three times what it did. We build content that works before your event, during the show, and long after it ends."
     heroImage={videoProductionImg}
     heroVideo={videoProductionVideo}

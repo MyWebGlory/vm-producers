@@ -35,7 +35,7 @@ const Footer = () => {
               <img src={vpLogo} alt="VM Producers - Full-Service Event Production" width={120} height={40} className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              VM Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups.
+              VM Producers is a full-service production agency specializing in creating engaging in person, virtual and hybrid events for organizations of all sizes, from Fortune 500 companies to emerging startups. With our nimble, tech-forward approach and dedicated team of experts, we handle everything from planning to execution, ensuring flawless events that leave lasting impressions on audiences worldwide.
             </p>
           </motion.div>
 

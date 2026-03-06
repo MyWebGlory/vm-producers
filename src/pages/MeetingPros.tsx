@@ -42,14 +42,15 @@ const MeetingPros = () => (
     subtitle="Your Global Talent Network"
     featuresBefore="The right talent, "
     featuresAccent="for every meeting."
-    featuresDescription="Access a global network of verified event professionals across 55+ specialties, matched to your event within 48 hours, anywhere in the world."
+    featuresDescription="Whatever your event requires, we have a specialist for it. Here's the talent you can mobilize, ready to deploy wherever you need them."
     description="The go-to partner for businesses that need verified event professionals fast. Connected within 48 hours, active across 70+ countries, covering more than 55 specialties."
     heroImage={meetingProsImg}
     heroVideo={meetingProsVideo}
     stats={[
+      { value: 2000, suffix: "+", label: "Meetings & Events" },
       { value: 70, suffix: "+", label: "Countries" },
-      { value: 48, suffix: "h", label: "Matching Time" },
       { value: 12, suffix: "K", label: "Meetings Supported" },
+      { value: 75, suffix: "K+", label: "Global Attendees" },
     ]}
     featuresIcon={Zap}
   typeCardsTitle="Who you'll have on your team"

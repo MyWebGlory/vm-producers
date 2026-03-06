@@ -44,7 +44,7 @@ const HybridEvents = () => (
     subtitle="Best of Both Worlds"
     featuresBefore="Hybrid events, "
     featuresAccent="done right."
-    featuresDescription="One production that serves two audiences equally. Here's how we make sure no one in the room or on the stream feels like an afterthought."
+    featuresDescription="One cohesive production running across two rooms. Here's everything we put in place to make sure the experience holds together on both sides."
     description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time. No second-class stream, both rooms get the full show."
     heroImage={hybridEventsImg}
     heroVideo={hybridEventsVideo}

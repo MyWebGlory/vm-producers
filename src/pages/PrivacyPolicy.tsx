@@ -19,7 +19,7 @@ const PrivacyPolicy = () => (
 
       <div className="space-y-10 text-sm sm:text-base leading-relaxed text-foreground/80">
 
-        {/* 1 — Data Controller */}
+        {/* 1 - Data Controller */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             1. Data Controller
@@ -34,7 +34,7 @@ const PrivacyPolicy = () => (
           </address>
         </section>
 
-        {/* 2 — Data Collected */}
+        {/* 2 - Data Collected */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             2. Personal Data Collected
@@ -57,7 +57,7 @@ const PrivacyPolicy = () => (
           </p>
         </section>
 
-        {/* 3 — Purpose & Legal Basis */}
+        {/* 3 - Purpose & Legal Basis */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             3. Purpose and Legal Basis of Processing
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => (
           </p>
         </section>
 
-        {/* 4 — Retention */}
+        {/* 4 - Retention */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             4. Data Retention
@@ -83,7 +83,7 @@ const PrivacyPolicy = () => (
           </p>
         </section>
 
-        {/* 5 — Third Parties */}
+        {/* 5 - Third Parties */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             5. Third-Party Data Processors
@@ -104,7 +104,7 @@ const PrivacyPolicy = () => (
           </p>
         </section>
 
-        {/* 6 — Your Rights */}
+        {/* 6 - Your Rights */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             6. Your Rights (GDPR)
@@ -129,7 +129,7 @@ const PrivacyPolicy = () => (
           </p>
         </section>
 
-        {/* 7 — Cookies */
+        {/* 7 - Cookies */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             7. Cookies
@@ -142,7 +142,7 @@ const PrivacyPolicy = () => (
           </p>
         </section>
 
-        {/* 8 — Contact */}
+        {/* 8 - Contact */}
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             8. Contact & Complaints
