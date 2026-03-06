@@ -110,14 +110,7 @@ const VideoProduction = () => (
         title: "Event Highlight Reels",
         description: (
           <>
-            <p>Within days of your event closing, you receive a professionally edited highlight reel ready to use immediately.</p>
-            <p className="mt-2">Built for:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Social sharing</li>
-              <li>- Sponsor deliverables</li>
-              <li>- Board presentations</li>
-              <li>- Future marketing campaigns</li>
-            </ul>
+            <p>Within days of your event closing, you receive a professionally edited highlight reel ready to use immediately — built for social sharing, sponsor deliverables, board presentations, and future marketing campaigns.</p>
             <p className="mt-2">It captures the energy of your event and keeps working for you long after the show ends.</p>
           </>
         ),
@@ -128,14 +121,8 @@ const VideoProduction = () => (
         title: "Whiteboard & Explainer Videos",
         description: (
           <>
-            <p>Some ideas are too complex for a talking-head video.</p>
-            <p className="mt-2">Our hand-drawn whiteboard explainer videos break down sophisticated concepts into clear, engaging visual narratives. Ideal for:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Product training</li>
-              <li>- Onboarding programs</li>
-              <li>- Investor pitches</li>
-              <li>- Any situation where you need your audience to actually understand what you're saying</li>
-            </ul>
+            <p>Some ideas are too complex for a talking-head video. Our hand-drawn whiteboard explainer videos break down sophisticated concepts into clear, engaging visual narratives.</p>
+            <p className="mt-2">Ideal for product training, onboarding programs, investor pitches, and any situation where you need your audience to actually understand what you're saying.</p>
           </>
         ),
         image: whiteboardExplainerImg,
@@ -163,13 +150,7 @@ const VideoProduction = () => (
         title: "Evergreen & On-Demand Content",
         description: (
           <>
-            <p>Your event recordings have a longer shelf life than your event.</p>
-            <p className="mt-2">We edit, package, and structure your footage into:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Replay-ready on-demand assets</li>
-              <li>- Gated content libraries</li>
-              <li>- Ongoing series</li>
-            </ul>
+            <p>Your event recordings have a longer shelf life than your event. We edit, package, and structure your footage into replay-ready on-demand assets, gated content libraries, and ongoing series.</p>
             <p className="mt-2">Turning a single production day into months of marketing, education, and audience growth.</p>
           </>
         ),

@@ -122,14 +122,7 @@ const LiveEvents = () => (
         title: "Venue & Logistics",
         description: (
           <>
-            <p>Finding the right venue is only the beginning.</p>
-            <p className="mt-2">We handle:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Venue selection</li>
-              <li>- Hotel room block negotiations</li>
-              <li>- Attendee transportation</li>
-              <li>- On-site logistics coordination</li>
-            </ul>
+            <p>Finding the right venue is only the beginning. We handle venue selection, hotel room block negotiations, attendee transportation, and on-site logistics coordination.</p>
             <p className="mt-2">Your guests arrive on time, settled comfortably, and focused entirely on your content.</p>
           </>
         ),
@@ -140,13 +133,7 @@ const LiveEvents = () => (
         title: "Guest Experience Management",
         description: (
           <>
-            <p>From the moment your attendees register to the final farewell, every touchpoint is managed.</p>
-            <p className="mt-2">Our on-site staff handles:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Check-in</li>
-              <li>- Catering coordination</li>
-              <li>- Guest services</li>
-            </ul>
+            <p>From the moment your attendees register to the final farewell, every touchpoint is managed. Our on-site staff handles check-in, catering coordination, and guest services.</p>
             <p className="mt-2">The result is a polished experience that reflects your brand and keeps your audience engaged throughout.</p>
           </>
         ),

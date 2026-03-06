@@ -82,12 +82,7 @@ const HybridEvents = () => (
         description: (
           <>
             <p>Your in-person and online audiences experience the same event � same energy, same content, same key moments.</p>
-            <p className="mt-2">We build your production to serve both rooms simultaneously, so neither audience ever feels excluded:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Branded webcasts</li>
-              <li>- Multi-screen layouts</li>
-              <li>- A single unified run-of-show</li>
-            </ul>
+            <p className="mt-2">We build your production to serve both rooms simultaneously using branded webcasts, multi-screen layouts, and a single unified run-of-show, so neither audience ever feels excluded.</p>
           </>
         ),
         image: hybridEventsImg,
@@ -114,12 +109,7 @@ const HybridEvents = () => (
         title: "Full AV Production",
         description: (
           <>
-            <p>Your in-person audience gets the full live production treatment:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Professional lighting rigs</li>
-              <li>- Broadcast-quality sound design</li>
-              <li>- Sharp staging</li>
-            </ul>
+            <p>Your in-person audience gets the full live production treatment — professional lighting rigs, broadcast-quality sound design, and sharp staging.</p>
             <p className="mt-2">We assemble AV crews of any size, all aligned to the same standard, from the first rehearsal through the closing session.</p>
           </>
         ),
@@ -166,13 +156,7 @@ const HybridEvents = () => (
         title: "Online-Only Sessions",
         description: (
           <>
-            <p>Your virtual attendees get more than a window into the room.</p>
-            <p className="mt-2">We produce sessions designed specifically for your remote audience:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Exclusive online-only sessions</li>
-              <li>- Digital breakouts</li>
-              <li>- Virtual networking opportunities</li>
-            </ul>
+            <p>Your virtual attendees get more than a window into the room. We produce exclusive online-only sessions, digital breakouts, and virtual networking opportunities designed specifically for your remote audience.</p>
             <p className="mt-2">This extends your event's reach and gives your online community a compelling reason to show up and stay engaged.</p>
           </>
         ),
@@ -184,12 +168,7 @@ const HybridEvents = () => (
         description: (
           <>
             <p>Every session is recorded, edited, and packaged for on-demand access.</p>
-            <p className="mt-2">Your event doesn't end when the room empties � it becomes a content library that continues:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Training new team members</li>
-              <li>- Attracting new attendees</li>
-              <li>- Giving sponsors lasting visibility well beyond the event day</li>
-            </ul>
+            <p className="mt-2">Your event doesn't end when the room empties — it becomes a content library that continues training new team members, attracting new attendees, and giving sponsors lasting visibility well beyond the event day.</p>
           </>
         ),
         image: videoProductionImg,

@@ -96,14 +96,7 @@ const VirtualEvents = () => (
         title: "TV-Quality Livestream Production",
         description: (
           <>
-            <p>No more screen-share webinars that lose your audience within minutes.</p>
-            <p className="mt-2">Your production gets the full broadcast treatment:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Professional graphics</li>
-              <li>- Real-time switching between feeds</li>
-              <li>- Lower thirds</li>
-              <li>- A dedicated director managing your show live</li>
-            </ul>
+            <p>No more screen-share webinars that lose your audience within minutes. Your production gets the full broadcast treatment — professional graphics, real-time feed switching, lower thirds, and a dedicated director managing your show live.</p>
             <p className="mt-2">Your attendees won't know the difference between your stream and cable television.</p>
           </>
         ),
@@ -114,14 +107,7 @@ const VirtualEvents = () => (
         title: "Custom Branded Virtual Platforms",
         description: (
           <>
-            <p>Your virtual event runs on an environment built around your brand, not a generic meeting template.</p>
-            <p className="mt-2">We set up fully branded virtual spaces:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Custom lobbies</li>
-              <li>- Breakout rooms</li>
-              <li>- Networking lounges</li>
-              <li>- Sponsor areas</li>
-            </ul>
+            <p>Your virtual event runs on an environment built around your brand, not a generic meeting template. We set up fully branded virtual spaces with custom lobbies, breakout rooms, networking lounges, and sponsor areas.</p>
             <p className="mt-2">Every screen your attendees see carries your identity and reinforces your message.</p>
           </>
         ),
@@ -169,14 +155,7 @@ const VirtualEvents = () => (
         title: "Analytics & Post-Event Reporting",
         description: (
           <>
-            <p>After the event ends, the data starts working for you.</p>
-            <p className="mt-2">You receive a full post-event report covering:</p>
-            <ul className="mt-1 space-y-0.5 list-none pl-0">
-              <li>- Attendance figures</li>
-              <li>- Session engagement rates</li>
-              <li>- Drop-off points</li>
-              <li>- ROI indicators</li>
-            </ul>
+            <p>After the event ends, the data starts working for you. You receive a full post-event report covering attendance figures, session engagement rates, drop-off points, and ROI indicators.</p>
             <p className="mt-2">Everything you need to brief stakeholders, justify the investment, and plan your next event smarter.</p>
           </>
         ),
