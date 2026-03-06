@@ -1,4 +1,4 @@
-﻿import ServicePageLayout from "@/components/ServicePageLayout";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import meetingProsImg from "@/assets/meeting-pros.webp";
 import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 import aboutEventImg from "@/assets/about-event.webp";
@@ -108,7 +108,17 @@ const MeetingPros = () => (
       {
         icon: Grid2x2,
         title: "55+ Event Specialties",
-        description: "VIP coordinators, trade show supervisors, registration managers, booth supervisors, F&B planners, procurement experts, and more - all in one network.",
+        description: (
+          <>
+            <p>One network covering everything your event requires:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- VIP coordinators and trade show supervisors</li>
+              <li>- Registration and booth managers</li>
+              <li>- F&B planners and procurement experts</li>
+              <li>- And 50+ more specialties</li>
+            </ul>
+          </>
+        ),
         image: eventDirectorsImg,
       },
     ]}

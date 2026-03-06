@@ -35,7 +35,7 @@ interface ServiceTypeCard {
 interface ServiceFeature {
   icon?: LucideIcon;
   title: string;
-  description: string;
+  description: ReactNode;
   image?: string;
 }
 
@@ -138,29 +138,53 @@ const FeatureRow = ({
     >
       {Icon && (
         <span
-          className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl shrink-0"
+          className="hidden sm:flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl shrink-0"
           style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.25)" }}
         >
           <Icon size={19} style={{ color: "hsl(var(--primary))" }} />
         </span>
       )}
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold leading-tight text-foreground">
+      <h3 className="text-2xl sm:text-2xl md:text-3xl font-display font-bold leading-tight text-foreground text-center sm:text-left">
         {feature.title}
       </h3>
-      <p className="text-sm sm:text-base leading-relaxed" style={{ color: "hsl(var(--foreground) / 0.60)" }}>
+      <div className="text-sm sm:text-base leading-relaxed text-center sm:text-left" style={{ color: "hsl(var(--foreground) / 0.60)" }}>
         {feature.description}
-      </p>
+      </div>
     </motion.div>
   );
 
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-16 lg:gap-20 items-center"
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-10 md:gap-16 lg:gap-20 items-center"
     >
-      {/* On mobile always show image first, on sm+ respect alternating order */}
-      <div className="sm:hidden">{imageCol}</div>
-      <div className="sm:hidden">{textCol}</div>
+      {/* Mobile: icon → title → image → text */}
+      <div className="sm:hidden flex flex-col items-center gap-4 pt-2">
+        {Icon && (
+          <span
+            className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
+            style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.25)" }}
+          >
+            <Icon size={19} style={{ color: "hsl(var(--primary))" }} />
+          </span>
+        )}
+        <h3 className="text-2xl font-display font-bold leading-tight text-foreground text-center mb-3">
+          {feature.title}
+        </h3>
+        <motion.div
+          className="relative rounded-2xl overflow-hidden w-full h-36"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img src={img} alt={feature.title} width={600} height={400} loading="lazy" className="w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.10) 0%, transparent 60%)" }} />
+        </motion.div>
+        <div className="text-sm leading-relaxed text-left w-full" style={{ color: "hsl(var(--foreground) / 0.60)" }}>
+          {feature.description}
+        </div>
+      </div>
+      {/* Desktop: alternating image / text */}
       <div className="hidden sm:contents">
         {imageRight ? <>{textCol}{imageCol}</> : <>{imageCol}{textCol}</>}
       </div>
@@ -179,7 +203,7 @@ const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: str
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xl md:text-2xl font-display font-bold text-foreground mb-10"
+            className="text-xl md:text-2xl font-display font-bold text-foreground mb-10 text-center sm:text-left"
           >
             {title}
           </motion.h3>
@@ -219,37 +243,56 @@ const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: str
                 )}
                 {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-2xl" />
+                {/* Mobile: text overlaid on image */}
+                <div className="sm:hidden absolute bottom-0 left-0 right-0 z-10" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 60%, transparent 100%)", borderRadius: "0 0 1rem 1rem" }}>
+                  <div className="p-4 pb-5">
+                    {card.label && (
+                      <p
+                        className="hidden"
+                        style={{ color: "hsl(var(--primary) / 0.90)" }}
+                      >
+                        {card.label}
+                      </p>
+                    )}
+                    <h3 className="text-xl font-display font-bold text-white leading-snug mb-1.5">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs leading-relaxed text-white/80">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-              {/* Label */}
+              {/* Label — desktop only */}
               {card.label && (
                 <motion.p
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.12 + 0.2 }}
-                  className="text-[11px] uppercase tracking-[0.25em] font-semibold"
+                  className="hidden sm:block text-[11px] uppercase tracking-[0.25em] font-semibold"
                   style={{ color: "hsl(var(--primary) / 0.75)" }}
                 >
                   {card.label}
                 </motion.p>
               )}
-              {/* Title */}
+              {/* Title — desktop only */}
               <motion.h3
                 initial={{ opacity: 0, x: -8 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.12 + 0.25 }}
-                className="text-lg md:text-xl font-display font-bold text-foreground leading-snug"
+                className="hidden sm:block text-lg md:text-xl font-display font-bold text-foreground leading-snug"
               >
                 {card.title}
               </motion.h3>
-              {/* Description */}
+              {/* Description — desktop only */}
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.12 + 0.32 }}
-                className="text-sm leading-relaxed"
+                className="hidden sm:block text-sm leading-relaxed"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
               >
                 {card.description}
@@ -488,7 +531,7 @@ const ServicePageLayout = ({
               )}
               <motion.h2
                 id="features-heading"
-                className="relative text-2xl sm:text-3xl md:text-5xl font-display font-bold text-foreground"
+                className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -520,7 +563,7 @@ const ServicePageLayout = ({
       {/* --- Feature Rows --- */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="mb-16 md:mb-24">
+          <div className="mb-16 md:mb-24 text-center sm:text-left">
             {FeaturesIcon && (
               <div
                 className="inline-flex rounded-2xl p-3 border mb-5"
@@ -541,12 +584,12 @@ const ServicePageLayout = ({
                   style={{ color: "hsl(var(--primary) / 0.06)", pointerEvents: "none" }}
                 />
               )}
-              <h2 className="relative text-3xl md:text-4xl font-display font-bold text-foreground">
+              <h2 className="relative text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground">
                 Here's <span style={{ color: "hsl(var(--primary))" }}>how</span> we make it happen.
               </h2>
             </div>
           </div>
-          <div className="flex flex-col gap-16 md:gap-24 lg:gap-32">
+          <div className="flex flex-col gap-20 md:gap-24 lg:gap-32">
             {features.map((feature, i) => (
               <FeatureRow key={feature.title} feature={feature} index={i} heroImage={heroImage} />
             ))}

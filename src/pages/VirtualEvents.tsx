@@ -1,4 +1,4 @@
-﻿import ServicePageLayout from "@/components/ServicePageLayout";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import virtualEventsImg from "@/assets/virtual-events.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
@@ -77,37 +77,109 @@ const VirtualEvents = () => (
       {
         icon: Target,
         title: "Strategic Consulting",
-        description: "Our experienced event planning and marketing consultants work with you to craft your event strategy, define your objectives, and build a production plan that delivers on your mission. From format decisions to content architecture and platform selection, we consult on every dimension of your event before a single technical detail is finalized.",
+        description: (
+          <>
+            <p>Our experienced event planning and marketing consultants work with you before a single technical detail is finalized.</p>
+            <p className="mt-2">We consult on every dimension:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Event strategy and objective definition</li>
+              <li>- Format decisions and content architecture</li>
+              <li>- Platform selection</li>
+              <li>- Full production planning aligned to your mission</li>
+            </ul>
+          </>
+        ),
         image: virtualEventsControlRoomImg,
       },
       {
         icon: Tv,
         title: "TV-Quality Livestream Production",
-        description: "No more screen-share webinars that lose your audience within minutes. Your production gets the full broadcast treatment: professional graphics, real-time switching between feeds, lower thirds, and a dedicated director managing your show live. Your attendees won't know the difference between your stream and cable television.",
+        description: (
+          <>
+            <p>No more screen-share webinars that lose your audience within minutes.</p>
+            <p className="mt-2">Your production gets the full broadcast treatment:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Professional graphics</li>
+              <li>- Real-time switching between feeds</li>
+              <li>- Lower thirds</li>
+              <li>- A dedicated director managing your show live</li>
+            </ul>
+            <p className="mt-2">Your attendees won't know the difference between your stream and cable television.</p>
+          </>
+        ),
         image: virtualEventsControlRoomImg,
       },
       {
         icon: Layout,
         title: "Custom Branded Virtual Platforms",
-        description: "Your virtual event runs on an environment built around your brand, not a generic meeting template. We set up fully branded virtual spaces with custom lobbies, breakout rooms, networking lounges, and sponsor areas, every screen your attendees see carries your identity and reinforces your message.",
+        description: (
+          <>
+            <p>Your virtual event runs on an environment built around your brand, not a generic meeting template.</p>
+            <p className="mt-2">We set up fully branded virtual spaces:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Custom lobbies</li>
+              <li>- Breakout rooms</li>
+              <li>- Networking lounges</li>
+              <li>- Sponsor areas</li>
+            </ul>
+            <p className="mt-2">Every screen your attendees see carries your identity and reinforces your message.</p>
+          </>
+        ),
         image: virtualEventsImg,
       },
       {
         icon: Users,
         title: "Conferences, Summits & Series",
-        description: "Running multiple tracks, breakout sessions, and expo booths simultaneously is complex, but you won't feel that complexity. We manage the full conference architecture: session scheduling, virtual expo booths, attendee networking spaces, live contests, and real-time polls. And if your strategy requires building an audience over time, we produce recurring webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures, turning your content into a long-term revenue and authority asset.",
+        description: (
+          <>
+            <p>Running multiple tracks, breakout sessions, and expo booths simultaneously is complex � but you won't feel that complexity.</p>
+            <p className="mt-2">We manage the full conference architecture:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Session scheduling</li>
+              <li>- Virtual expo booths</li>
+              <li>- Attendee networking spaces</li>
+              <li>- Live contests and real-time polls</li>
+            </ul>
+            <p className="mt-2">For recurring formats, we produce webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures � turning your content into a long-term revenue and authority asset.</p>
+          </>
+        ),
         image: conferencesSummitsSeriesImg,
       },
       {
         icon: Zap,
         title: "Global Engagement: Live & Multilingual",
-        description: "Passive audiences don't convert, and they don't come back. We integrate live polls, moderated Q&A, real-time chat, virtual networking, and gamification directly into your event, all managed for you, so you never have to monitor a chat feed while running your show. And your message lands clearly with every audience: we provide simultaneous interpretation across 5+ languages, with professional interpreters on standby throughout, so every attendee feels fully included regardless of where in the world they're watching from.",
+        description: (
+          <>
+            <p>Passive audiences don't convert, and they don't come back.</p>
+            <p className="mt-2">We integrate engagement tools directly into your event � all managed for you:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Live polls</li>
+              <li>- Moderated Q&A</li>
+              <li>- Real-time chat</li>
+              <li>- Virtual networking</li>
+              <li>- Gamification</li>
+            </ul>
+            <p className="mt-2">We also provide simultaneous interpretation across 5+ languages, with professional interpreters on standby, so every attendee feels fully included.</p>
+          </>
+        ),
         image: globalTownHallsImg,
       },
       {
         icon: BarChart2,
         title: "Analytics & Post-Event Reporting",
-        description: "After the event ends, the data starts working for you. You receive a full post-event report covering attendance figures, session engagement rates, drop-off points, and ROI indicators, everything you need to brief stakeholders, justify the investment, and plan your next event smarter.",
+        description: (
+          <>
+            <p>After the event ends, the data starts working for you.</p>
+            <p className="mt-2">You receive a full post-event report covering:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Attendance figures</li>
+              <li>- Session engagement rates</li>
+              <li>- Drop-off points</li>
+              <li>- ROI indicators</li>
+            </ul>
+            <p className="mt-2">Everything you need to brief stakeholders, justify the investment, and plan your next event smarter.</p>
+          </>
+        ),
         image: extendYourReachImg,
       },
     ]}

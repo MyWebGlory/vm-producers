@@ -1,4 +1,4 @@
-﻿import ServicePageLayout from "@/components/ServicePageLayout";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
@@ -79,43 +79,119 @@ const HybridEvents = () => (
       {
         icon: Layers,
         title: "Unified Experience Design",
-        description: "Your in-person and online audiences experience the same event, same energy, same content, same key moments. We build your production to serve both rooms simultaneously, using branded webcasts, multi-screen layouts, and a single unified run-of-show that neither audience ever feels excluded from.",
+        description: (
+          <>
+            <p>Your in-person and online audiences experience the same event � same energy, same content, same key moments.</p>
+            <p className="mt-2">We build your production to serve both rooms simultaneously, so neither audience ever feels excluded:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Branded webcasts</li>
+              <li>- Multi-screen layouts</li>
+              <li>- A single unified run-of-show</li>
+            </ul>
+          </>
+        ),
         image: hybridEventsImg,
       },
       {
         icon: Camera,
         title: "Multi-Camera Live Production",
-        description: "Our Head of Hybrid is an award-winning technical producer who has led hundreds of complex productions. We deploy multiple cameras and experienced operators on-site, with a remote production team handling the broadcast feed, delivering branded streams, sharp split-screen layouts, and real-time feed switching that makes your show look and feel broadcast-quality.",
+        description: (
+          <>
+            <p>Our Head of Hybrid is an award-winning technical producer who has led hundreds of complex productions.</p>
+            <p className="mt-2">We deploy the full broadcast setup on-site:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Multiple cameras with experienced operators</li>
+              <li>- A remote production team handling the broadcast feed</li>
+              <li>- Branded streams and sharp split-screen layouts</li>
+              <li>- Real-time feed switching for a broadcast-quality show</li>
+            </ul>
+          </>
+        ),
         image: captureEveryMomentImg,
       },
       {
         icon: Volume2,
         title: "Full AV Production",
-        description: "Your in-person audience gets the full live production treatment: professional lighting rigs, broadcast-quality sound design, and sharp staging. We assemble AV crews of any size, all aligned to the same standard, all committed to delivering from the first rehearsal through the closing session.",
+        description: (
+          <>
+            <p>Your in-person audience gets the full live production treatment:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Professional lighting rigs</li>
+              <li>- Broadcast-quality sound design</li>
+              <li>- Sharp staging</li>
+            </ul>
+            <p className="mt-2">We assemble AV crews of any size, all aligned to the same standard, from the first rehearsal through the closing session.</p>
+          </>
+        ),
         image: liveEventsImg,
       },
       {
         icon: Monitor,
         title: "Platform Management",
-        description: "We handle all the technology for you, full platform setup, branding customization, technical rehearsals, and live support throughout your event. Whether you're streaming to a branded webpage, Zoom, or a virtual event platform, your remote audience gets a polished, stable, and fully branded experience from login to close.",
+        description: (
+          <>
+            <p>We handle all the technology for you:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Full platform setup</li>
+              <li>- Branding customization</li>
+              <li>- Technical rehearsals</li>
+              <li>- Live support throughout your event</li>
+            </ul>
+            <p className="mt-2">Whether you're streaming to a branded webpage, Zoom, or a virtual event platform � your remote audience gets a polished, stable, fully branded experience from login to close.</p>
+          </>
+        ),
         image: virtualEventsControlRoomImg,
       },
       {
         icon: MessageSquare,
         title: "Engagement for Both Rooms",
-        description: "Keeping two audiences engaged simultaneously requires intentional design. We connect in-person and online attendees through a shared event app with a social wall, group and private messaging, virtual booths, live polls, and speaker Q&A, making every participant feel equally present, regardless of where in the world they're watching from.",
+        description: (
+          <>
+            <p>Keeping two audiences engaged simultaneously requires intentional design.</p>
+            <p className="mt-2">We connect in-person and online attendees through a shared event app:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Social wall</li>
+              <li>- Group and private messaging</li>
+              <li>- Virtual booths</li>
+              <li>- Live polls</li>
+              <li>- Speaker Q&A</li>
+            </ul>
+            <p className="mt-2">Every participant feels equally present, wherever in the world they're watching from.</p>
+          </>
+        ),
         image: townHallsImg,
       },
       {
         icon: Laptop,
         title: "Online-Only Sessions",
-        description: "Your virtual attendees get more than a window into the room. We produce exclusive online-only sessions, digital breakouts, and virtual networking opportunities designed specifically for your remote audience, extending your event's reach and giving your online community a compelling reason to show up and stay engaged.",
+        description: (
+          <>
+            <p>Your virtual attendees get more than a window into the room.</p>
+            <p className="mt-2">We produce sessions designed specifically for your remote audience:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Exclusive online-only sessions</li>
+              <li>- Digital breakouts</li>
+              <li>- Virtual networking opportunities</li>
+            </ul>
+            <p className="mt-2">This extends your event's reach and gives your online community a compelling reason to show up and stay engaged.</p>
+          </>
+        ),
         image: webinarsTrainingImg,
       },
       {
         icon: Archive,
         title: "Post-Event Content Hub",
-        description: "Every session is recorded, edited, and packaged for on-demand access. Your event doesn't end when the room empties, it becomes a content library that continues generating value, training new team members, attracting new attendees, and giving sponsors lasting visibility well beyond the day of the event.",
+        description: (
+          <>
+            <p>Every session is recorded, edited, and packaged for on-demand access.</p>
+            <p className="mt-2">Your event doesn't end when the room empties � it becomes a content library that continues:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Training new team members</li>
+              <li>- Attracting new attendees</li>
+              <li>- Giving sponsors lasting visibility well beyond the event day</li>
+            </ul>
+          </>
+        ),
         image: videoProductionImg,
       },
     ]}

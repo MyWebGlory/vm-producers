@@ -1,4 +1,5 @@
-﻿import ServicePageLayout from "@/components/ServicePageLayout";
+import { useState } from "react";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import liveEventsImg from "@/assets/live-events.webp";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
 import hybridSummitImg from "@/assets/hybrid-summit-stage.webp";
@@ -11,6 +12,28 @@ import awardsGalasImg from "@/assets/Awards-_-Galas_1.webp";
 import { Layers, MapPin, Users, Cpu } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 import melissaAvatar from "@/assets/testimonials/melissa-dawn-simkins.jpg";
+
+const QUOTE = "Austin Talley is a top notch virtual producer. Patient, knowledgeable, professional and ready to jump in to make your event a success are a few words that describe my experience. I look forward to further partnerships. Definitely worth the investment!";
+const QUOTE_SHORT = "Austin Talley is a top notch virtual producer. Patient, knowledgeable, professional and ready to jump in...";
+
+function MelissaQuote() {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <>
+      <p className="text-sm leading-relaxed italic" style={{ color: "hsl(var(--foreground) / 0.75)" }}>
+        <span className="sm:hidden">"{expanded ? QUOTE : QUOTE_SHORT}"</span>
+        <span className="hidden sm:inline">"{QUOTE}"</span>
+      </p>
+      <button
+        onClick={() => setExpanded(v => !v)}
+        className="sm:hidden text-xs font-semibold mt-0.5"
+        style={{ color: "hsl(var(--primary))" }}
+      >
+        {expanded ? "See less ?" : "See more ?"}
+      </button>
+    </>
+  );
+}
 
 const seo = {
   title: "Live Event Production Services | In-Person Events | VM Producers",
@@ -79,25 +102,72 @@ const LiveEvents = () => (
       {
         icon: Layers,
         title: "End-to-End Production",
-        description: "Your event is handled from first brief to final breakdown. We manage program development, A-to-Z event logistics, staging, lighting, AV production, branding, signage, catering, and on-site staff, so you walk in as the host, not the fixer. Every detail is documented, rehearsed, and executed to plan.",
+        description: (
+          <>
+            <p>Your event is handled from first brief to final breakdown � so you walk in as the host, not the fixer.</p>
+            <p className="mt-2">We manage:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Program development and A-to-Z event logistics</li>
+              <li>- Staging, lighting, and AV production</li>
+              <li>- Branding and signage</li>
+              <li>- Catering and on-site staff</li>
+            </ul>
+            <p className="mt-2">Every detail is documented, rehearsed, and executed to plan.</p>
+          </>
+        ),
         image: liveEventsImg,
       },
       {
         icon: MapPin,
         title: "Venue & Logistics",
-        description: "Finding the right venue is only the beginning. We handle venue selection, hotel room block negotiations, attendee transportation, and on-site logistics coordination, so your guests arrive on time, settled comfortably, and focused entirely on your content rather than the chaos of getting there.",
+        description: (
+          <>
+            <p>Finding the right venue is only the beginning.</p>
+            <p className="mt-2">We handle:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Venue selection</li>
+              <li>- Hotel room block negotiations</li>
+              <li>- Attendee transportation</li>
+              <li>- On-site logistics coordination</li>
+            </ul>
+            <p className="mt-2">Your guests arrive on time, settled comfortably, and focused entirely on your content.</p>
+          </>
+        ),
         image: venueLogisticsImg,
       },
       {
         icon: Users,
         title: "Guest Experience Management",
-        description: "From the moment your attendees register to the final farewell, every touchpoint is managed. Our on-site staff handles check-in, catering coordination, and guest services, creating a polished experience that reflects your brand and keeps your audience engaged throughout.",
+        description: (
+          <>
+            <p>From the moment your attendees register to the final farewell, every touchpoint is managed.</p>
+            <p className="mt-2">Our on-site staff handles:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Check-in</li>
+              <li>- Catering coordination</li>
+              <li>- Guest services</li>
+            </ul>
+            <p className="mt-2">The result is a polished experience that reflects your brand and keeps your audience engaged throughout.</p>
+          </>
+        ),
         image: guestExperienceImg,
       },
       {
         icon: Cpu,
         title: "Production & Stage Design",
-        description: "Our production team turns ordinary spaces into branded environments. Premium staging, professional lighting rigs, broadcast-quality sound, and strategic signage all work together to deliver an immersive atmosphere that amplifies your message and keeps your audience fully present from opening to close.",
+        description: (
+          <>
+            <p>Our production team turns ordinary spaces into branded environments.</p>
+            <p className="mt-2">Every element is built to amplify your message:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Premium staging</li>
+              <li>- Professional lighting rigs</li>
+              <li>- Broadcast-quality sound</li>
+              <li>- Strategic signage</li>
+            </ul>
+            <p className="mt-2">All unified to deliver an immersive atmosphere that keeps your audience fully present from opening to close.</p>
+          </>
+        ),
         image: productionStageImg,
       },
     ]}
@@ -147,10 +217,10 @@ const LiveEvents = () => (
               "VIP Coordinators",
               "Virtual Event Strategists",
               "Registration Managers",
-            ].map((specialty) => (
+            ].map((specialty, i) => (
               <div
                 key={specialty}
-                className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm"
+                className={`flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm${i >= 10 ? " hidden sm:flex" : ""}`}
                 style={{
                   background: "hsl(var(--primary) / 0.06)",
                   border: "1px solid hsl(var(--primary) / 0.15)",
@@ -190,10 +260,8 @@ const LiveEvents = () => (
                   </svg>
                 ))}
               </div>
-              <p className="text-sm leading-relaxed italic" style={{ color: "hsl(var(--foreground) / 0.75)" }}>
-                "Austin Talley is a top notch virtual producer. Patient, knowledgeable, professional and ready to jump in to make your event a success are a few words that describe my experience. I look forward to further partnerships. Definitely worth the investment!"
-              </p>
-              <p className="text-sm font-semibold text-foreground">Melissa Dawn Simkins <span className="font-normal text-muted-foreground">· CEO, Velvet Suite</span></p>
+              <MelissaQuote />
+              <p className="text-sm font-semibold text-foreground">Melissa Dawn Simkins <span className="font-normal text-muted-foreground">� CEO, Velvet Suite</span></p>
             </div>
           </div>
         </div>

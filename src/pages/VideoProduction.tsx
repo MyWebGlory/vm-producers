@@ -1,4 +1,4 @@
-﻿import ServicePageLayout from "@/components/ServicePageLayout";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import videoProductionImg from "@/assets/video-production.webp";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
@@ -78,43 +78,120 @@ const VideoProduction = () => (
       {
         icon: Play,
         title: "Promotional Videos & Event Teasers",
-        description: "Your event needs an audience before it has one. We produce sharp promotional videos that build anticipation and drive registrations, for your event, your cause, your campaign, or your organization. From short-form social cuts to full-length promo reels, your story gets told in a way that makes people want to show up.",
+        description: (
+          <>
+            <p>Your event needs an audience before it has one.</p>
+            <p className="mt-2">We produce sharp promotional videos that build anticipation and drive registrations � for your event, your cause, your campaign, or your organization.</p>
+            <p className="mt-2">From short-form social cuts to full-length promo reels, your story gets told in a way that makes people want to show up.</p>
+          </>
+        ),
         image: videoProductionImg,
       },
       {
         icon: Camera,
         title: "Live Multi-Camera Production",
-        description: "On the day, your production is in the hands of a professional broadcast team. Multi-camera setups, real-time feed switching, live graphics overlay, and professional directing, on-site or fully remote. Your audience sees a polished, directed show, not a static single-angle recording.",
+        description: (
+          <>
+            <p>On the day, your production is in the hands of a professional broadcast team.</p>
+            <p className="mt-2">We deploy:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Multi-camera setups</li>
+              <li>- Real-time feed switching</li>
+              <li>- Live graphics overlay</li>
+              <li>- Professional directing � on-site or fully remote</li>
+            </ul>
+            <p className="mt-2">Your audience sees a polished, directed show, not a static single-angle recording.</p>
+          </>
+        ),
         image: liveEventsImg,
       },
       {
         icon: Star,
         title: "Event Highlight Reels",
-        description: "Within days of your event closing, you receive a professionally edited highlight reel ready to use immediately. Built for social sharing, sponsor deliverables, board presentations, and future marketing campaigns, it captures the energy of your event and keeps working for you long after the show ends.",
+        description: (
+          <>
+            <p>Within days of your event closing, you receive a professionally edited highlight reel ready to use immediately.</p>
+            <p className="mt-2">Built for:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Social sharing</li>
+              <li>- Sponsor deliverables</li>
+              <li>- Board presentations</li>
+              <li>- Future marketing campaigns</li>
+            </ul>
+            <p className="mt-2">It captures the energy of your event and keeps working for you long after the show ends.</p>
+          </>
+        ),
         image: attractBuildHypeImg,
       },
       {
         icon: PenTool,
         title: "Whiteboard & Explainer Videos",
-        description: "Some ideas are too complex for a talking-head video. Our hand-drawn whiteboard explainer videos break down sophisticated concepts into clear, engaging visual narratives, ideal for product training, onboarding programs, investor pitches, and any situation where you need your audience to actually understand what you're saying.",
+        description: (
+          <>
+            <p>Some ideas are too complex for a talking-head video.</p>
+            <p className="mt-2">Our hand-drawn whiteboard explainer videos break down sophisticated concepts into clear, engaging visual narratives. Ideal for:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Product training</li>
+              <li>- Onboarding programs</li>
+              <li>- Investor pitches</li>
+              <li>- Any situation where you need your audience to actually understand what you're saying</li>
+            </ul>
+          </>
+        ),
         image: whiteboardExplainerImg,
       },
       {
         icon: Film,
         title: "Corporate Films & Brand Stories",
-        description: "Your company's story deserves cinematic treatment. We produce corporate films for culture showcases, product launches, brand anthems, and executive keynotes, with the production value to make a lasting impression on investors, clients, and potential hires alike.",
+        description: (
+          <>
+            <p>Your company's story deserves cinematic treatment.</p>
+            <p className="mt-2">We produce corporate films for:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Culture showcases</li>
+              <li>- Product launches</li>
+              <li>- Brand anthems</li>
+              <li>- Executive keynotes</li>
+            </ul>
+            <p className="mt-2">With the production value to make a lasting impression on investors, clients, and potential hires alike.</p>
+          </>
+        ),
         image: captureEveryMomentImg,
       },
       {
         icon: RefreshCw,
         title: "Evergreen & On-Demand Content",
-        description: "Your event recordings have a longer shelf life than your event. We edit, package, and structure your session footage into replay-ready on-demand assets, gated content libraries, and ongoing series, turning a single production day into months of marketing, education, and audience growth.",
+        description: (
+          <>
+            <p>Your event recordings have a longer shelf life than your event.</p>
+            <p className="mt-2">We edit, package, and structure your footage into:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Replay-ready on-demand assets</li>
+              <li>- Gated content libraries</li>
+              <li>- Ongoing series</li>
+            </ul>
+            <p className="mt-2">Turning a single production day into months of marketing, education, and audience growth.</p>
+          </>
+        ),
         image: extendYourReachImg,
       },
       {
         icon: Sliders,
         title: "Post-Production & Delivery",
-        description: "Raw footage is just the starting point. Our post-production team handles color grading, motion graphics, sound design, subtitle tracks, and platform-specific exports, delivering broadcast-ready files on your deadline, every time, with the polish your brand demands.",
+        description: (
+          <>
+            <p>Raw footage is just the starting point.</p>
+            <p className="mt-2">Our post-production team handles:</p>
+            <ul className="mt-1 space-y-0.5 list-none pl-0">
+              <li>- Color grading</li>
+              <li>- Motion graphics</li>
+              <li>- Sound design</li>
+              <li>- Subtitle tracks</li>
+              <li>- Platform-specific exports</li>
+            </ul>
+            <p className="mt-2">Broadcast-ready files delivered on your deadline, every time, with the polish your brand demands.</p>
+          </>
+        ),
         image: productionStageImg,
       },
     ]}
