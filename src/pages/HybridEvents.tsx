@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
 import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
@@ -81,7 +81,7 @@ const HybridEvents = () => (
         title: "Unified Experience Design",
         description: (
           <>
-            <p>Your in-person and online audiences experience the same event � same energy, same content, same key moments.</p>
+            <p>Your in-person and online audiences experience the same event: same energy, same content, same key moments.</p>
             <p className="mt-2">We build your production to serve both rooms simultaneously using branded webcasts, multi-screen layouts, and a single unified run-of-show, so neither audience ever feels excluded.</p>
           </>
         ),
@@ -109,7 +109,7 @@ const HybridEvents = () => (
         title: "Full AV Production",
         description: (
           <>
-            <p>Your in-person audience gets the full live production treatment — professional lighting rigs, broadcast-quality sound design, and sharp staging.</p>
+            <p>Your in-person audience gets the full live production treatment: professional lighting rigs, broadcast-quality sound design, and sharp staging.</p>
             <p className="mt-2">We assemble AV crews of any size, all aligned to the same standard, from the first rehearsal through the closing session.</p>
           </>
         ),
@@ -127,7 +127,7 @@ const HybridEvents = () => (
               <li>- Technical rehearsals</li>
               <li>- Live support throughout your event</li>
             </ul>
-            <p className="mt-2">Whether you're streaming to a branded webpage, Zoom, or a virtual event platform � your remote audience gets a polished, stable, fully branded experience from login to close.</p>
+            <p className="mt-2">Whether you're streaming to a branded webpage, Zoom, or a virtual event platform, your remote audience gets a polished, stable, fully branded experience from login to close.</p>
           </>
         ),
         image: virtualEventsControlRoomImg,
@@ -168,7 +168,7 @@ const HybridEvents = () => (
         description: (
           <>
             <p>Every session is recorded, edited, and packaged for on-demand access.</p>
-            <p className="mt-2">Your event doesn't end when the room empties — it becomes a content library that continues training new team members, attracting new attendees, and giving sponsors lasting visibility well beyond the event day.</p>
+            <p className="mt-2">Your event doesn't end when the room empties. It becomes a content library that continues training new team members, attracting new attendees, and giving sponsors lasting visibility well beyond the event day.</p>
           </>
         ),
         image: videoProductionImg,

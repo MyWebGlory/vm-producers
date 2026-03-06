@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import liveEventsImg from "@/assets/live-events.webp";
 import liveEventsVideo from "@/assets/live-events-video.mp4";
@@ -104,7 +104,7 @@ const LiveEvents = () => (
         title: "End-to-End Production",
         description: (
           <>
-            <p>Your event is handled from first brief to final breakdown � so you walk in as the host, not the fixer.</p>
+            <p>Your event is handled from first brief to final breakdown, so you walk in as the host, not the fixer.</p>
             <p className="mt-2">We manage:</p>
             <ul className="mt-1 space-y-0.5 list-none pl-0">
               <li>- Program development and A-to-Z event logistics</li>
@@ -248,7 +248,7 @@ const LiveEvents = () => (
                 ))}
               </div>
               <MelissaQuote />
-              <p className="text-sm font-semibold text-foreground">Melissa Dawn Simkins <span className="font-normal text-muted-foreground">� CEO, Velvet Suite</span></p>
+              <p className="text-sm font-semibold text-foreground">Melissa Dawn Simkins <span className="font-normal text-muted-foreground">, CEO, Velvet Suite</span></p>
             </div>
           </div>
         </div>

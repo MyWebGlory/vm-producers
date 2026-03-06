@@ -263,7 +263,7 @@ const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: str
                   </div>
                 </div>
               </div>
-              {/* Label — desktop only */}
+              {/* Label - desktop only */}
               {card.label && (
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -276,7 +276,7 @@ const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: str
                   {card.label}
                 </motion.p>
               )}
-              {/* Title — desktop only */}
+              {/* Title - desktop only */}
               <motion.h3
                 initial={{ opacity: 0, x: -8 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -286,7 +286,7 @@ const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: str
               >
                 {card.title}
               </motion.h3>
-              {/* Description — desktop only */}
+              {/* Description - desktop only */}
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

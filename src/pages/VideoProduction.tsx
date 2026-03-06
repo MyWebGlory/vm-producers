@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import videoProductionImg from "@/assets/video-production.webp";
 import videoProductionVideo from "@/assets/video-production-video.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
@@ -81,7 +81,7 @@ const VideoProduction = () => (
         description: (
           <>
             <p>Your event needs an audience before it has one.</p>
-            <p className="mt-2">We produce sharp promotional videos that build anticipation and drive registrations � for your event, your cause, your campaign, or your organization.</p>
+            <p className="mt-2">We produce sharp promotional videos that build anticipation and drive registrations for your event, your cause, your campaign, or your organization.</p>
             <p className="mt-2">From short-form social cuts to full-length promo reels, your story gets told in a way that makes people want to show up.</p>
           </>
         ),
@@ -98,7 +98,7 @@ const VideoProduction = () => (
               <li>- Multi-camera setups</li>
               <li>- Real-time feed switching</li>
               <li>- Live graphics overlay</li>
-              <li>- Professional directing � on-site or fully remote</li>
+              <li>- Professional directing, on-site or fully remote</li>
             </ul>
             <p className="mt-2">Your audience sees a polished, directed show, not a static single-angle recording.</p>
           </>
@@ -110,7 +110,7 @@ const VideoProduction = () => (
         title: "Event Highlight Reels",
         description: (
           <>
-            <p>Within days of your event closing, you receive a professionally edited highlight reel ready to use immediately — built for social sharing, sponsor deliverables, board presentations, and future marketing campaigns.</p>
+            <p>Within days of your event closing, you receive a professionally edited highlight reel ready to use immediately, built for social sharing, sponsor deliverables, board presentations, and future marketing campaigns.</p>
             <p className="mt-2">It captures the energy of your event and keeps working for you long after the show ends.</p>
           </>
         ),

@@ -1,4 +1,4 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import virtualEventsImg from "@/assets/virtual-events.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
@@ -96,7 +96,7 @@ const VirtualEvents = () => (
         title: "TV-Quality Livestream Production",
         description: (
           <>
-            <p>No more screen-share webinars that lose your audience within minutes. Your production gets the full broadcast treatment — professional graphics, real-time feed switching, lower thirds, and a dedicated director managing your show live.</p>
+            <p>No more screen-share webinars that lose your audience within minutes. Your production gets the full broadcast treatment: professional graphics, real-time feed switching, lower thirds, and a dedicated director managing your show live.</p>
             <p className="mt-2">Your attendees won't know the difference between your stream and cable television.</p>
           </>
         ),
@@ -118,7 +118,7 @@ const VirtualEvents = () => (
         title: "Conferences, Summits & Series",
         description: (
           <>
-            <p>Running multiple tracks, breakout sessions, and expo booths simultaneously is complex � but you won't feel that complexity.</p>
+            <p>Running multiple tracks, breakout sessions, and expo booths simultaneously is complex, but you won't feel that complexity.</p>
             <p className="mt-2">We manage the full conference architecture:</p>
             <ul className="mt-1 space-y-0.5 list-none pl-0">
               <li>- Session scheduling</li>
@@ -126,7 +126,7 @@ const VirtualEvents = () => (
               <li>- Attendee networking spaces</li>
               <li>- Live contests and real-time polls</li>
             </ul>
-            <p className="mt-2">For recurring formats, we produce webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures � turning your content into a long-term revenue and authority asset.</p>
+            <p className="mt-2">For recurring formats, we produce webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures, turning your content into a long-term revenue and authority asset.</p>
           </>
         ),
         image: conferencesSummitsSeriesImg,
@@ -137,7 +137,7 @@ const VirtualEvents = () => (
         description: (
           <>
             <p>Passive audiences don't convert, and they don't come back.</p>
-            <p className="mt-2">We integrate engagement tools directly into your event � all managed for you:</p>
+            <p className="mt-2">We integrate engagement tools directly into your event, all managed for you:</p>
             <ul className="mt-1 space-y-0.5 list-none pl-0">
               <li>- Live polls</li>
               <li>- Moderated Q&A</li>
