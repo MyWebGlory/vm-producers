@@ -3,6 +3,10 @@ import meetingProsImg from "@/assets/meeting-pros.webp";
 import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
 import aboutEventImg from "@/assets/about-event.webp";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
+import eventDirectorsImg from "@/assets/event-directors.webp";
+import productionStageImg from "@/assets/production-stage-design.webp";
+import logisticsCoordinatorsImg from "@/assets/logistics-coordinators.webp";
+import venueLogisticsImg from "@/assets/venue-logistics.webp";
 import { Zap, ClipboardList, MapPin, Plane, Monitor, Grid2x2 } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
@@ -38,6 +42,7 @@ const MeetingPros = () => (
     subtitle="Your Global Talent Network"
     featuresBefore="The right talent, "
     featuresAccent="for every meeting."
+    featuresDescription="Access a global network of verified event professionals across 55+ specialties, matched to your event within 48 hours, anywhere in the world."
     description="The go-to partner for businesses that need verified event professionals fast. Connected within 48 hours, active across 70+ countries, covering more than 55 specialties."
     heroImage={meetingProsImg}
     heroVideo={meetingProsVideo}
@@ -45,6 +50,28 @@ const MeetingPros = () => (
       { value: 70, suffix: "+", label: "Countries" },
       { value: 48, suffix: "h", label: "Matching Time" },
       { value: 12, suffix: "K", label: "Meetings Supported" },
+    ]}
+    featuresIcon={Zap}
+  typeCardsTitle="Who you'll have on your team"
+  typeCards={[
+      {
+        label: "Senior Leadership",
+        title: "Event Directors",
+        description: "Senior event professionals who oversee your entire program from planning through execution, with the experience to handle anything that comes up.",
+        image: eventDirectorsImg,
+      },
+      {
+        label: "Broadcast Ready",
+        title: "Technical Specialists",
+        description: "AV engineers, virtual producers, and broadcast technicians who own the technical side of your event so nothing fails when it matters most.",
+        image: productionStageImg,
+      },
+      {
+        label: "Boots on the Ground",
+        title: "Logistics Coordinators",
+        description: "Experienced coordinators who manage every moving part: transportation, registration, catering, and on-site flow, so the day runs like clockwork.",
+        image: logisticsCoordinatorsImg,
+      },
     ]}
     features={[
       {
@@ -63,13 +90,13 @@ const MeetingPros = () => (
         icon: MapPin,
         title: "On-Site Implementation",
         description: "Local meeting experts who know your venue, your market, and your logistics. They oversee and enhance your on-site operations from setup to strike.",
-        image: meetingProsImg,
+        image: logisticsCoordinatorsImg,
       },
       {
         icon: Plane,
         title: "Travel Management",
         description: "Dedicated travel managers handle all your attendee transportation, accommodations, and scheduling so every arrival and departure just works.",
-        image: aboutEventImg,
+        image: venueLogisticsImg,
       },
       {
         icon: Monitor,
@@ -81,7 +108,7 @@ const MeetingPros = () => (
         icon: Grid2x2,
         title: "55+ Event Specialties",
         description: "VIP coordinators, trade show supervisors, registration managers, booth supervisors, F&B planners, procurement experts, and more - all in one network.",
-        image: meetingProsImg,
+        image: eventDirectorsImg,
       },
     ]}
   />

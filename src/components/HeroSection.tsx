@@ -36,7 +36,8 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           width={1920}
           height={1080}
-          fetchPriority="high"
+          // @ts-expect-error fetchpriority is a valid HTML attribute not yet in React types
+          fetchpriority="high"
           decoding="async"
         />
         <div

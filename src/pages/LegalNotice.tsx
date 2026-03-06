@@ -25,9 +25,9 @@ const LegalNotice = () => (
             Publisher
           </h2>
           <address className="not-italic space-y-1 text-muted-foreground">
-            <p><strong className="text-foreground">[NOM SOCIÉTÉ]</strong> — to be completed by the client</p>
-            <p>[ADRESSE] — to be completed by the client</p>
-            <p>[SIRET / Company registration number] — to be completed by the client</p>
+            <p><strong className="text-foreground">[NOM SOCIÉTÉ]</strong> (to be completed by the client)</p>
+            <p>[ADRESSE] (to be completed by the client)</p>
+            <p>[SIRET / Company registration number] (to be completed by the client)</p>
             <p>
               Email:{" "}
               <a href="mailto:austin@vmproducers.com" className="text-primary hover:underline">
@@ -49,7 +49,7 @@ const LegalNotice = () => (
             Publication Director
           </h2>
           <p className="text-muted-foreground">
-            [NOM] — to be completed by the client
+            [NOM] (to be completed by the client)
           </p>
         </section>
 
@@ -59,8 +59,8 @@ const LegalNotice = () => (
             Hosting
           </h2>
           <address className="not-italic space-y-1 text-muted-foreground">
-            <p><strong className="text-foreground">[NOM HÉBERGEUR]</strong> — to be completed by the client</p>
-            <p>[ADRESSE HÉBERGEUR] — to be completed by the client</p>
+            <p><strong className="text-foreground">[NOM HÉBERGEUR]</strong> (to be completed by the client)</p>
+            <p>[ADRESSE HÉBERGEUR] (to be completed by the client)</p>
           </address>
         </section>
 
@@ -70,7 +70,7 @@ const LegalNotice = () => (
             Intellectual Property
           </h2>
           <p>
-            All content on this website — including text, images, logos, and videos —
+            All content on this website, including text, images, logos, and videos,
             is the exclusive property of VM Producers and is protected by applicable
             intellectual property laws. Any reproduction, distribution, or use without
             prior written consent is strictly prohibited.

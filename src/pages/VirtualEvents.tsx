@@ -1,9 +1,13 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
 import virtualEventsImg from "@/assets/virtual-events.webp";
 import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
-import virtualEventsConferenceImg from "@/assets/virtual-events-conference.webp";
 import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
-import { Tv, Layout, Users, TrendingUp, Globe, Zap, BarChart2 } from "lucide-react";
+import conferencesSummitsSeriesImg from "@/assets/conferences-summits-series.webp";
+import webinarsTrainingImg from "@/assets/webinars-training.webp";
+import globalTownHallsImg from "@/assets/global-town-halls.webp";
+import virtualTradeShowsImg from "@/assets/virtual-trade-shows.webp";
+import extendYourReachImg from "@/assets/extend-your-reach.webp";
+import { Tv, Layout, Users, Globe, Zap, BarChart2 } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
 const seo = {
@@ -38,6 +42,7 @@ const VirtualEvents = () => (
     subtitle="Global Reach, Zero Limits"
     featuresBefore="Virtual events that "
     featuresAccent="actually work."
+    featuresDescription="From the platform setup to the post-event report, we handle every technical and production detail so you can focus on your audience, not your screen."
     description="From single-session webinars to global conferences with 100,000 participants, we handle every technical and production detail so you deliver flawlessly, every time."
     heroImage={virtualEventsImg}
     heroVideo={virtualEventsVideo}
@@ -45,6 +50,28 @@ const VirtualEvents = () => (
       { value: 100, suffix: "K", label: "Max Attendees" },
       { value: 5, suffix: "+", label: "Languages Supported" },
       { value: 99.9, suffix: "%", label: "Uptime" },
+    ]}
+    featuresIcon={Globe}
+  typeCardsTitle="What your next event could look like"
+  typeCards={[
+      {
+        label: "Broad Audience",
+        title: "Webinars & Training",
+        description: "Single-session webinars and corporate training broadcasts produced to TV quality, keeping every participant engaged from start to finish.",
+        image: webinarsTrainingImg,
+      },
+      {
+        label: "Company Wide",
+        title: "Global Town Halls",
+        description: "Company-wide broadcasts for audiences across time zones, languages, and devices. Executed flawlessly with zero dropped connections.",
+        image: globalTownHallsImg,
+      },
+      {
+        label: "Revenue Driven",
+        title: "Virtual Trade Shows",
+        description: "Fully branded virtual expos with sponsor booths, networking lounges, and live demos that turn browsers into buyers.",
+        image: virtualTradeShowsImg,
+      },
     ]}
     features={[
       {
@@ -61,33 +88,21 @@ const VirtualEvents = () => (
       },
       {
         icon: Users,
-        title: "Conferences & Multi-Session Events",
-        description: "Running multiple tracks, breakout sessions, and expo booths simultaneously is complex, but you won't feel that complexity. We manage the full conference architecture: session scheduling, virtual expo booths, attendee networking spaces, live contests, and real-time polls, so every participant has a rich, structured experience from start to finish.",
-        image: virtualEventsConferenceImg,
-      },
-      {
-        icon: TrendingUp,
-        title: "Summits, Series & Shows",
-        description: "If your strategy requires building an audience over time, a webinar series or multi-day summit is your answer. We produce recurring events with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures, expanding your reach between sessions and turning your content into a long-term revenue and authority asset.",
-        image: virtualEventsImg,
-      },
-      {
-        icon: Globe,
-        title: "Multi-Language Support",
-        description: "Your message should land clearly with every audience, regardless of what language they speak. We provide simultaneous interpretation across 5+ languages, with professional interpreters on standby throughout your event, allowing you to address a truly global room without a single attendee feeling left behind.",
-        image: virtualEventsConferenceImg,
+        title: "Conferences, Summits & Series",
+...description: "Running multiple tracks, breakout sessions, and expo booths simultaneously is complex, but you won't feel that complexity. We manage the full conference architecture: session scheduling, virtual expo booths, attendee networking spaces, live contests, and real-time polls. And if your strategy requires building an audience over time, we produce recurring webinar series and multi-day summits with integrated replay libraries, giveaway mechanics, and affiliate or sponsorship structures, turning your content into a long-term revenue and authority asset.",
+        image: conferencesSummitsSeriesImg,
       },
       {
         icon: Zap,
-        title: "Real-Time Engagement Tools",
-        description: "Passive audiences don't convert, and they don't come back. We integrate live polls, moderated Q&A, real-time chat, virtual networking, and gamification directly into your event, all managed for you, so you never have to monitor a chat feed or troubleshoot a poll while trying to run your show.",
-        image: virtualEventsControlRoomImg,
+        title: "Global Engagement: Live & Multilingual",
+        description: "Passive audiences don't convert, and they don't come back. We integrate live polls, moderated Q&A, real-time chat, virtual networking, and gamification directly into your event, all managed for you, so you never have to monitor a chat feed while running your show. And your message lands clearly with every audience: we provide simultaneous interpretation across 5+ languages, with professional interpreters on standby throughout, so every attendee feels fully included regardless of where in the world they're watching from.",
+        image: globalTownHallsImg,
       },
       {
         icon: BarChart2,
         title: "Analytics & Post-Event Reporting",
         description: "After the event ends, the data starts working for you. You receive a full post-event report covering attendance figures, session engagement rates, drop-off points, and ROI indicators, everything you need to brief stakeholders, justify the investment, and plan your next event smarter.",
-        image: virtualEventsImg,
+        image: extendYourReachImg,
       },
     ]}
   />

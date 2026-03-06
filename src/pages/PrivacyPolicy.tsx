@@ -6,7 +6,7 @@ const PrivacyPolicy = () => (
   <div className="min-h-screen bg-background">
     <SEO
       title="Privacy Policy | VM Producers"
-      description="Privacy policy for VM Producers — how we collect and use your personal data."
+      description="Privacy policy for VM Producers: how we collect and use your personal data."
       canonical="/privacy-policy"
       noIndex={true}
     />
@@ -28,9 +28,9 @@ const PrivacyPolicy = () => (
             The data controller responsible for the processing of your personal data is:
           </p>
           <address className="not-italic mt-3 space-y-1 text-muted-foreground">
-            <p><strong className="text-foreground">[NOM SOCIÉTÉ]</strong> — to be completed by the client</p>
-            <p>[ADRESSE] — to be completed by the client</p>
-            <p>Email: <a href="mailto:[EMAIL]" className="text-primary hover:underline">[EMAIL]</a> — to be completed by the client</p>
+            <p><strong className="text-foreground">[NOM SOCIÉTÉ]</strong> (to be completed by the client)</p>
+            <p>[ADRESSE] (to be completed by the client)</p>
+            <p>Email: <a href="mailto:[EMAIL]" className="text-primary hover:underline">[EMAIL]</a> (to be completed by the client)</p>
           </address>
         </section>
 
@@ -114,9 +114,9 @@ const PrivacyPolicy = () => (
             following rights regarding your personal data:
           </p>
           <ul className="list-disc list-inside mt-3 space-y-1 text-muted-foreground">
-            <li>Right of access — request a copy of your data</li>
-            <li>Right to rectification — correct inaccurate data</li>
-            <li>Right to erasure — request deletion of your data</li>
+            <li>Right of access: request a copy of your data</li>
+            <li>Right to rectification: correct inaccurate data</li>
+            <li>Right to erasure: request deletion of your data</li>
             <li>Right to restriction of processing</li>
             <li>Right to data portability</li>
             <li>Right to withdraw consent at any time</li>
@@ -124,12 +124,12 @@ const PrivacyPolicy = () => (
           <p className="mt-3">
             To exercise any of these rights, contact us at:{" "}
             <a href="mailto:[EMAIL]" className="text-primary hover:underline">
-              [EMAIL] — to be completed by the client
+              [EMAIL] (to be completed by the client)
             </a>
           </p>
         </section>
 
-        {/* 7 — Cookies */}
+        {/* 7 — Cookies */
         <section>
           <h2 className="text-xl font-display font-semibold text-foreground mb-3">
             7. Cookies
@@ -151,7 +151,7 @@ const PrivacyPolicy = () => (
             For any questions about this privacy policy or to exercise your rights,
             contact:{" "}
             <a href="mailto:[EMAIL]" className="text-primary hover:underline">
-              [EMAIL] — to be completed by the client
+              [EMAIL] (to be completed by the client)
             </a>
           </p>
           <p className="mt-3">

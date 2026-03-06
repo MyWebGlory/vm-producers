@@ -62,6 +62,7 @@ const Navbar = () => {
             <Link
               key={link.label}
               to={link.href}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className={`text-sm font-semibold transition-all duration-500 ${
                 isActive(link.href)
                   ? scrolled
@@ -104,6 +105,7 @@ const Navbar = () => {
                 <Link
                   key={link.label}
                   to={link.href}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className={`py-3 font-medium transition-colors ${
                     isActive(link.href)
                       ? "text-primary"
