@@ -43,7 +43,7 @@ import aboutEventImg from "@/assets/about-event.webp";
 import executiveSummitsImg from "@/assets/executive-summits.webp";
 
 const PARTNER_URL = "https://mywebglory.com";
-// MyWebGlory brand purple — used discretely on marketing-specific elements
+// MyWebGlory brand purple, used discretely on marketing-specific elements
 const MWG_PURPLE = "#8a21cc";
 
 const seo = {
@@ -790,7 +790,7 @@ const Marketing = () => {
                 </ul>
               </motion.div>
 
-              {/* Marketing pillar — MyWebGlory */}
+              {/* Marketing pillar, MyWebGlory */}
               <motion.div
                 initial={{ opacity: 0, x: 32 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -865,13 +865,17 @@ const Marketing = () => {
                     rel="noopener noreferrer"
                     className="transition-opacity hover:opacity-80"
                   >
-                    <img
-                      src={mwgFull}
-                      alt="MyWebGlory"
-                      height={20}
-                      className="h-5 w-auto object-contain opacity-75"
-                      style={{ filter: "brightness(0.6) saturate(1.2)" }}
-                    />
+                    <span
+                      className="inline-flex items-center px-2.5 py-1 rounded-lg"
+                      style={{ background: "#000000" }}
+                    >
+                      <img
+                        src={mwgFull}
+                        alt="MyWebGlory"
+                        height={16}
+                        className="h-4 w-auto object-contain"
+                      />
+                    </span>
                   </a>
                 </div>
               </motion.div>
@@ -905,19 +909,211 @@ const Marketing = () => {
                 href={PARTNER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 transition-opacity hover:opacity-75"
+                className="flex items-center transition-opacity hover:opacity-75"
               >
-                <img
-                  src={mwgFull}
-                  alt="MyWebGlory"
-                  height={22}
-                  className="h-[22px] w-auto object-contain"
-                  style={{ filter: "saturate(0.9) brightness(0.65)" }}
-                />
+                <span
+                  className="inline-flex items-center px-3 py-1.5 rounded-xl"
+                  style={{ background: "#000000" }}
+                >
+                  <img
+                    src={mwgFull}
+                    alt="MyWebGlory"
+                    height={20}
+                    className="h-5 w-auto object-contain"
+                  />
+                </span>
               </a>
             </motion.div>
           </div>
         </div>
+
+        {/* ============================================================ */}
+        {/*  MEET THE PARTNER                                             */}
+        {/* ============================================================ */}
+        <section className="py-20 md:py-28 lg:py-32">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-3xl overflow-hidden border"
+              style={{ borderColor: "rgba(138, 33, 204, 0.20)" }}
+            >
+              {/* Purple gradient background */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(138,33,204,0.09) 0%, rgba(138,33,204,0.03) 50%, transparent 100%)",
+                }}
+              />
+              {/* Faint radial glow top-left */}
+              <div
+                className="absolute -top-24 -left-24 w-72 h-72 rounded-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, rgba(138,33,204,0.12) 0%, transparent 70%)",
+                }}
+              />
+
+              <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row gap-10 md:gap-14 items-start md:items-center">
+                {/* Left: logo + identity */}
+                <div className="flex flex-col gap-5 md:min-w-[220px]">
+                  {/* Logo */}
+                  <motion.a
+                    href={PARTNER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="inline-flex transition-opacity hover:opacity-80"
+                  >
+                    <span
+                      className="inline-flex items-center px-4 py-2.5 rounded-2xl"
+                      style={{
+                        background: "#000000",
+                        border: "1.5px solid rgba(138, 33, 204, 0.30)",
+                      }}
+                    >
+                      <img
+                        src={mwgFull}
+                        alt="MyWebGlory"
+                        height={32}
+                        className="h-8 w-auto object-contain"
+                      />
+                    </span>
+                  </motion.a>
+
+                  {/* Badge */}
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.18 }}
+                    className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.15em] whitespace-nowrap"
+                    style={{ color: MWG_PURPLE }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full shrink-0"
+                      style={{ background: MWG_PURPLE }}
+                    />
+                    Official Marketing Partner
+                  </motion.span>
+
+                  {/* Location pill */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.22 }}
+                    className="flex items-center gap-2 text-xs font-medium"
+                    style={{ color: "hsl(var(--foreground) / 0.45)" }}
+                  >
+                    <span>📍</span>
+                    <span>Singapore &mdash; Worldwide</span>
+                  </motion.div>
+
+                  {/* Mini stats */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: 0.28 }}
+                    className="grid grid-cols-3 gap-3 pt-1"
+                  >
+                    {[
+                      { value: "50+", label: "Events" },
+                      { value: "40K+", label: "Attendees" },
+                      { value: "60%", label: "Show-up" },
+                    ].map((s) => (
+                      <div key={s.label} className="flex flex-col gap-0.5">
+                        <span
+                          className="text-lg font-display font-bold"
+                          style={{ color: MWG_PURPLE }}
+                        >
+                          {s.value}
+                        </span>
+                        <span
+                          className="text-[11px] font-medium"
+                          style={{ color: "hsl(var(--foreground) / 0.40)" }}
+                        >
+                          {s.label}
+                        </span>
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+
+                {/* Divider */}
+                <div
+                  className="hidden md:block self-stretch w-px"
+                  style={{ background: "rgba(138, 33, 204, 0.12)" }}
+                />
+
+                {/* Right: description */}
+                <motion.div
+                  initial={{ opacity: 0, x: 16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="flex flex-col gap-5"
+                >
+                  <p
+                    className="text-base md:text-lg leading-relaxed font-display font-semibold"
+                    style={{ color: "hsl(var(--foreground) / 0.85)" }}
+                  >
+                    MyWebGlory is a specialist event marketing agency that
+                    engineers end-to-end systems to fill events with the right
+                    people, not just registrations, but qualified attendees
+                    who are ready to buy.
+                  </p>
+                  <p
+                    className="text-sm md:text-base leading-relaxed"
+                    style={{ color: "hsl(var(--foreground) / 0.50)" }}
+                  >
+                    Based in Singapore and operating worldwide, they combine
+                    sniper-precise ICP targeting, multi-channel acquisition
+                    across paid and organic, conversion-optimized funnels, and
+                    post-event follow-up systems, turning every event into a
+                    self-sustaining revenue engine. Trusted by brands ranging
+                    from fast-growing startups to the Bill &amp; Melinda Gates
+                    Foundation.
+                  </p>
+                  <div className="flex flex-wrap gap-3 pt-1">
+                    <a
+                      href={PARTNER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105"
+                      style={{
+                        background: MWG_PURPLE,
+                        color: "white",
+                      }}
+                    >
+                      <img src={mwgIcon} alt="" width={16} height={16} className="rounded-sm" />
+                      Explore MyWebGlory
+                    </a>
+                    <button
+                      type="button"
+                      onClick={openCalendly}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 hover:scale-105 cursor-pointer"
+                      style={{
+                        borderColor: "rgba(138, 33, 204, 0.22)",
+                        color: "hsl(var(--foreground))",
+                        background: "transparent",
+                      }}
+                    >
+                      <Calendar size={15} />
+                      Book a Strategy Call
+                    </button>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         {/* ============================================================ */}
         {/*  WHAT YOU ACTUALLY GET                                        */}
