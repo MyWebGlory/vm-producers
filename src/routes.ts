@@ -13,6 +13,7 @@ export const ROUTES = [
   { path: "/hybrid-events", priority: "0.9", changefreq: "monthly" },
   { path: "/video-production", priority: "0.9", changefreq: "monthly" },
   { path: "/meeting-pros", priority: "0.9", changefreq: "monthly" },
+  { path: "/marketing", priority: "0.9", changefreq: "monthly" },
   { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
   { path: "/legal-notice", priority: "0.3", changefreq: "yearly" },
 ] as const;

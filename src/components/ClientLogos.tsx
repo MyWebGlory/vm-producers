@@ -50,7 +50,7 @@ const ClientLogos = () => {
             They Trust Us
           </motion.p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
-            <SplitTextReveal text="You'll be working with" delay={0.1} className="justify-center" />{" "}
+            <SplitTextReveal text="We've been working with" delay={0.1} className="justify-center" />{" "}
             <SplitTextReveal text="the world's best." delay={0.3} className="justify-center glow-text" />
           </h2>
           <p className="text-muted-foreground text-lg mt-4 max-w-xl mx-auto">

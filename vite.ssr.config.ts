@@ -1,5 +1,5 @@
 /**
- * vite.ssr.config.ts — Vite SSR build configuration
+ * vite.ssr.config.ts, Vite SSR build configuration
  *
  * Run with: vite build --config vite.ssr.config.ts
  * Output:   dist/server/entry-ssr.js  (ESM Node.js bundle)
