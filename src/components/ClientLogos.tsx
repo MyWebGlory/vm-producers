@@ -47,7 +47,7 @@ const ClientLogos = () => {
           <motion.p
             className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
           >
-            They Trust Us
+            They Trust Us, you should too
           </motion.p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
             <SplitTextReveal text="You'll be working with" delay={0.1} className="justify-center" />{" "}

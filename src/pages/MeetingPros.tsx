@@ -12,7 +12,7 @@ import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } 
 
 const seo = {
   title: "Meeting Professionals Network | Global Event Staffing | VM Producers",
-  description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, on-site coordinators, and more. 12,000+ meetings supported.",
+  description: "Worldwide network of verified event professionals matched within 72 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, on-site coordinators, and more. 12,000+ meetings supported.",
   canonical: "/meeting-pros",
   dateModified: TODAY,
   jsonLd: {
@@ -21,14 +21,14 @@ const seo = {
       buildWebPageSchema({
         path: "/meeting-pros",
         name: "Meeting Professionals Network | Global Event Staffing | VM Producers",
-        description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, and more.",
+        description: "Worldwide network of verified event professionals matched within 72 hours across 70+ countries and 55+ specialties. Event directors, AV technicians, travel managers, and more.",
       }),
       buildServiceSchema({
         path: "/meeting-pros",
         serviceType: "Event Staffing & Talent Matching",
         name: "Meeting Pros",
-        description: "Worldwide network of verified event professionals matched within 48 hours across 70+ countries and 55+ specialties.",
-        offerNames: ["48-Hour Talent Matching", "Project Management", "On-Site Implementation", "Travel Management", "55+ Event Specialties"],
+        description: "Worldwide network of verified event professionals matched within 72 hours across 70+ countries and 55+ specialties.",
+        offerNames: ["72-Hour Talent Matching", "Project Management", "On-Site Implementation", "Travel Management", "55+ Event Specialties"],
       }),
       buildBreadcrumbSchema("/meeting-pros", "Meeting Pros"),
     ],
@@ -39,11 +39,11 @@ const MeetingPros = () => (
   <ServicePageLayout
     seo={seo}
     title="Meeting Pros"
-    subtitle="Your Global Talent Network"
+    subtitle="Verified Talent in 72 Hours or Less"
     featuresBefore="The right talent, "
     featuresAccent="for every meeting."
     featuresDescription="Whatever your event requires, we have a specialist for it. Here's the talent you can mobilize, ready to deploy wherever you need them."
-    description="The go-to partner for businesses that need verified event professionals fast. Connected within 48 hours, active across 70+ countries, covering more than 55 specialties."
+    description="The go-to partner for businesses that need verified event professionals fast. Connected within 72 hours, active across 70+ countries, covering more than 55 specialties."
     heroImage={meetingProsImg}
     heroVideo={meetingProsVideo}
     stats={[
@@ -77,8 +77,8 @@ const MeetingPros = () => (
     features={[
       {
         icon: Zap,
-        title: "48-Hour Talent Matching",
-        description: "Tell us what you need and you're matched with the right professional within 48 hours or less, anywhere in the world, without compromise on quality.",
+        title: "72-Hour Talent Matching",
+        description: "Tell us what you need and you're matched with the right professional within 72 hours or less, anywhere in the world, without compromise on quality.",
         image: meetingProsImg,
       },
       {

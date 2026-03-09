@@ -7,7 +7,6 @@ import ProcessSection from "@/components/ProcessSection";
 import { SEO, buildWebPageSchema, TODAY } from "@/components/SEO";
 import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import FounderSection from "@/components/FounderSection";
 import ResultsSection from "@/components/ResultsSection";
 import ServicesSection from "@/components/ServicesSection";
 import ComparisonSection from "@/components/ComparisonSection";
@@ -56,7 +55,7 @@ const homeSEO = {
           {
             "@type": "Question",
             "name": "How quickly can VM Producers match event professionals?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Through the Meeting Pros service, VM Producers matches clients with verified professionals within 48 hours, across 70+ countries." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Through the Meeting Pros service, VM Producers matches clients with verified professionals within 72 hours, across 70+ countries." }
           },
           {
             "@type": "Question",
@@ -89,7 +88,6 @@ const Index = () => {
       <AboutSection />
       <ProcessSection />
       <TestimonialsSection />
-      <FounderSection />
       <ResultsSection />
       <ComparisonSection />
       {/* FAQ before final CTA - answer objections */}

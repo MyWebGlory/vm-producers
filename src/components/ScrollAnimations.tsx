@@ -208,6 +208,7 @@ export const SplitTextReveal = ({
   duration = 0.65,
   stagger = 0.045,
   once = true,
+  nowrap = false,
   as: Tag = "span",
 }: {
   text: string;
@@ -217,6 +218,7 @@ export const SplitTextReveal = ({
   duration?: number;
   stagger?: number;
   once?: boolean;
+  nowrap?: boolean;
   as?: keyof JSX.IntrinsicElements;
 }) => {
   const ref = useRef(null);
@@ -225,7 +227,7 @@ export const SplitTextReveal = ({
 
   return (
     // @ts-ignore - dynamic tag
-    <Tag ref={ref} className={`inline-flex flex-wrap gap-x-[0.25em] ${className}`} style={style}>
+    <Tag ref={ref} className={`inline-flex ${nowrap ? "flex-nowrap" : "flex-wrap"} gap-x-[0.25em] ${className}`} style={style}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden">
           <motion.span

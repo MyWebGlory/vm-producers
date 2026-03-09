@@ -418,37 +418,6 @@ const ProcessSection = () => {
           ))}
         </div>
 
-        {/* Scarcity nudge */}
-        <div className="flex justify-center mt-8 sm:mt-10">
-          {/* Mobile: pill with red outline */}
-          <p
-            className="flex items-center gap-1.5 text-[11px] font-medium sm:hidden px-3 py-1 rounded-full whitespace-nowrap"
-            style={{
-              color: "hsl(25 90% 58%)",
-              border: "1px solid hsl(25 90% 58% / 0.45)",
-              background: "hsl(25 90% 58% / 0.08)",
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
-            Only{" "}
-            <strong className="font-bold">4 new clients / month.</strong>
-            {" "}Spots filling fast.
-          </p>
-          {/* Desktop: pill with red outline */}
-          <div
-            className="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium"
-            style={{
-              border: "1px solid hsl(25 90% 58% / 0.45)",
-              background: "hsl(25 90% 58% / 0.08)",
-              color: "hsl(25 90% 58%)",
-            }}
-          >
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
-            We only take on{" "}
-            <strong className="font-bold mx-1">4 new clients per month</strong>
-            {" "}Spots are filling fast.
-          </div>
-        </div>
       </div>
     </section>
   );

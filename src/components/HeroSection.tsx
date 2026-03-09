@@ -145,22 +145,6 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-          {/* Scarcity - pill */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.58, duration: 0.4 }}
-            className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-sm px-3 sm:px-4 py-1 sm:py-1.5 rounded-full"
-            style={{
-              color: "hsl(25 90% 68%)",
-              border: "1px solid hsl(25 90% 58% / 0.45)",
-              background: "hsl(25 90% 58% / 0.08)",
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "hsl(25 90% 58%)" }} />
-            Only 4 new clients per month - spots are filling fast.
-          </motion.p>
-
           {/* Stats row - inline, no separators */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}

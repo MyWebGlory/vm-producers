@@ -46,10 +46,10 @@ const services: Service[] = [
     title: "Virtual Events",
     tag: "Webinars · Conferences · Summits",
     icon: Monitor,
-    description: "TV-quality broadcasts, up to 100K attendees, zero tech stress.",
+    description: "TV-quality broadcasts, up to 500K attendees, zero tech stress.",
     image: virtualEventsImg,
     video: virtualEventsVid,
-    stat: "100K",
+    stat: "500K",
     statLabel: "Max attendees",
     accentH: 207, accentS: 82, accentL: 52,
   },
@@ -79,7 +79,7 @@ const services: Service[] = [
     title: "Meeting Pros",
     tag: "Verified talent in 48 h",
     icon: Users,
-    description: "Verified event professionals matched worldwide in 48 hours.",
+    description: "Verified event professionals matched worldwide in 72 hours.",
     image: meetingProsImg,
     video: meetingProsVid,
     stat: "70+",
@@ -268,7 +268,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.55, delay: 0.55 }}
           className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed text-muted-foreground"
         >
-          Whatever you're building (in a room, online, or both), we handle production end to end. You just focus on showing up.
+          <span className="block">Whatever you're building (in a room, online, or both), we handle production end to end.</span><span className="block">You just focus on showing up.</span>
         </motion.p>
       </div>
 

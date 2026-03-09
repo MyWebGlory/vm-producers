@@ -1,7 +1,6 @@
 ﻿import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-import founderPhoto from "@/assets/austin-talley-founder.png";
 import { useCalendly } from "@/components/CalendlyModal";
 import { FloatingOrbs } from "@/components/ScrollAnimations";
 
@@ -33,18 +32,7 @@ const FounderSection = () => {
       <FloatingOrbs count={4} className="opacity-80" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-10 lg:gap-16">
-
-          {/* Photo */}
-          <motion.div {...fadeUp(0)} className="relative shrink-0">
-            <div className="absolute -inset-3 rounded-3xl pointer-events-none" style={{ boxShadow: "0 0 40px hsl(var(--primary) / 0.18)" }} />
-            <div
-              className="relative w-36 h-44 sm:w-44 sm:h-56 lg:w-56 lg:h-72 rounded-2xl overflow-hidden"
-              style={{ border: "2px solid hsl(var(--primary) / 0.28)" }}
-            >
-              <img src={founderPhoto} alt="Austin Talley, Founder &amp; CEO" width={224} height={288} className="w-full h-full object-cover object-top" />
-            </div>
-          </motion.div>
+        <div className="flex flex-col items-center sm:items-start">
 
           {/* Text */}
           <div className="flex flex-col gap-5 text-center sm:text-left">

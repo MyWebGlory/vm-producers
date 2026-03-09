@@ -30,7 +30,7 @@ const seo = {
         serviceType: "Hybrid Event Production",
         name: "Hybrid Events",
         description: "Expert hybrid event production bridging in-person and virtual audiences. Full AV production, multi-camera streaming, and unified audience experience.",
-        offerNames: ["Unified Experience Design", "Multi-Camera Live Production", "Full AV Production", "Audience Engagement for Both Rooms", "Post-Event Content Hub"],
+        offerNames: ["Unified Experience Design", "Multi-Camera Live Production", "Full AV Production", "Audience Engagement In-Person and Online", "Post-Event Content Hub"],
       }),
       buildBreadcrumbSchema("/hybrid-events", "Hybrid Events"),
     ],
@@ -44,8 +44,8 @@ const HybridEvents = () => (
     subtitle="Best of Both Worlds"
     featuresBefore="Hybrid events, "
     featuresAccent="done right."
-    featuresDescription="One cohesive production running across two rooms. Here's everything we put in place to make sure the experience holds together on both sides."
-    description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time. No second-class stream, both rooms get the full show."
+    featuresDescription="One cohesive production. Online and In-person. Here's everything we put in place to make sure the experience holds together on both sides."
+    description="Your hybrid event brings in-person and online audiences together into one seamless experience, from the same stage, at the same time. A first class experience for everyone. Every time."
     heroImage={hybridEventsImg}
     heroVideo={hybridEventsVideo}
     stats={[
@@ -134,7 +134,7 @@ const HybridEvents = () => (
       },
       {
         icon: MessageSquare,
-        title: "Engagement for Both Rooms",
+        title: "Engagement In-Person and Online",
         description: (
           <>
             <p>Keeping two audiences engaged simultaneously requires intentional design.</p>

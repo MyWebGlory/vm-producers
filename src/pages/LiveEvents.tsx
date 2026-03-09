@@ -7,7 +7,7 @@ import venueLogisticsImg from "@/assets/venue-logistics.webp";
 import guestExperienceImg from "@/assets/guest-experience-management.webp";
 import productionStageImg from "@/assets/production-stage-design.webp";
 import conferencesSummitsImg from "@/assets/Conferences-_-Summits_1.webp";
-import productLaunchesImg from "@/assets/Product-Launches_1.webp";
+import smallMeetingsImg from "@/assets/executive-summits.webp";
 import awardsGalasImg from "@/assets/Awards-_-Galas_1.webp";
 import { Layers, MapPin, Users, Cpu } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
@@ -80,16 +80,16 @@ const LiveEvents = () => (
   typeCardsTitle="What your next event could look like"
   typeCards={[
       {
+        label: "Small Meetings",
+        title: "Executive & Team Meetings",
+        description: "Intimate, high-impact meetings for leadership teams, board sessions, and strategic offsites — run with the same precision as a large-scale event.",
+        image: smallMeetingsImg,
+      },
+      {
         label: "Corporate",
         title: "Conferences & Summits",
         description: "Multi-day conferences, keynotes, and panel sessions for 50 to 50,000 attendees. Produced start to finish with zero surprises.",
         image: conferencesSummitsImg,
-      },
-      {
-        label: "Brand Moments",
-        title: "Product Launches",
-        description: "High-energy launch events that generate buzz, earn media coverage, and make your product's debut unforgettable.",
-        image: productLaunchesImg,
       },
       {
         label: "Prestige Events",
@@ -111,6 +111,7 @@ const LiveEvents = () => (
               <li>- Staging, lighting, and AV production</li>
               <li>- Branding and signage</li>
               <li>- Catering and on-site staff</li>
+              <li>- Event marketing</li>
             </ul>
             <p className="mt-2">Every detail is documented, rehearsed, and executed to plan.</p>
           </>

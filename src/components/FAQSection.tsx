@@ -18,7 +18,7 @@ const faqs = [
   {
     question: "How fast can you get started on my event?",
     answer:
-      "You're matched with a producer within 48 hours of your first call. For urgent needs, you get access to our accelerated onboarding track. We've gone from first contact to live event execution in under 2 weeks.",
+      "You're matched with a producer within 72 hours of your first call. For urgent needs, you get access to our accelerated onboarding track. We've gone from first contact to live event execution in under 2 weeks.",
   },
   {
     question: "What exactly is included when you say \u2018full-service\u2019?",

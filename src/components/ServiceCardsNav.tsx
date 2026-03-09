@@ -83,7 +83,7 @@ export const ALL_NAV_SERVICES: ServiceNavItem[] = [
     title: "Meeting Pros",
     tag: "Verified talent in 48 h",
     icon: Users,
-    description: "Verified event professionals matched worldwide in 48 hours.",
+    description: "Verified event professionals matched worldwide in 72 hours.",
     image: meetingProsImg,
     video: meetingProsVid,
     stat: "70+",

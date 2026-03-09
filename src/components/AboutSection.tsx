@@ -80,7 +80,7 @@ const AboutSection = () => {
             </div>
             <h2 className="text-3xl font-display font-bold leading-tight text-foreground">
               <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-center" />{" "}
-              <SplitTextReveal text="We're about to make it real." delay={0.45} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+              <SplitTextReveal text="We make it real." delay={0.45} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
             </h2>
             {/* Divider - mobile only */}
             <div className="flex items-center justify-center gap-3 w-full">
@@ -139,7 +139,7 @@ const AboutSection = () => {
               </div>
               <h2 id="about-heading" className="text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
                 <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-start" />{" "}
-                <SplitTextReveal text="We're about to make it real." delay={0.45} className="justify-start" style={{ color: "hsl(var(--primary))" }} />
+                <SplitTextReveal text="We make it real." delay={0.45} className="justify-start" style={{ color: "hsl(var(--primary))" }} />
               </h2>
             </div>
 
@@ -157,7 +157,7 @@ const AboutSection = () => {
               Think of us as the production team you always wished you had. We handle everything behind the scenes (staging, tech, logistics, people) so you can walk out on stage, breathe, and actually enjoy the moment. Fortune 500 or fast-growing startup, every client gets the same dedicated team.
             </p>
             <p className="text-muted-foreground text-base leading-relaxed">
-              In-person show? We handle the stage, AV, venue, and every logistical detail. Virtual or hybrid? Your audience gets a broadcast-quality experience. Need a promo or recap video? Done. A verified professional anywhere in the world within 48 hours? Also us. One call, and it's all sorted.
+              In-person show? We handle the stage, AV, venue, and every logistical detail. Virtual or hybrid? Your audience gets a broadcast-quality experience. Need a promo or recap video? Done. A verified professional anywhere in the world within 72 hours? Also us. One call, and it's all sorted.
             </p>
 
             <RevealLine delay={0.55} className="mb-2 w-full" />
