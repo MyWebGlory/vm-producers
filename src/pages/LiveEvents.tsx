@@ -82,7 +82,7 @@ const LiveEvents = () => (
       {
         label: "Small Meetings",
         title: "Executive & Team Meetings",
-        description: "Intimate, high-impact meetings for leadership teams, board sessions, and strategic offsites — run with the same precision as a large-scale event.",
+        description: "Intimate, high-impact meetings for leadership teams, board sessions, and strategic offsites, run with the same precision as a large-scale event.",
         image: smallMeetingsImg,
       },
       {
