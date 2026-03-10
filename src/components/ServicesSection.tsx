@@ -57,7 +57,7 @@ const services: Service[] = [
     title: "Hybrid Events",
     tag: "One stage. Two audiences.",
     icon: Globe,
-    description: "One stage, two audiences. Both rooms get the full show.",
+    description: "A first class experience for everyone. Every time.",
     image: hybridEventsImg,
     video: hybridEventsVid,
     stat: "95%",
@@ -77,7 +77,7 @@ const services: Service[] = [
   },
   {
     title: "Meeting Pros",
-    tag: "Verified talent in 48 h",
+    tag: "Verified talent in 72 h or less",
     icon: Users,
     description: "Verified event professionals matched worldwide in 72 hours.",
     image: meetingProsImg,
@@ -272,7 +272,7 @@ const ServicesSection = () => {
       {/* Velocity scroll band */}
       <div className="border-t border-b border-border/25 mb-8 lg:mb-12 relative z-10">
         <VelocityScrollBand
-          items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Full A-to-Z Production", "Up to 100K Attendees", "70+ Countries", "2000+ Events", "95% Retention Rate", "Fortune 500 Clients", "48h Talent Match"]}
+          items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Full A-to-Z Production", "Up to 500K Attendees", "70+ Countries", "2000+ Events", "95% Retention Rate", "Fortune 500 Clients", "72h Talent Match"]}
           baseSpeed={55}
           separator="|"
         />

@@ -48,7 +48,7 @@ const Navbar = () => {
           <img
             src={vpLogo}
             alt="VM Producers"
-            className={`h-12 w-auto transition-all duration-500 ${
+            className={`h-12 w-auto shrink-0 transition-all duration-500 ${
               scrolled ? "invert" : ""
             }`}
           />
