@@ -1,7 +1,7 @@
 ﻿import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import { Globe, Monitor, Video, Users, Mic, Sparkles, ArrowUpRight } from "lucide-react";
+import { Globe, Monitor, Video, Users, Mic, ArrowUpRight } from "lucide-react";
 import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
 import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
 import videoProductionImg from "@/assets/video-production.webp";
@@ -245,10 +245,7 @@ const ServicesSection = () => {
 
       {/* Section header */}
       <div ref={headerRef} className="max-w-7xl mx-auto px-2 sm:px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-hidden">
-        <Sparkles
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
-          style={{ width: 300, height: 300, opacity: 0.04, color: "hsl(var(--primary))" }}
-        />
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -266,7 +263,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.55 }}
-          className="mt-4 max-w-xl mx-auto text-sm sm:text-base leading-relaxed text-muted-foreground"
+          className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-muted-foreground text-balance"
         >
           <span className="block">Whatever you're building (in a room, online, or both), we handle production end to end.</span><span className="block">You just focus on showing up.</span>
         </motion.p>

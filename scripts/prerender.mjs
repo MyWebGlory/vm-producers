@@ -1,5 +1,5 @@
-/**
- * scripts/prerender.mjs — Build-time static HTML generation
+﻿/**
+ * scripts/prerender.mjs - Build-time static HTML generation
  *
  * Run AFTER both client and SSR builds:
  *   1. vite build                                  → dist/ (client bundle + manifest)
@@ -53,8 +53,8 @@ function injectAppHtml(template, appHtml) {
 
 /**
  * Replace or inject a tag in <head>.
- * `pattern` — regex that matches the existing tag (if any)
- * `newTag`  — the new tag to inject
+ * `pattern` - regex that matches the existing tag (if any)
+ * `newTag`  - the new tag to inject
  */
 function replaceHeadTag(html, pattern, newTag) {
   if (pattern.test(html)) {
@@ -66,7 +66,7 @@ function replaceHeadTag(html, pattern, newTag) {
 
 /**
  * Extract all <meta>, <link>, <script> tags emitted by react-helmet-async
- * and inject them into <head> — deduplicating against what's already there.
+ * and inject them into <head> - deduplicating against what's already there.
  */
 function mergeHelmetHead(template, helmet) {
   let result = template;
@@ -106,7 +106,7 @@ function mergeHelmetHead(template, helmet) {
     result = result.replace("</head>", `  ${metaStr}\n  </head>`);
   }
 
-  // 3. <link rel="canonical"> — helmet emits as link tags
+  // 3. <link rel="canonical"> - helmet emits as link tags
   const linkStr = helmet.link?.toString() ?? "";
   if (linkStr) {
     // Remove the existing canonical if on a non-home page
@@ -183,7 +183,7 @@ async function prerender() {
       console.log(`  ✓  ${route.padEnd(22)} → ${relative}`);
       successCount++;
     } catch (err) {
-      console.error(`  ✗  ${route} — ${err.message}`);
+      console.error(`  ✗  ${route} - ${err.message}`);
       if (process.env.PRERENDER_VERBOSE) console.error(err);
       failCount++;
     }

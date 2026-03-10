@@ -1,4 +1,4 @@
-import { defineConfig, Plugin } from "vite";
+﻿import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
@@ -6,7 +6,7 @@ import fs from "node:fs";
 import { ROUTES } from "./src/routes";
 
 // ---------------------------------------------------------------------------
-// Sitemap generation — runs once after every production build
+// Sitemap generation - runs once after every production build
 // ---------------------------------------------------------------------------
 const BASE_URL = "https://www.vmproducers.com";
 
@@ -39,7 +39,7 @@ ${urls}
         fs.writeFileSync(outPath, sitemap, "utf-8");
         console.log(`✓ sitemap.xml generated (${ROUTES.length} routes)`);
       } catch {
-        // dist/ may not exist yet on SSR-only builds — skip silently
+        // dist/ may not exist yet on SSR-only builds - skip silently
       }
     },
   };

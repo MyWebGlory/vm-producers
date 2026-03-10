@@ -12,22 +12,70 @@ import oracleLogo from "@/assets/logos/oracle-hd.png";
 import secureworksLogo from "@/assets/logos/secureworks.png";
 import adidasLogo from "@/assets/logos/adidas.png";
 import atlantaUnitedLogo from "@/assets/logos/atlanta-united.png";
+import merckLogo from "@/assets/logos/merck logo-converti-depuis-png.webp";
+import tevaLogo from "@/assets/logos/teva logo.webp";
+import rapid7Logo from "@/assets/logos/rapid 7 logo-converti-depuis-png.webp";
+import boehringerLogo from "@/assets/logos/Boehringer_Ingelheim_Logo-converti-depuis-png.webp";
+import bankOfAmericaLogo from "@/assets/logos/bank of america logo-converti-depuis-png.webp";
+import pncBankLogo from "@/assets/logos/pnc-bank logo.webp";
+import pfizerLogo from "@/assets/logos/pfizer logo-converti-depuis-png.webp";
+import gileadLogo from "@/assets/logos/Gilead-logo-converti-depuis-png.webp";
+import amgenLogo from "@/assets/logos/Amgen logo-converti-depuis-png.webp";
+import veevaLogo from "@/assets/logos/Veeva_Systems_Logo.webp";
+import evolutionHealthLogo from "@/assets/logos/ehg logo-converti-depuis-png.webp";
+import alkermesLogo from "@/assets/logos/Alkermes_plc_Logo-converti-depuis-png.webp";
+import novoNordiskLogo from "@/assets/logos/Novo_Nordisk_-_Logo.svg.webp";
+import astrazenecaLogo from "@/assets/logos/astra-zeneca-logo-converti-depuis-png.webp";
+import designForGoodLogo from "@/assets/logos/design-for-good-logo-converti-depuis-png.webp";
+import headNeckAllianceLogo from "@/assets/logos/head and neck logo-converti-depuis-png.webp";
+import oncologyCollegeLogo from "@/assets/logos/oncology college logo-converti-depuis-png.webp";
+import oncareLogo from "@/assets/logos/oncare-logo.webp";
+import lsuHealthLogo from "@/assets/logos/lsu health logo.webp";
+import boomChikaPopLogo from "@/assets/logos/boomchika pop logo-converti-depuis-png.webp";
+import exigentLogo from "@/assets/logos/logo exigent.webp";
 
-const clients = [
+// Row 1 - left-to-right scroll (15 logos)
+const row1Clients = [
   { name: "Nike", logo: nikeLogo },
-  { name: "Samsung", logo: samsungLogo },
-  { name: "HP", logo: hpLogo },
-  { name: "Chevrolet", logo: chevroletLogo },
-  { name: "Angry Orchard", logo: angryOrchardLogo },
-  { name: "Nokia", logo: nokiaLogo },
-  { name: "Oracle", logo: oracleLogo },
-  { name: "Secureworks", logo: secureworksLogo },
+  { name: "Merck", logo: merckLogo },
+  { name: "Amgen", logo: amgenLogo },
   { name: "Adidas", logo: adidasLogo },
+  { name: "Pfizer", logo: pfizerLogo },
+  { name: "Secureworks", logo: secureworksLogo },
+  { name: "Gilead", logo: gileadLogo },
   { name: "Atlanta United", logo: atlantaUnitedLogo },
+  { name: "AstraZeneca", logo: astrazenecaLogo },
+  { name: "Rapid7", logo: rapid7Logo },
+  { name: "Bank of America", logo: bankOfAmericaLogo },
+  { name: "LSU Health", logo: lsuHealthLogo },
+  { name: "TEVA", logo: tevaLogo },
+  { name: "Evolution Health Group", logo: evolutionHealthLogo },
+  { name: "Boom Chicka Pop", logo: boomChikaPopLogo },
 ];
 
-// Triple for truly seamless infinite scroll
-const scrollClients = [...clients, ...clients, ...clients];
+// Row 2 - right-to-left scroll (15 different logos)
+const row2Clients = [
+  { name: "Samsung", logo: samsungLogo },
+  { name: "Boehringer Ingelheim", logo: boehringerLogo },
+  { name: "HP", logo: hpLogo },
+  { name: "Alkermes", logo: alkermesLogo },
+  { name: "Chevrolet", logo: chevroletLogo },
+  { name: "Novo Nordisk", logo: novoNordiskLogo },
+  { name: "Angry Orchard", logo: angryOrchardLogo },
+  { name: "PNC Bank", logo: pncBankLogo },
+  { name: "Nokia", logo: nokiaLogo },
+  { name: "Veeva", logo: veevaLogo },
+  { name: "Oracle", logo: oracleLogo },
+  { name: "Design for Good", logo: designForGoodLogo },
+  { name: "Oncology College", logo: oncologyCollegeLogo },
+  { name: "ONCare", logo: oncareLogo },
+  { name: "Head & Neck Cancer Alliance", logo: headNeckAllianceLogo },
+  { name: "Exigent", logo: exigentLogo },
+];
+
+// Triple each row for seamless infinite scroll
+const scrollRow1 = [...row1Clients, ...row1Clients, ...row1Clients];
+const scrollRow2 = [...row2Clients, ...row2Clients, ...row2Clients];
 
 const ClientLogos = () => {
   const sectionRef = useRef(null);
@@ -71,7 +119,7 @@ const ClientLogos = () => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <div className="flex items-center w-max animate-marquee-left">
-          {scrollClients.map((client, i) => (
+          {scrollRow1.map((client, i) => (
             <div
               key={`row1-${i}`}
               className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center group"
@@ -101,7 +149,7 @@ const ClientLogos = () => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <div className="flex items-center w-max animate-marquee-right">
-          {[...scrollClients].reverse().map((client, i) => (
+          {scrollRow2.map((client, i) => (
             <div
               key={`row2-${i}`}
               className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center group"

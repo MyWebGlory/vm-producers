@@ -1,6 +1,6 @@
 ﻿import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import { UserX, WifiOff, MonitorOff, Flame, Archive, Trophy, MessageCircle, MapPin, Clock, Camera, Ticket, Heart, X, Check, Scale, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useCalendly } from "@/components/CalendlyModal";
 import { FloatingOrbs } from "@/components/ScrollAnimations";
 
@@ -258,7 +258,7 @@ const ComparisonSection = () => {
               className="flex items-center justify-center w-12 h-12 rounded-2xl"
               style={{ background: "hsl(var(--primary) / 0.12)", border: "1.5px solid hsl(var(--primary) / 0.30)" }}
             >
-              <Sparkles size={20} style={{ color: "hsl(var(--primary))" }} />
+              <Trophy size={20} style={{ color: "hsl(var(--primary))" }} />
             </span>
             <div>
               <p className="font-display font-bold text-xl sm:text-2xl tracking-tight mb-2" style={{ color: "hsl(var(--foreground))" }}>

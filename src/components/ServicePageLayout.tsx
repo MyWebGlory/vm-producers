@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { LucideIcon, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { AnimatedCounter, RevealLine } from "@/components/ScrollAnimations";
+import { AnimatedCounter, RevealLine, MagneticHover } from "@/components/ScrollAnimations";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -436,6 +436,42 @@ const ServicePageLayout = ({
             >
               {description}
             </motion.p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 14, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.55, duration: 0.45, ease: "backOut" }}
+              className="flex flex-col items-center gap-1.5 mt-4"
+            >
+              <MagneticHover>
+                <button
+                  type="button"
+                  onClick={openCalendly}
+                  className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-3 sm:py-4 rounded-full font-display font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 relative overflow-hidden cursor-pointer"
+                  style={{
+                    background: "hsl(var(--primary))",
+                    color: "white",
+                    boxShadow: "0 0 36px hsl(var(--primary) / 0.4), 0 6px 24px rgba(0,0,0,0.28)",
+                  }}
+                >
+                  Get a Dedicated Producer
+                  <ArrowRight size={16} />
+                  <motion.span
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
+                    }}
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
+                  />
+                </button>
+              </MagneticHover>
+              <p className="text-xs" style={{ color: "hsl(0 0% 100% / 0.45)" }}>
+                Free strategy call · No commitment · 15 min
+              </p>
+            </motion.div>
           </div>
         </motion.div>
 
