@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"; // v1
 import { RevealLine } from "@/components/ScrollAnimations";
 import vpLogo from "@/assets/vp-logo-white.png";
 import { useCalendly } from "@/components/CalendlyModal";
