@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Hybrid Events", href: "/hybrid-events" },
   { label: "Video Production", href: "/video-production" },
   { label: "Meeting Pros", href: "/meeting-pros" },
+  { label: "Marketing", href: "/marketing" },
 ];
 
 const Navbar = () => {

@@ -116,6 +116,9 @@ const Footer = () => {
                 <Link to="/meeting-pros" className="hover:text-foreground transition-colors">Meeting Pros Network</Link>
               </li>
               <li>
+                <Link to="/marketing" className="hover:text-foreground transition-colors">Event Marketing</Link>
+              </li>
+              <li>
                 <button
                   type="button"
                   onClick={openCalendly}

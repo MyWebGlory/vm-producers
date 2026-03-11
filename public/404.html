@@ -5,9 +5,10 @@
     <title>VM Producers</title>
     <script>
       // SPA redirect for GitHub Pages
-      // On github.io project URLs (/repo-name/...) keep 1 path segment so we
-      // redirect back to the correct base. On a custom domain keep 0.
-      var pathSegmentsToKeep = window.location.hostname.endsWith('github.io') ? 1 : 0;
+      // The app is always deployed at root (BASE_PATH=/), so always keep 0 segments.
+      // When a custom domain is set in GitHub Pages, github.io/repo-name redirects
+      // to the custom domain automatically.
+      var pathSegmentsToKeep = 0;
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +

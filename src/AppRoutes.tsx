@@ -11,6 +11,7 @@ import VirtualEvents from "@/pages/VirtualEvents";
 import HybridEvents from "@/pages/HybridEvents";
 import VideoProduction from "@/pages/VideoProduction";
 import MeetingPros from "@/pages/MeetingPros";
+import Marketing from "@/pages/Marketing";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import LegalNotice from "@/pages/LegalNotice";
 import NotFound from "@/pages/NotFound";
@@ -27,6 +28,7 @@ const AppRoutes = () => (
       <Route path="/hybrid-events" element={<HybridEvents />} />
       <Route path="/video-production" element={<VideoProduction />} />
       <Route path="/meeting-pros" element={<MeetingPros />} />
+      <Route path="/marketing" element={<Marketing />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="*" element={<NotFound />} />

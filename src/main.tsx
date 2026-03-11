@@ -11,9 +11,9 @@ const app = (
   </HelmetProvider>
 );
 
-// Use hydrateRoot when the server has pre-rendered HTML into #root,
-// otherwise fall back to createRoot for the SPA shell.
-if (rootEl.hasAttribute("data-server-rendered")) {
+// If prerendered HTML exists (from react-snap), hydrate instead of full render.
+// react-snap populates #root with rendered content, so hasChildNodes() detects it.
+if (rootEl.hasChildNodes()) {
   hydrateRoot(rootEl, app);
 } else {
   createRoot(rootEl).render(app);
