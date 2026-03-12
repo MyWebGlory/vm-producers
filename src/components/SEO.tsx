@@ -5,6 +5,7 @@
  * buildFAQSchema to keep page-level JSON-LD DRY and consistent.
  */
 import { Helmet } from "react-helmet-async";
+import defaultOgImage from "@/assets/hero-bg-web.webp";
 
 // ---------------------------------------------------------------------------
 // Component interface
@@ -25,7 +26,7 @@ export interface SEOProps {
 // Constants
 // ---------------------------------------------------------------------------
 export const BASE_URL = "https://www.vmproducers.com";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/hero-bg.webp`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}${defaultOgImage}`;
 export const TODAY = new Date().toISOString().split("T")[0];
 
 // ---------------------------------------------------------------------------

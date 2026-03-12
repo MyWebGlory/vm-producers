@@ -1,6 +1,6 @@
 ﻿import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroBg from "@/assets/hero-bg.webp";
+import heroBg from "@/assets/hero-bg-web.webp";
 import { AnimatedCounter, FloatingOrbs } from "@/components/ScrollAnimations";
 import { MagneticHover } from "@/components/ScrollAnimations";
 import { ArrowRight } from "lucide-react";

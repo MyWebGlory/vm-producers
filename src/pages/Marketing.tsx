@@ -32,7 +32,7 @@ import { SEO, buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TOD
 import { AnimatedCounter, RevealLine, SplitTextReveal, MagneticHover } from "@/components/ScrollAnimations";
 import { ConstellationBG } from "@/components/ConstellationBG";
 import { useCalendly } from "@/components/CalendlyModal";
-import heroBg from "@/assets/hero-bg.webp";
+import heroBg from "@/assets/hero-bg-web.webp";
 import mwgFull from "@/assets/logos/mywebglory-full.png";
 import mwgIcon from "@/assets/logos/mywebglory-icon.png";
 import conferencesImg from "@/assets/Conferences & Summits.webp";

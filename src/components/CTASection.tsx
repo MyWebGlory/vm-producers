@@ -3,7 +3,7 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Rocket } from "lucide-react";
 import { MagneticHover, SplitTextReveal, RevealLine } from "@/components/ScrollAnimations";
 import { ConstellationBG } from "@/components/ConstellationBG";
-import heroBg from "@/assets/hero-bg.webp";
+import heroBg from "@/assets/hero-bg-web.webp";
 import { useCalendly } from "@/components/CalendlyModal";
 
 const CTASection = () => {
