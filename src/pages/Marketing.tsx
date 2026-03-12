@@ -467,7 +467,7 @@ const Marketing = () => {
                 initial={{ opacity: 1, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25, duration: 0.6 }}
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.05] md:leading-[0.95] mb-4 md:mb-8"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold leading-[1.08] md:leading-[1.02] mb-4 md:mb-8"
                 style={{ color: "white" }}
                 data-speakable
               >

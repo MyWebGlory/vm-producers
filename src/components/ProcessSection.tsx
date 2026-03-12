@@ -172,7 +172,7 @@ const StepMeta = ({
 }) => (
   <div className={`flex flex-col gap-1 ${align === "right" ? "items-end text-right" : "items-start text-left"}`}>
     <span
-      className="font-display font-black text-6xl leading-none select-none"
+      className="font-display font-black text-6xl leading-[1.02] py-[0.04em] -my-[0.04em] select-none"
       style={{ color: `hsl(${step.accent} / 0.18)` }}
     >
       {step.number}
@@ -376,7 +376,7 @@ const ProcessSection = () => {
             Your path to a perfect event
           </motion.p>
 
-          <div className="overflow-hidden mb-5">
+          <div className="overflow-hidden pt-[0.05em] pb-[0.16em] -mt-[0.05em] -mb-[0.16em] mb-5">
             <motion.h2
               id="process-heading"
               initial={{ y: "110%" }}

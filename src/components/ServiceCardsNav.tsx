@@ -167,11 +167,11 @@ const ServiceNavCard = ({ service, index, isPlaying, onVideoEnded }: ServiceNavC
 
         {/* Stat badge */}
         <div
-          className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 hidden sm:flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
+          className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 hidden sm:flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full backdrop-blur-sm"
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
-          <span className="font-display text-xs sm:text-base lg:text-lg font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-[10px] sm:text-xs uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
+          <span className="font-display text-xs sm:text-base lg:text-lg font-bold text-white leading-[1.05]">{service.stat}</span>
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest leading-[1.15]" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
         {/* Hover arrow */}

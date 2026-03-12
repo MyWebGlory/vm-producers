@@ -138,7 +138,7 @@ const ComparisonSection = () => {
               { text: "Two very different outcomes.", dark: true },
               { text: "Which one is yours?", gold: true },
             ].map((line, li) => (
-              <span key={li} className="block overflow-hidden">
+              <span key={li} className="block overflow-hidden pt-[0.05em] pb-[0.16em] -mt-[0.05em] -mb-[0.16em]">
                 <motion.span
                   className="block"
                   initial={{ y: "110%" }}
