@@ -95,7 +95,7 @@ const ClientLogos = () => {
           <motion.p
             className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
           >
-            They Trust Us, you should too
+            They trust us, you should too
           </motion.p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
             <SplitTextReveal text="We've been working with" delay={0.1} className="justify-center" />{" "}
@@ -127,10 +127,8 @@ const ClientLogos = () => {
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                height={40}
-                width="auto"
-                loading="lazy"
-                decoding="async"
+                loading="eager"
+                decoding="sync"
                 className="h-8 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
               />
             </div>
@@ -157,10 +155,8 @@ const ClientLogos = () => {
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                height={40}
-                width="auto"
-                loading="lazy"
-                decoding="async"
+                loading="eager"
+                decoding="sync"
                 className="h-8 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
               />
             </div>

@@ -82,7 +82,7 @@ const CTASection = () => {
           className="text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-10 md:mb-12 leading-relaxed"
           style={{ color: "hsl(0 0% 100% / 0.7)" }}
         >
-          You've got the dream. We've got the team, the gear, and the experience to pull it off. All you have to do is say the word.
+          You've got the vision. We make it real.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 15 }}

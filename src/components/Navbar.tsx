@@ -49,9 +49,12 @@ const Navbar = () => {
           <img
             src={vpLogo}
             alt="VM Producers"
+            width={167}
+            height={48}
             className={`h-12 w-auto shrink-0 transition-all duration-500 ${
               scrolled ? "invert" : ""
             }`}
+            style={{ aspectRatio: "791/228" }}
           />
         </Link>
 

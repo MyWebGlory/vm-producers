@@ -45,7 +45,7 @@ export const ALL_NAV_SERVICES: ServiceNavItem[] = [
   },
   {
     title: "Virtual Events",
-    tag: "Webinars · Conferences · Summits",
+    tag: "500K max attendees",
     icon: Monitor,
     description: "TV-quality broadcasts, up to 500K attendees, zero tech stress.",
     image: virtualEventsImg,
@@ -81,7 +81,7 @@ export const ALL_NAV_SERVICES: ServiceNavItem[] = [
   },
   {
     title: "Meeting Pros",
-    tag: "Verified talent in 72 h or less",
+    tag: "Verified talent in 72 hours or less",
     icon: Users,
     description: "Verified event professionals matched worldwide in 72 hours.",
     image: meetingProsImg,

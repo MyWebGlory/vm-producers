@@ -121,7 +121,7 @@ const ResultsSection = () => {
           <h2 id="results-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
             <SplitTextReveal text="Results you can" delay={0.1} className="justify-center" />
             <br />
-            <SplitTextReveal text="count on, every time." delay={0.3} className="justify-center" />
+            <SplitTextReveal text="count on." delay={0.3} className="justify-center" style={{ color: "hsl(216 90% 65%)" }} />
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
