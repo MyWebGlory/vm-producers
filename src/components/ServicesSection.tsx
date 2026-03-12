@@ -160,11 +160,11 @@ const ServiceCard = ({ service, index, isPlaying, onVideoEnded }: ServiceCardPro
 
         {/* Stat badge */}
         <div
-          className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 flex items-baseline gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-sm"
+          className="absolute top-3 left-2 sm:top-4 sm:left-4 z-20 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full backdrop-blur-sm"
           style={{ background: "hsl(0 0% 0% / 0.50)", border: "1px solid hsl(0 0% 100% / 0.14)" }}
         >
-          <span className="font-display text-xs sm:text-lg lg:text-xl font-bold text-white leading-none">{service.stat}</span>
-          <span className="text-[10px] sm:text-xs uppercase tracking-widest" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
+          <span className="font-display text-xs sm:text-lg lg:text-xl font-bold text-white leading-[1.05]">{service.stat}</span>
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest leading-[1.15]" style={{ color: `hsl(${h} ${s}% ${l + 20}%)` }}>{service.statLabel}</span>
         </div>
 
         {/* Hover arrow */}
@@ -244,17 +244,17 @@ const ServicesSection = () => {
       <FloatingOrbs count={3} className="opacity-70" />
 
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-2 sm:px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-hidden">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-2 sm:px-6 mb-6 lg:mb-10 text-center relative z-10 overflow-visible">
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-6 font-medium"
+          className="section-kicker text-primary mb-6"
         >
           Our Services
         </motion.p>
-        <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground">
+        <h2 id="services-heading" className="section-title text-foreground">
           <SplitTextReveal text="Five ways we" delay={0.1} stagger={0.06} className="justify-center" />
           <br />
           <SplitTextReveal text="produce your event." delay={0.35} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
@@ -263,7 +263,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.55 }}
-          className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-muted-foreground text-balance"
+          className="section-lead mt-4 max-w-2xl mx-auto text-muted-foreground text-balance"
         >
           <span className="block text-balance md:whitespace-nowrap">Whatever you're building (in a room, online, or both), we handle production end to end.</span><span className="block">You just focus on showing up.</span>
         </motion.p>

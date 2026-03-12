@@ -122,6 +122,20 @@
     background-clip: text;
   }
 
+  .section-kicker {
+    @apply font-display text-sm uppercase font-medium;
+    letter-spacing: 0.3em;
+  }
+
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
+    line-height: 1.14;
+  }
+
+  .section-lead {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+
   .hero-gradient {
     background: linear-gradient(180deg, hsl(var(--hero-overlay) / 0.1) 0%, hsl(var(--hero-overlay) / 0.25) 40%, hsl(var(--hero-overlay) / 0.6) 100%);
   }
@@ -157,5 +171,11 @@
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .section-title {
+    line-height: 1.1;
   }
 }

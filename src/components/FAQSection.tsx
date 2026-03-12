@@ -84,7 +84,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-display text-xs uppercase tracking-[0.3em] mb-4 font-medium"
+            className="section-kicker mb-4"
             style={{ color: "hsl(var(--primary))" }}
           >
             Before you say yes
@@ -95,7 +95,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight"
+            className="section-title text-foreground"
           >
             Your questions,{" "}
             <span style={{ color: "hsl(var(--primary))" }}>answered honestly.</span>
@@ -112,7 +112,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mt-4 text-muted-foreground text-base max-w-xl mx-auto"
+            className="section-lead mt-4 text-muted-foreground max-w-xl mx-auto"
           >
             Real answers to the questions you're probably already asking yourself.
           </motion.p>

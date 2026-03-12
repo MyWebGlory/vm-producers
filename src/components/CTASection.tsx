@@ -57,13 +57,13 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="font-display text-xs uppercase tracking-[0.3em] mb-6 font-medium"
+          className="section-kicker mb-6"
           style={{ color: "hsl(var(--primary))" }}
         >
           Let's Talk
         </motion.p>
         <RevealLine delay={0.05} className="mb-8 max-w-[120px] mx-auto" />
-        <h2 id="cta-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-4 md:mb-8 leading-tight" style={{ color: "white" }}>
+        <h2 id="cta-heading" className="section-title mb-4 md:mb-8" style={{ color: "white" }}>
           <SplitTextReveal text="Let's make your next event" delay={0.1} stagger={0.04} className="justify-center" nowrap />{" "}
           <SplitTextReveal text="one they'll never forget." delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
         </h2>

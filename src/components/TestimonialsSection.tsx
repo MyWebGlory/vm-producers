@@ -240,7 +240,7 @@ const TestimonialsSection = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="relative overflow-hidden text-center mb-12 md:mb-16"
+          className="relative text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9 }}
@@ -259,10 +259,10 @@ const TestimonialsSection = () => {
               <Star size={26} style={{ color: "hsl(var(--primary))" }} />
             </span>
           </div>
-          <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium">
+          <p className="section-kicker text-primary mb-4">
             Straight from the people who've been there
           </p>
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight mb-6 text-center">
+          <h2 id="testimonials-heading" className="section-title text-foreground mb-6 text-center">
             <SplitTextReveal text="You'll be in great hands." delay={0.1} className="justify-center" />
             <br />
             <SplitTextReveal text="200+ teams made the leap." delay={0.25} className="justify-center glow-text" />

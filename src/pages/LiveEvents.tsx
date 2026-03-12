@@ -176,13 +176,13 @@ const LiveEvents = () => (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-3 font-medium">
+            <p className="section-kicker text-primary mb-3">
               Our Talent Network
             </p>
-            <h2 id="elevate-team-heading" className="text-3xl md:text-4xl font-display font-bold text-foreground mb-5">
+            <h2 id="elevate-team-heading" className="section-title text-foreground mb-5">
               Elevate Your Event Team
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="section-lead text-muted-foreground max-w-2xl mx-auto">
               Create a strong and reliable network of independent meeting professionals that you can connect with swiftly and strategically. The Virtual Producer's Network specializes in more than 55 areas of meetings and events.
             </p>
           </div>

@@ -76,9 +76,9 @@ const AboutSection = () => {
               <span className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}>
                 <Award size={20} style={{ color: "hsl(var(--primary))" }} />
               </span>
-              <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">Why you'll never look back</p>
+              <p className="section-kicker text-primary">Why you'll never look back</p>
             </div>
-            <h2 className="text-3xl font-display font-bold leading-tight text-foreground">
+            <h2 className="section-title text-foreground">
               <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-center" />{" "}
               <SplitTextReveal text="We make it real." delay={0.45} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
             </h2>
@@ -135,9 +135,9 @@ const AboutSection = () => {
                 <span className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0" style={{ background: "hsl(var(--primary) / 0.10)", border: "1.5px solid hsl(var(--primary) / 0.24)" }}>
                   <Award size={20} style={{ color: "hsl(var(--primary))" }} />
                 </span>
-                <p className="text-primary font-display text-xs uppercase tracking-[0.3em] font-medium">Why you'll never look back</p>
+                <p className="section-kicker text-primary">Why you'll never look back</p>
               </div>
-              <h2 id="about-heading" className="text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground">
+              <h2 id="about-heading" className="section-title text-foreground">
                 <SplitTextReveal text="You've got the vision." delay={0.2} className="justify-start" />{" "}
                 <SplitTextReveal text="We make it real." delay={0.45} className="justify-start" style={{ color: "hsl(var(--primary))" }} />
               </h2>

@@ -571,7 +571,7 @@ const Marketing = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-14 md:mb-20">
               <motion.p
-                className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+                className="section-kicker text-primary mb-4"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -580,7 +580,7 @@ const Marketing = () => {
                 The Hard Truth
               </motion.p>
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground"
+                className="section-title text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -590,7 +590,7 @@ const Marketing = () => {
                 <span style={{ color: "hsl(var(--primary))" }}>the battle.</span>
               </motion.h2>
               <motion.p
-                className="text-base md:text-lg mt-5 max-w-2xl mx-auto leading-relaxed"
+                className="section-lead mt-5 max-w-2xl mx-auto"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -686,7 +686,7 @@ const Marketing = () => {
                 </div>
               </motion.div>
               <motion.p
-                className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+                className="section-kicker text-primary mb-4"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -695,7 +695,7 @@ const Marketing = () => {
                 Full-Scope Solution
               </motion.p>
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
+                className="section-title text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -711,7 +711,7 @@ const Marketing = () => {
                 </span>
               </motion.h2>
               <motion.p
-                className="text-base md:text-lg mt-5 max-w-2xl mx-auto leading-relaxed"
+                className="section-lead mt-5 max-w-2xl mx-auto"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1142,7 +1142,7 @@ const Marketing = () => {
                 </div>
               </motion.div>
               <motion.p
-                className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+                className="section-kicker text-primary mb-4"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1151,7 +1151,7 @@ const Marketing = () => {
                 What You Get
               </motion.p>
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
+                className="section-title text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1161,7 +1161,7 @@ const Marketing = () => {
                 <span style={{ color: "hsl(var(--primary))" }}>sell.</span>
               </motion.h2>
               <motion.p
-                className="text-base md:text-lg mt-5 max-w-2xl mx-auto leading-relaxed"
+                className="section-lead mt-5 max-w-2xl mx-auto"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1226,7 +1226,7 @@ const Marketing = () => {
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-14 md:mb-20">
               <motion.p
-                className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+                className="section-kicker text-primary mb-4"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1235,7 +1235,7 @@ const Marketing = () => {
                 The Process
               </motion.p>
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground"
+                className="section-title text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1247,7 +1247,7 @@ const Marketing = () => {
                 </span>
               </motion.h2>
               <motion.p
-                className="text-base md:text-lg mt-5 max-w-xl mx-auto leading-relaxed"
+                className="section-lead mt-5 max-w-xl mx-auto"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1340,7 +1340,7 @@ const Marketing = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-14 md:mb-20">
               <motion.p
-                className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+                className="section-kicker text-primary mb-4"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1349,7 +1349,7 @@ const Marketing = () => {
                 The Bottom Line
               </motion.p>
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
+                className="section-title text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1361,7 +1361,7 @@ const Marketing = () => {
                 </span>
               </motion.h2>
               <motion.p
-                className="text-base md:text-lg mt-5 max-w-2xl mx-auto leading-relaxed"
+                className="section-lead mt-5 max-w-2xl mx-auto"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1465,7 +1465,7 @@ const Marketing = () => {
         <section className="py-20 md:py-28 bg-card border-t border-b border-border/40">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <motion.p
-              className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+              className="section-kicker text-primary mb-4"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1474,7 +1474,7 @@ const Marketing = () => {
               Is This For You?
             </motion.p>
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground mb-10"
+              className="section-title text-foreground mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

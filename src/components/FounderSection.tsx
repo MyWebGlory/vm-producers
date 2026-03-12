@@ -39,7 +39,7 @@ const FounderSection = () => {
 
             {/* Name + title */}
             <motion.div {...fadeUp(0.1)}>
-              <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-3" style={{ color: "hsl(var(--primary) / 0.75)" }}>
+              <p className="section-kicker font-semibold mb-3" style={{ color: "hsl(var(--primary) / 0.75)" }}>
                 Meet the founder
               </p>
               <p className="font-display font-bold text-3xl lg:text-4xl" style={{ color: "hsl(var(--foreground))" }}>Austin Talley</p>

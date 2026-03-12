@@ -270,10 +270,10 @@ const ServiceCardsNav = ({ currentPath = "" }: ServiceCardsNavProps) => {
           transition={{ duration: 0.5 }}
           className="mb-8 lg:mb-10 text-center"
         >
-          <p className="font-display text-sm uppercase tracking-[0.3em] font-medium mb-3 text-primary">
+          <p className="section-kicker mb-3 text-primary">
             Keep exploring
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight text-foreground">
+          <h2 className="section-title tracking-tight text-foreground">
             {currentPath ? "Other services you might need" : "Explore our services"}
           </h2>
         </motion.div>

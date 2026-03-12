@@ -113,12 +113,12 @@ const ResultsSection = () => {
           transition={{ duration: 0.8 }}
         >
           <p
-            className="font-display text-sm uppercase tracking-[0.3em] mb-5 font-medium"
+            className="section-kicker mb-5"
             style={{ color: "hsl(216 90% 65%)" }}
           >
             Numbers you can trust
           </p>
-          <h2 id="results-heading" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
+          <h2 id="results-heading" className="section-title text-foreground text-center">
             <SplitTextReveal text="Results you can" delay={0.1} className="justify-center" />
             <br />
             <SplitTextReveal text="count on." delay={0.3} className="justify-center" style={{ color: "hsl(216 90% 65%)" }} />
@@ -127,7 +127,7 @@ const ResultsSection = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-5 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto text-center"
+            className="section-lead mt-5 max-w-xl mx-auto text-center"
             style={{ color: "hsl(var(--foreground) / 0.50)" }}
           >
             These aren't vanity metrics. They're what happens when you show up flawlessly, every single time.

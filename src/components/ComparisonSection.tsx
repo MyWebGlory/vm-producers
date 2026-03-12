@@ -128,12 +128,12 @@ const ComparisonSection = () => {
             initial={{ opacity: 0 }}
             animate={isHeaderInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-display text-xs uppercase tracking-[0.28em] font-semibold mb-5"
+            className="section-kicker font-semibold mb-5"
             style={{ color: "hsl(216 90% 58%)" }}
           >
             The honest difference
           </motion.p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight leading-[1.1]">
+          <h2 className="section-title tracking-tight">
             {[
               { text: "Two very different outcomes.", dark: true },
               { text: "Which one is yours?", gold: true },

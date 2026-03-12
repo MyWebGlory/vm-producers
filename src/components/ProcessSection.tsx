@@ -370,7 +370,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-display text-xs uppercase tracking-[0.3em] mb-4 font-semibold"
+            className="section-kicker font-semibold mb-4"
             style={{ color: "hsl(var(--primary))" }}
           >
             Your path to a perfect event
@@ -382,7 +382,7 @@ const ProcessSection = () => {
               initial={{ y: "110%" }}
               animate={headerInView ? { y: "0%" } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight"
+              className="section-title text-foreground"
             >
               From first call to{" "}
               <span style={{ color: "hsl(var(--primary))" }}>final applause.</span>
@@ -393,7 +393,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.25, duration: 0.6 }}
-            className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto"
+            className="section-lead max-w-2xl mx-auto"
             style={{ color: "hsl(var(--foreground) / 0.55)" }}
           >
             No complicated onboarding. No endless back-and-forth. Just a clear plan, a dedicated team, and complete peace of mind from day one.

@@ -614,7 +614,7 @@ const ServicePageLayout = ({
               </motion.div>
             )}
             <motion.p
-              className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+              className="section-kicker text-primary mb-4"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -633,7 +633,7 @@ const ServicePageLayout = ({
               )}
               <motion.h2
                 id="features-heading"
-                className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground"
+                className="section-title relative text-foreground"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -645,7 +645,7 @@ const ServicePageLayout = ({
             </div>
             {featuresDescription && (
               <motion.p
-                className="text-base md:text-lg mt-5 max-w-2xl mx-auto leading-relaxed"
+                className="section-lead mt-5 max-w-2xl mx-auto"
                 style={{ color: "hsl(var(--foreground) / 0.55)" }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -686,7 +686,7 @@ const ServicePageLayout = ({
                   style={{ color: "hsl(var(--primary) / 0.06)", pointerEvents: "none" }}
                 />
               )}
-              <h2 className="relative text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground">
+              <h2 className="section-title relative text-foreground">
                 Here's <span style={{ color: "hsl(var(--primary))" }}>how</span> we make it happen.
               </h2>
             </div>

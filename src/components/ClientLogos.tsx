@@ -93,15 +93,15 @@ const ClientLogos = () => {
         {/* Bold header */}
         <ScrollReveal className="text-center mb-12 md:mb-16">
           <motion.p
-            className="text-primary font-display text-sm uppercase tracking-[0.3em] mb-4 font-medium"
+            className="section-kicker text-primary mb-4"
           >
             They trust us, you should too
           </motion.p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight text-center">
+          <h2 className="section-title text-foreground text-center">
             <SplitTextReveal text="We've been working with" delay={0.1} className="justify-center" />{" "}
             <SplitTextReveal text="the world's best." delay={0.3} className="justify-center glow-text" />
           </h2>
-          <p className="text-muted-foreground text-lg mt-4 max-w-xl mx-auto">
+          <p className="section-lead text-muted-foreground mt-4 max-w-xl mx-auto">
             From Fortune 500 giants to fast-growing startups: when the stakes are high, this is who they call.
           </p>
         </ScrollReveal>
