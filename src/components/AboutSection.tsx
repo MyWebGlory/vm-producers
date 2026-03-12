@@ -7,10 +7,10 @@ import { useCalendly } from "@/components/CalendlyModal";
 
 // Dynamic imports - videos loaded only when section is visible
 const videoImports = [
-  () => import("@/assets/live-events-video.mp4"),
-  () => import("@/assets/video-production-video.mp4"),
-  () => import("@/assets/hybrid-events-video.mp4"),
-  () => import("@/assets/meeting-pros-video.mp4"),
+  () => import("@/assets/live event video.mp4"),
+  () => import("@/assets/video production.mp4"),
+  () => import("@/assets/hybrid event.mp4"),
+  () => import("@/assets/Executive & Team Meetings.mp4"),
 ];
 
 const AboutSection = () => {

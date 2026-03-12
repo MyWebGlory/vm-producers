@@ -1,4 +1,4 @@
-import { useRef, ReactNode, useState, useEffect } from "react";
+import { useRef, ReactNode, useState, useEffect, useMemo } from "react";
 import {
   motion,
   useScroll,
@@ -30,6 +30,7 @@ interface ServiceTypeCard {
   title: string;
   description: string;
   image?: string;
+  video?: string;
 }
 
 interface ServiceFeature {
@@ -93,8 +94,6 @@ const DeferredHeroVideo = ({ src }: { src: string }) => {
             preload="none"
             className="w-full h-full object-cover scale-110 blur-[2px]"
           />
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </motion.div>
       )}
     </AnimatePresence>
@@ -192,8 +191,74 @@ const FeatureRow = ({
   );
 };
 
+const CARD_VIDEO_INITIAL_DELAY_MS = 1200;
+const CARD_VIDEO_ROTATION_MS = 6000;
+
+/* Deferred Card Video */
+const DeferredCardVideo = ({ src, isActive }: { src: string; isActive: boolean }) => {
+  return (
+    <AnimatePresence>
+      {isActive && (
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <video
+            key={src}
+            src={src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 /* Main Layout */
 const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: string }) => {
+  const videoCardIndexes = useMemo(
+    () => cards.flatMap((card, index) => (card.video ? [index] : [])),
+    [cards]
+  );
+  const [activeVideoIndex, setActiveVideoIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (videoCardIndexes.length === 0) {
+      setActiveVideoIndex(null);
+      return;
+    }
+
+    let rotationTimer: ReturnType<typeof setInterval> | undefined;
+    const startTimer = setTimeout(() => {
+      setActiveVideoIndex(videoCardIndexes[0]);
+
+      if (videoCardIndexes.length < 2) {
+        return;
+      }
+
+      let nextVideoIndex = 1;
+      rotationTimer = setInterval(() => {
+        setActiveVideoIndex(videoCardIndexes[nextVideoIndex]);
+        nextVideoIndex = (nextVideoIndex + 1) % videoCardIndexes.length;
+      }, CARD_VIDEO_ROTATION_MS);
+    }, CARD_VIDEO_INITIAL_DELAY_MS);
+
+    return () => {
+      clearTimeout(startTimer);
+      if (rotationTimer) {
+        clearInterval(rotationTimer);
+      }
+    };
+  }, [videoCardIndexes]);
+
   return (
     <section className="pt-8 pb-16 md:pt-10 md:pb-24 bg-card border-t border-border/40 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -241,6 +306,7 @@ const TypeCardsGrid = ({ cards, title }: { cards: ServiceTypeCard[]; title?: str
                     <div className="w-10 h-10 rounded-full" style={{ background: "hsl(var(--primary) / 0.15)" }} />
                   </div>
                 )}
+                {card.video && <DeferredCardVideo src={card.video} isActive={activeVideoIndex === i} />}
                 {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-2xl" />
                 {/* Mobile: text overlaid on image */}
@@ -355,7 +421,7 @@ const ServicePageLayout = ({
           <img
             src={heroImage}
             alt={`${title} production by VM Producers - professional event management`}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover${heroVideo ? " scale-110 blur-[2px]" : ""}`}
             width={1920}
             height={1080}
             // @ts-expect-error fetchpriority is a valid HTML attribute not yet in React types

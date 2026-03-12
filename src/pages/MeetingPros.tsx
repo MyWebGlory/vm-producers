@@ -1,12 +1,14 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
-import meetingProsImg from "@/assets/meeting-pros.webp";
-import meetingProsVideo from "@/assets/meeting-pros-video.mp4";
+import meetingProsImg from "@/assets/meeting pro.webp";
+import meetingProsVideo from "@/assets/meeting pro.mp4";
 import aboutEventImg from "@/assets/about-event.webp";
-import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
-import eventDirectorsImg from "@/assets/event-directors.webp";
-import productionStageImg from "@/assets/production-stage-design.webp";
-import logisticsCoordinatorsImg from "@/assets/logistics-coordinators.webp";
+import virtualEventsControlRoomImg from "@/assets/virtual events.webp";
+import eventProducerImg from "@/assets/event producer.webp";
+import eventDirectorsImg from "@/assets/event director.webp";
+import productionStageImg from "@/assets/Production & Stage Design.webp";
+import logisticsCoordinatorsImg from "@/assets/Logistics Coordinators (2).webp";
 import venueLogisticsImg from "@/assets/venue-logistics.webp";
+import strategicConsultingImg from "@/assets/Strategic Consulting.webp";
 import { Zap, ClipboardList, MapPin, Plane, Monitor, Grid2x2 } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
@@ -85,7 +87,7 @@ const MeetingPros = () => (
         icon: ClipboardList,
         title: "Project Management",
         description: "Full-service event and project management from planning and logistics through to execution. Every detail handled for you, nothing left to chance.",
-        image: aboutEventImg,
+        image: strategicConsultingImg,
       },
       {
         icon: MapPin,
@@ -103,7 +105,7 @@ const MeetingPros = () => (
         icon: Monitor,
         title: "Virtual Producers & AV Specialists",
         description: "Experienced virtual producers on the technical side, local AV specialists on the ground. Professional-grade equipment, skilled operators.",
-        image: virtualEventsControlRoomImg,
+        image: eventProducerImg,
       },
       {
         icon: Grid2x2,

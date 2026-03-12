@@ -1,14 +1,14 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
-import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
-import hybridEventsVideo from "@/assets/hybrid-events-video.mp4";
+import hybridEventsImg from "@/assets/hybrid events.webp";
+import hybridEventsVideo from "@/assets/hybrid event.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
-import productLaunchesImg from "@/assets/Product-Launches_1.webp";
-import executiveSummitsImg from "@/assets/executive-summits.webp";
-import townHallsImg from "@/assets/Town-Halls-_-All-Hands.webp";
-import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
-import videoProductionImg from "@/assets/video-production.webp";
+import productLaunchesImg from "@/assets/Product Launches.webp";
+import executiveSummitsImg from "@/assets/hybrid Executive Summits.webp";
+import townHallsImg from "@/assets/Town Halls & All-Hands.webp";
+import virtualEventsControlRoomImg from "@/assets/virtual events.webp";
+import videoProductionImg from "@/assets/video production.webp";
 import captureEveryMomentImg from "@/assets/capture-every-moment.webp";
-import webinarsTrainingImg from "@/assets/webinars-training.webp";
+import webinarsTrainingImg from "@/assets/Broad Audience Webinars & Training.webp";
 import { Layers, Camera, Volume2, Monitor, MessageSquare, Laptop, Archive } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 

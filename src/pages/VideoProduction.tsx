@@ -1,12 +1,12 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
-import videoProductionImg from "@/assets/video-production.webp";
-import videoProductionVideo from "@/assets/video-production-video.mp4";
+import videoProductionImg from "@/assets/video production.webp";
+import videoProductionVideo from "@/assets/video production.mp4";
 import liveEventsImg from "@/assets/live-events.webp";
 import aboutEventImg from "@/assets/about-event.webp";
-import attractBuildHypeImg from "@/assets/attract-build-hype.webp";
+import attractBuildHypeImg from "@/assets/Attract & Build Hype (2).webp";
 import captureEveryMomentImg from "@/assets/capture-every-moment.webp";
-import extendYourReachImg from "@/assets/extend-your-reach.webp";
-import productionStageImg from "@/assets/production-stage-design.webp";
+import extendYourReachImg from "@/assets/Extend Your Reach (2).webp";
+import productionStageImg from "@/assets/Production & Stage Design.webp";
 import whiteboardExplainerImg from "@/assets/whiteboard-explainer-videos.webp";
 import { Play, Camera, Star, PenTool, Film, RefreshCw, Sliders } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
@@ -173,7 +173,7 @@ const VideoProduction = () => (
             <p className="mt-2">Broadcast-ready files delivered on your deadline, every time, with the polish your brand demands.</p>
           </>
         ),
-        image: productionStageImg,
+        image: videoProductionImg,
       },
     ]}
   />

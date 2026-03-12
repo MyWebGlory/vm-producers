@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowUpRight } from "lucide-react";
 import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
-import virtualEventsImg from "@/assets/virtual-events-control-room.webp";
-import videoProductionImg from "@/assets/video-production.webp";
-import hybridEventsImg from "@/assets/hybrid-summit-stage.webp";
-import meetingProsImg from "@/assets/meeting-pros.webp";
+import virtualEventsImg from "@/assets/virtual events.webp";
+import videoProductionImg from "@/assets/video production.webp";
+import hybridEventsImg from "@/assets/hybrid events.webp";
+import meetingProsImg from "@/assets/Executive & Team Meetings.webp";
 import liveEventsImg from "@/assets/live-events.webp";
-import liveEventsVid from "@/assets/live-events-video.mp4";
-import virtualEventsVid from "@/assets/virtual-events-video.mp4";
-import hybridEventsVid from "@/assets/hybrid-events-video.mp4";
-import videoProductionVid from "@/assets/video-production-video.mp4";
-import meetingProsVid from "@/assets/meeting-pros-video.mp4";
+import liveEventsVid from "@/assets/live event video.mp4";
+import virtualEventsVid from "@/assets/virtual events.mp4";
+import hybridEventsVid from "@/assets/hybrid event.mp4";
+import videoProductionVid from "@/assets/video production.mp4";
+import meetingProsVid from "@/assets/Executive & Team Meetings.mp4";
 
 const MotionLink = motion.create(Link);
 

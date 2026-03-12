@@ -1,14 +1,16 @@
 ﻿import { useState } from "react";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import liveEventsImg from "@/assets/live-events.webp";
-import liveEventsVideo from "@/assets/live-events-video.mp4";
-import hybridSummitImg from "@/assets/hybrid-summit-stage.webp";
+import liveEventsVideo from "@/assets/live event video.mp4";
+import hybridSummitImg from "@/assets/hybrid events.webp";
 import venueLogisticsImg from "@/assets/venue-logistics.webp";
 import guestExperienceImg from "@/assets/guest-experience-management.webp";
-import productionStageImg from "@/assets/production-stage-design.webp";
-import conferencesSummitsImg from "@/assets/Conferences-_-Summits_1.webp";
-import smallMeetingsImg from "@/assets/executive-summits.webp";
-import awardsGalasImg from "@/assets/Awards-_-Galas_1.webp";
+import productionStageImg from "@/assets/Production & Stage Design.webp";
+import conferencesSummitsImg from "@/assets/Conferences & Summits.webp";
+import conferencesSummitsVideo from "@/assets/Conferences & Summits.mp4";
+import smallMeetingsImg from "@/assets/Executive & Team Meetings.webp";
+import smallMeetingsVideo from "@/assets/Executive & Team Meetings.mp4";
+import awardsGalasImg from "@/assets/Awards & Galas.webp";
 import { Layers, MapPin, Users, Cpu } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 import melissaAvatar from "@/assets/testimonials/melissa-dawn-simkins.jpg";
@@ -84,12 +86,14 @@ const LiveEvents = () => (
         title: "Executive & Team Meetings",
         description: "Intimate, high-impact meetings for leadership teams, board sessions, and strategic offsites, run with the same precision as a large-scale event.",
         image: smallMeetingsImg,
+        video: smallMeetingsVideo,
       },
       {
         label: "Corporate",
         title: "Conferences & Summits",
         description: "Multi-day conferences, keynotes, and panel sessions for 50 to 50,000 attendees. Produced start to finish with zero surprises.",
         image: conferencesSummitsImg,
+        video: conferencesSummitsVideo,
       },
       {
         label: "Prestige Events",

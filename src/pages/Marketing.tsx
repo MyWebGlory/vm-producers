@@ -35,12 +35,12 @@ import { useCalendly } from "@/components/CalendlyModal";
 import heroBg from "@/assets/hero-bg.webp";
 import mwgFull from "@/assets/logos/mywebglory-full.png";
 import mwgIcon from "@/assets/logos/mywebglory-icon.png";
-import conferencesImg from "@/assets/Conferences-_-Summits_1.webp";
-import attractImg from "@/assets/attract-build-hype.webp";
-import extendReachImg from "@/assets/extend-your-reach.webp";
+import conferencesImg from "@/assets/Conferences & Summits.webp";
+import attractImg from "@/assets/Attract & Build Hype (2).webp";
+import extendReachImg from "@/assets/Extend Your Reach (2).webp";
 import captureImg from "@/assets/capture-every-moment.webp";
 import aboutEventImg from "@/assets/about-event.webp";
-import executiveSummitsImg from "@/assets/executive-summits.webp";
+import executiveSummitsImg from "@/assets/Executive & Team Meetings.webp";
 
 const PARTNER_URL = "https://mywebglory.com";
 // MyWebGlory brand purple, used discretely on marketing-specific elements

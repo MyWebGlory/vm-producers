@@ -1,12 +1,13 @@
 ﻿import ServicePageLayout from "@/components/ServicePageLayout";
-import virtualEventsImg from "@/assets/virtual-events.webp";
-import virtualEventsVideo from "@/assets/virtual-events-video.mp4";
-import virtualEventsControlRoomImg from "@/assets/virtual-events-control-room.webp";
-import conferencesSummitsSeriesImg from "@/assets/conferences-summits-series.webp";
-import webinarsTrainingImg from "@/assets/webinars-training.webp";
-import globalTownHallsImg from "@/assets/global-town-halls.webp";
-import virtualTradeShowsImg from "@/assets/virtual-trade-shows.webp";
-import extendYourReachImg from "@/assets/extend-your-reach.webp";
+import virtualEventsImg from "@/assets/virtual events.webp";
+import virtualEventsVideo from "@/assets/virtual events.mp4";
+import virtualEventsControlRoomImg from "@/assets/virtual events.webp";
+import strategicConsultingImg from "@/assets/Strategic Consulting.webp";
+import conferencesSummitsSeriesImg from "@/assets/Conferences & Summits.webp";
+import webinarsTrainingImg from "@/assets/Broad Audience Webinars & Training.webp";
+import globalTownHallsImg from "@/assets/Global Town Halls.webp";
+import virtualTradeShowsImg from "@/assets/virtual trade show.webp";
+import analyticsReportingImg from "@/assets/Analytics & Post-Event Reporting.webp";
 import { Tv, Layout, Users, Globe, Zap, BarChart2, Target } from "lucide-react";
 import { buildWebPageSchema, buildBreadcrumbSchema, buildServiceSchema, TODAY } from "@/components/SEO";
 
@@ -89,7 +90,7 @@ const VirtualEvents = () => (
             </ul>
           </>
         ),
-        image: virtualEventsControlRoomImg,
+        image: strategicConsultingImg,
       },
       {
         icon: Tv,
@@ -111,7 +112,7 @@ const VirtualEvents = () => (
             <p className="mt-2">Every screen your attendees see carries your identity and reinforces your message.</p>
           </>
         ),
-        image: virtualEventsImg,
+        image: virtualTradeShowsImg,
       },
       {
         icon: Users,
@@ -159,7 +160,7 @@ const VirtualEvents = () => (
             <p className="mt-2">Everything you need to brief stakeholders, justify the investment, and plan your next event smarter.</p>
           </>
         ),
-        image: extendYourReachImg,
+        image: analyticsReportingImg,
       },
     ]}
   />
