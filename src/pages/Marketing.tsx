@@ -1012,7 +1012,7 @@ const Marketing = () => {
                     style={{ color: "hsl(var(--foreground) / 0.45)" }}
                   >
                     <span>📍</span>
-                    <span>Singapore &mdash; Worldwide</span>
+                    <span>Worldwide</span>
                   </motion.div>
 
                   {/* Mini stats */}
@@ -1073,7 +1073,7 @@ const Marketing = () => {
                     className="text-sm md:text-base leading-relaxed"
                     style={{ color: "hsl(var(--foreground) / 0.50)" }}
                   >
-                    Based in Singapore and operating worldwide, they combine
+                    Operating worldwide, they combine
                     sniper-precise ICP targeting, multi-channel acquisition
                     across paid and organic, conversion-optimized funnels, and
                     post-event follow-up systems, turning every event into a
@@ -1357,7 +1357,7 @@ const Marketing = () => {
               >
                 Stop treating production and marketing{" "}
                 <span style={{ color: "hsl(var(--primary))" }}>
-                  as separate problems.
+                  as separate solutions.
                 </span>
               </motion.h2>
               <motion.p
