@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Globe, Monitor, Video, Users, Mic, ArrowUpRight } from "lucide-react";
-import { SplitTextReveal, VelocityScrollBand, FloatingOrbs } from "@/components/ScrollAnimations";
+import { SplitTextReveal, FloatingOrbs } from "@/components/ScrollAnimations";
 import virtualEventsImg from "@/assets/virtual events.webp";
 import videoProductionImg from "@/assets/video production.webp";
 import hybridEventsImg from "@/assets/hybrid events.webp";
@@ -35,10 +35,10 @@ const services: Service[] = [
     title: "Live Events",
     tag: "50 to 50,000 attendees",
     icon: Mic,
-    description: "End-to-end in-person production. You show up as the host.",
+    description: "End-to-end in-person production. We handle the entire production, so you don't have to.",
     image: liveEventsImg,
     video: liveEventsVid,
-    stat: "500+",
+    stat: "2000+",
     statLabel: "Events produced",
     accentH: 216, accentS: 90, accentL: 58,
   },
@@ -51,7 +51,7 @@ const services: Service[] = [
     video: virtualEventsVid,
     stat: "500K",
     statLabel: "Max attendees",
-    accentH: 207, accentS: 82, accentL: 52,
+    accentH: 216, accentS: 90, accentL: 58,
   },
   {
     title: "Hybrid Events",
@@ -62,7 +62,7 @@ const services: Service[] = [
     video: hybridEventsVid,
     stat: "95%",
     statLabel: "Audience retention",
-    accentH: 222, accentS: 78, accentL: 62,
+    accentH: 216, accentS: 90, accentL: 58,
   },
   {
     title: "Video Production",
@@ -73,7 +73,7 @@ const services: Service[] = [
     video: videoProductionVid,
     stat: "2000+",
     statLabel: "Videos delivered",
-    accentH: 213, accentS: 88, accentL: 55,
+    accentH: 216, accentS: 90, accentL: 58,
   },
   {
     title: "Meeting Pros",
@@ -84,7 +84,7 @@ const services: Service[] = [
     video: meetingProsVid,
     stat: "70+",
     statLabel: "Countries covered",
-    accentH: 205, accentS: 75, accentL: 50,
+    accentH: 216, accentS: 90, accentL: 58,
   },
 ];
 
@@ -265,18 +265,11 @@ const ServicesSection = () => {
           transition={{ duration: 0.55, delay: 0.55 }}
           className="section-lead mt-4 max-w-2xl mx-auto text-muted-foreground text-balance"
         >
-          <span className="block text-balance md:whitespace-nowrap">Whatever you're building (in a room, online, or both), we handle production end to end.</span><span className="block">You just focus on showing up.</span>
+          <span className="block text-balance md:whitespace-nowrap">Whatever you're building (in-person, online, or both), we handle production end to end.</span><span className="block">You just focus on showing up.</span>
         </motion.p>
       </div>
 
-      {/* Velocity scroll band */}
-      <div className="border-t border-b border-border/25 mb-8 lg:mb-12 relative z-10">
-        <VelocityScrollBand
-          items={["Live Events", "Virtual Events", "Hybrid Events", "Video Production", "Meeting Pros", "Full A-to-Z Production", "Up to 500K Attendees", "70+ Countries", "2000+ Events", "95% Retention Rate", "Fortune 500 Clients", "72h Talent Match"]}
-          baseSpeed={55}
-          separator="|"
-        />
-      </div>
+
 
       {/* 5 equal cards */}
       <div className="max-w-7xl mx-auto px-2 sm:px-6 relative z-10">

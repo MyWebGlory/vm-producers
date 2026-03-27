@@ -13,11 +13,10 @@ const painPoints = [
 ];
 
 const benefits = [
-  { Icon: Trophy,        title: "100% Success Rate - Guaranteed." },
   { Icon: MessageCircle, title: "White-Glove Communication." },
   { Icon: MapPin,        title: "Global Reach in 70+ Countries." },
-  { Icon: Clock,         title: "Matched Within 72 Hours." },
-  { Icon: Camera,        title: "Broadcast-Quality Production." },
+  { Icon: Clock,         title: "Talent Matched Within 72 Hours." },
+  { Icon: Camera,        title: "Broadcast Quality Production." },
   { Icon: Ticket,        title: "Up to 100,000 Attendees." },
   { Icon: Heart,         title: "95% Client Retention Rate." },
 ];
@@ -90,7 +89,7 @@ const ComparisonSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-background">
+    <section ref={sectionRef} className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-background">
       {/* Background texture */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -265,7 +264,7 @@ const ComparisonSection = () => {
                 Ready to be on the right side of this list?
               </p>
               <p className="text-sm max-w-md mx-auto" style={{ color: "hsl(var(--foreground) / 0.55)" }}>
-                Join 2,000+ successful events. You show up. We've got every detail covered.
+                Join 2,000+ successful events. We've got every detail covered.
               </p>
             </div>            <div className="flex flex-col sm:flex-row items-center gap-3">
               <button

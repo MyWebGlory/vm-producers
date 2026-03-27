@@ -116,21 +116,26 @@ const FeatureRow = ({
   const imageRight = index % 2 === 1;
   const img = feature.image || heroImage;
 
+  // Spacer height = icon badge (h-12 = 3rem) + flex gap (gap-5 = 1.25rem) = 4.25rem
+  // This keeps image-top flush with h3-title-top on desktop.
   const imageCol = (
-    <motion.div
-      className="relative rounded-2xl overflow-hidden w-full h-40 sm:h-32 md:h-40 lg:h-52"
-      initial={{ opacity: 0, x: imageRight ? 48 : -48 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <img src={img} alt={feature.title} width={600} height={400} loading="lazy" className="w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.10) 0%, transparent 60%)" }} />
-    </motion.div>
+    <div className="flex flex-col w-full">
+      {Icon && <div className="hidden sm:block" style={{ height: "4.25rem" }} />}
+      <motion.div
+        className="relative rounded-2xl overflow-hidden w-full h-40 sm:h-32 md:h-40 lg:h-52"
+        initial={{ opacity: 0, x: imageRight ? 48 : -48 }}
+        animate={inView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <img src={img} alt={feature.title} width={600} height={400} loading="lazy" className="w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary) / 0.10) 0%, transparent 60%)" }} />
+      </motion.div>
+    </div>
   );
 
   const textCol = (
     <motion.div
-      className="flex flex-col justify-center gap-4 sm:gap-5"
+      className="flex flex-col justify-start gap-4 sm:gap-5"
       initial={{ opacity: 0, x: imageRight ? -48 : 48 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -155,7 +160,7 @@ const FeatureRow = ({
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-10 md:gap-16 lg:gap-20 items-center"
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-10 md:gap-16 lg:gap-20 items-start"
     >
       {/* Mobile: icon → title → image → text */}
       <div className="sm:hidden flex flex-col items-center gap-4 pt-2">
@@ -666,17 +671,6 @@ const ServicePageLayout = ({
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="mb-16 md:mb-24 text-center sm:text-left">
-            {FeaturesIcon && (
-              <div
-                className="inline-flex rounded-2xl p-3 border mb-5"
-                style={{
-                  background: "hsl(var(--primary) / 0.08)",
-                  borderColor: "hsl(var(--primary) / 0.2)",
-                }}
-              >
-                <FeaturesIcon size={22} style={{ color: "hsl(var(--primary))" }} />
-              </div>
-            )}
             <div className="relative inline-flex items-center">
               {FeaturesIcon && (
                 <FeaturesIcon

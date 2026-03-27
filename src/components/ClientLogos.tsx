@@ -12,7 +12,7 @@ import oracleLogo from "@/assets/logos/oracle-hd.png";
 import secureworksLogo from "@/assets/logos/secureworks.png";
 import adidasLogo from "@/assets/logos/adidas.png";
 import atlantaUnitedLogo from "@/assets/logos/atlanta-united.png";
-import merckLogo from "@/assets/logos/merck logo-converti-depuis-png.webp";
+import merckLogo from "@/assets/logos/Merck logo.webp";
 import tevaLogo from "@/assets/logos/teva logo.webp";
 import rapid7Logo from "@/assets/logos/rapid 7 logo-converti-depuis-png.webp";
 import boehringerLogo from "@/assets/logos/Boehringer_Ingelheim_Logo-converti-depuis-png.webp";
@@ -29,48 +29,48 @@ import astrazenecaLogo from "@/assets/logos/astra-zeneca-logo-converti-depuis-pn
 import designForGoodLogo from "@/assets/logos/design-for-good-logo-converti-depuis-png.webp";
 import headNeckAllianceLogo from "@/assets/logos/head and neck logo-converti-depuis-png.webp";
 import oncologyCollegeLogo from "@/assets/logos/oncology college logo-converti-depuis-png.webp";
-import oncareLogo from "@/assets/logos/oncare-logo.webp";
+import oncareLogo from "@/assets/logos/logo oncare.webp";
 import lsuHealthLogo from "@/assets/logos/lsu health logo.webp";
 import boomChikaPopLogo from "@/assets/logos/boomchika pop logo-converti-depuis-png.webp";
 import exigentLogo from "@/assets/logos/logo exigent.webp";
 
 // Row 1 - left-to-right scroll (15 logos)
 const row1Clients = [
-  { name: "Nike", logo: nikeLogo },
-  { name: "Merck", logo: merckLogo },
-  { name: "Amgen", logo: amgenLogo },
-  { name: "Adidas", logo: adidasLogo },
-  { name: "Pfizer", logo: pfizerLogo },
-  { name: "Secureworks", logo: secureworksLogo },
-  { name: "Gilead", logo: gileadLogo },
-  { name: "Atlanta United", logo: atlantaUnitedLogo },
-  { name: "AstraZeneca", logo: astrazenecaLogo },
-  { name: "Rapid7", logo: rapid7Logo },
-  { name: "Bank of America", logo: bankOfAmericaLogo },
-  { name: "LSU Health", logo: lsuHealthLogo },
-  { name: "TEVA", logo: tevaLogo },
-  { name: "Evolution Health Group", logo: evolutionHealthLogo },
-  { name: "Boom Chicka Pop", logo: boomChikaPopLogo },
+  { name: "Nike", logo: nikeLogo, scale: 1.1 },
+  { name: "Merck", logo: merckLogo, scale: 1.5 },
+  { name: "Amgen", logo: amgenLogo, scale: 1.1 },
+  { name: "Adidas", logo: adidasLogo, scale: 1.1 },
+  { name: "Pfizer", logo: pfizerLogo, scale: 1.1 },
+  { name: "Secureworks", logo: secureworksLogo, scale: 1.5 },
+  { name: "Gilead", logo: gileadLogo, scale: 1.1 },
+  { name: "Atlanta United", logo: atlantaUnitedLogo, scale: 1.4 },
+  { name: "AstraZeneca", logo: astrazenecaLogo, scale: 1.5 },
+  { name: "Rapid7", logo: rapid7Logo, scale: 1.2 },
+  { name: "Bank of America", logo: bankOfAmericaLogo, scale: 1.5 },
+  { name: "LSU Health", logo: lsuHealthLogo, scale: 1.3 },
+  { name: "TEVA", logo: tevaLogo, scale: 1.2 },
+  { name: "Evolution Health Group", logo: evolutionHealthLogo, scale: 1.3 },
+  { name: "Boom Chicka Pop", logo: boomChikaPopLogo, scale: 1.3 },
 ];
 
 // Row 2 - right-to-left scroll (15 different logos)
 const row2Clients = [
-  { name: "Samsung", logo: samsungLogo },
-  { name: "Boehringer Ingelheim", logo: boehringerLogo },
-  { name: "HP", logo: hpLogo },
-  { name: "Alkermes", logo: alkermesLogo },
-  { name: "Chevrolet", logo: chevroletLogo },
-  { name: "Novo Nordisk", logo: novoNordiskLogo },
-  { name: "Angry Orchard", logo: angryOrchardLogo },
-  { name: "PNC Bank", logo: pncBankLogo },
-  { name: "Nokia", logo: nokiaLogo },
-  { name: "Veeva", logo: veevaLogo },
-  { name: "Oracle", logo: oracleLogo },
-  { name: "Design for Good", logo: designForGoodLogo },
-  { name: "Oncology College", logo: oncologyCollegeLogo },
-  { name: "ONCare", logo: oncareLogo },
-  { name: "Head & Neck Cancer Alliance", logo: headNeckAllianceLogo },
-  { name: "Exigent", logo: exigentLogo },
+  { name: "Samsung", logo: samsungLogo, scale: 1.6 },
+  { name: "Boehringer Ingelheim", logo: boehringerLogo, scale: 1.2 },
+  { name: "HP", logo: hpLogo, scale: 1.2 },
+  { name: "Alkermes", logo: alkermesLogo, scale: 1.2 },
+  { name: "Chevrolet", logo: chevroletLogo, scale: 1.6 },
+  { name: "Novo Nordisk", logo: novoNordiskLogo, scale: 1.9 },
+  { name: "Angry Orchard", logo: angryOrchardLogo, scale: 2.5 },
+  { name: "PNC Bank", logo: pncBankLogo, scale: 1.2 },
+  { name: "Nokia", logo: nokiaLogo, scale: 1.2 },
+  { name: "Veeva", logo: veevaLogo, scale: 1.2 },
+  { name: "Oracle", logo: oracleLogo, scale: 1.1 },
+  { name: "Design for Good", logo: designForGoodLogo, scale: 1.3 },
+  { name: "Oncology College", logo: oncologyCollegeLogo, scale: 1.3 },
+  { name: "ONCare", logo: oncareLogo, scale: 1.3 },
+  { name: "Head & Neck Cancer Alliance", logo: headNeckAllianceLogo, scale: 1.3 },
+  { name: "Exigent", logo: exigentLogo, scale: 1.2 },
 ];
 
 // Triple each row for seamless infinite scroll
@@ -82,7 +82,7 @@ const ClientLogos = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
+    <section ref={sectionRef} className="relative py-32 md:py-44 lg:py-56 bg-background overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.05) 0%, transparent 70%)" }} />
@@ -102,7 +102,7 @@ const ClientLogos = () => {
             <SplitTextReveal text="the world's best." delay={0.3} className="justify-center glow-text" />
           </h2>
           <p className="section-lead text-muted-foreground mt-4 max-w-xl mx-auto">
-            From Fortune 500 giants to fast-growing startups: when the stakes are high, this is who they call.
+            From Fortune 500 giants to fast-growing startups: when the stakes are high, we are who they call.
           </p>
         </ScrollReveal>
       </div>
@@ -129,7 +129,8 @@ const ClientLogos = () => {
                 alt={`${client.name} logo`}
                 loading="eager"
                 decoding="sync"
-                className="h-8 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
+                style={client.scale ? { transform: `scale(${client.scale})` } : undefined}
+                className="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-500 [image-rendering:crisp-edges]"
               />
             </div>
           ))}
@@ -157,7 +158,8 @@ const ClientLogos = () => {
                 alt={`${client.name} logo`}
                 loading="eager"
                 decoding="sync"
-                className="h-8 md:h-12 w-auto object-contain opacity-75 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0 [image-rendering:crisp-edges]"
+                style={client.scale ? { transform: `scale(${client.scale})` } : undefined}
+                className="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-500 [image-rendering:crisp-edges]"
               />
             </div>
           ))}

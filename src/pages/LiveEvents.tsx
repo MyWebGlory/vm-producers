@@ -70,13 +70,13 @@ const LiveEvents = () => (
     featuresBefore="Live event production, "
     featuresAccent="start to finish."
     featuresDescription="Everything you need to run a flawless in-person event, from the first brief to the final breakdown. Here's exactly what we take off your plate."
-    description="In-person events that run on time, look sharp, and hold together under pressure. We handle the full production, so you show up as the host."
+    description="In-person events that run on time, look sharp, and hold together under pressure. We handle the entire production, so you don't have to."
     heroImage={liveEventsImg}
     heroVideo={liveEventsVideo}
     stats={[
       { value: 500, suffix: "+", label: "Events Delivered" },
       { value: 50, suffix: "+", label: "Countries" },
-      { value: 100, suffix: "%", label: "Success Rate" },
+      { value: 95, suffix: "%", label: "Client Retention" },
     ]}
     featuresIcon={MapPin}
   typeCardsTitle="What your next event could look like"
@@ -183,7 +183,7 @@ const LiveEvents = () => (
               Elevate Your Event Team
             </h2>
             <p className="section-lead text-muted-foreground max-w-2xl mx-auto">
-              Create a strong and reliable network of independent meeting professionals that you can connect with swiftly and strategically. The Virtual Producer's Network specializes in more than 55 areas of meetings and events.
+              We are a strong and reliable network of independent meeting professionals that you can connect with swiftly and strategically. The Virtual Producer's Network specializes in more than 55 areas of meetings and events.
             </p>
           </div>
 

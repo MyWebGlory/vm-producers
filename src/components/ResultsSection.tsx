@@ -5,7 +5,6 @@ import { SplitTextReveal, FloatingOrbs } from "@/components/ScrollAnimations";
 
 const stats = [
   { end: 2000, prefix: "", suffix: "+", label: "Events Delivered", sub: "Across 70+ countries worldwide" },
-  { end: 100,  prefix: "", suffix: "%", label: "Success Rate",      sub: "Zero failed events. Ever."       },
   { end: 95,   prefix: "", suffix: "%", label: "Client Retention",  sub: "They keep coming back"           },
   { end: 350,  prefix: "", suffix: "K+",label: "Global Attendees",  sub: "Live, virtual and hybrid"        },
 ];
@@ -85,7 +84,7 @@ const ResultsSection = () => {
     <section
       ref={sectionRef}
       aria-labelledby="results-heading"
-      className="relative overflow-hidden bg-background py-24 md:py-32 lg:py-40"
+      className="relative overflow-hidden bg-background py-16 md:py-20 lg:py-24"
     >
       {/* Dot grid */}
       <div

@@ -44,7 +44,7 @@ const MeetingPros = () => (
     subtitle="Verified Talent in 72 Hours or Less"
     featuresBefore="The right talent, "
     featuresAccent="for every meeting."
-    featuresDescription="Whatever your event requires, we have a specialist for it. Here's the talent you can mobilize, ready to deploy wherever you need them."
+    featuresDescription="Whatever your event requires, we have a specialist for it. Here's the talent you can mobilize, ready to deploy, wherever you need them."
     description="The go-to partner for businesses that need verified event professionals fast. Connected within 72 hours, active across 70+ countries, covering more than 55 specialties."
     heroImage={meetingProsImg}
     heroVideo={meetingProsVideo}

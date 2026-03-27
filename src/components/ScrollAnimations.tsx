@@ -229,7 +229,7 @@ export const SplitTextReveal = ({
     // @ts-ignore - dynamic tag
     <Tag ref={ref} className={`inline-flex items-baseline align-baseline ${nowrap ? "flex-nowrap" : "flex-wrap"} gap-x-[0.25em] gap-y-[0.12em] leading-[1.12] [vertical-align:baseline] ${className}`} style={style}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden pt-[0.05em] pb-[0.18em] -mt-[0.05em] -mb-[0.18em]">
+        <span key={i} className="inline-block overflow-hidden pt-[0.12em] pb-[0.28em] -mt-[0.12em] -mb-[0.28em]">
           <motion.span
             className="inline-block align-baseline leading-[1.05]"
             initial={{ y: "105%", opacity: 0 }}

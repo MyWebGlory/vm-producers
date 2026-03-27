@@ -60,7 +60,7 @@ const homeSEO = {
           {
             "@type": "Question",
             "name": "Can VM Producers handle virtual-only or hybrid event formats?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Virtual and hybrid events are a core specialty. Remote attendees get broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000 participants - the exact same quality as those in the room." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Virtual and hybrid is where you'll get a truly premium experience. Your remote attendees get the exact same quality as those in person. Broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000." }
           }
         ]
       }

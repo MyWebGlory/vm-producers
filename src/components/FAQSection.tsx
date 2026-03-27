@@ -28,12 +28,12 @@ const faqs = [
   {
     question: "What happens if something goes wrong on the day?",
     answer:
-      "Short answer: you'll never be left scrambling. We hold a 100% success rate across 2,000+ events. Every production has redundancy built in - backup tech, backup crew, contingency plans. If an issue arises, your on-site producer owns it and resolves it in real time.",
+      "Short answer: you'll never be left scrambling. Every production has redundancy built in - backup tech, backup crew, contingency plans. If an issue arises, your on-site producer owns it and resolves it in real time.",
   },
   {
     question: "Can you handle virtual-only or hybrid formats?",
     answer:
-      "Virtual and hybrid is where you'll get a truly premium experience. Your remote attendees get the exact same quality as those in the room, broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
+      "Virtual and hybrid is where you'll get a truly premium experience. Your remote attendees get the exact same quality as those in person. Broadcast-quality streaming, multi-language translation into 5+ languages, interactive features, and audiences of up to 100,000.",
   },
 ];
 

@@ -10,7 +10,7 @@ import logoTrustpilot from "@/assets/logo-trustpilot.png";
 
 const stats = [
   { value: 2000, suffix: "+", label: "Events Delivered" },
-  { value: 100, suffix: "%", label: "Success Rate" },
+  { value: 95, suffix: "%", label: "Client Retention" },
   { value: 350, suffix: "K+", label: "Attendees Reached" },
 ];
 

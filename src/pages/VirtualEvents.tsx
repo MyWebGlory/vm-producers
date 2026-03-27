@@ -49,8 +49,8 @@ const VirtualEvents = () => (
     heroVideo={virtualEventsVideo}
     stats={[
       { value: 100, suffix: "K", label: "Max Attendees" },
-      { value: 5, suffix: "+", label: "Languages Supported" },
-      { value: 99.9, suffix: "%", label: "Uptime" },
+      { value: 95, suffix: "%", label: "Client Retention" },
+      { value: 70, suffix: "+", label: "Countries Reached" },
     ]}
     featuresIcon={Globe}
   typeCardsTitle="What your next event could look like"

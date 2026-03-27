@@ -64,8 +64,12 @@ const CTASection = () => {
         </motion.p>
         <RevealLine delay={0.05} className="mb-8 max-w-[120px] mx-auto" />
         <h2 id="cta-heading" className="section-title mb-4 md:mb-8" style={{ color: "white" }}>
-          <SplitTextReveal text="Let's make your next event" delay={0.1} stagger={0.04} className="justify-center" nowrap />{" "}
-          <SplitTextReveal text="one they'll never forget." delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+          <span className="flex justify-center">
+            <SplitTextReveal text="Let's make your next event" delay={0.1} stagger={0.04} className="justify-center" nowrap />
+          </span>
+          <span className="flex justify-center w-full">
+            <SplitTextReveal text="one they'll never forget." delay={0.45} stagger={0.06} className="justify-center" style={{ color: "hsl(var(--primary))" }} />
+          </span>
         </h2>
         {/* Title divider */}
         <div className="flex items-center justify-center gap-3 mt-2 mb-6">
